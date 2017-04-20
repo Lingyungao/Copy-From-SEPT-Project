@@ -26,7 +26,7 @@ public class MenuController {
 	
 	@FXML
     private void goLogin(ActionEvent event) throws IOException {
-		a.showLogin();
+		a.showTimetable();
 		}
 	
 	@FXML

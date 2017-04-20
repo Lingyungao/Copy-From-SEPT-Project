@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -83,6 +84,15 @@ public class MenuMain extends Application {
 		Scene scene = new Scene(Customermenu);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Customer Menu");
+	}
+	public void showTimetable() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
+		Pane Timetable = loader.load();
+		Scene scene = new Scene(Timetable);
+		scene.getStylesheets().add("/application/Timetable.css");
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Timetable");
 	}
 	
 	
