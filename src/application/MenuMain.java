@@ -46,7 +46,7 @@ public class MenuMain extends Application {
 	public void showLogin() throws IOException
 	{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/Sample.fxml"));
+		loader.setLocation(MenuMain.class.getResource("/application/Login.fxml"));
 		AnchorPane loginmenu = loader.load();
 		Scene scene = new Scene(loginmenu);
 		primaryStage.setScene(scene);
@@ -79,6 +79,15 @@ public class MenuMain extends Application {
 	public void showCusM() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerMenu.fxml"));
+		Pane Customermenu = loader.load();
+		Scene scene = new Scene(Customermenu);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Customer Menu");
+	}
+	
+	public void showCusDetailM() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailMenu.fxml"));
 		Pane Customermenu = loader.load();
 		Scene scene = new Scene(Customermenu);
 		primaryStage.setScene(scene);
