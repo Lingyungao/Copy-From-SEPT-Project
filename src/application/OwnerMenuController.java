@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 
 import javafx.event.ActionEvent;
@@ -34,8 +36,8 @@ public class OwnerMenuController{
     private JFXButton addEmployee;
 
     @FXML
-    void addEmployee(ActionEvent event) {
-    	
+    void addEmployee(ActionEvent event) throws IOException {
+    	a.showAddEmp();
     }
 
     @FXML
