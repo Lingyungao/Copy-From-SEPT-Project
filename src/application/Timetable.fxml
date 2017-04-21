@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
 <?import com.jfoenix.controls.*?>
@@ -8,88 +9,87 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TimetableController">
    <children>
       <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="1.0" layoutY="1.0" prefHeight="635.0" prefWidth="942.0">
          <children>
-            <JFXButton prefHeight="95.0" prefWidth="85.0" GridPane.columnIndex="1" />
-            <JFXButton GridPane.columnIndex="2" />
-            <JFXButton GridPane.columnIndex="3" />
-            <JFXButton GridPane.columnIndex="4" />
-            <JFXButton GridPane.columnIndex="5" />
-            <JFXButton GridPane.columnIndex="6" />
-            <JFXButton GridPane.columnIndex="7" />
-            <JFXButton GridPane.columnIndex="8" />
-            <JFXButton GridPane.columnIndex="9" />
-            <JFXButton GridPane.columnIndex="10" />
-            <JFXButton GridPane.rowIndex="1" />
-            <JFXButton GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <JFXButton GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <JFXButton GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <JFXButton GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <JFXButton GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <JFXButton GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <JFXButton GridPane.columnIndex="7" GridPane.rowIndex="1" />
-            <JFXButton GridPane.rowIndex="3" />
-            <JFXButton GridPane.rowIndex="4" />
-            <JFXButton GridPane.rowIndex="5" />
-            <JFXButton GridPane.rowIndex="6" />
-            <JFXButton GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="8" GridPane.rowIndex="1" />
-            <JFXButton GridPane.columnIndex="9" GridPane.rowIndex="1" />
-            <JFXButton GridPane.columnIndex="10" GridPane.rowIndex="1" />
-            <JFXButton GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="6" GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="7" GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="8" GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="9" GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="10" GridPane.rowIndex="2" />
-            <JFXButton GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <JFXButton GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <JFXButton GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <JFXButton GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <JFXButton GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <JFXButton GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <JFXButton GridPane.columnIndex="7" GridPane.rowIndex="3" />
-            <JFXButton GridPane.columnIndex="8" GridPane.rowIndex="3" />
-            <JFXButton GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <JFXButton GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <JFXButton GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <JFXButton GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <JFXButton GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <JFXButton GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <JFXButton GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <JFXButton GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <JFXButton GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <JFXButton GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <JFXButton GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <JFXButton GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <JFXButton GridPane.columnIndex="4" GridPane.rowIndex="6" />
-            <JFXButton GridPane.columnIndex="5" GridPane.rowIndex="5" />
-            <JFXButton GridPane.columnIndex="5" GridPane.rowIndex="6" />
-            <JFXButton GridPane.columnIndex="6" GridPane.rowIndex="4" />
-            <JFXButton GridPane.columnIndex="6" GridPane.rowIndex="5" />
-            <JFXButton GridPane.columnIndex="6" GridPane.rowIndex="6" />
-            <JFXButton GridPane.columnIndex="7" GridPane.rowIndex="4" />
-            <JFXButton GridPane.columnIndex="7" GridPane.rowIndex="5" />
-            <JFXButton GridPane.columnIndex="7" GridPane.rowIndex="6" />
-            <JFXButton GridPane.columnIndex="8" GridPane.rowIndex="4" />
-            <JFXButton GridPane.columnIndex="8" GridPane.rowIndex="5" />
-            <JFXButton GridPane.columnIndex="8" GridPane.rowIndex="6" />
-            <JFXButton GridPane.columnIndex="9" GridPane.rowIndex="3" />
-            <JFXButton GridPane.columnIndex="9" GridPane.rowIndex="4" />
-            <JFXButton GridPane.columnIndex="9" GridPane.rowIndex="5" />
-            <JFXButton GridPane.columnIndex="9" GridPane.rowIndex="6" />
-            <JFXButton GridPane.columnIndex="10" GridPane.rowIndex="3" />
-            <JFXButton GridPane.columnIndex="10" GridPane.rowIndex="4" />
-            <JFXButton GridPane.columnIndex="10" GridPane.rowIndex="5" />
-            <JFXButton GridPane.columnIndex="10" GridPane.rowIndex="6" />
-            <JFXButton fx:id="btn00" contentDisplay="TOP" onAction="#edit" prefHeight="95.0" prefWidth="84.0" />
+            <JFXButton fx:id="btn02" onAction="#edit" prefHeight="60.0" prefWidth="86.0" GridPane.columnIndex="2" />
+            <JFXButton fx:id="btn03" onAction="#edit" prefHeight="63.0" prefWidth="88.0" GridPane.columnIndex="3" />
+            <JFXButton fx:id="btn04" onAction="#edit" prefHeight="61.0" prefWidth="85.0" GridPane.columnIndex="4" />
+            <JFXButton fx:id="btn05" onAction="#edit" prefHeight="76.0" prefWidth="86.0" GridPane.columnIndex="5" />
+            <JFXButton fx:id="btn06" onAction="#edit" prefHeight="66.0" prefWidth="84.0" GridPane.columnIndex="6" />
+            <JFXButton fx:id="btn07" onAction="#edit" prefHeight="74.0" prefWidth="82.0" GridPane.columnIndex="7" />
+            <JFXButton fx:id="btn08" onAction="#edit" prefHeight="72.0" prefWidth="81.0" GridPane.columnIndex="8" />
+            <JFXButton fx:id="btn09" onAction="#edit" prefHeight="70.0" prefWidth="76.0" GridPane.columnIndex="9" />
+            <JFXButton fx:id="btn010" onAction="#edit" prefHeight="65.0" prefWidth="77.0" GridPane.columnIndex="10" />
+            <JFXButton fx:id="btn10" onAction="#edit" prefHeight="69.0" prefWidth="88.0" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn20" onAction="#edit" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn11" onAction="#edit" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn12" onAction="#edit" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn13" onAction="#edit" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn14" onAction="#edit" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn15" onAction="#edit" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn16" onAction="#edit" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn17" onAction="#edit" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn30" onAction="#edit" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn40" onAction="#edit" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn50" onAction="#edit" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn60" onAction="#edit" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn21" onAction="#edit" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn22" onAction="#edit" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn23" onAction="#edit" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn18" onAction="#edit" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn19" onAction="#edit" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn110" onAction="#edit" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+            <JFXButton fx:id="btn24" onAction="#edit" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn25" onAction="#edit" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn26" onAction="#edit" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn27" onAction="#edit" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn28" onAction="#edit" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn29" onAction="#edit" GridPane.columnIndex="9" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn210" onAction="#edit" GridPane.columnIndex="10" GridPane.rowIndex="2" />
+            <JFXButton fx:id="btn31" onAction="#edit" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn32" onAction="#edit" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn33" onAction="#edit" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn34" onAction="#edit" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn35" onAction="#edit" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn36" onAction="#edit" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn37" onAction="#edit" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn38" onAction="#edit" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn41" onAction="#edit" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn51" onAction="#edit" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn42" onAction="#edit" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn61" onAction="#edit" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn52" onAction="#edit" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn62" onAction="#edit" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn43" onAction="#edit" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn53" onAction="#edit" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn63" onAction="#edit" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn44" onAction="#edit" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn45" onAction="#edit" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn54" onAction="#edit" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn64" onAction="#edit" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn55" onAction="#edit" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn65" onAction="#edit" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn46" onAction="#edit" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn56" onAction="#edit" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn66" onAction="#edit" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn47" onAction="#edit" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn57" onAction="#edit" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn67" onAction="#edit" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn48" onAction="#edit" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn58" onAction="#edit" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn68" onAction="#edit" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn39" onAction="#edit" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn49" onAction="#edit" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn59" onAction="#edit" GridPane.columnIndex="9" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn69" onAction="#edit" GridPane.columnIndex="9" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn310" onAction="#edit" GridPane.columnIndex="10" GridPane.rowIndex="3" />
+            <JFXButton fx:id="btn410" onAction="#edit" GridPane.columnIndex="10" GridPane.rowIndex="4" />
+            <JFXButton fx:id="btn510" onAction="#edit" GridPane.columnIndex="10" GridPane.rowIndex="5" />
+            <JFXButton fx:id="btn610" onAction="#edit" GridPane.columnIndex="10" GridPane.rowIndex="6" />
+            <JFXButton fx:id="btn00" onAction="#edit" prefHeight="91.0" prefWidth="84.0" />
+            <JFXButton fx:id="btn01" onAction="#edit" prefHeight="91.0" prefWidth="85.0" text="Button" GridPane.columnIndex="1" />
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

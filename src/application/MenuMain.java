@@ -90,7 +90,7 @@ public class MenuMain extends Application {
 		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
 		Pane Timetable = loader.load();
 		Scene scene = new Scene(Timetable);
-		scene.getStylesheets().add("/application/Timetable.css");
+//		scene.getStylesheets().add("/application/Timetable.css");
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Timetable");
 	}
