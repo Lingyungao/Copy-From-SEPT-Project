@@ -7,14 +7,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="566.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.EmployeeMenuController">
+<AnchorPane prefHeight="400.0" prefWidth="566.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmployeeMenuController">
    <children>
       <SplitPane dividerPositions="0.40602836879432624" layoutX="244.0" layoutY="86.0" prefHeight="400.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TableView prefHeight="398.0" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="employeeTable" prefHeight="398.0" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="firstNameCol" prefWidth="93.0" text="First name" />
                       <TableColumn fx:id="lastNameCol" prefWidth="94.0" text="Last name" />

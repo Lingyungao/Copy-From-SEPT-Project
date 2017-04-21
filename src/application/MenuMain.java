@@ -94,6 +94,15 @@ public class MenuMain extends Application {
 		primaryStage.setTitle("Add Employee");
 	}
 	
+	public void showEmpMenu() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/EmployeeMenu.fxml"));
+		Pane EmpMenu = loader.load();
+		Scene scene = new Scene(EmpMenu);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Employee Menu");
+	}
+	
 	
 	public static void main(String[] args) {
 		launch(args);
