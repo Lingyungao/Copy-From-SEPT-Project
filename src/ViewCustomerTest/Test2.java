@@ -22,7 +22,7 @@ private static String firstName;
  
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("SampleTest.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("passSample.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         scene.getStylesheets().add("test/application.css");
