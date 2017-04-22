@@ -61,6 +61,7 @@ public class CustomerDetailController {
 	@FXML
 	 private void editCustomerDetail() throws Exception {
 		System.out.println("cd");
+		DisplayDetails();
 		showCustomerDetails();
 		
 	}
