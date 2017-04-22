@@ -1,4 +1,7 @@
 package application;
+import java.io.IOException;
+import java.sql.SQLException;
+
 import com.jfoenix.controls.JFXButton;
 
 import javafx.event.ActionEvent;
@@ -11,6 +14,7 @@ import application.GetEmployer;
 import application.Employer;
 public class EmployeeMenuController {
     private GetEmployer getEmployer;
+    MenuMain a = new MenuMain();
 
     @FXML
     private Label firstName;
@@ -82,8 +86,9 @@ public class EmployeeMenuController {
     
 
     @FXML
-    void editTimetable(ActionEvent event) {
+    void editTimetable(ActionEvent event) throws IOException, NumberFormatException, SQLException {
     	
+    	a.showTimetable(empID.getText());
     }
 
     @FXML

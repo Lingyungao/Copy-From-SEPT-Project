@@ -21,13 +21,12 @@ import javafx.stage.Window;
 public class TimetableController {
 	
 	private Connection LoginConn = null;
-	private ResultSet rs = null;
-	private ResultSet rs2 = null;
-	private ResultSet rs3 = null;
+
 	private Statement st = null;
 
-	int[][] timetable = new int[31][15];
+//	int[][] timetable = new int[31][15];
 	int[][] daystable = new int[100][13];
+	
 	String[][] btnIdSet = {
 			            {"btn00","btn01","btn02","btn03","btn04","btn05","btn06","btn07","btn08","btn09","btn010"},
 			            {"btn10","btn11","btn12","btn13","btn14","btn15","btn16","btn17","btn18","btn19","btn110"},
@@ -42,7 +41,39 @@ public class TimetableController {
 	String first;
 	String last;
 	
-	public void weekdaysDef(int weekdays) {  //Change 1~7 to Mon~Sun
+
+	
+//	public JFXButton setColor(JFXButton jfxbutton){
+//		
+//    	for(int i = 0; i <= 6;i++)
+//    	{
+//    		for(int j = 0; j <= 10; j++)
+//    		{
+//    			if(jfxbutton.getId().equals(btnIdSet[i][j]))
+//    		    	{
+//    				if(timetable[i][j+3]==0)
+//    		    	{
+//    		    		jfxbutton.setText("Unavalible");
+//    		    		jfxbutton.setStyle("-fx-background-color:red");
+////    		    		System.out.println(timetable[i][j+3] + " " + i + " " + j);
+//    		    		
+//    		    	}
+//    		    	else if(timetable[i][j+3]==1)
+//    		    	{
+//    		    		timetable[i][j+3] = 1;
+//    		    	    jfxbutton.setText("Avalible");
+//    		    		jfxbutton.setStyle("-fx-background-color:lightgreen");
+////    		    		System.out.println(timetable[i][j+3] + " " + i + " " + j);
+//    		    	}
+//    			}
+//    		}
+//    	}
+//    	return jfxbutton;
+//	}
+//    	
+		
+	
+		public void weekdaysDef(int weekdays) {  //Change 1~7 to Mon~Sun
 
 		switch (weekdays) {
 		case 1: {
@@ -368,20 +399,20 @@ public class TimetableController {
     		{
     			if(x.getId().equals(btnIdSet[i][j]))
     			{
-    		    	if(timetable[i][j]==1)
+    		    	if(MenuMain.timetable[i][j+3]==1)
     		    	{
-    		    		timetable[i][j] = 0;
+    		    		MenuMain.timetable[i][j+3] = 0;
     		    		x.setText("Unavalible");
     		    		x.setStyle("-fx-background-color:red");
-    		    		System.out.println(timetable[i][j] + " " + i + " " + j);
+    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
     		    		
     		    	}
-    		    	else if(timetable[i][j]==0)
+    		    	else if(MenuMain.timetable[i][j+3]==0)
     		    	{
-    		    		timetable[i][j] = 1;
+    		    		MenuMain.timetable[i][j+3] = 1;
     		    	    x.setText("Avalible");
     		    		x.setStyle("-fx-background-color:lightgreen");
-    		    		System.out.println(timetable[i][j] + " " + i + " " + j);
+    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
     		    	}
     			}
     		}

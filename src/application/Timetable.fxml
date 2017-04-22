@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TimetableController">
+<Pane prefHeight="751.0" prefWidth="1131.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TimetableController">
    <children>
       <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="1.0" layoutY="1.0" prefHeight="635.0" prefWidth="942.0">
          <children>
@@ -114,5 +114,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
+      <Label fx:id="IdLabel" layoutX="982.0" layoutY="36.0" text="Label" />
    </children>
 </Pane>
