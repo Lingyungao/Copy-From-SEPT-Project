@@ -60,12 +60,22 @@ public class CustomerDetailController {
 	
 	@FXML
 	 private void editCustomerDetail() throws Exception {
-		System.out.println("cd");
 		DisplayDetails();
 		showCustomerDetails();
 		
 	}
 	
+	 @FXML
+	    private void initialize(){
+		    DisplayDetails();
+		 	firstNameLable.setText(firstName);
+			lastNameLable.setText(lastName);
+			cusPhoneLable.setText(phoneNo);
+			cusAddressLable.setText(address);
+			cusEmailLable.setText(email);
+	    }
+	
+	@FXML
 	public static void DisplayDetails() {
 		try {
 			// Start functions
@@ -93,6 +103,7 @@ public class CustomerDetailController {
 		}
 	}
 	
+	@FXML
 	private void showCustomerDetails() {
 		if (LoginSystem2.userId > 0){
 			firstNameLable.setText(firstName);
