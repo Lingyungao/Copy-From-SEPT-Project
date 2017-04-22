@@ -52,7 +52,7 @@ public class EmployeeMenuController {
     	empIdCol.setCellValueFactory(cellData -> cellData.getValue().empIdProperty().asObject());
     	
 //    	showEmpDetails(null);
-    	
+
     	employeeTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showEmpDetails(newValue));
     }
