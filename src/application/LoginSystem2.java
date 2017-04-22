@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class LoginSystem2 {
 	private static String pass = null;
 	private static String user = null;	
-	private static int userId;
+	public static int userId;
 	private static int permission;
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
@@ -22,9 +22,7 @@ public class LoginSystem2 {
 			// Connection LoginConn = null;
 
 			LoginConn = connection.connectDB(); // connect to the SQL
-
 			st = LoginConn.createStatement(); // create statement of it
-
 			rs = st.executeQuery("SELECT * FROM USERS where USERNAME = \'" + inputLogUser + "\'");
 			// Query function 1(unsafe. easy to inject)
 			while (rs.next()) {
@@ -57,4 +55,5 @@ public class LoginSystem2 {
 
 		
 	}
+	
 }
