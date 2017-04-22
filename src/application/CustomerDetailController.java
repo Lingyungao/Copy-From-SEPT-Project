@@ -16,18 +16,11 @@ public class CustomerDetailController {
 	MenuMain a = new MenuMain();
 	
 	@FXML
-	private JFXButton ViewPersionDetail;
+	private JFXButton editCustomerDetail;
+	
 	
 	@FXML
-	private JFXButton EditPersionDetail;
-	
-	@FXML
-	 private void viewPersionDetail() throws Exception {
-		System.out.println("ab");
-	}
-	
-	@FXML
-	 private void editPersionDetail() throws Exception {
+	 private void editCustomerDetail() throws Exception {
 		System.out.println("cd");
 		
 	}
