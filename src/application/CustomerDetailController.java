@@ -16,6 +16,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
 public class CustomerDetailController {
 	MenuMain a = new MenuMain();
 	
@@ -37,11 +41,23 @@ public class CustomerDetailController {
 	@FXML
 	private JFXButton editCustomerDetail;
 	
+	@FXML
+	private Label firstNameLable;
+	
+	@FXML
+	private Label lastNameLable;
+	
+	@FXML
+	private Label cusPhoneLable;
+	
+	@FXML
+	private Label cusAddressLable;
+	
 	
 	@FXML
 	 private void editCustomerDetail() throws Exception {
 		System.out.println("cd");
-		DisplayDetails();
+		showCustomerDetails();
 		
 	}
 	
@@ -69,6 +85,15 @@ public class CustomerDetailController {
 			System.out.println("NO!!");
 			e.printStackTrace();
 
+		}
+	}
+	
+	private void showCustomerDetails() {
+		if (LoginSystem2.userId > 0){
+			firstNameLable.setText(firstName);
+			lastNameLable.setText(lastName);
+			cusPhoneLable.setText(phoneNo);
+			cusAddressLable.setText(address);
 		}
 	}
 	

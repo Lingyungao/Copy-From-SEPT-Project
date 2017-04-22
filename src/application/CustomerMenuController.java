@@ -29,6 +29,7 @@ MenuMain a = new MenuMain();
 	
 	@FXML
 	 private void editDetail(ActionEvent event) throws Exception {
+		CustomerDetailController.DisplayDetails();
 		a.showCusDetailM();
 		
 	}
