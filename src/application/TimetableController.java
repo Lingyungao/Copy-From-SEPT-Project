@@ -530,7 +530,7 @@ public class TimetableController {
 //    		timetable[0][7] = 0;
 //    		btn07.setText("Unavalible");
 //    		btn07.setStyle("-fx-background-color:red");
-//    		
+//    			
 //    	}
 //    	else if(timetable[0][7]==0)
 //    	{

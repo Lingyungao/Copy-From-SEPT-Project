@@ -40,10 +40,11 @@ public class LoginSystem2 {
 				// compare with database. have to same both.
 				if (permission == 1) {
 					System.out.println("Login Succesful");
+					MenuMain.userId = userId;
 					return 2;
 				} else if (permission == 2) {
 					System.out.println("Login Succesful");
-					
+					MenuMain.userId = userId;
 					return 3;
 				} else {	
 					System.out.println("Invalid Input!");

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
@@ -54,5 +55,6 @@
          </font>
       </Text>
       <Text layoutX="414.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner ID and Name" />
+      <Label fx:id="UID" layoutX="414.0" layoutY="59.0" text="Label" />
    </children>
 </Pane>

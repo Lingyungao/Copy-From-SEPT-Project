@@ -32,6 +32,7 @@ public class MenuMain extends Application {
             {"#btn50","#btn51","#btn52","#btn53","#btn54","#btn55","#btn56","#btn57","#btn58","#btn59","#btn510"},
             {"#btn60","#btn61","#btn62","#btn63","#btn64","#btn65","#btn66","#btn67","#btn68","#btn69","#btn610"}
            };
+	static int userId;
     
 	
 	@Override
@@ -90,6 +91,8 @@ public class MenuMain extends Application {
 		loader.setLocation(MenuMain.class.getResource("/application/OwnerMenu.fxml"));
 		Pane Ownermenu = loader.load();
 		Scene scene = new Scene(Ownermenu);
+		Label temp = (Label) scene.lookup("#UID");
+		temp.setText(String.valueOf(userId));
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Owner Menu");
 	}
