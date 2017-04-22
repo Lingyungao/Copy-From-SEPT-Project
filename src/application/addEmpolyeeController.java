@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
@@ -8,7 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class addEmpolyeeController {
-	
+	MenuMain a = new MenuMain();
+
 	private static String regLetOnly = "^[a-zA-Z]+$";
 	private static String regNumOnly = "^[0-9]+$";
 
@@ -122,6 +125,7 @@ public class addEmpolyeeController {
     	if(empFirstPass == true && empLastPass == true && empPhonePass == true ){
     		System.out.println("PASSED");
     		AddEmployeeSQL.insertEmployee(empFirst.getText(),empLast.getText(),empPhone.getText());
+    		a.showAddEmpConfirm();
     	}else{
     		System.out.println("error AE001");
     	}
@@ -130,8 +134,8 @@ public class addEmpolyeeController {
     
 
     @FXML
-    void Back(ActionEvent event) {
-    	
+    void Back(ActionEvent event) throws IOException {
+    	a.showOwnerM();
     }
 
 }

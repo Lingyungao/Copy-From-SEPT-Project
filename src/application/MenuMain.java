@@ -127,6 +127,16 @@ public class MenuMain extends Application {
 		primaryStage.setTitle("Employee Menu");
 	}
 	
+	public void showAddEmpConfirm() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/AddEmployeeConfirm.fxml"));
+		Pane AddEmpConfirm = loader.load();
+		Scene scene = new Scene(AddEmpConfirm);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Confirm");
+	}
+	
+	
 	public void showTimetable(String empid) throws IOException, NumberFormatException, SQLException{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
