@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,7 +9,7 @@
 
 <AnchorPane prefHeight="270.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerDetailEditController">
    <children>
-      <GridPane layoutX="30.0" layoutY="28.0" prefHeight="182.0" prefWidth="393.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <GridPane layoutX="30.0" layoutY="28.0" prefHeight="157.0" prefWidth="387.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="111.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.0" minWidth="10.0" prefWidth="261.0" />
@@ -33,7 +35,11 @@
             <TextField fx:id="cusPhoneField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button layoutX="48.0" layoutY="214.0" onAction="#saveChange" mnemonicParsing="false" text="Save" />
-      <Button layoutX="304.0" layoutY="214.0" onAction="#cancleChange" mnemonicParsing="false" text="Back" />
+      <Button layoutX="48.0" layoutY="214.0" mnemonicParsing="false" onAction="#saveChange" text="Save" />
+      <Button layoutX="304.0" layoutY="214.0" mnemonicParsing="false" onAction="#cancleChange" text="Back" />
+      <Text fx:id="cusInfoText" layoutX="10.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="387.0">
+         <font>
+            <Font size="10.0" />
+         </font></Text>
    </children>
 </AnchorPane>

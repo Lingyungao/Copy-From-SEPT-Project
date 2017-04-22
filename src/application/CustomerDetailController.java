@@ -81,7 +81,7 @@ public class CustomerDetailController {
 			// Connection LoginConn = null;
 			LoginConn = connection.connectDB(); // connect to the SQL
 			st = LoginConn.createStatement(); // create statement of it
-			rs = st.executeQuery("SELECT * FROM DETAILS where USER_ID = " + LoginSystem2.userId);
+			rs = st.executeQuery("SELECT * FROM DETAILS where USER_ID = " + LoginSystem2.returnId);
 
 			firstName = rs.getString("FIRST_NAME");
 			lastName = rs.getString("LAST_NAME");
@@ -97,7 +97,7 @@ public class CustomerDetailController {
 	
 	@FXML
 	private void showCustomerDetails() {
-		if (LoginSystem2.userId > 0){
+		if (LoginSystem2.returnId > 0){
 			firstNameLable.setText(firstName);
 			lastNameLable.setText(lastName);
 			cusPhoneLable.setText(phoneNo);

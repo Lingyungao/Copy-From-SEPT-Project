@@ -7,7 +7,8 @@ import java.sql.Statement;
 public class LoginSystem2 {
 	private static String pass = null;
 	private static String user = null;	
-	public static int userId;
+	private static int userId;
+	public static int returnId;
 	private static int permission;
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
@@ -30,8 +31,8 @@ public class LoginSystem2 {
 				user = rs.getString("USERNAME");
 				userId = rs.getInt("USER_ID");
 				permission = rs.getInt("PERMISSION");
-
 			}
+			returnId = userId;
 			// get username and password
 
 			if (user.equals(inputLogUser) && pass.equals(inputLogPass)) {
@@ -52,7 +53,7 @@ public class LoginSystem2 {
 				System.out.println("The account is not exist or you do not register an account");
 				return 1;
 			}
-
+			
 		
 	}
 	
