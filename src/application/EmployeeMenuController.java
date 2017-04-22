@@ -43,6 +43,8 @@ public class EmployeeMenuController {
     @FXML
     private TableColumn<Employer, String> lastNameCol;
     
+    
+    
     @FXML
     private void initialize(){
     	firstNameCol.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
@@ -51,8 +53,9 @@ public class EmployeeMenuController {
     }
     
     
-    public void setMainApp(GetEmployer getEmployer){
+    public void setGetEmployer(GetEmployer getEmployer){
     	this.getEmployer = getEmployer;
+    	
         employeeTable.setItems(getEmployer.getEmployerData());
 
     }

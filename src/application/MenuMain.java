@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 public class MenuMain extends Application {
     private static Stage primaryStage;
     private static Pane mainLayout;
+    
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -100,6 +101,9 @@ public class MenuMain extends Application {
 		Pane EmpMenu = loader.load();
 		Scene scene = new Scene(EmpMenu);
 		primaryStage.setScene(scene);
+		EmployeeMenuController controller = loader.getController();
+		GetEmployer getEmployer = new GetEmployer();
+        controller.setGetEmployer(getEmployer);
 		primaryStage.setTitle("Employee Menu");
 	}
 	

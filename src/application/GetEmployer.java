@@ -18,7 +18,7 @@ public class GetEmployer {
 	
 	
 	
-	public void MainApp() {
+	public GetEmployer() {
 		System.out.println("REPORT 001");
 		try {
 		LoginConn = connection.connectDB(); // connect to the SQL
