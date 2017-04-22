@@ -108,7 +108,7 @@ public class MenuMain extends Application {
 	
 	public void showAddEmp() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/addEmpolyee.fxml"));
+		loader.setLocation(MenuMain.class.getResource("/application/addEmployee.fxml"));
 		Pane addEmployee = loader.load();
 		Scene scene = new Scene(addEmployee);
 		primaryStage.setScene(scene);
