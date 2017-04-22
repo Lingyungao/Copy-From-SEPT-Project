@@ -50,14 +50,33 @@ public class EmployeeMenuController {
     	firstNameCol.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
     	lastNameCol.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
     	empIdCol.setCellValueFactory(cellData -> cellData.getValue().empIdProperty().asObject());
+    	
+//    	showEmpDetails(null);
+    	
+    	employeeTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showEmpDetails(newValue));
     }
+    
     
     
     public void setGetEmployer(GetEmployer getEmployer){
     	this.getEmployer = getEmployer;
-    	
         employeeTable.setItems(getEmployer.getEmployerData());
 
+    }
+    private void showEmpDetails(Employer Emp) {
+    	
+        if (Emp != null) {
+            // Fill the labels with info from the person object.
+            firstName.setText(Emp.getFirstName());
+            lastName.setText(Emp.getLastName());
+            empID.setText(Integer.toString(Emp.getEmpId()));
+        } else {
+            // Person is null, remove all the text.
+            firstName.setText("");
+            lastName.setText("");
+           empID.setText("");
+        }
     }
     
     
