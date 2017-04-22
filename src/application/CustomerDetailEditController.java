@@ -19,58 +19,43 @@ import javafx.stage.Window;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
-public class CustomerDetailController {
-	MenuMain a = new MenuMain();
+
+
+public class CustomerDetailEditController {
 	
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
 	private static Statement st = null;
-	private static int reId;
 	private static String firstName;
 	private static String lastName;
 	private static String email;
 	private static String phoneNo;
 	private static String address;
-	private static boolean passCheckC;
-	private static String password;
-	private static String username;
-	private static int userIpt;
-	private static boolean whileCheck;
-	
-	@FXML
-	private JFXButton editCustomerDetail;
-	
-	@FXML
-	private Label firstNameLable;
-	
-	@FXML
-	private Label lastNameLable;
-	
-	@FXML
-	private Label cusPhoneLable;
-	
-	@FXML
-	private Label cusAddressLable;
-	
-	@FXML
-	private Label cusEmailLable;
-	
-	
-	
-	@FXML
-	 private void editCustomerDetail() throws Exception {
-		a.showCusEditM();
-	}
-	
-	 @FXML
+
+    @FXML
+    private TextField firstNameField;
+    @FXML
+    private TextField lastNameField;
+    @FXML
+    private TextField cusPhoneField;
+    @FXML
+    private TextField cusAddressField;
+    @FXML
+    private TextField cusEmailField;
+    
+    
+    
+    
+    @FXML
 	 private void initialize(){
 		 DisplayDetails();
-		 firstNameLable.setText(firstName);
-		 lastNameLable.setText(lastName);
-		 cusPhoneLable.setText(phoneNo);
-		 cusAddressLable.setText(address);
-		 cusEmailLable.setText(email);
+		 firstNameField.setText(firstName);
+		 lastNameField.setText(lastName);
+		 cusPhoneField.setText(phoneNo);
+		 cusAddressField.setText(address);
+		 cusEmailField.setText(email);
 	    }
 	
 	@FXML
@@ -96,22 +81,14 @@ public class CustomerDetailController {
 	}
 	
 	@FXML
-	private void showCustomerDetails() {
-		if (LoginSystem2.userId > 0){
-			firstNameLable.setText(firstName);
-			lastNameLable.setText(lastName);
-			cusPhoneLable.setText(phoneNo);
-			cusAddressLable.setText(address);
-			cusEmailLable.setText(email);
-		}else{
-			firstNameLable.setText("");
-			lastNameLable.setText("");
-			cusPhoneLable.setText("");
-			cusAddressLable.setText("");
-			cusEmailLable.setText("");
-		}
+    private void saveChange() {
+		
 	}
 	
-	
+	@FXML
+    private void cancleChange() {
+		
+	}
+
 
 }
