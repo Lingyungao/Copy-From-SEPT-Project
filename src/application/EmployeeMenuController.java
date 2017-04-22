@@ -74,6 +74,7 @@ public class EmployeeMenuController {
             // Fill the labels with info from the person object.
             firstName.setText(Emp.getFirstName());
             lastName.setText(Emp.getLastName());
+            empPhone.setText(Emp.getPhone());
             empID.setText(Integer.toString(Emp.getEmpId()));
         } else {
             // Person is null, remove all the text.
