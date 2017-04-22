@@ -53,6 +53,10 @@ public class CustomerDetailController {
 	@FXML
 	private Label cusAddressLable;
 	
+	@FXML
+	private Label cusEmailLable;
+	
+	
 	
 	@FXML
 	 private void editCustomerDetail() throws Exception {
@@ -94,6 +98,13 @@ public class CustomerDetailController {
 			lastNameLable.setText(lastName);
 			cusPhoneLable.setText(phoneNo);
 			cusAddressLable.setText(address);
+			cusEmailLable.setText(email);
+		}else{
+			firstNameLable.setText("");
+			lastNameLable.setText("");
+			cusPhoneLable.setText("");
+			cusAddressLable.setText("");
+			cusEmailLable.setText("");
 		}
 	}
 	
