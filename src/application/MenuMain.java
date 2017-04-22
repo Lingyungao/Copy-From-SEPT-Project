@@ -141,6 +141,24 @@ public class MenuMain extends Application {
 		Label temp = (Label) scene.lookup("#IdLabel");
 		temp.setText(empid);
 		setTimetable(Integer.valueOf(empid));
+		Label temp1 = (Label) scene.lookup("#dayB");
+		temp1.setText(String.valueOf(timetable[0][0]));
+		
+		Label temp2 = (Label) scene.lookup("#monthB");
+		temp2.setText(String.valueOf(timetable[0][1]));
+		
+		Label temp3 = (Label) scene.lookup("#yearB");
+		temp3.setText(String.valueOf(timetable[0][2]));
+		
+		Label temp4 = (Label) scene.lookup("#dayE");
+		temp4.setText(String.valueOf(timetable[6][0]));
+		
+		Label temp5 = (Label) scene.lookup("#monthE");
+		temp5.setText(String.valueOf(timetable[6][1]));
+		
+		Label temp6 = (Label) scene.lookup("#yearE");
+		temp6.setText(String.valueOf(timetable[6][2]));	
+		
 		for(int i = 0;i<=6;i++)
 		{
 			for(int j = 0;j<=10;j++)
