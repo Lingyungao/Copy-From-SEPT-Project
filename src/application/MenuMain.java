@@ -132,6 +132,11 @@ public class MenuMain extends Application {
 		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
 		
 		Pane Timetable = loader.load();
+		Stage TimetableEdit = new Stage();
+		TimetableEdit.setTitle("Timetable");
+		TimetableEdit.initModality(Modality.WINDOW_MODAL);
+		TimetableEdit.initOwner(primaryStage);
+		
 		Scene scene = new Scene(Timetable);
 		Label temp = (Label) scene.lookup("#IdLabel");
 		temp.setText(empid);
@@ -154,11 +159,11 @@ public class MenuMain extends Application {
 				}
 			}
 		}
+		TimetableEdit.setScene(scene);
+		TimetableEdit.show();
 		
 		
 //		scene.getStylesheets().add("/application/Timetable.css");
-		primaryStage.setScene(scene);
-		primaryStage.setTitle ("Timetable");
 	}
 	
 	public void setTimetable(int empId) throws SQLException {
