@@ -128,5 +128,8 @@
          </font>
       </JFXButton>
       <Label layoutX="992.0" layoutY="25.0" text="Employee ID:" />
+      <Label layoutX="28.0" layoutY="77.0" text="Date" />
+      <Label layoutX="65.0" layoutY="77.0" text="Month" />
+      <Label layoutX="105.0" layoutY="77.0" text="Year" />
    </children>
 </Pane>
