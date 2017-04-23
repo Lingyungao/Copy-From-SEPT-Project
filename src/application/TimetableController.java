@@ -394,13 +394,14 @@ public class TimetableController {
     @FXML
     private void edit(ActionEvent event)  throws IOException{
     	JFXButton x =(JFXButton) event.getSource();
+    	if(MenuMain. premission == 2){
     	for(int i = 0; i <= 6;i++)
     	{
     		for(int j = 0; j <= 10; j++)
     		{
     			if(x.getId().equals(btnIdSet[i][j]))
     			{
-    		    	if(MenuMain.timetable[i][j+3]==1)
+    		    	if(MenuMain.timetable[i][j+3]==3)
     		    	{
     		    		MenuMain.timetable[i][j+3] = 0;
     		    		x.setText("Unavalible");
@@ -415,17 +416,43 @@ public class TimetableController {
     		    		x.setStyle("-fx-background-color:lightgreen");
     		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
     		    	}
-    		    	else if(MenuMain.timetable[i][j+3] == 2){
-    		    	    x.setText("Booked");
-    		    		x.setStyle("-fx-background-color:yellow");
+    		    	else if(MenuMain.timetable[i][j+3]==1)
+    		    	{
+    		    		MenuMain.timetable[i][j+3] = 3;
+    		    	    x.setText("New book");
+    		    		x.setStyle("-fx-background-color:blue");
     		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
     		    	}
     			}
     		}
     	}
-    	
-    	
-
+    	}
+    	else if(MenuMain. premission == 1)
+    	{
+    		for(int i =0; i <= 6;i++)
+    		{
+    		for(int j = 0; j <= 10; j++)
+    		{
+    			if(x.getId().equals(btnIdSet[i][j]))
+    			{
+    		    	if(MenuMain.timetable[i][j+3]==1)
+    		    	{
+    		    		MenuMain.timetable[i][j+3] = 3;
+    		    		x.setText("New booked");
+    		    		x.setStyle("-fx-background-color:blue");
+    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+    		    	}
+    		    	else if(MenuMain.timetable[i][j+3]==3)
+    		    	{
+    		    		MenuMain.timetable[i][j+3] = 1;
+    		    	    x.setText("Avalible");
+    		    		x.setStyle("-fx-background-color:lightgreen");
+    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+    		    	}
+    		    	}
+    			}
+    		}	
+    	}
     }
     
 //    @FXML
@@ -999,31 +1026,49 @@ public class TimetableController {
 				+ " AND EMP_UID=? ");
 		
 		for (int i = 0; i < 7; i++) {
-			
-		
-		rs.setInt(1, MenuMain.timetable[i][3]);
-		rs.setInt(2, MenuMain.timetable[i][4]);
-		rs.setInt(3, MenuMain.timetable[i][5]);
-		rs.setInt(4, MenuMain.timetable[i][6]);
-		rs.setInt(5, MenuMain.timetable[i][7]);
-		rs.setInt(6, MenuMain.timetable[i][8]);
-		rs.setInt(7, MenuMain.timetable[i][9]);
-		rs.setInt(8, MenuMain.timetable[i][10]);
-		rs.setInt(9, MenuMain.timetable[i][11]);
-		rs.setInt(10, MenuMain.timetable[i][12]);
-		rs.setInt(11, MenuMain.timetable[i][13]);
-		
-		rs.setInt(12, MenuMain.timetable[i][0]);
-		rs.setInt(13, MenuMain.timetable[i][1]);
-		rs.setInt(14, MenuMain.timetable[i][2]);
-		
-		rs.setString(15, EmployeeMenuController.tempEmpId);
-	//	rs.setInt(16, MenuMain.timetable[i][16]);
-		rs.addBatch();
-		}
-		
+			for(int j = 3; j < 14; j++)
+				{
+				if(MenuMain.timetable[i][j]==3) //to make new booking
+				{
+					MenuMain.timetable[i][j]=2;
+				}
+				rs.setInt(j-2, MenuMain.timetable[i][j]);
+				}
+				rs.setInt(12, MenuMain.timetable[i][0]);
+				rs.setInt(13, MenuMain.timetable[i][1]);
+				rs.setInt(14, MenuMain.timetable[i][2]);
+				rs.setString(15, EmployeeMenuController.tempEmpId);
+//			    rs.setInt(16, MenuMain.timetable[i][16]);
+				rs.addBatch();
+			}
 		rs.executeBatch();
 		System.out.println("save done.");
+				
+			
+		
+//		rs.setInt(1, MenuMain.timetable[i][3]);
+//		rs.setInt(2, MenuMain.timetable[i][4]);
+//		rs.setInt(3, MenuMain.timetable[i][5]);
+//		rs.setInt(4, MenuMain.timetable[i][6]);
+//		rs.setInt(5, MenuMain.timetable[i][7]);
+//		rs.setInt(6, MenuMain.timetable[i][8]);
+//		rs.setInt(7, MenuMain.timetable[i][9]);
+//		rs.setInt(8, MenuMain.timetable[i][10]);
+//		rs.setInt(9, MenuMain.timetable[i][11]);
+//		rs.setInt(10, MenuMain.timetable[i][12]);
+//		rs.setInt(11, MenuMain.timetable[i][13]);
+		
+//		rs.setInt(12, MenuMain.timetable[i][0]);
+//		rs.setInt(13, MenuMain.timetable[i][1]);
+//		rs.setInt(14, MenuMain.timetable[i][2]);
+		
+//		rs.setString(15, EmployeeMenuController.tempEmpId);
+//	    rs.setInt(16, MenuMain.timetable[i][16]);
+//		rs.addBatch();
+//		}
+//		
+//		rs.executeBatch();
+//		System.out.println("save done.");
 
 
     }

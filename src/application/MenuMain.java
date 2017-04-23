@@ -33,6 +33,7 @@ public class MenuMain extends Application {
             {"#btn60","#btn61","#btn62","#btn63","#btn64","#btn65","#btn66","#btn67","#btn68","#btn69","#btn610"}
            };
 	static int userId;
+	static int premission;
     
 	
 	@Override
@@ -185,8 +186,15 @@ public class MenuMain extends Application {
 		    		Btemp.setText("Unavalible");
 		    		Btemp.setStyle("-fx-background-color:red");
 				}
+				else if(timetable[i][j+3]==2)
+				{
+					 JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
+			    	 Btemp.setText("Booked");
+			    	 Btemp.setStyle("-fx-background-color:yellow");
+					}
 			}
 		}
+	
 		TimetableEdit.setScene(scene);
 		TimetableEdit.show();
 		

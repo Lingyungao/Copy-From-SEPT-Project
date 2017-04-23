@@ -41,10 +41,12 @@ public class LoginSystem2 {
 				if (permission == 1) {
 					System.out.println("Login Succesful");
 					MenuMain.userId = userId;
+					MenuMain.premission = permission;
 					return 2;
 				} else if (permission == 2) {
 					System.out.println("Login Succesful");
 					MenuMain.userId = userId;
+					MenuMain.premission = permission;
 					return 3;
 				} else {	
 					System.out.println("Invalid Input!");
