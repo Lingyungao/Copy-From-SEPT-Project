@@ -439,8 +439,8 @@ public class TimetableController {
         		    	if(MenuMain.timetable[i][j+3]==1)
         		    	{
         		    		MenuMain.timetable[i][j+3] = 3;
-        		    		x.setText("new booked");
-        		    		x.setStyle("-fx-background-color:blue");
+        		    		x.setText("new booking");
+        		    		x.setStyle("-fx-background-color:yellow");
         		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
         		    		
         		    	}
@@ -1074,6 +1074,7 @@ public class TimetableController {
 				+ " AND Year=?"
 				+ " AND EMP_UID=? ");
 		
+    	
 
 		
 		for (int i = 0; i < 7; i++) {
@@ -1107,32 +1108,38 @@ public class TimetableController {
 			}
 		rs.executeBatch();
 		System.out.println("save done.");
-				
+		
+    	 if(EmployeeMenuController.Selection==0){
+    		 System.out.println("booking save function on");
+    		 ResultSet rs3 = st.executeQuery("SELECT COUNT(BOOK_ID) FROM BOOKING");
+    		 int bookCount = rs3.getInt("COUNT(BOOK_ID)");
+    		 
+    		 PreparedStatement rs2 = LoginConn.prepareStatement("INSERT INTO BOOKING(BOOK_ID,USER_ID,EMP_ID,DAY,MONTH,YEAR,START_TIME,ACTIVE) VALUES(?,?,?,?,?,?,?,1) ");
+    		 for (int i = 0; i < 7; i++) {
+    			 System.out.println("");
+    			 for(int j=3; j < 15;j++){
+    				 System.out.print(MenuMain.timetable[i][j] + " ");
+    				 if(MenuMain.timetable[i][j] == 2){
+    					 System.out.println("find");
+    		    		 bookCount = bookCount + 1;
+    					rs2.setInt(1, bookCount );
+						rs2.setString(2, NewBookingController.userIdCheck);
+						rs2.setString(3, EmployeeMenuController.tempEmpId);
+						rs2.setInt(4, MenuMain.timetable[i][0]);
+						rs2.setInt(5, MenuMain.timetable[i][1]);
+						rs2.setInt(6, MenuMain.timetable[i][2]);
+						rs2.setInt(7, MenuMain.timetable[i][j]);
+						rs2.addBatch();
+						System.out.println("added to batch");
+    				 }
+    			 }
+    		 }
+    		rs2.executeBatch();
+			System.out.println("new booking saved");
+
+    	 }
 			
 		
-//		rs.setInt(1, MenuMain.timetable[i][3]);
-//		rs.setInt(2, MenuMain.timetable[i][4]);
-//		rs.setInt(3, MenuMain.timetable[i][5]);
-//		rs.setInt(4, MenuMain.timetable[i][6]);
-//		rs.setInt(5, MenuMain.timetable[i][7]);
-//		rs.setInt(6, MenuMain.timetable[i][8]);
-//		rs.setInt(7, MenuMain.timetable[i][9]);
-//		rs.setInt(8, MenuMain.timetable[i][10]);
-//		rs.setInt(9, MenuMain.timetable[i][11]);
-//		rs.setInt(10, MenuMain.timetable[i][12]);
-//		rs.setInt(11, MenuMain.timetable[i][13]);
-		
-//		rs.setInt(12, MenuMain.timetable[i][0]);
-//		rs.setInt(13, MenuMain.timetable[i][1]);
-//		rs.setInt(14, MenuMain.timetable[i][2]);
-		
-//		rs.setString(15, EmployeeMenuController.tempEmpId);
-//	    rs.setInt(16, MenuMain.timetable[i][16]);
-//		rs.addBatch();
-//		}
-//		
-//		rs.executeBatch();
-//		System.out.println("save done.");
 
 
     }

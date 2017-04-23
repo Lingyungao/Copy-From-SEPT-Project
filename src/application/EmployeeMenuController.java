@@ -24,7 +24,7 @@ public class EmployeeMenuController {
     private Label lastName;
 
     @FXML
-    private Label empID;
+    public Label empID;
 
 
     @FXML
@@ -96,10 +96,13 @@ public class EmployeeMenuController {
     	Selection = 1;
     	a.showTimetable(empID.getText());
     }
+    
+    
     @FXML
     void MakeBook(ActionEvent event) throws IOException, NumberFormatException, SQLException{
     	Selection = 0;
-    	a.showTimetable(empID.getText());
+    	//a.showTimetable(empID.getText());
+    	a.showNewBooking();
     }
 	public static String tempEmpId;
 
