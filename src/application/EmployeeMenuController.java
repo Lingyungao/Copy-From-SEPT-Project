@@ -76,6 +76,7 @@ public class EmployeeMenuController {
             lastName.setText(Emp.getLastName());
             empPhone.setText(Emp.getPhone());
             empID.setText(Integer.toString(Emp.getEmpId()));
+            tempEmpId = empID.getText();
         } else {
             // Person is null, remove all the text.
             firstName.setText("");
@@ -91,10 +92,12 @@ public class EmployeeMenuController {
     	
     	a.showTimetable(empID.getText());
     }
+	public static String tempEmpId;
 
     @FXML
     void editDetail(ActionEvent event) {
 
     }
+
 
 }

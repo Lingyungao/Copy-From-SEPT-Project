@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -412,6 +413,11 @@ public class TimetableController {
     		    		MenuMain.timetable[i][j+3] = 1;
     		    	    x.setText("Avalible");
     		    		x.setStyle("-fx-background-color:lightgreen");
+    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+    		    	}
+    		    	else if(MenuMain.timetable[i][j+3] == 2){
+    		    	    x.setText("Booked");
+    		    		x.setStyle("-fx-background-color:yellow");
     		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
     		    	}
     			}
@@ -975,4 +981,50 @@ public class TimetableController {
 //    
 //    
 //    
+
+    @FXML
+    void save(ActionEvent event) throws SQLException {
+		
+		Connection LoginConn = null;
+		Statement st = null;
+		
+		LoginConn = connection.connectDB();                              // connect to the SQL
+		st = LoginConn.createStatement();  
+		
+		PreparedStatement rs = LoginConn.prepareStatement(
+				"UPDATE TIMETABLE SET  T0800=?, T0900=?, T1000=?, T1100=?, T1200=?, T1300=?, T1400=?, T1500=?, T1600=?, T1700=?, T1800=? "
+				+ " WHERE Day=?"
+				+ " AND Month=?"
+				+ " AND Year=?"
+				+ " AND EMP_UID=? ");
+		
+		for (int i = 0; i < 7; i++) {
+			
+		
+		rs.setInt(1, MenuMain.timetable[i][3]);
+		rs.setInt(2, MenuMain.timetable[i][4]);
+		rs.setInt(3, MenuMain.timetable[i][5]);
+		rs.setInt(4, MenuMain.timetable[i][6]);
+		rs.setInt(5, MenuMain.timetable[i][7]);
+		rs.setInt(6, MenuMain.timetable[i][8]);
+		rs.setInt(7, MenuMain.timetable[i][9]);
+		rs.setInt(8, MenuMain.timetable[i][10]);
+		rs.setInt(9, MenuMain.timetable[i][11]);
+		rs.setInt(10, MenuMain.timetable[i][12]);
+		rs.setInt(11, MenuMain.timetable[i][13]);
+		
+		rs.setInt(12, MenuMain.timetable[i][0]);
+		rs.setInt(13, MenuMain.timetable[i][1]);
+		rs.setInt(14, MenuMain.timetable[i][2]);
+		
+		rs.setString(15, EmployeeMenuController.tempEmpId);
+	//	rs.setInt(16, MenuMain.timetable[i][16]);
+		rs.addBatch();
+		}
+		
+		rs.executeBatch();
+		System.out.println("save done.");
+
+
+    }
 }

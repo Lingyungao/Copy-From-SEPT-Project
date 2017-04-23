@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
@@ -9,9 +10,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane prefHeight="751.0" prefWidth="1131.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TimetableController">
+<Pane prefHeight="788.0" prefWidth="1137.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TimetableController">
    <children>
-      <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="124.0" layoutY="102.0" prefHeight="635.0" prefWidth="942.0">
+      <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="138.0" layoutY="77.0" prefHeight="635.0" prefWidth="942.0">
          <children>
             <JFXButton fx:id="btn02" onAction="#edit" prefHeight="60.0" prefWidth="86.0" GridPane.columnIndex="2" />
             <JFXButton fx:id="btn03" onAction="#edit" prefHeight="63.0" prefWidth="88.0" GridPane.columnIndex="3" />
@@ -115,11 +116,17 @@
          </rowConstraints>
       </GridPane>
       <Label fx:id="IdLabel" layoutX="1066.0" layoutY="25.0" text="Label" />
-      <Label fx:id="dayB" layoutX="13.0" layoutY="140.0" text="date1" />
-      <Label fx:id="dayE" layoutX="14.0" layoutY="684.0" text="Label" />
-      <Label fx:id="monthB" layoutX="51.0" layoutY="140.0" text="Label" />
-      <Label fx:id="yearB" layoutX="89.0" layoutY="140.0" text="Label" />
-      <Label fx:id="monthE" layoutX="51.0" layoutY="684.0" text="Label" />
-      <Label fx:id="yearE" layoutX="89.0" layoutY="684.0" prefHeight="8.0" prefWidth="31.0" text="Label" />
+      <Label fx:id="dayB" layoutX="27.0" layoutY="115.0" text="date1" />
+      <Label fx:id="dayE" layoutX="28.0" layoutY="659.0" text="Label" />
+      <Label fx:id="monthB" layoutX="65.0" layoutY="115.0" text="Label" />
+      <Label fx:id="yearB" layoutX="103.0" layoutY="115.0" text="Label" />
+      <Label fx:id="monthE" layoutX="65.0" layoutY="659.0" text="Label" />
+      <Label fx:id="yearE" layoutX="103.0" layoutY="659.0" prefHeight="8.0" prefWidth="31.0" text="Label" />
+      <JFXButton fx:id="save" layoutX="984.0" layoutY="743.0" onAction="#save" prefHeight="39.0" prefWidth="82.0" style="-fx-background-color: #2196F3;" text="SAVE" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="992.0" layoutY="25.0" text="Employee ID:" />
    </children>
 </Pane>
