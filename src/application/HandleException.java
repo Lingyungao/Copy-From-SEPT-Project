@@ -17,20 +17,19 @@ public class HandleException {
 		return true;
 	}
 
-	public static void PasswordInputCheck(String userInput) throws Exception {
+	public static boolean PasswordInputCheck(String userInput) throws Exception {
 		if (userInput.length() <= 5) {
 			System.out.println("Sorry, password length is too short. The password cannot less than 5 characters.");
-			throw new Exception("Sorry, password length is too short. The password cannot less than 5 characters.");
+			return false;
 		}else if (userInput.length() >= 17) {
 			System.out.println("Sorry, password length is too long. The password cannot more than 17 characters.");
-			throw new Exception("Sorry, password length is too long. The password cannot more than 17 characters.");
-
+			return false;
 		}
 		else if (userInput.matches(regWrong) == true) {
 			System.out.println("Sorry, password format is not valid. Please read the rule.");
-			throw new Exception("Sorry, password format is not valid. Please read the rule.");
-
+			return false;
 		}
+		return true;
 
 	}
 
