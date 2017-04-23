@@ -50,9 +50,10 @@ public class CustomerDetailEditController {
     private TextField cusAddressField;
     @FXML
     private TextField cusEmailField;
-    
     @FXML
     private Text cusInfoText;
+    @FXML 
+    private javafx.scene.control.Button cusBackButton;
     
     
     
@@ -131,7 +132,10 @@ public class CustomerDetailEditController {
 	
 	@FXML
     private void cancleChange() {
-		
+		// get a handle to the stage
+	    Stage stage = (Stage) cusBackButton.getScene().getWindow();
+	    // do what you have to do
+	    stage.close();
 	}
 	
 	public static void FirstNameChange(String firstName) throws Exception {

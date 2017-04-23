@@ -36,7 +36,7 @@
          </children>
       </GridPane>
       <Button layoutX="48.0" layoutY="214.0" mnemonicParsing="false" onAction="#saveChange" text="Save" />
-      <Button layoutX="304.0" layoutY="214.0" mnemonicParsing="false" onAction="#cancleChange" text="Back" />
+      <Button fx:id="cusBackButton" layoutX="304.0" layoutY="214.0" mnemonicParsing="false" onAction="#cancleChange" text="Back" />
       <Text fx:id="cusInfoText" layoutX="10.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="387.0">
          <font>
             <Font size="10.0" />

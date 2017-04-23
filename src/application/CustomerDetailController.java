@@ -39,7 +39,10 @@ public class CustomerDetailController {
 	private static boolean whileCheck;
 	
 	@FXML
-	private JFXButton editCustomerDetail;
+	private javafx.scene.control.Button editCustomerDetail;
+	
+	@FXML
+	private javafx.scene.control.Button backButton;
 	
 	@FXML
 	private Label firstNameLable;
@@ -110,6 +113,14 @@ public class CustomerDetailController {
 			cusAddressLable.setText("");
 			cusEmailLable.setText("");
 		}
+	}
+	
+	@FXML
+    private void editCustomerBack() {
+		// get a handle to the stage
+	    Stage stage = (Stage) backButton.getScene().getWindow();
+	    // do what you have to do
+	    stage.close();
 	}
 	
 	

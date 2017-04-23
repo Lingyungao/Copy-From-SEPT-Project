@@ -88,19 +88,37 @@ public class MenuMain extends Application {
 	public void showCusDetailM() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailMenu.fxml"));
-		Pane Customermenu = loader.load();
-		Scene scene = new Scene(Customermenu);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Customer Menu");
+		Pane showCusDetailPane= loader.load();
+		Stage showCusDetailStage = new Stage();
+		showCusDetailStage.setTitle("Register");
+		showCusDetailStage.initModality(Modality.WINDOW_MODAL);
+		showCusDetailStage.initOwner(primaryStage);
+		Scene scene = new Scene(showCusDetailPane);
+		showCusDetailStage.setScene(scene);
+		showCusDetailStage.show();
+
+//		Pane Customermenu = loader.load();
+//		Scene scene = new Scene(Customermenu);
+//		primaryStage.setScene(scene);
+//		primaryStage.setTitle("Customer Menu");
 	}
 	
 	public void showCusEditM() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailEdit.fxml"));
-		Pane Customermenu = loader.load();
-		Scene scene = new Scene(Customermenu);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Customer Detail Edit");
+		Pane editCusDetailPane= loader.load();
+		Stage editCusDetailStage = new Stage();
+		editCusDetailStage.setTitle("Register");
+		editCusDetailStage.initModality(Modality.WINDOW_MODAL);
+		editCusDetailStage.initOwner(primaryStage);
+		Scene scene = new Scene(editCusDetailPane);
+		editCusDetailStage.setScene(scene);
+		editCusDetailStage.show();
+		
+//		Pane Customermenu = loader.load();
+//		Scene scene = new Scene(Customermenu);
+//		primaryStage.setScene(scene);
+//		primaryStage.setTitle("Customer Detail Edit");
 	}
 	
 	
