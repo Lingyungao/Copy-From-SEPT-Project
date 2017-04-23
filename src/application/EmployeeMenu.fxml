@@ -53,6 +53,7 @@
                   </Label>
                   <JFXButton fx:id="editTimetable" layoutX="215.0" layoutY="342.0" onAction="#editTimetable" style="-fx-background-color: #646464;" text="TIMETABLE" textFill="WHITE" />
                   <JFXButton fx:id="editDetail" layoutX="153.0" layoutY="342.0" onAction="#editDetail" style="-fx-background-color: #646464;" text="EDIT" textFill="WHITE" />
+                  <JFXButton fx:id="makeBook" layoutX="70.0" layoutY="342.0" onAction="#MakeBook" text="MAKE" />
                </children>
             </AnchorPane>
          </items>

@@ -139,6 +139,8 @@ public class MenuMain extends Application {
 	
 	
 	public void showTimetable(String empid) throws IOException, NumberFormatException, SQLException{
+		setTimetable(Integer.valueOf(empid));
+		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
 		
@@ -151,7 +153,9 @@ public class MenuMain extends Application {
 		Scene scene = new Scene(Timetable);
 		Label temp = (Label) scene.lookup("#IdLabel");
 		temp.setText(empid);
-		setTimetable(Integer.valueOf(empid));
+		
+
+		
 		Label temp1 = (Label) scene.lookup("#dayB");
 		temp1.setText(String.valueOf(timetable[0][0]));
 		

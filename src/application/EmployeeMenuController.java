@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import application.GetEmployer;
 import application.Employer;
 public class EmployeeMenuController {
+	static int Selection;
     private GetEmployer getEmployer;
     MenuMain a = new MenuMain();
 
@@ -34,6 +35,9 @@ public class EmployeeMenuController {
 
     @FXML
     private JFXButton editTimetable;
+    
+    @FXML
+    private JFXButton makeBook;
     
     @FXML
     private TableView<Employer> employeeTable;
@@ -89,7 +93,12 @@ public class EmployeeMenuController {
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException, NumberFormatException, SQLException {
-    	
+    	Selection = 1;
+    	a.showTimetable(empID.getText());
+    }
+    @FXML
+    void MakeBook(ActionEvent event) throws IOException, NumberFormatException, SQLException{
+    	Selection = 0;
     	a.showTimetable(empID.getText());
     }
 	public static String tempEmpId;
