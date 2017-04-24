@@ -33,6 +33,12 @@ MenuMain a = new MenuMain();
 		
 	}
 	
+	@FXML
+	 private void BookingView(ActionEvent event) throws Exception {
+		a.showCusDetailM();
+		
+	}
+	
 	
 
 }
