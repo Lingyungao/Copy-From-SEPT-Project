@@ -92,7 +92,7 @@ public class CustomerDetailController {
 			phoneNo = rs.getString("PHONE_NO");
 			address = rs.getString("ADDRESS");
 		} catch (Exception e) {
-			System.out.println("NO!!");
+			
 			e.printStackTrace();
 
 		}

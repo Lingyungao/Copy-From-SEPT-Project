@@ -38,6 +38,8 @@ public class CustomerDetailEditController {
 	private static String email;
 	private static String phoneNo;
 	private static String address;
+	private static String password;
+	private static String confPass;
 	private int phoneNumber;
 
     @FXML
@@ -50,6 +52,10 @@ public class CustomerDetailEditController {
     private TextField cusAddressField;
     @FXML
     private TextField cusEmailField;
+    @FXML
+    private TextField cusPassEditField;
+    @FXML
+    private TextField cusPassConfField;
     @FXML
     private Text cusInfoText;
     @FXML 
@@ -66,6 +72,8 @@ public class CustomerDetailEditController {
 		 cusPhoneField.setText(phoneNo);
 		 cusAddressField.setText(address);
 		 cusEmailField.setText(email);
+		 cusPassEditField.setText("");
+		 cusPassConfField.setText("");
 	    }
 	
 	@FXML
@@ -117,11 +125,20 @@ public class CustomerDetailEditController {
 				cusInfoText.setText("Sorry, The email is not valid. Please input valid email. e.g: 123@gmail.com");
 				throw new Exception("Sorry, The email is not valid. Please input valid email. e.g: 123@gmail.com");
 			}
+			if(!cusPassEditField.getText().equals(cusPassConfField.getText())){
+				cusInfoText.setText("Sorry, The password that your input is not same, please try again!");
+				throw new Exception("Sorry, The password that your input is not same, please try again!");
+			}
+			if(HandleException.PasswordInputCheck(cusPassEditField.getText()) == false){
+				cusInfoText.setText("The password needs include number, symbol and character, the length between 5 to 17!");
+				throw new Exception("The password needs include number, symbol and character, the length between 5 to 17!");
+			}
 			FirstNameChange(firstNameField.getText());
 			LastNameChange(lastNameField.getText());
 			PhoneNumberChange(Integer.parseInt(cusPhoneField.getText()));
 			AddressChange(cusAddressField.getText());
 			EmailChange(cusEmailField.getText());
+			PasswordChange(cusPassEditField.getText());
 			cusInfoText.setText("Change succeed!");
 
 		}
@@ -229,7 +246,25 @@ public class CustomerDetailEditController {
 		}
 
 	}
+	
+	public static void PasswordChange(String password) throws Exception {
+		
+		//if the user do not input anything, show an error message
+		if (password.equals("")) {
+			throw new Exception("Please input Password.");
+		} else {
+			//connect database
+			LoginConn = connection.connectDB();
+			//update the password
+			PreparedStatement rs = LoginConn.prepareStatement("UPDATE USERS SET PASSWORD = ? WHERE USER_ID = ?");
+			rs.setString(1, password);
+			rs.setInt(2, LoginSystem2.returnId);
+			rs.executeUpdate();
+			//show successful message
+			System.out.println("Password changed");
+		}
 
+	}
 
 
 }

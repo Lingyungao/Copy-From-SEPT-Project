@@ -90,7 +90,7 @@ public class MenuMain extends Application {
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailMenu.fxml"));
 		Pane showCusDetailPane= loader.load();
 		Stage showCusDetailStage = new Stage();
-		showCusDetailStage.setTitle("Register");
+		showCusDetailStage.setTitle("Edit Detail");
 		showCusDetailStage.initModality(Modality.WINDOW_MODAL);
 		showCusDetailStage.initOwner(primaryStage);
 		Scene scene = new Scene(showCusDetailPane);

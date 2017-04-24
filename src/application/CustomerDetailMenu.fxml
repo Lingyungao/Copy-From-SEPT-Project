@@ -24,6 +24,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="First Name:" />
@@ -36,6 +37,8 @@
                         <Label fx:id="cusAddressLable" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label prefHeight="17.0" prefWidth="120.0" text="Customer Email:" GridPane.rowIndex="4" />
                         <Label fx:id="cusEmailLable" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Psssword:" GridPane.rowIndex="5" />
+                        <Label text="**********" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                   <Label layoutX="8.0" layoutY="21.0" text="Customer Details:">
@@ -45,7 +48,7 @@
                   </Label>
           
                   <Button fx:id="editCustomerDetail" layoutX="53.0" layoutY="342.0" onAction="#editCustomerDetail" text="EDIT" />
-                  <Button fx:id="backButton" layoutX="356.0" layoutY="342.0" onAction="#editCustomerBack" mnemonicParsing="false" text="Back" />
+                  <Button fx:id="backButton" layoutX="356.0" layoutY="342.0" mnemonicParsing="false" onAction="#editCustomerBack" text="Back" />
                </children>
             </AnchorPane>
          </items>
