@@ -8,7 +8,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerMenuController">
    <children>
-      <JFXButton fx:id="TimeView" buttonType="RAISED" onAction="#timeView" layoutX="244.0" layoutY="90.0" text="Timetable Viewing" />
+      <JFXButton fx:id="TimeView" buttonType="RAISED" onAction="#timeView" layoutX="244.0" layoutY="90.0" text="Timetable Viewing And Booking" />
       <JFXButton fx:id="EditDetail" buttonType="RAISED" onAction="#editDetail" layoutX="246.0" layoutY="153.0" text="Personal Details" />
    </children>
 </Pane>

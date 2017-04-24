@@ -121,6 +121,23 @@ public class MenuMain extends Application {
 //		primaryStage.setTitle("Customer Detail Edit");
 	}
 	
+	public void showCusBookM() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerBookingMenu.fxml"));
+		Pane EmpMenu = loader.load();
+		Scene scene = new Scene(EmpMenu);
+		primaryStage.setScene(scene);
+		CustomerBookingMenuController controller = loader.getController();
+		CusGetEmployer getEmployer = new CusGetEmployer();
+        controller.setGetEmployer(getEmployer);
+		primaryStage.setTitle("Customer Booking Menu");
+		
+//		Pane Customermenu = loader.load();
+//		Scene scene = new Scene(Customermenu);
+//		primaryStage.setScene(scene);
+//		primaryStage.setTitle("Customer Detail Edit");
+	}
+	
 	
 	
 	public static void main(String[] args) {

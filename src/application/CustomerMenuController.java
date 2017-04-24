@@ -24,7 +24,7 @@ MenuMain a = new MenuMain();
 	
 	@FXML
 	 private void timeView(ActionEvent event) throws Exception {
-		a.showCusDetailM();
+		a.showCusBookM();
 	}
 	
 	@FXML
