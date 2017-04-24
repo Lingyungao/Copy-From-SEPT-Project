@@ -38,8 +38,6 @@ public class CustomerDetailEditController {
 	private static String email;
 	private static String phoneNo;
 	private static String address;
-	private static String password;
-	private static String confPass;
 	private int phoneNumber;
 
     @FXML
