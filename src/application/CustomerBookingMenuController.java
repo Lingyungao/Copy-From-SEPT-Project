@@ -94,7 +94,7 @@ public class CustomerBookingMenuController {
 
     @FXML
     void CheckTimetable(ActionEvent event) throws IOException, NumberFormatException, SQLException {
-    	Selection = 1;
+    	//Selection = 1;
     	//a.showTimetable(empID.getText());
     }
     
@@ -103,7 +103,7 @@ public class CustomerBookingMenuController {
     void MakeBooking(ActionEvent event) throws IOException, NumberFormatException, SQLException{
     	Selection = 0;
     	//a.showTimetable(empID.getText());
-    	//a.showNewBooking();
+    	a.showTimetable(CustomerBookingMenuController.tempEmpId);
     }
 	public static String tempEmpId;
 
