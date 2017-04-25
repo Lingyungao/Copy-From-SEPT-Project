@@ -97,10 +97,7 @@ public class MenuMain extends Application {
 		showCusDetailStage.setScene(scene);
 		showCusDetailStage.show();
 
-//		Pane Customermenu = loader.load();
-//		Scene scene = new Scene(Customermenu);
-//		primaryStage.setScene(scene);
-//		primaryStage.setTitle("Customer Menu");
+
 	}
 	
 	public void showCusEditM() throws IOException{
@@ -115,10 +112,6 @@ public class MenuMain extends Application {
 		editCusDetailStage.setScene(scene);
 		editCusDetailStage.show();
 		
-//		Pane Customermenu = loader.load();
-//		Scene scene = new Scene(Customermenu);
-//		primaryStage.setScene(scene);
-//		primaryStage.setTitle("Customer Detail Edit");
 	}
 	
 	public void showCusBookM() throws IOException{
@@ -128,14 +121,10 @@ public class MenuMain extends Application {
 		Scene scene = new Scene(EmpMenu);
 		primaryStage.setScene(scene);
 		CustomerBookingMenuController controller = loader.getController();
-		CusGetEmployer getEmployer = new CusGetEmployer();
+		CustomerBookGetEmployer getEmployer = new CustomerBookGetEmployer();
         controller.setGetEmployer(getEmployer);
 		primaryStage.setTitle("Customer Booking Menu");
 		
-//		Pane Customermenu = loader.load();
-//		Scene scene = new Scene(Customermenu);
-//		primaryStage.setScene(scene);
-//		primaryStage.setTitle("Customer Detail Edit");
 	}
 	
 	public void viewCusBookM() throws IOException{
@@ -145,15 +134,10 @@ public class MenuMain extends Application {
 		Scene scene = new Scene(CusViewBookMenu);
 		primaryStage.setScene(scene);
 		CustomerViewBookingMenuController controller = loader.getController();
-		CusGetBooking CusGetBooking = new CusGetBooking();
+		CustomerCheckGetBooking CusGetBooking = new CustomerCheckGetBooking();
         controller.setGetCusBooking(CusGetBooking);
 		primaryStage.setTitle("Customer Booking Menu");
 		
-		//application/CustomerViewBookingMenu.fxml
-//		Pane Customermenu = loader.load();
-//		Scene scene = new Scene(Customermenu);
-//		primaryStage.setScene(scene);
-//		primaryStage.setTitle("Customer Detail Edit");
 	}
 	
 	

@@ -10,13 +10,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import application.CusGetEmployer;
-import application.CusEmployer;
+import application.CustomerBookGetEmployer;
+import application.CustomerBookEmployer;
 
 
 public class CustomerBookingMenuController {
 	static int Selection;
-    private CusGetEmployer getEmployer;
+    private CustomerBookGetEmployer getEmployer;
     MenuMain a = new MenuMain();
 
     @FXML
@@ -41,16 +41,16 @@ public class CustomerBookingMenuController {
     private JFXButton makeBook;
     
     @FXML
-    private TableView<CusEmployer> employeeTable;
+    private TableView<CustomerBookEmployer> employeeTable;
     
     @FXML
-    private TableColumn<CusEmployer, Integer> empIdCol;
+    private TableColumn<CustomerBookEmployer, Integer> empIdCol;
 
     @FXML
-    private TableColumn<CusEmployer, String> firstNameCol;
+    private TableColumn<CustomerBookEmployer, String> firstNameCol;
 
     @FXML
-    private TableColumn<CusEmployer, String> lastNameCol;
+    private TableColumn<CustomerBookEmployer, String> lastNameCol;
     
     
     
@@ -68,12 +68,12 @@ public class CustomerBookingMenuController {
     
     
     
-    public void setGetEmployer(CusGetEmployer getEmployer){
+    public void setGetEmployer(CustomerBookGetEmployer getEmployer){
     	this.getEmployer = getEmployer;
         employeeTable.setItems(getEmployer.getEmployerData());
 
     }
-    private void showEmpDetails(CusEmployer Emp) {
+    private void showEmpDetails(CustomerBookEmployer Emp) {
     	
         if (Emp != null) {
             // Fill the labels with info from the person object.

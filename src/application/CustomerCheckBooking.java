@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class CusBooking {
+public class CustomerCheckBooking {
 
 	private IntegerProperty bookId;
 	private IntegerProperty empId;
@@ -19,11 +19,11 @@ public class CusBooking {
 	private StringProperty startTime;
 	private StringProperty endTime;
 	
-	public CusBooking(){
+	public CustomerCheckBooking(){
 		this(0,0,null,null,null,null);
 	}
 	
-	public CusBooking(int bookId,int empId,String empName, String bookDate, String startTime, String endTime){
+	public CustomerCheckBooking(int bookId,int empId,String empName, String bookDate, String startTime, String endTime){
 		this.bookId = new SimpleIntegerProperty(bookId);
 		this.empId = new SimpleIntegerProperty(empId);
 		this.empName = new SimpleStringProperty(empName);

@@ -10,22 +10,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import application.CusGetEmployer;
-import application.CusEmployer;
+import application.CustomerBookGetEmployer;
+import application.CustomerBookEmployer;
 
 public class CustomerViewBookingMenuController {
 	static int Selection;
-    private CusGetBooking CusGetCusBooking;
+    private CustomerCheckGetBooking CusGetCusBooking;
     MenuMain a = new MenuMain();
     
     @FXML
-    private TableView<CusBooking> cusViewBookTable;
+    private TableView<CustomerCheckBooking> cusViewBookTable;
     @FXML
-    private TableColumn<CusBooking, Integer> bookIdCol;
+    private TableColumn<CustomerCheckBooking, Integer> bookIdCol;
     @FXML
-    private TableColumn<CusBooking, String> empNameCol;
+    private TableColumn<CustomerCheckBooking, String> empNameCol;
     @FXML
-    private TableColumn<CusBooking, String> bookingTimeCol;
+    private TableColumn<CustomerCheckBooking, String> bookingTimeCol;
     @FXML
     private Label bookId;
     @FXML
@@ -51,13 +51,13 @@ public class CustomerViewBookingMenuController {
                 (observable, oldValue, newValue) -> showCusBookDetails(newValue));
     }
     
-    public void setGetCusBooking(CusGetBooking CusGetBooking){
+    public void setGetCusBooking(CustomerCheckGetBooking CusGetBooking){
     	this.CusGetCusBooking = CusGetBooking;
     	cusViewBookTable.setItems(CusGetBooking.getCusBookingData());
 
     }
     
-private void showCusBookDetails(CusBooking CusBook) {
+private void showCusBookDetails(CustomerCheckBooking CusBook) {
     	
         if (CusBook != null) {
             // Fill the labels with info from the person object.

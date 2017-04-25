@@ -10,18 +10,18 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class CusEmployer {
+public class CustomerBookEmployer {
 
 	private StringProperty firstName;
 	private StringProperty lastName;
 	private StringProperty phone;
 	private IntegerProperty empId;
 	
-	public CusEmployer(){
+	public CustomerBookEmployer(){
 		this(null,null,null,0);
 	}
 	
-	public CusEmployer(String firstName,String lastName,String phone, int empId){
+	public CustomerBookEmployer(String firstName,String lastName,String phone, int empId){
 		this.firstName = new SimpleStringProperty(firstName);
 		this.lastName = new SimpleStringProperty(lastName);
 		
