@@ -13,7 +13,7 @@ public class CustomerCheckGetBooking {
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
 	private static Statement st = null;
-	
+	int tempET = 0;
 	private ObservableList<CustomerCheckBooking> CusBookingData = FXCollections.observableArrayList();
 	
 	
@@ -38,6 +38,9 @@ public class CustomerCheckGetBooking {
 			String bookDate = rs.getString("DAY");
 			String startTime = rs.getString("START_TIME");
 			String endTime = rs.getString("START_TIME");
+			tempET = Integer.parseInt(endTime);
+			tempET = tempET + 1;
+			endTime = Integer.toString(tempET);
 			System.out.println("REPORT 004");
 
 			CusBookingData.add(new CustomerCheckBooking(bookId,empId,empName,bookDate,startTime,endTime));

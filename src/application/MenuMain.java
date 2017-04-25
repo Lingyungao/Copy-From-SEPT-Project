@@ -171,10 +171,10 @@ public class MenuMain extends Application {
 		CusMakeBookStage.show();
 	}
 	
-	public void showTimetable(String empid) throws IOException, NumberFormatException, SQLException{
+	public void cusShowTimetable(String empid) throws IOException, NumberFormatException, SQLException{
 		System.out.println("1bcd");
 		System.out.println("EMPID is:" + empid);
-		setTimetable(Integer.valueOf(empid));
+		cusSetTimetable(Integer.valueOf(empid));
 		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerBookTimetable.fxml"));
@@ -188,8 +188,6 @@ public class MenuMain extends Application {
 		Scene scene = new Scene(Timetable);
 		Label temp = (Label) scene.lookup("#IdLabel");
 		temp.setText(empid);
-		
-
 		
 		Label temp1 = (Label) scene.lookup("#dayB");
 		temp1.setText(String.valueOf(timetable[0][0]));
@@ -241,7 +239,7 @@ public class MenuMain extends Application {
 //		scene.getStylesheets().add("/application/Timetable.css");
 	}
 	
-public void setTimetable(int empId) throws SQLException {
+public void cusSetTimetable(int empId) throws SQLException {
 		
 		ResultSet rs = null;
 		Connection LoginConn = null;
@@ -287,9 +285,7 @@ public void setTimetable(int empId) throws SQLException {
 		}
 	}
 	
-	
-	
-	public void showNewBooking() throws IOException{
+	public void cusShowNewBooking() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerMakeBookingMenu.fxml"));
 		

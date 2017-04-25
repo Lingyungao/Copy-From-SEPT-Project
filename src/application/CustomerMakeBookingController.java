@@ -50,7 +50,7 @@ public class CustomerMakeBookingController {
     	}
     	else{
     		
-    		a.showTimetable(CustomerBookingMenuController.tempEmpId);
+    		a.cusShowTimetable(CustomerBookingMenuController.tempEmpId);
     	}	
     }
 }

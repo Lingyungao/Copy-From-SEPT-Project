@@ -35,7 +35,7 @@ public class CustomerBookingMenuController {
     private JFXButton editDetail;
 
     @FXML
-    private JFXButton checkTimetable;
+    private JFXButton checkBook;
     
     @FXML
     private JFXButton makeBook;
@@ -92,18 +92,19 @@ public class CustomerBookingMenuController {
     
     
 
-    @FXML
-    void CheckTimetable(ActionEvent event) throws IOException, NumberFormatException, SQLException {
-    	//Selection = 1;
-    	//a.showTimetable(empID.getText());
-    }
+//    @FXML
+//    void CheckBooking(ActionEvent event) throws IOException, NumberFormatException, SQLException {
+//    	//Selection = 1;
+//    	//a.showTimetable(empID.getText());
+//    	a.showCusBookM();
+//    }
     
     
     @FXML
     void MakeBooking(ActionEvent event) throws IOException, NumberFormatException, SQLException{
     	Selection = 0;
     	//a.showTimetable(empID.getText());
-    	a.showTimetable(CustomerBookingMenuController.tempEmpId);
+    	a.cusShowTimetable(CustomerBookingMenuController.tempEmpId);
     }
 	public static String tempEmpId;
 

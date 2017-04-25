@@ -51,8 +51,8 @@
                         <Font name="Arial" size="22.0" />
                      </font>
                   </Label>
-                 <JFXButton fx:id="checkTimetable" layoutX="186.0" layoutY="342.0" onAction="#CheckTimetable" style="-fx-background-color: #646464;" text="CheckTimeTable" textFill="WHITE" />
-                  <JFXButton fx:id="makeBook" layoutX="23.0" layoutY="342.0" onAction="#MakeBooking" prefHeight="27.0" prefWidth="103.0" style="-fx-background-color: #646464;" text="MakeBooking" textFill="WHITE" /> 
+<!--                  <JFXButton fx:id="checkBook" layoutX="186.0" layoutY="342.0" onAction="#CheckBooking" style="-fx-background-color: #646464;" text="CheckBooking" textFill="WHITE" />
+ -->                  <JFXButton fx:id="makeBook" layoutX="23.0" layoutY="342.0" onAction="#MakeBooking" prefHeight="27.0" prefWidth="103.0" style="-fx-background-color: #646464;" text="MakeBooking" textFill="WHITE" /> 
                </children>
             </AnchorPane>
          </items>
