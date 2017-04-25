@@ -103,23 +103,23 @@ public class CustomerDetailEditController {
 			if(firstNameField.getText() == "" || lastNameField.getText() == "" || cusPhoneField.getText() == "" || cusAddressField.getText() == "" || cusEmailField.getText() == ""){
 				cusInfoText.setText("Please Input All information, before you submit!");
 			}
-			if(HandleException.UserNameInputCheck(firstNameField.getText()) == false){
+			if(CusHandleException.UserNameInputCheck(firstNameField.getText()) == false){
 				cusInfoText.setText("Sorry! first name length cannot less than 3 or more than 17, and character only!");	
 				throw new Exception("Sorry! first name length cannot less than 3 or more than 17, and character only!");
 			}
-			if(HandleException.UserNameInputCheck(lastNameField.getText()) == false){
+			if(CusHandleException.UserNameInputCheck(lastNameField.getText()) == false){
 				cusInfoText.setText("Sorry! last name length cannot less than 3 or more than 17, and character only!");	
 				throw new Exception("Sorry! last name length cannot less than 3 or more than 17, and character only!");
 			}
-			if(HandleException.UserFuncPhoneInputCheck(cusPhoneField.getText()) == false){
+			if(CusHandleException.UserFuncPhoneInputCheck(cusPhoneField.getText()) == false){
 				cusInfoText.setText("Sorry, Phone number length cannot less than 5 or more than 15, and number only!");
 				throw new Exception("Sorry, Phone number length cannot less than 5 or more than 15, and number only!");
 			}
-			if(HandleException.UserFuncAddressInputCheck(cusAddressField.getText()) == false){
+			if(CusHandleException.UserFuncAddressInputCheck(cusAddressField.getText()) == false){
 				cusInfoText.setText("Address length between 15 to 150, and cannot only input number or characters!");
 				throw new Exception("Address length between 15 to 150, and cannot only input number or characters!");
 			}
-			if(HandleException.EmailInputCheck(cusEmailField.getText()) == false){
+			if(CusHandleException.EmailInputCheck(cusEmailField.getText()) == false){
 				cusInfoText.setText("Sorry, The email is not valid. Please input valid email. e.g: 123@gmail.com");
 				throw new Exception("Sorry, The email is not valid. Please input valid email. e.g: 123@gmail.com");
 			}
@@ -127,7 +127,7 @@ public class CustomerDetailEditController {
 				cusInfoText.setText("Sorry, The password that your input is not same, please try again!");
 				throw new Exception("Sorry, The password that your input is not same, please try again!");
 			}
-			if(HandleException.PasswordInputCheck(cusPassEditField.getText()) == false){
+			if(CusHandleException.PasswordInputCheck(cusPassEditField.getText()) == false){
 				cusInfoText.setText("The password needs include number, symbol and character, the length between 5 to 17!");
 				throw new Exception("The password needs include number, symbol and character, the length between 5 to 17!");
 			}

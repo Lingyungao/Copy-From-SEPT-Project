@@ -1,6 +1,6 @@
 package application;
 
-public class HandleException {
+public class CusHandleException {
 	private static String regWrong = "^[a-zA-Z0-9]+$";
 	private static String regNumOnly = "^[0-9]+$";
 	private static String regLetOnly = "^[a-zA-Z]+$";

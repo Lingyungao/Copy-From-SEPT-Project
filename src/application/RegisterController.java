@@ -101,27 +101,27 @@ public class RegisterController {
 			if(regFirstNameField.getText() == "" || regLastNameField.getText() == "" || regPhoneField.getText() == "" || regAddressField.getText() == "" || regEmailField.getText() == ""){
 				cusInfoText.setText("Please Input All information, before you submit!");
 			}
-			if(HandleException.UserNameInputCheck(regUsernameField.getText()) == false){
+			if(CusHandleException.UserNameInputCheck(regUsernameField.getText()) == false){
 				cusInfoText.setText("Sorry! Username length cannot less than 3 or more than 17, and character only!");	
 				throw new Exception("Sorry! Username length cannot less than 3 or more than 17, and character only!");
 			}
-			if(HandleException.UserNameInputCheck(regFirstNameField.getText()) == false){
+			if(CusHandleException.UserNameInputCheck(regFirstNameField.getText()) == false){
 				cusInfoText.setText("Sorry! first name length cannot less than 3 or more than 17, and character only!");	
 				throw new Exception("Sorry! first name length cannot less than 3 or more than 17, and character only!");
 			}
-			if(HandleException.UserNameInputCheck(regLastNameField.getText()) == false){
+			if(CusHandleException.UserNameInputCheck(regLastNameField.getText()) == false){
 				cusInfoText.setText("Sorry! last name length cannot less than 3 or more than 17, and character only!");	
 				throw new Exception("Sorry! last name length cannot less than 3 or more than 17, and character only!");
 			}
-			if(HandleException.UserFuncPhoneInputCheck(regPhoneField.getText()) == false){
+			if(CusHandleException.UserFuncPhoneInputCheck(regPhoneField.getText()) == false){
 				cusInfoText.setText("Sorry, Phone number length cannot less than 5 or more than 15, and number only!");
 				throw new Exception("Sorry, Phone number length cannot less than 5 or more than 15, and number only!");
 			}
-			if(HandleException.UserFuncAddressInputCheck(regAddressField.getText()) == false){
+			if(CusHandleException.UserFuncAddressInputCheck(regAddressField.getText()) == false){
 				cusInfoText.setText("Address length between 15 to 150, and cannot only input number or characters!");
 				throw new Exception("Address length between 15 to 150, and cannot only input number or characters!");
 			}
-			if(HandleException.EmailInputCheck(regEmailField.getText()) == false){
+			if(CusHandleException.EmailInputCheck(regEmailField.getText()) == false){
 				cusInfoText.setText("Sorry, The email is not valid. Please input valid email. e.g: 123@gmail.com");
 				throw new Exception("Sorry, The email is not valid. Please input valid email. e.g: 123@gmail.com");
 			}
@@ -129,7 +129,7 @@ public class RegisterController {
 				cusInfoText.setText("Sorry, The password that your input is not same, please try again!");
 				throw new Exception("Sorry, The password that your input is not same, please try again!");
 			}
-			if(HandleException.PasswordInputCheck(regPassField.getText()) == false){
+			if(CusHandleException.PasswordInputCheck(regPassField.getText()) == false){
 				cusInfoText.setText("The password needs include number, symbol and character, the length between 5 to 17!");
 				throw new Exception("The password needs include number, symbol and character, the length between 5 to 17!");
 			}
