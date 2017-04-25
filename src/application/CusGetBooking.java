@@ -28,7 +28,7 @@ public class CusGetBooking {
 		 // create statement of it
 			System.out.println("REPORT 001");
 
-		rs = st.executeQuery("select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid");
+		rs = st.executeQuery("select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid WHERE booking.user_id = " + LoginSystem2.returnId);
 		System.out.println("REPORT 003");
 
 		while(rs.next()){
