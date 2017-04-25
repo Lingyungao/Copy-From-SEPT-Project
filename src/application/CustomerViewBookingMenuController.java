@@ -15,23 +15,23 @@ import application.CusEmployer;
 
 public class CustomerViewBookingMenuController {
 	static int Selection;
-    private CusGetEmployer getEmployer;
+    private CusGetBooking CusGetCusBooking;
     MenuMain a = new MenuMain();
     
     @FXML
-    private TableView<CusEmployer> employeeTable;
+    private TableView<CusBooking> cusViewBookTable;
     @FXML
-    private TableColumn<CusEmployer, Integer> bookIdCol;
+    private TableColumn<CusBooking, Integer> bookIdCol;
     @FXML
-    private TableColumn<CusEmployer, String> empNameCol;
+    private TableColumn<CusBooking, String> empNameCol;
     @FXML
-    private TableColumn<CusEmployer, String> bookingTimeCol;
+    private TableColumn<CusBooking, String> bookingTimeCol;
     @FXML
-    private Label bookID;
+    private Label bookId;
     @FXML
-    private Label employeeID;
+    private Label empId;
     @FXML
-    private Label employeeName;
+    private Label empName;
     @FXML
     private Label bookDate;
     @FXML
@@ -39,5 +39,44 @@ public class CustomerViewBookingMenuController {
     @FXML
     private Label endTime;
     
+    @FXML
+    private void initialize(){
+    	bookIdCol.setCellValueFactory(cellData -> cellData.getValue().bookIdProperty().asObject());
+    	empNameCol.setCellValueFactory(cellData -> cellData.getValue().empNameProperty());
+    	bookingTimeCol.setCellValueFactory(cellData -> cellData.getValue().startTimeProperty());
+    	
+//    	showEmpDetails(null);
+    	
+    	cusViewBookTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showCusBookDetails(newValue));
+    }
+    
+    public void setGetCusBooking(CusGetBooking CusGetBooking){
+    	this.CusGetCusBooking = CusGetBooking;
+    	cusViewBookTable.setItems(CusGetBooking.getCusBookingData());
+
+    }
+    
+private void showCusBookDetails(CusBooking CusBook) {
+    	
+        if (CusBook != null) {
+            // Fill the labels with info from the person object.
+        	bookId.setText(Integer.toString(CusBook.getBookId()));
+        	empId.setText(Integer.toString(CusBook.getEmpId()));
+        	empName.setText(CusBook.getEmpName());
+        	bookDate.setText(CusBook.getBookDate());
+        	startTime.setText(CusBook.getStartTime());
+        	endTime.setText(CusBook.getEndTime());
+        	
+        } else {
+            // Person is null, remove all the text.
+        	bookId.setText("");
+        	empId.setText("");
+        	empName.setText("");
+        	bookDate.setText("");
+        	startTime.setText("");
+        	endTime.setText("");
+        }
+    }
     
 }

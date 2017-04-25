@@ -5,11 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerMenuController">
    <children>
-      <JFXButton fx:id="TimeView" buttonType="RAISED" onAction="#timeView" layoutX="244.0" layoutY="90.0" text="Timetable Viewing And Booking" />
-      <JFXButton fx:id="BookingView" buttonType="RAISED" onAction="#editDetail" layoutX="246.0" layoutY="153.0" text="Check Booking" />
-      <JFXButton fx:id="EditDetail" buttonType="RAISED" onAction="#editDetail" layoutX="246.0" layoutY="153.0" text="Personal Details" />
+      <JFXButton fx:id="TimeView" buttonType="RAISED" layoutX="244.0" layoutY="90.0" onAction="#timeView" text="Timetable Viewing And Booking" />
+      <JFXButton fx:id="BookingView" buttonType="RAISED" layoutX="256.0" layoutY="130.0" onAction="#BookingView" text="Check Booking" />
+      <JFXButton fx:id="EditDetail" buttonType="RAISED" layoutX="256.0" layoutY="173.0" onAction="#editDetail" text="Personal Details" />
    </children>
 </Pane>

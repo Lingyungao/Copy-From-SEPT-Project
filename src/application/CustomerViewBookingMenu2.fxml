@@ -13,7 +13,7 @@
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="cusViewBookTable" prefHeight="398.0" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="employeeTable" prefHeight="398.0" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="bookIdCol" prefWidth="53.0" text="BookID" />
                       <TableColumn fx:id="empNameCol" prefWidth="90.0" text="EmpName" />
@@ -40,10 +40,10 @@
                      <children>
                         <Label prefHeight="17.0" prefWidth="92.0" text="BookingID" />
                         <Label text="Employee ID" GridPane.rowIndex="1" />
-                        <Label fx:id="bookId" text="Label1" GridPane.columnIndex="1" />
+                        <Label fx:id="bookID" text="Label1" GridPane.columnIndex="1" />
                         <Label text="Employee Name" GridPane.rowIndex="2" />
-                        <Label fx:id="empId" text="Label2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="empName" text="Label3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="employeeID" text="Label2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="employeeName" text="Label3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label prefHeight="17.0" prefWidth="97.0" text="BookingDate" GridPane.rowIndex="3" />
                         <Label fx:id="bookDate" text="Label4" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="StartTime" GridPane.rowIndex="4" />

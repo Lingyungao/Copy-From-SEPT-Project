@@ -138,6 +138,24 @@ public class MenuMain extends Application {
 //		primaryStage.setTitle("Customer Detail Edit");
 	}
 	
+	public void viewCusBookM() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerViewBookingMenu.fxml"));
+		Pane CusViewBookMenu = loader.load();
+		Scene scene = new Scene(CusViewBookMenu);
+		primaryStage.setScene(scene);
+		CustomerViewBookingMenuController controller = loader.getController();
+		CusGetBooking CusGetBooking = new CusGetBooking();
+        controller.setGetCusBooking(CusGetBooking);
+		primaryStage.setTitle("Customer Booking Menu");
+		
+		//application/CustomerViewBookingMenu.fxml
+//		Pane Customermenu = loader.load();
+//		Scene scene = new Scene(Customermenu);
+//		primaryStage.setScene(scene);
+//		primaryStage.setTitle("Customer Detail Edit");
+	}
+	
 	
 	
 	public static void main(String[] args) {

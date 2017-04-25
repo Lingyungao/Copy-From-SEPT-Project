@@ -23,19 +23,25 @@ MenuMain a = new MenuMain();
 	private JFXButton EditDetail;
 	
 	@FXML
+	private JFXButton BookingView;
+	
+	@FXML
 	 private void timeView(ActionEvent event) throws Exception {
+		System.out.println("abcded");
 		a.showCusBookM();
 	}
 	
 	@FXML
 	 private void editDetail(ActionEvent event) throws Exception {
+		System.out.println("abcded");
 		a.showCusDetailM();
 		
 	}
 	
 	@FXML
 	 private void BookingView(ActionEvent event) throws Exception {
-		a.showCusDetailM();
+		System.out.println("abcded111");
+		a.viewCusBookM();
 		
 	}
 	
