@@ -1,0 +1,112 @@
+@charset"utf-8";
+
+/*
+
+    Document  : FXMLstylesheet.css
+
+*/ 
+
+.grid-pane {
+
+  -fx-padding: 80 0 0 0;
+
+}
+
+
+
+	
+.button:hover {
+   -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+
+#hbox-custom {
+   -fx-background-radius: 5.0;
+   -fx-padding: 8;
+}
+
+.vbox {
+   -fx-border-color: #2e8b57;
+   -fx-border-width: 2px;
+   -fx-padding: 10;
+   -fx-spacing: 8;
+}
+
+
+.label {
+   -fx-font-size: 12px;
+   -fx-text-fill: #333333;
+   -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+   -fx-wrap-text:true ;
+   }
+
+.button {
+   -fx-text-fill: white;
+   -fx-font-family: "Arial Narrow";
+   -fx-font-weight: bold;
+   -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#welcome-text {
+   -fx-font-size: 32px;
+   -fx-font-family: "Arial Black";
+   -fx-fill: #818181;
+   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+ 
+#actiontarget {
+   -fx-fill: FIREBRICK;
+   -fx-font-weight: bold;
+   -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+
+#lblTitle {
+    -fx-font-size: 20px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: darkslategray;
+}
+
+
+
+#lastCheck{
+   -fx-font-size: 12px;
+   -fx-text-fill: red;
+   -fx-wrap-text:true ;
+   
+  
+}
+#firstCheck{
+   -fx-font-size: 12px;
+   -fx-text-fill: red;
+   -fx-wrap-text:true ;
+   
+}
+#phoneCheck{
+   -fx-font-size: 12px;
+   -fx-text-fill: red;
+   -fx-wrap-text:true ;
+   
+}
+.error {
+   -fx-font-size: 12px;
+   -fx-text-fill: red;                
+}
+
+
+#addEmployeeNext{
+   -fx-text-fill: white;
+   -fx-font-family: "Arial Narrow";
+   -fx-font-weight: bold;
+   -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+
+#addEmployeeNext:hover {
+   -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+  
+        
