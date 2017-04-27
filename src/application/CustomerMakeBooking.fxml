@@ -10,8 +10,8 @@
    <children>
       <JFXTextField fx:id="userId" layoutX="36.0" layoutY="71.0" promptText="User ID" />
       <Label layoutX="36.0" layoutY="24.0" text="Please input Service who wish to book" />
-      <JFXButton fx:id="goTimetable" layoutX="213.0" layoutY="71.0" onAction="#goTimetable" style="-fx-background-color: #2196F3;" text="Pick Time" textFill="WHITE" />
+      <JFXButton fx:id="goTimetable" layoutX="36.0" layoutY="176.0" onAction="#goTimetable" style="-fx-background-color: #2196F3;" text="Pick Time" textFill="WHITE" />
       <Label fx:id="errorMsg" layoutX="36.0" layoutY="110.0" prefHeight="17.0" prefWidth="239.0" textFill="RED" />
-      <JFXTextField fx:id="service" layoutX="36.0" layoutY="78.0" promptText="Service" />
+      <JFXTextField fx:id="service" layoutX="36.0" layoutY="115.0" promptText="Service" />
    </children>
 </AnchorPane>
