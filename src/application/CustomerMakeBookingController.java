@@ -37,7 +37,7 @@ public class CustomerMakeBookingController {
     
     @FXML
     void goTimetable(ActionEvent event) throws Exception{
-    	userIdCheck = userId.getText();
+    	userIdCheck = Integer.toString(LoginSystem2.returnId);
     	tempService = service.getText();
     	Boolean passCheck = false;
     	int userIdCheck2 = Integer.parseInt(userIdCheck);
