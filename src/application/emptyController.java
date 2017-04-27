@@ -38,9 +38,6 @@ public class emptyController implements Initializable {
 	private Button EMPTIMETABLESwitch;
 	@FXML
 	private Button SWITCH_CUSTOMEROLDVIEW;
-	private static Connection LoginConn = null;
-	private static Statement st = null;
-	private static ResultSet rs = null;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {

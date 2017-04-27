@@ -20,7 +20,6 @@
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.layout.*?>
 
-
 <SplitPane fx:id="CustomerAllview" dividerPositions="0.9949832775919732" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmployeeMenuController">
 	<items>
 		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -36,7 +35,9 @@
                      
                      
                      
-                          <SplitPane dividerPositions="0.40602836879432624" layoutX="244.0" layoutY="86.0" prefHeight="400.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane prefHeight="590.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <children>
+      <SplitPane dividerPositions="0.40602836879432624" layoutX="244.0" layoutY="86.0" prefHeight="400.0" prefWidth="566.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -85,6 +86,8 @@
             </AnchorPane>
          </items>
       </SplitPane>
+   </children>
+</AnchorPane>         
                      
                      
                      

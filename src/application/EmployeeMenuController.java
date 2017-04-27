@@ -1,47 +1,25 @@
 package application;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ListChangeListener;
-import javafx.event.EventHandler;
-import javafx.scene.Parent;
-import javafx.scene.control.*;
-import application.User;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
-
-//empty control form board
-//work with emptyScene.fxml
-public class EmployeeMenuController implements Initializable {
-	MenuMain a = new MenuMain();
-
-	@FXML
-	private Button SWITCH_CUSTOMERVIEWALL;
-	@FXML
-	private Button ADDEMPLOYEESwitch;
-	@FXML
-	private Button EMPEDITSwitch;
-	@FXML
-	private Button EMPTIMETABLESwitch;
-	@FXML
-	private Button SWITCH_CUSTOMEROLDVIEW;
+import application.GetEmployer;
+import application.Employer;
+public class EmployeeMenuController  {
 	static int Selection;
     private GetEmployer getEmployer;
+    MenuMain a = new MenuMain();
 
     @FXML
     private Label firstName;
@@ -76,22 +54,28 @@ public class EmployeeMenuController implements Initializable {
 
     @FXML
     private TableColumn<Employer, String> lastNameCol;
+
+	@FXML
+	private Button SWITCH_CUSTOMERVIEWALL;
+	@FXML
+	private Button ADDEMPLOYEESwitch;
+	@FXML
+	private Button EMPEDITSwitch;
+	@FXML
+	private Button EMPTIMETABLESwitch;
+	@FXML
+	private Button SWITCH_CUSTOMEROLDVIEW;
     
-
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		SWITCH_CUSTOMERVIEWALL.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					a.showAllBooking();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			}
-		});
+    @FXML
+    private void initialize(){
+    	firstNameCol.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
+    	lastNameCol.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+    	empIdCol.setCellValueFactory(cellData -> cellData.getValue().empIdProperty().asObject());
+    	
+//    	showEmpDetails(null);
+    	
+    	employeeTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showEmpDetails(newValue));
 		SWITCH_CUSTOMEROLDVIEW.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -140,21 +124,7 @@ public class EmployeeMenuController implements Initializable {
 
 			}
 		});
-	}
-	
-
-    
-    
-    @FXML
-    private void initialize(){
-    	firstNameCol.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-    	lastNameCol.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-    	empIdCol.setCellValueFactory(cellData -> cellData.getValue().empIdProperty().asObject());
     	
-//    	showEmpDetails(null);
-    	
-    	employeeTable.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showEmpDetails(newValue));
     }
     
     
@@ -202,24 +172,14 @@ public class EmployeeMenuController implements Initializable {
     void editDetail(ActionEvent event) {
 
     }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    
+	public void RIGHTBUTTON(){
+
+
+	}
+    
+    
+    
+
+
 }
