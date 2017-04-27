@@ -156,41 +156,41 @@ public class MenuMain extends Application {
 		
 
 		
-		Label temp1 = (Label) scene.lookup("#dayB");
-		temp1.setText(String.valueOf(timetable[0][0]));
-		
-		Label temp2 = (Label) scene.lookup("#monthB");
-		temp2.setText(String.valueOf(timetable[0][1]));
-		
-		Label temp3 = (Label) scene.lookup("#yearB");
-		temp3.setText(String.valueOf(timetable[0][2]));
-		
-		Label temp4 = (Label) scene.lookup("#dayE");
-		temp4.setText(String.valueOf(timetable[6][0]));
-		
-		Label temp5 = (Label) scene.lookup("#monthE");
-		temp5.setText(String.valueOf(timetable[6][1]));
-		
-		Label temp6 = (Label) scene.lookup("#yearE");
-		temp6.setText(String.valueOf(timetable[6][2]));	
+//		Label temp1 = (Label) scene.lookup("#dayB");
+//		temp1.setText(String.valueOf(timetable[0][0]));
+//		
+//		Label temp2 = (Label) scene.lookup("#monthB");
+//		temp2.setText(String.valueOf(timetable[0][1]));
+//		
+//		Label temp3 = (Label) scene.lookup("#yearB");
+//		temp3.setText(String.valueOf(timetable[0][2]));
+//		
+//		Label temp4 = (Label) scene.lookup("#dayE");
+//		temp4.setText(String.valueOf(timetable[6][0]));
+//		
+//		Label temp5 = (Label) scene.lookup("#monthE");
+//		temp5.setText(String.valueOf(timetable[6][1]));
+//		
+//		Label temp6 = (Label) scene.lookup("#yearE");
+//		temp6.setText(String.valueOf(timetable[6][2]));	
 		
 		for(int i = 0;i<=6;i++)
 		{
 			for(int j = 0;j<=10;j++)
 			{
-				if(timetable[i][j+3]==1)
+				if(timetable[i][j+1]==1)
 				{
 					JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
 					Btemp.setText("Avalible");
 					Btemp.setStyle("-fx-background-color:lightgreen");
 				}
-				else if(timetable[i][j+3]==0)
+				else if(timetable[i][j+1]==0)
 				{
 					JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
 		    		Btemp.setText("Unavalible");
 		    		Btemp.setStyle("-fx-background-color:red");
 				}
-				else if(timetable[i][j+3]==2)
+				else if(timetable[i][j+1]==2)
 				{
 					 JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
 			    	 Btemp.setText("Booked");
@@ -221,12 +221,8 @@ public class MenuMain extends Application {
 		while (rs.next()) {
 
 			int x = 0;
-			timetable[i][x] = rs.getInt("Day");
+			timetable[i][x] = rs.getInt("WEEKDAYS");
 			x = x + 1;
-			timetable[i][x] = rs.getInt("Month");
-			x++;
-			timetable[i][x] = rs.getInt("Year");
-			x++;
 			timetable[i][x] = rs.getInt("T0800");
 			x++;
 			timetable[i][x] = rs.getInt("T0900");

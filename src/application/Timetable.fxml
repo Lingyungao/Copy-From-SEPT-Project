@@ -116,20 +116,30 @@
          </rowConstraints>
       </GridPane>
       <Label fx:id="IdLabel" layoutX="1066.0" layoutY="25.0" text="Label" />
-      <Label fx:id="dayB" layoutX="27.0" layoutY="115.0" text="date1" />
-      <Label fx:id="dayE" layoutX="28.0" layoutY="659.0" text="Label" />
-      <Label fx:id="monthB" layoutX="65.0" layoutY="115.0" text="Label" />
-      <Label fx:id="yearB" layoutX="103.0" layoutY="115.0" text="Label" />
-      <Label fx:id="monthE" layoutX="65.0" layoutY="659.0" text="Label" />
-      <Label fx:id="yearE" layoutX="103.0" layoutY="659.0" prefHeight="8.0" prefWidth="31.0" text="Label" />
       <JFXButton fx:id="save" layoutX="984.0" layoutY="743.0" onAction="#save" prefHeight="39.0" prefWidth="82.0" style="-fx-background-color: #2196F3;" text="SAVE" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
       <Label layoutX="992.0" layoutY="25.0" text="Employee ID:" />
-      <Label layoutX="28.0" layoutY="77.0" text="Date" />
-      <Label layoutX="65.0" layoutY="77.0" text="Month" />
-      <Label layoutX="105.0" layoutY="77.0" text="Year" />
+      <Label layoutX="60.0" layoutY="62.0" text="Weekdays" />
+      <Label layoutX="73.0" layoutY="116.0" text="Monday" />
+      <Label layoutX="73.0" layoutY="206.0" text="Tuesday" />
+      <Label layoutX="73.0" layoutY="299.0" text="Wedesday" />
+      <Label layoutX="73.0" layoutY="387.0" text="Thurday" />
+      <Label layoutX="73.0" layoutY="482.0" text="Friday" />
+      <Label layoutX="73.0" layoutY="572.0" text="Sautaday" />
+      <Label layoutX="73.0" layoutY="658.0" text="Sunday" />
+      <Label layoutX="165.0" layoutY="47.0" text="8:00" />
+      <Label layoutX="248.0" layoutY="47.0" text="9:00" />
+      <Label layoutX="334.0" layoutY="47.0" text="10:00" />
+      <Label layoutX="428.0" layoutY="47.0" text="11:00" />
+      <Label layoutX="506.0" layoutY="47.0" text="12:00" />
+      <Label layoutX="594.0" layoutY="47.0" text="13:00" />
+      <Label layoutX="675.0" layoutY="47.0" text="14:00" />
+      <Label layoutX="762.0" layoutY="47.0" text="15:00" />
+      <Label layoutX="851.0" layoutY="47.0" text="16:00" />
+      <Label layoutX="927.0" layoutY="47.0" text="17:00" />
+      <Label layoutX="1025.0" layoutY="47.0" text="18:00" />
    </children>
 </Pane>

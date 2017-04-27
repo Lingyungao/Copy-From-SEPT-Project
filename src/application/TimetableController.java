@@ -52,19 +52,19 @@ public class TimetableController {
 //    		{
 //    			if(jfxbutton.getId().equals(btnIdSet[i][j]))
 //    		    	{
-//    				if(timetable[i][j+3]==0)
+//    				if(timetable[i][j+1]==0)
 //    		    	{
 //    		    		jfxbutton.setText("Unavalible");
 //    		    		jfxbutton.setStyle("-fx-background-color:red");
-////    		    		System.out.println(timetable[i][j+3] + " " + i + " " + j);
+////    		    		System.out.println(timetable[i][j+1] + " " + i + " " + j);
 //    		    		
 //    		    	}
-//    		    	else if(timetable[i][j+3]==1)
+//    		    	else if(timetable[i][j+1]==1)
 //    		    	{
-//    		    		timetable[i][j+3] = 1;
+//    		    		timetable[i][j+1] = 1;
 //    		    	    jfxbutton.setText("Avalible");
 //    		    		jfxbutton.setStyle("-fx-background-color:lightgreen");
-////    		    		System.out.println(timetable[i][j+3] + " " + i + " " + j);
+////    		    		System.out.println(timetable[i][j+1] + " " + i + " " + j);
 //    		    	}
 //    			}
 //    		}
@@ -402,27 +402,27 @@ public class TimetableController {
     		{
     			if(x.getId().equals(btnIdSet[i][j]))
     			{
-    		    	if(MenuMain.timetable[i][j+3]==1)
+    		    	if(MenuMain.timetable[i][j+1]==1)
     		    	{
-    		    		MenuMain.timetable[i][j+3] = 0;
+    		    		MenuMain.timetable[i][j+1] = 0;
     		    		x.setText("Unavalible");
     		    		x.setStyle("-fx-background-color:red");
-    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+    		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
     		    		
     		    	}
-    		    	else if(MenuMain.timetable[i][j+3]==0)
+    		    	else if(MenuMain.timetable[i][j+1]==0)
     		    	{
-    		    		MenuMain.timetable[i][j+3] = 1;
+    		    		MenuMain.timetable[i][j+1] = 1;
     		    	    x.setText("Avalible");
     		    		x.setStyle("-fx-background-color:lightgreen");
-    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+    		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
     		    	}
-//    		    	else if(MenuMain.timetable[i][j+3]==1)
+//    		    	else if(MenuMain.timetable[i][j+1]==1)
 //    		    	{
-//    		    		MenuMain.timetable[i][j+3] = 3;
+//    		    		MenuMain.timetable[i][j+1] = 3;
 //    		    	    x.setText("New book");
 //    		    		x.setStyle("-fx-background-color:blue");
-//    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+//    		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
 //    		    	}
     			}
     		}
@@ -436,27 +436,27 @@ public class TimetableController {
         		{
         			if(x.getId().equals(btnIdSet[i][j]))
         			{
-        		    	if(MenuMain.timetable[i][j+3]==1)
+        		    	if(MenuMain.timetable[i][j+1]==1)
         		    	{
-        		    		MenuMain.timetable[i][j+3] = 3;
+        		    		MenuMain.timetable[i][j+1] = 3;
         		    		x.setText("new booking");
         		    		x.setStyle("-fx-background-color:yellow");
-        		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+        		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
         		    		
         		    	}
-        		    	else if(MenuMain.timetable[i][j+3]==3)
+        		    	else if(MenuMain.timetable[i][j+1]==3)
         		    	{
-        		    		MenuMain.timetable[i][j+3] = 1;
+        		    		MenuMain.timetable[i][j+1] = 1;
         		    	    x.setText("AV");
         		    		x.setStyle("-fx-background-color:lightgreen");
-        		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+        		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
         		    	}
-//        		    	else if(MenuMain.timetable[i][j+3]==1)
+//        		    	else if(MenuMain.timetable[i][j+1]==1)
 //        		    	{
-//        		    		MenuMain.timetable[i][j+3] = 3;
+//        		    		MenuMain.timetable[i][j+1] = 3;
 //        		    	    x.setText("New book");
 //        		    		x.setStyle("-fx-background-color:blue");
-//        		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+//        		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
 //        		    	}
         			}
         		}
@@ -471,19 +471,19 @@ public class TimetableController {
 //    		{
 //    			if(x.getId().equals(btnIdSet[i][j]))
 //    			{
-//    		    	if(MenuMain.timetable[i][j+3]==1)
+//    		    	if(MenuMain.timetable[i][j+1]==1)
 //    		    	{
-//    		    		MenuMain.timetable[i][j+3] = 3;
+//    		    		MenuMain.timetable[i][j+1] = 3;
 //    		    		x.setText("New booked");
 //    		    		x.setStyle("-fx-background-color:blue");
-//    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+//    		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
 //    		    	}
-//    		    	else if(MenuMain.timetable[i][j+3]==3)
+//    		    	else if(MenuMain.timetable[i][j+1]==3)
 //    		    	{
-//    		    		MenuMain.timetable[i][j+3] = 1;
+//    		    		MenuMain.timetable[i][j+1] = 1;
 //    		    	    x.setText("Avalible");
 //    		    		x.setStyle("-fx-background-color:lightgreen");
-//    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+//    		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
 //    		    	}
 //    		    	}
 //    			}
