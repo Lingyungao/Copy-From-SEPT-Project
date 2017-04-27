@@ -52,14 +52,14 @@ public class CustomerBookTimetableController {
 //    		{
 //    			if(jfxbutton.getId().equals(btnIdSet[i][j]))
 //    		    	{
-//    				if(timetable[i][j+3]==0)
+//    				if(timetable[i][j+1]==0)
 //    		    	{
 //    		    		jfxbutton.setText("Unavalible");
 //    		    		jfxbutton.setStyle("-fx-background-color:red");
 ////    		    		System.out.println(timetable[i][j+3] + " " + i + " " + j);
 //    		    		
 //    		    	}
-//    		    	else if(timetable[i][j+3]==1)
+//    		    	else if(timetable[i][j+1]==1)
 //    		    	{
 //    		    		timetable[i][j+3] = 1;
 //    		    	    jfxbutton.setText("Avalible");
@@ -402,27 +402,27 @@ public class CustomerBookTimetableController {
     		{
     			if(x.getId().equals(btnIdSet[i][j]))
     			{
-    		    	if(MenuMain.timetable[i][j+3]==1)
+    		    	if(MenuMain.timetable[i][j+1]==1)
     		    	{
-    		    		MenuMain.timetable[i][j+3] = 0;
+    		    		MenuMain.timetable[i][j+1] = 0;
     		    		x.setText("Unavalible");
     		    		x.setStyle("-fx-background-color:red");
-    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+    		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
     		    		
     		    	}
-    		    	else if(MenuMain.timetable[i][j+3]==0)
+    		    	else if(MenuMain.timetable[i][j+1]==0)
     		    	{
-    		    		MenuMain.timetable[i][j+3] = 1;
+    		    		MenuMain.timetable[i][j+1] = 1;
     		    	    x.setText("Avalible");
     		    		x.setStyle("-fx-background-color:lightgreen");
-    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+    		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
     		    	}
-//    		    	else if(MenuMain.timetable[i][j+3]==1)
+//    		    	else if(MenuMain.timetable[i][j+1]==1)
 //    		    	{
-//    		    		MenuMain.timetable[i][j+3] = 3;
+//    		    		MenuMain.timetable[i][j+1] = 3;
 //    		    	    x.setText("New book");
 //    		    		x.setStyle("-fx-background-color:blue");
-//    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+//    		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
 //    		    	}
     			}
     		}
@@ -436,27 +436,27 @@ public class CustomerBookTimetableController {
         		{
         			if(x.getId().equals(btnIdSet[i][j]))
         			{
-        		    	if(MenuMain.timetable[i][j+3]==1)
+        		    	if(MenuMain.timetable[i][j+1]==1)
         		    	{
-        		    		MenuMain.timetable[i][j+3] = 3;
+        		    		MenuMain.timetable[i][j+1] = 3;
         		    		x.setText("new booking");
         		    		x.setStyle("-fx-background-color:yellow");
-        		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+        		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
         		    		
         		    	}
-        		    	else if(MenuMain.timetable[i][j+3]==3)
+        		    	else if(MenuMain.timetable[i][j+1]==3)
         		    	{
-        		    		MenuMain.timetable[i][j+3] = 1;
+        		    		MenuMain.timetable[i][j+1] = 1;
         		    	    x.setText("AV");
         		    		x.setStyle("-fx-background-color:lightgreen");
-        		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+        		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
         		    	}
-//        		    	else if(MenuMain.timetable[i][j+3]==1)
+//        		    	else if(MenuMain.timetable[i][j+1]==1)
 //        		    	{
-//        		    		MenuMain.timetable[i][j+3] = 3;
+//        		    		MenuMain.timetable[i][j+1] = 3;
 //        		    	    x.setText("New book");
 //        		    		x.setStyle("-fx-background-color:blue");
-//        		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+//        		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
 //        		    	}
         			}
         		}
@@ -471,19 +471,19 @@ public class CustomerBookTimetableController {
 //    		{
 //    			if(x.getId().equals(btnIdSet[i][j]))
 //    			{
-//    		    	if(MenuMain.timetable[i][j+3]==1)
+//    		    	if(MenuMain.timetable[i][j+1]==1)
 //    		    	{
-//    		    		MenuMain.timetable[i][j+3] = 3;
+//    		    		MenuMain.timetable[i][j+1] = 3;
 //    		    		x.setText("New booked");
 //    		    		x.setStyle("-fx-background-color:blue");
-//    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+//    		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
 //    		    	}
-//    		    	else if(MenuMain.timetable[i][j+3]==3)
+//    		    	else if(MenuMain.timetable[i][j+1]==3)
 //    		    	{
-//    		    		MenuMain.timetable[i][j+3] = 1;
+//    		    		MenuMain.timetable[i][j+1] = 1;
 //    		    	    x.setText("Avalible");
 //    		    		x.setStyle("-fx-background-color:lightgreen");
-//    		    		System.out.println(MenuMain.timetable[i][j+3] + " " + i + " " + j);
+//    		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
 //    		    	}
 //    		    	}
 //    			}
@@ -1069,9 +1069,7 @@ public class CustomerBookTimetableController {
 		
 		PreparedStatement rs = LoginConn.prepareStatement(
 				"UPDATE TIMETABLE SET  T0800=?, T0900=?, T1000=?, T1100=?, T1200=?, T1300=?, T1400=?, T1500=?, T1600=?, T1700=?, T1800=? "
-				+ " WHERE Day=?"
-				+ " AND Month=?"
-				+ " AND Year=?"
+				+ " WHERE WEEKDAYS=?"
 				+ " AND EMP_UID=? ");
 		
     	
@@ -1087,22 +1085,22 @@ public class CustomerBookTimetableController {
 //				rs.setInt(j-2, MenuMain.timetable[i][j]);
 //				}
 			
-			rs.setInt(1, MenuMain.timetable[i][3]);
-			rs.setInt(2, MenuMain.timetable[i][4]);
-			rs.setInt(3, MenuMain.timetable[i][5]);
-			rs.setInt(4, MenuMain.timetable[i][6]);
-			rs.setInt(5, MenuMain.timetable[i][7]);
-			rs.setInt(6, MenuMain.timetable[i][8]);
-			rs.setInt(7, MenuMain.timetable[i][9]);
-			rs.setInt(8, MenuMain.timetable[i][10]);
-			rs.setInt(9, MenuMain.timetable[i][11]);
-			rs.setInt(10, MenuMain.timetable[i][12]);
-			rs.setInt(11, MenuMain.timetable[i][13]);
+			rs.setInt(1, MenuMain.timetable[i][1]);
+			rs.setInt(2, MenuMain.timetable[i][2]);
+			rs.setInt(3, MenuMain.timetable[i][3]);
+			rs.setInt(4, MenuMain.timetable[i][4]);
+			rs.setInt(5, MenuMain.timetable[i][5]);
+			rs.setInt(6, MenuMain.timetable[i][6]);
+			rs.setInt(7, MenuMain.timetable[i][7]);
+			rs.setInt(8, MenuMain.timetable[i][8]);
+			rs.setInt(9, MenuMain.timetable[i][9]);
+			rs.setInt(10, MenuMain.timetable[i][10]);
+			rs.setInt(11, MenuMain.timetable[i][11]);
 			
 		    rs.setInt(12, MenuMain.timetable[i][0]);
-		    rs.setInt(13, MenuMain.timetable[i][1]);
-			rs.setInt(14, MenuMain.timetable[i][2]);
-			rs.setString(15, CustomerBookingMenuController.tempEmpId);
+//		    rs.setInt(13, MenuMain.timetable[i][1]);
+//			rs.setInt(14, MenuMain.timetable[i][2]);
+			rs.setString(13, CustomerBookingMenuController.tempEmpId);
 //			    rs.setInt(16, MenuMain.timetable[i][16]);
 				rs.addBatch();
 			}
@@ -1114,7 +1112,9 @@ public class CustomerBookTimetableController {
     		 ResultSet rs3 = st.executeQuery("SELECT COUNT(BOOK_ID) FROM BOOKING");
     		 int bookCount = rs3.getInt("COUNT(BOOK_ID)");
     		 
-    		 PreparedStatement rs2 = LoginConn.prepareStatement("INSERT INTO BOOKING(BOOK_ID,USER_ID,EMP_ID,DAY,MONTH,YEAR,START_TIME,ACTIVE) VALUES(?,?,?,?,?,?,?,1) ");
+//    		 PreparedStatement rs2 = LoginConn.prepareStatement("INSERT INTO BOOKING(BOOK_ID,USER_ID,EMP_ID,DAY,MONTH,YEAR,START_TIME,ACTIVE) VALUES(?,?,?,?,?,?,?,1) ");
+    		 PreparedStatement rs2 = LoginConn.prepareStatement("INSERT INTO BOOKING(BOOK_ID,USER_ID,EMP_ID,DAY,START_TIME,END_TIME,ACTIVE) VALUES(?,?,?,?,?,?,1) ");
+    		 PreparedStatement rs4 = LoginConn.prepareStatement("INSERT INTO SERVICE(BOOK_ID,BOOK_SER) VALUES(?,?) ");
     		 for (int i = 0; i < 7; i++) {
     			 System.out.println("");
     			 for(int j=3; j < 15;j++){
@@ -1126,15 +1126,21 @@ public class CustomerBookTimetableController {
 						rs2.setString(2, CustomerMakeBookingController.userIdCheck);
 						rs2.setString(3, CustomerBookingMenuController.tempEmpId);
 						rs2.setInt(4, MenuMain.timetable[i][0]);
-						rs2.setInt(5, MenuMain.timetable[i][1]);
-						rs2.setInt(6, MenuMain.timetable[i][2]);
-						rs2.setInt(7, MenuMain.timetable[i][j]);
+//						rs2.setInt(5, MenuMain.timetable[i][1]);
+//						rs2.setInt(6, MenuMain.timetable[i][2]);
+//						rs2.setInt(7, MenuMain.timetable[i][j]);
+						rs2.setInt(5, MenuMain.timetable[i][j]);
+						rs2.setInt(6, MenuMain.timetable[i][2] + 1);
+						rs4.setInt(1, bookCount);
+						rs4.setString(2, CustomerMakeBookingController.tempService);
 						rs2.addBatch();
+						rs4.addBatch();
 						System.out.println("added to batch");
     				 }
     			 }
     		 }
     		rs2.executeBatch();
+    		rs4.executeBatch();
 			System.out.println("new booking saved");
 
     	 }
