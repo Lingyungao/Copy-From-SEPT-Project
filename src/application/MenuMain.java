@@ -288,7 +288,7 @@ public void cusSetTimetable(int empId) throws SQLException {
 	
 	public void cusShowNewBooking() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/CustomerMakeBookingMenu.fxml"));
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerMakeBooking.fxml"));
 		
 		Pane newBooking = loader.load();
 		Stage newBookingEdit = new Stage();

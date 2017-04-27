@@ -104,7 +104,8 @@ public class CustomerBookingMenuController {
     void MakeBooking(ActionEvent event) throws IOException, NumberFormatException, SQLException{
     	Selection = 0;
     	//a.showTimetable(empID.getText());
-    	a.cusShowTimetable(CustomerBookingMenuController.tempEmpId);
+    	a.cusShowNewBooking();
+    	//a.cusShowTimetable(CustomerBookingMenuController.tempEmpId);
     }
 	public static String tempEmpId;
 
