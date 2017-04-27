@@ -45,14 +45,14 @@ public class AddEmployeeSQL {
 		
 		
 		PreparedStatement rs = LoginConn.prepareStatement(
-				"INSERT INTO TIMETABLE (EMP_UID,DAY,Month,Year,T0800,T0900,T1000,T1100,T1200,T1300,T1400,T1500,T1600,T1700,T1800) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+				"INSERT INTO TIMETABLE (EMP_UID,WEEKDAYS,T0800,T0900,T1000,T1100,T1200,T1300,T1400,T1500,T1600,T1700,T1800) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
 		for (int i = 1; i < 8; i++) {
 
 			rs.setInt(1, empId);
 			rs.setInt(2, i);
-			rs.setInt(3, 5);
-			rs.setInt(4, 2017);
+			rs.setInt(3, 0);
+			rs.setInt(4, 0);
 			rs.setInt(5, 0);
 			rs.setInt(6, 0);
 			rs.setInt(7, 0);
@@ -62,8 +62,7 @@ public class AddEmployeeSQL {
 			rs.setInt(11, 0);
 			rs.setInt(12, 0);
 			rs.setInt(13, 0);
-			rs.setInt(14, 0);
-			rs.setInt(15, 0);
+
 
 			rs.addBatch();
 		}

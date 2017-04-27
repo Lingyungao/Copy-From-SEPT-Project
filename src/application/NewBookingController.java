@@ -28,8 +28,13 @@ public class NewBookingController {
     private Label errorMsg;
     
     @FXML
+    private JFXTextField service;
+    
+    public static String tempService;
+    @FXML
     void goTimetable(ActionEvent event) throws Exception{
     	userIdCheck = userId.getText();
+    	tempService = service.getText();
     	Boolean passCheck = false;
     	int userIdCheck2 = Integer.parseInt(userIdCheck);
 		LoginConn = connection.connectDB();
@@ -43,10 +48,14 @@ public class NewBookingController {
     		errorMsg.setText("Customer ID only allowed to input numbers.");
     	}
     	else if(userIdCheck2 > userCount){
-    		errorMsg.setText("Customer ID not exsist.");  
-    		
+    		errorMsg.setText("Customer ID not exsist.");  		
+    	}
+    	else if(tempService == ""){
+    		errorMsg.setText("Please enter the service.");
+
     	}
     	else{
+    		tempService = service.getText();
     		a.showTimetable(EmployeeMenuController.tempEmpId);
     	}	
     }

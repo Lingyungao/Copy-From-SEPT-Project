@@ -1069,9 +1069,8 @@ public class TimetableController {
 		
 		PreparedStatement rs = LoginConn.prepareStatement(
 				"UPDATE TIMETABLE SET  T0800=?, T0900=?, T1000=?, T1100=?, T1200=?, T1300=?, T1400=?, T1500=?, T1600=?, T1700=?, T1800=? "
-				+ " WHERE Day=?"
-				+ " AND Month=?"
-				+ " AND Year=?"
+				+ " WHERE WEEKDAYS=?"
+
 				+ " AND EMP_UID=? ");
 		
     	
@@ -1087,22 +1086,20 @@ public class TimetableController {
 //				rs.setInt(j-2, MenuMain.timetable[i][j]);
 //				}
 			
-			rs.setInt(1, MenuMain.timetable[i][3]);
-			rs.setInt(2, MenuMain.timetable[i][4]);
-			rs.setInt(3, MenuMain.timetable[i][5]);
-			rs.setInt(4, MenuMain.timetable[i][6]);
-			rs.setInt(5, MenuMain.timetable[i][7]);
-			rs.setInt(6, MenuMain.timetable[i][8]);
-			rs.setInt(7, MenuMain.timetable[i][9]);
-			rs.setInt(8, MenuMain.timetable[i][10]);
-			rs.setInt(9, MenuMain.timetable[i][11]);
-			rs.setInt(10, MenuMain.timetable[i][12]);
-			rs.setInt(11, MenuMain.timetable[i][13]);
+			rs.setInt(1, MenuMain.timetable[i][1]);
+			rs.setInt(2, MenuMain.timetable[i][2]);
+			rs.setInt(3, MenuMain.timetable[i][3]);
+			rs.setInt(4, MenuMain.timetable[i][4]);
+			rs.setInt(5, MenuMain.timetable[i][5]);
+			rs.setInt(6, MenuMain.timetable[i][6]);
+			rs.setInt(7, MenuMain.timetable[i][7]);
+			rs.setInt(8, MenuMain.timetable[i][8]);
+			rs.setInt(9, MenuMain.timetable[i][9]);
+			rs.setInt(10, MenuMain.timetable[i][10]);
+			rs.setInt(11, MenuMain.timetable[i][11]);
 			
 		    rs.setInt(12, MenuMain.timetable[i][0]);
-		    rs.setInt(13, MenuMain.timetable[i][1]);
-			rs.setInt(14, MenuMain.timetable[i][2]);
-			rs.setString(15, EmployeeMenuController.tempEmpId);
+			rs.setString(13, EmployeeMenuController.tempEmpId);
 //			    rs.setInt(16, MenuMain.timetable[i][16]);
 				rs.addBatch();
 			}
@@ -1114,7 +1111,10 @@ public class TimetableController {
     		 ResultSet rs3 = st.executeQuery("SELECT COUNT(BOOK_ID) FROM BOOKING");
     		 int bookCount = rs3.getInt("COUNT(BOOK_ID)");
     		 
-    		 PreparedStatement rs2 = LoginConn.prepareStatement("INSERT INTO BOOKING(BOOK_ID,USER_ID,EMP_ID,DAY,MONTH,YEAR,START_TIME,ACTIVE) VALUES(?,?,?,?,?,?,?,1) ");
+    		 PreparedStatement rs2 = LoginConn.prepareStatement("INSERT INTO BOOKING(BOOK_ID,USER_ID,EMP_ID,DAY,START_TIME,END_TIME,ACTIVE) VALUES(?,?,?,?,?,?,1) ");
+    		 PreparedStatement rs4 = LoginConn.prepareStatement("INSERT INTO SERVICE(BOOK_ID,BOOK_SER) VALUES(?,?) ");
+
+    		 
     		 for (int i = 0; i < 7; i++) {
     			 System.out.println("");
     			 for(int j=3; j < 15;j++){
@@ -1126,15 +1126,20 @@ public class TimetableController {
 						rs2.setString(2, NewBookingController.userIdCheck);
 						rs2.setString(3, EmployeeMenuController.tempEmpId);
 						rs2.setInt(4, MenuMain.timetable[i][0]);
-						rs2.setInt(5, MenuMain.timetable[i][1]);
-						rs2.setInt(6, MenuMain.timetable[i][2]);
-						rs2.setInt(7, MenuMain.timetable[i][j]);
+						//rs2.setInt(5, MenuMain.timetable[i][1]);
+						//rs2.setInt(6, MenuMain.timetable[i][2]);
+						rs2.setInt(5, MenuMain.timetable[i][j]);
+						rs2.setInt(6, MenuMain.timetable[i][2] + 1);
+						rs4.setInt(1, bookCount);
+						rs4.setString(2, NewBookingController.tempService);
 						rs2.addBatch();
+						rs4.addBatch();
 						System.out.println("added to batch");
     				 }
     			 }
     		 }
     		rs2.executeBatch();
+    		rs4.executeBatch();
 			System.out.println("new booking saved");
 
     	 }
