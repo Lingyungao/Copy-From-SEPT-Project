@@ -9,6 +9,7 @@ public class LoginSystem2 {
 	private static String user = null;	
 	private static int userId;
 	private static int permission;
+	public static int returnId;
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
 	private static Statement st = null;
@@ -34,16 +35,21 @@ public class LoginSystem2 {
 				permission = rs.getInt("PERMISSION");
 
 			}
+			returnId = userId;
+
 			// get username and password
 
 			if (user.equals(inputLogUser) && pass.equals(inputLogPass)) {
 				// compare with database. have to same both.
 				if (permission == 1) {
 					System.out.println("Login Succesful");
+					MenuMain.userId = userId;
+					MenuMain.premission = permission;
 					return 2;
 				} else if (permission == 2) {
 					System.out.println("Login Succesful");
-					
+					MenuMain.userId = userId;
+					MenuMain.premission = permission;
 					return 3;
 				} else {	
 					System.out.println("Invalid Input!");

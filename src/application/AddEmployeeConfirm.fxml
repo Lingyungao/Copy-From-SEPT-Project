@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddEmployeeConfirmController">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="610.0">
+         <children>
+            <Label layoutX="97.0" layoutY="92.0" text="Add Employee finished" textAlignment="CENTER">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="ok" layoutX="187.0" layoutY="224.0" onAction="#confirmOK" prefHeight="67.0" prefWidth="237.0" style="-fx-background-color: #2196F3;" text="OK" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="32.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
