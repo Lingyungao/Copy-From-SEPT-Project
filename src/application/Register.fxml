@@ -44,8 +44,8 @@
             <TextField fx:id="regUsernameField" prefHeight="15.0" prefWidth="268.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <JFXButton layoutX="47.0" layoutY="270.0" mnemonicParsing="false" onAction="#regUser" text="Register" />
-      <JFXButton fx:id="closeButton" layoutX="300.0" layoutY="270.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <JFXButton buttonType="RAISED" layoutX="47.0" layoutY="270.0" mnemonicParsing="false" onAction="#regUser" text="Register" textFill="WHITE"/>
+      <JFXButton buttonType="RAISED" fx:id="closeButton" layoutX="300.0" layoutY="270.0" mnemonicParsing="false" onAction="#login" text="Login" textFill="WHITE" />
       <Text fx:id="cusInfoText" layoutX="13.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="387.0">
          <font>
             <Font size="10.0" />
