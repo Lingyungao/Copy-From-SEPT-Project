@@ -48,7 +48,7 @@
                   </Label>
           
                   <Button fx:id="editCustomerDetail" layoutX="53.0" layoutY="342.0" onAction="#editCustomerDetail" text="EDIT" />
-                  <Button fx:id="backButton" layoutX="356.0" layoutY="342.0" mnemonicParsing="false" onAction="#editCustomerBack" text="Back" />
+<!--               <Button fx:id="backButton" layoutX="356.0" layoutY="342.0" mnemonicParsing="false" onAction="#editCustomerBack" text="Back" />  -->
                </children>
             </AnchorPane>
          </items>
