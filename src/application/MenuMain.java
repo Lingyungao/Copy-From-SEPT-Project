@@ -168,7 +168,7 @@ public class MenuMain extends Application {
 	public void showLogin() throws IOException
 	{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/Sample.fxml"));
+		loader.setLocation(MenuMain.class.getResource("/application/Login.fxml"));
 		AnchorPane loginmenu = loader.load();
 		Scene scene = new Scene(loginmenu);
         scene.getStylesheets().add("/application/application.css");
