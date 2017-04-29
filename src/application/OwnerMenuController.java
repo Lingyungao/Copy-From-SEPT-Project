@@ -72,12 +72,24 @@ public class OwnerMenuController{
 
     @FXML
     void viewBooking(ActionEvent event) {
-
+    	try {
+			a.showViewBooking();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @FXML
     void oldBooking(ActionEvent event) {
-
+    	try {
+			a.showOldBooking();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
+    }
+    
 
-}
+

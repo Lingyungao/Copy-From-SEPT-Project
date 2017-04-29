@@ -21,7 +21,10 @@ public class CustomerBookingMenuController {
 
     @FXML
     private Label firstName;
-
+    
+    @FXML
+    private JFXButton Back;
+    
     @FXML
     private Label lastName;
 
@@ -108,7 +111,10 @@ public class CustomerBookingMenuController {
     	//a.cusShowTimetable(CustomerBookingMenuController.tempEmpId);
     }
 	public static String tempEmpId;
-
+    @FXML
+    void Back(ActionEvent event) throws IOException {
+    	a.showCusM();
+    }
 
 
 }

@@ -38,7 +38,8 @@ public class CustomerViewBookingMenuController {
     private Label startTime;
     @FXML
     private Label endTime;
-    
+    @FXML
+    private JFXButton Back;
     @FXML
     private void initialize(){
     	bookIdCol.setCellValueFactory(cellData -> cellData.getValue().bookIdProperty().asObject());
@@ -78,5 +79,10 @@ private void showCusBookDetails(CustomerCheckBooking CusBook) {
         	endTime.setText("");
         }
     }
+@FXML
+void Back(ActionEvent event) throws IOException {
+	a.showCusM();
+}
+
     
 }

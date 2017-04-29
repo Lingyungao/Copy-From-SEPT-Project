@@ -30,6 +30,8 @@ public class EmployeeMenuController {
     @FXML
     private Label empPhone;
 
+    @FXML
+    private JFXButton editDetail;
 
     @FXML
     private JFXButton editTimetable;
@@ -104,7 +106,16 @@ public class EmployeeMenuController {
     }
 	public static String tempEmpId;
 
+    @FXML
+    void editDetail(ActionEvent event) {
+
+    }
 
 
+
+    @FXML
+    void Back(ActionEvent event) throws IOException {
+    	a.showOwnerM();
+    }
 
 }

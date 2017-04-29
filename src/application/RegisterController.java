@@ -59,7 +59,7 @@ public class RegisterController {
     @FXML
     private TextField regConfField;
     @FXML 
-    private javafx.scene.control.Button closeButton;
+    private com.jfoenix.controls.JFXButton closeButton;
     
     @FXML
     private Text cusInfoText;

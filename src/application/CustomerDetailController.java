@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -37,12 +38,15 @@ public class CustomerDetailController {
 	private static String username;
 	private static int userIpt;
 	private static boolean whileCheck;
+    
+    @FXML
+    private JFXButton Back;
+    
+	@FXML
+	private JFXButton editCustomerDetail;
 	
 	@FXML
-	private javafx.scene.control.Button editCustomerDetail;
-	
-	@FXML
-	private javafx.scene.control.Button backButton;
+	private JFXButton backButton;
 	
 	@FXML
 	private Label firstNameLable;
@@ -123,6 +127,10 @@ public class CustomerDetailController {
 	    stage.close();
 	}
 	
-	
+    @FXML
+    void Back(ActionEvent event) throws IOException {
+    	a.showCusM();
+    }
+
 
 }
