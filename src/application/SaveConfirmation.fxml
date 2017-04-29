@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SaveConfirmationController">
+   <children>
+      <Label layoutX="238.0" layoutY="118.0" text="Do you want to save?" />
+      <JFXButton fx:id="Save" layoutX="211.0" layoutY="177.0" onAction="#save" text="Yes" />
+      <JFXButton fx:id="NoSave" layoutX="334.0" layoutY="177.0" onAction="#NoSave" text="No" />
+   </children>
+</Pane>

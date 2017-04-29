@@ -493,6 +493,19 @@ public void cusSetTimetable(int empId) throws SQLException {
 		newBookingEdit.show();
 	}
 	
+	public void showCon() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/SaveConfirmation.fxml"));
+		Pane Confirmation= loader.load();
+		Stage ConfirmStage = new Stage();
+		ConfirmStage.setTitle("Register");
+		ConfirmStage.initModality(Modality.WINDOW_MODAL);
+		ConfirmStage.initOwner(primaryStage);
+		Scene scene = new Scene(Confirmation);
+		ConfirmStage.setScene(scene);
+		ConfirmStage.show();
+	}
+	
 	
 	
 	
