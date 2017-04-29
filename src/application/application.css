@@ -21,7 +21,8 @@
 #Back{
 	-fx-background-color: #4CAF50;
 	-fx-font-size:20px;
-	-fx-padding:5;		
+	-fx-padding:5;	
+	-fx-pref-width:77;	
 }
 .layout{
 		-fx-font-style:italic;
@@ -38,13 +39,18 @@
 	-fx-background-color: #4CAF50;
 	-fx-font-size:20px;
 	-fx-padding:5;		
+	-fx-pref-width:77;	
+	
 }
 
 #cusBackButton{
 	-fx-background-color: #4CAF50;
 	-fx-font-size:20px;
-	-fx-padding:5;		
+	-fx-padding:5;	
+	-fx-pref-width:77;	
+		
 }
 #logout{
 		-fx-background-color: red;
+		
 }

@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="332.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterController">
    <children>
-      <GridPane layoutX="30.0" layoutY="28.0" prefHeight="222.0" prefWidth="387.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="10.0">
+      <GridPane layoutX="30.0" layoutY="28.0" prefHeight="222.0" prefWidth="387.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="80.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="111.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.0" minWidth="10.0" prefWidth="261.0" />
@@ -44,8 +44,8 @@
             <TextField fx:id="regUsernameField" prefHeight="15.0" prefWidth="268.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <JFXButton layoutX="47.0" buttonType="RAISED" layoutY="270.0" mnemonicParsing="false" onAction="#regUser" text="Register" ripplerFill="WHITE" textFill="WHITE" />
-      <JFXButton fx:id="closeButton" buttonType="RAISED" layoutX="300.0" layoutY="270.0" mnemonicParsing="false" onAction="#login" text="Login" ripplerFill="WHITE"  textFill="WHITE"/>
+      <JFXButton buttonType="RAISED" layoutX="269.0" layoutY="325.0" mnemonicParsing="false" onAction="#regUser" ripplerFill="WHITE" stylesheets="@application.css" text="Register" textFill="WHITE" />
+      <JFXButton fx:id="closeButton" buttonType="RAISED" layoutX="472.0" layoutY="27.0" mnemonicParsing="false" onAction="#login" ripplerFill="WHITE" stylesheets="@application.css" text="Login" textFill="WHITE" />
       <Text fx:id="cusInfoText" layoutX="13.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="387.0">
          <font>
             <Font size="10.0" />

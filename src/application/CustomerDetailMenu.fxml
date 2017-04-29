@@ -13,7 +13,7 @@
          <items>
             <AnchorPane prefHeight="398.0" prefWidth="363.0">
                <children>
-                  <GridPane layoutX="23.0" layoutY="74.0" prefHeight="182.0" prefWidth="531.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="74.0">
+                  <GridPane layoutX="23.0" layoutY="74.0" prefHeight="182.0" prefWidth="531.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="80.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="98.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="410.0" minWidth="10.0" prefWidth="201.0" />
@@ -41,14 +41,14 @@
                         <Label text="**********" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
-                  <Label layoutX="8.0" layoutY="21.0" text="Customer Details:">
+                  <Label layoutX="8.0" layoutY="21.0" text="Customer Details:" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="21.0">
                      <font>
                         <Font name="Arial" size="22.0" />
                      </font>
                   </Label>
           
-                  <JFXButton fx:id="editCustomerDetail" layoutX="53.0" layoutY="342.0" onAction="#editCustomerDetail" text="EDIT" textFill="WHITE" ripplerFill="WHITE" buttonType="RAISED"/>
-                  <JFXButton fx:id="backButton" layoutX="356.0" layoutY="342.0" mnemonicParsing="false" onAction="#editCustomerBack" text="Back" textFill="WHITE" ripplerFill="WHITE" buttonType="RAISED" />
+                  <JFXButton fx:id="editCustomerDetail" buttonType="RAISED" layoutX="60.0" layoutY="296.0" onAction="#editCustomerDetail" ripplerFill="WHITE" text="EDIT" textFill="WHITE" />
+                  <JFXButton fx:id="backButton" buttonType="RAISED" layoutX="472.0" layoutY="27.0" mnemonicParsing="false" onAction="#editCustomerBack" ripplerFill="WHITE" text="Back" textFill="WHITE" />
                   
                </children>
                
