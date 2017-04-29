@@ -1057,7 +1057,7 @@ public class TimetableController {
 		for(int i =0;i<7;i++){
 			for(int j =3;j<14;j++)
 			{
-				if(MenuMain.timetable[i][j]==3) //to make new booking
+				if(MenuMain.timetable[i][j]==3)      //to make new booking
 				{
 					MenuMain.timetable[i][j]=2;
 				}

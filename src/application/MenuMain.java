@@ -33,6 +33,8 @@ public class MenuMain extends Application {
             {"#btn50","#btn51","#btn52","#btn53","#btn54","#btn55","#btn56","#btn57","#btn58","#btn59","#btn510"},
             {"#btn60","#btn61","#btn62","#btn63","#btn64","#btn65","#btn66","#btn67","#btn68","#btn69","#btn610"}
            };
+	static int userId;
+	static int premission;
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -90,6 +92,8 @@ public class MenuMain extends Application {
 		loader.setLocation(MenuMain.class.getResource("/application/OwnerMenu.fxml"));
 		Pane Ownermenu = loader.load();
 		Scene scene = new Scene(Ownermenu);
+		Label temp = (Label) scene.lookup("#UID");
+		temp.setText(String.valueOf(userId));
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Owner Menu");
 	}
@@ -175,10 +179,8 @@ public class MenuMain extends Application {
 		System.out.println("1bcd");
 		System.out.println("EMPID is:" + empid);
 		cusSetTimetable(Integer.valueOf(empid));
-		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerBookTimetable.fxml"));
-		
 		Pane Timetable = loader.load();
 		Stage TimetableEdit = new Stage();
 		TimetableEdit.setTitle("Timetable");
@@ -239,7 +241,7 @@ public class MenuMain extends Application {
 //		scene.getStylesheets().add("/application/Timetable.css");
 	}
 	
-public void cusSetTimetable(int empId) throws SQLException {
+    public void cusSetTimetable(int empId) throws SQLException {
 		
 		ResultSet rs = null;
 		Connection LoginConn = null;
@@ -301,6 +303,137 @@ public void cusSetTimetable(int empId) throws SQLException {
 		newBookingEdit.setScene(scene);
 		newBookingEdit.show();
 	}
+	
+	public void showAddEmp() throws IOException{
+		 FXMLLoader loader = new FXMLLoader();
+		 loader.setLocation(MenuMain.class.getResource("/application/addEmployee.fxml"));
+		 Pane addEmployee = loader.load();
+		 Scene scene = new Scene(addEmployee);
+		 primaryStage.setScene(scene);
+		 primaryStage.setTitle("Add Employee");
+	}
+	
+	public void showEmpMenu() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/EmployeeMenu.fxml"));
+		Pane EmpMenu = loader.load();
+		Scene scene = new Scene(EmpMenu);
+		primaryStage.setScene(scene);
+		EmployeeMenuController controller = loader.getController();
+		GetEmployer getEmployer = new GetEmployer();
+		controller.setGetEmployer(getEmployer);
+		primaryStage.setTitle("Employee Menu");
+	}
+	
+	public void showAddEmpConfirm() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/AddEmployeeConfirm.fxml"));
+		Pane AddEmpConfirm = loader.load();
+		Scene scene = new Scene(AddEmpConfirm);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Confirm");
+	}
+	
+	public void showTimetable(String empid) throws IOException, NumberFormatException, SQLException{
+		setTimetable(Integer.valueOf(empid));
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
+		Pane Timetable = loader.load();
+		Stage TimetableEdit = new Stage();
+		TimetableEdit.setTitle("Timetable");
+		TimetableEdit.initModality(Modality.WINDOW_MODAL);
+		TimetableEdit.initOwner(primaryStage);
+		Scene scene = new Scene(Timetable);
+		Label temp = (Label) scene.lookup("#IdLabel");
+		temp.setText(empid);
+		
+		for(int i = 0;i<=6;i++)
+		{
+			for(int j = 0;j<=10;j++)
+			{
+				if(timetable[i][j+1]==1)
+				{
+					JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
+					Btemp.setText("Avalible");
+					Btemp.setStyle("-fx-background-color:lightgreen");
+				}
+				else if(timetable[i][j+1]==0)
+				{
+					JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
+		    		Btemp.setText("Unavalible");
+		    		Btemp.setStyle("-fx-background-color:red");
+				}
+				else if(timetable[i][j+1]==2)
+				{
+					 JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
+			    	 Btemp.setText("Booked");
+			    	 Btemp.setStyle("-fx-background-color:yellow");
+					}
+			}
+		}
+		TimetableEdit.setScene(scene);
+		TimetableEdit.show();
+	}
+	
+	public void setTimetable(int empId) throws SQLException {
+		 		
+		 		ResultSet rs = null;
+		 		Connection LoginConn = null;
+		 		Statement st = null;
+		 		
+		 		int i = 0;
+		 		LoginConn = connection.connectDB();                              // connect to the SQL
+		 		st = LoginConn.createStatement();                                // create statement of it
+		 		
+		 		rs = st.executeQuery("SELECT * FROM TIMETABLE WHERE EMP_UID = " + empId);
+		 
+		 		while (rs.next()) {
+		 
+		 			int x = 0;
+					//timetable[i][x] = rs.getInt("Day");
+		 			timetable[i][x] = rs.getInt("WEEKDAYS");
+		 			x = x + 1;
+		//			timetable[i][x] = rs.getInt("Month");
+		//			x++;
+		//			timetable[i][x] = rs.getInt("Year");
+		//			x++;
+		 			timetable[i][x] = rs.getInt("T0800");
+		 			x++;
+		 			timetable[i][x] = rs.getInt("T0900");
+		 			x++;
+		 			timetable[i][x] = rs.getInt("T1000");
+		 			x++;
+		 			timetable[i][x] = rs.getInt("T1100");
+		 			x++;
+		 			timetable[i][x] = rs.getInt("T1200");
+		 			x++;
+		 			timetable[i][x] = rs.getInt("T1300");
+		 			x++;
+		 			timetable[i][x] = rs.getInt("T1400");
+		 			x++;
+		 			timetable[i][x] = rs.getInt("T1500");
+		 			x++;
+		 			timetable[i][x] = rs.getInt("T1600");
+		 			x++;
+		 			timetable[i][x] = rs.getInt("T1700");
+		 			x++;
+		 			timetable[i][x] = rs.getInt("T1800");
+		 			i = i+1;
+		 		}
+		 	}
+	
+	public void showNewBooking() throws IOException{
+		 		FXMLLoader loader = new FXMLLoader();
+		 		loader.setLocation(MenuMain.class.getResource("/application/NewBooking.fxml"));
+		 		Pane newBooking = loader.load();
+		 		Stage newBookingEdit = new Stage();
+		 		newBookingEdit.setTitle("User select");
+		 		newBookingEdit.initModality(Modality.WINDOW_MODAL);
+		 		newBookingEdit.initOwner(primaryStage);
+		 		Scene scene = new Scene(newBooking);
+		 		newBookingEdit.setScene(scene);
+		 		newBookingEdit.show();
+		}
 	
 	
 	
