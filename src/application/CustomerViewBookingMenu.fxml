@@ -60,6 +60,8 @@
 <!--                  <JFXButton fx:id="checkTimetable" layoutX="202.0" layoutY="425.0" onAction="#CheckTimetable" style="-fx-background-color: #646464;" text="CheckTimeTable" textFill="WHITE" />
                   <JFXButton fx:id="makeBook" layoutX="22.0" layoutY="425.0" onAction="#MakeBooking" prefHeight="27.0" prefWidth="103.0" style="-fx-background-color: #646464;" text="MakeBooking" textFill="WHITE" />  -->
                </children>
+              <JFXButton fx:id="Back" buttonType="RAISED" layoutX="241.0" layoutY="16.0" onAction="#Back" prefHeight="25.0" prefWidth="77.0" ripplerFill="WHITE" text="Back" textFill="WHITE" />
+               
             </AnchorPane>
          </items>
       </SplitPane>
