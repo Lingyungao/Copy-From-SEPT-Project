@@ -33,6 +33,9 @@ public class CustomerBookingMenuController {
 
     @FXML
     private Label empPhone;
+    
+    @FXML
+    private Label serviceIfo;
 
     @FXML
     private JFXButton editDetail;
