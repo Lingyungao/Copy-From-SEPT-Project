@@ -41,8 +41,8 @@
             <PasswordField fx:id="cusPassConfField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <Button layoutX="47.0" layoutY="275.0" mnemonicParsing="false" onAction="#saveChange" text="Save" />
-      <Button fx:id="cusBackButton" layoutX="397.0" layoutY="275.0" mnemonicParsing="false" onAction="#cancleChange" text="Back" />
+      <JFXButton layoutX="47.0" buttonType="RAISED" layoutY="275.0" mnemonicParsing="false" onAction="#saveChange" text="Save" ripplerFill="WHITE" textFill="WHITE" />
+      <JFXButton fx:id="cusBackButton" buttonType="RAISED" layoutX="397.0" layoutY="275.0" mnemonicParsing="false" onAction="#cancleChange" text="Back" ripplerFill="WHITE" textFill="WHITE" />
       <Text fx:id="cusInfoText" layoutX="14.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="457.0">
          <font>
             <Font size="10.0" />

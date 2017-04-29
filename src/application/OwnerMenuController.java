@@ -64,6 +64,7 @@ public class OwnerMenuController{
     void viewEmployee(ActionEvent event) {
     	try {
 			a.showEmpMenu();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

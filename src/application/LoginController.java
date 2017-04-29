@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -49,8 +51,8 @@ public class LoginController {
 	    }
 
 	    @FXML
-	    void register(ActionEvent event) {
-
+	    void register(ActionEvent event) throws IOException {
+	    	   	a.showRegister(); 
 	    }
 
 }

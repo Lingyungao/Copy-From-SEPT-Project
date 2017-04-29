@@ -51,8 +51,8 @@
                         <Font name="Arial" size="22.0" />
                      </font>
                   </Label>
-                  <JFXButton fx:id="editTimetable" layoutX="14.0" layoutY="323.0" onAction="#editTimetable" style="-fx-font-size: 12;" text="VIEW&amp;EDIT TIMETABLE" textFill="WHITE" />
-                  <JFXButton fx:id="editDetail" layoutX="14.0" layoutY="276.0" onAction="#editDetail" style="-fx-font-size: 12;" text="EDIT EMPLOYEE DETAIL" textFill="WHITE" />
+                  <JFXButton fx:id="editTimetable" layoutX="14.0" layoutY="276.0" onAction="#editTimetable" style="-fx-font-size: 12;" text="VIEW&amp;EDIT TIMETABLE" textFill="WHITE" />
+                  <JFXButton fx:id="editDetail" disable="true" layoutX="14.0" layoutY="350.0" onAction="#editDetail" style="-fx-font-size: 12;" text="EDIT EMPLOYEE DETAIL" textFill="WHITE" visible="false" />
                   <JFXButton fx:id="makeBook" buttonType="RAISED" layoutX="14.0" layoutY="230.0" onAction="#MakeBook" ripplerFill="WHITE" style="-fx-font-size: 12px;" stylesheets="@application.css" text="MAKE BOOKING" textAlignment="CENTER" textFill="WHITE" />
                   <JFXButton fx:id="Back" buttonType="RAISED" layoutX="241.0" layoutY="16.0" onAction="#Back" prefHeight="25.0" prefWidth="77.0" ripplerFill="WHITE" text="Back" textFill="WHITE">
                      <font>
