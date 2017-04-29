@@ -29,12 +29,14 @@ MenuMain a = new MenuMain();
 	 private void timeView(ActionEvent event) throws Exception {
 
 		a.showCusBookM();
+		//CustomerBookingMenu
 	}
 	
 	@FXML
 	 private void editDetail(ActionEvent event) throws Exception {
 
 		a.showCusDetailM();
+		//CustomerDetailMenu
 		
 	}
 	
@@ -42,7 +44,7 @@ MenuMain a = new MenuMain();
 	 private void BookingView(ActionEvent event) throws Exception {
 
 		a.viewCusBookM();
-		
+		//CustomerViewBookingMenu
 	}
 	
 	

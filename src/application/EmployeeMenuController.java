@@ -112,4 +112,10 @@ public class EmployeeMenuController {
     }
 
 
+
+    @FXML
+    void Back(ActionEvent event) throws IOException {
+    	a.showOwnerM();
+    }
+
 }

@@ -145,13 +145,7 @@ public class CustomerDetailEditController {
 		}
 	}
 	
-	@FXML
-    private void cancleChange() {
-		// get a handle to the stage
-	    Stage stage = (Stage) cusBackButton.getScene().getWindow();
-	    // do what you have to do
-	    stage.close();
-	}
+
 	
 	public static void FirstNameChange(String firstName) throws Exception {
 		//Check the First name is valid or not
