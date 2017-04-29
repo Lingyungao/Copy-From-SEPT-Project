@@ -2,27 +2,13 @@
 
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
-<?import javafx.scene.text.*?>
-
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerMenuController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-       <JFXButton fx:id="TimeView" buttonType="RAISED" layoutX="112.0" layoutY="192.0" onAction="#timeView" prefHeight="88.0" prefWidth="160.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Timetable Viewing And Booking" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </JFXButton>
-             <JFXButton fx:id="BookingView" buttonType="RAISED" layoutX="332.0" layoutY="192.0" onAction="#BookingView" prefHeight="88.0" prefWidth="164.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Check Booking" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </JFXButton>
-             <JFXButton fx:id="EditDetail" buttonType="RAISED" layoutX="222.0" layoutY="293.0" onAction="#editDetail" prefHeight="88.0" prefWidth="180.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Personal Details" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </JFXButton>
+      <JFXButton fx:id="TimeView" layoutX="244.0" layoutY="90.0" text="Timetable Viewing" />
+      <JFXButton fx:id="EditDetail" layoutX="246.0" layoutY="153.0" text="Personal Details" />
    </children>
 </Pane>
