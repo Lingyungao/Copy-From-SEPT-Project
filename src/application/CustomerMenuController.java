@@ -24,7 +24,8 @@ MenuMain a = new MenuMain();
 	
 	@FXML
 	private JFXButton BookingView;
-	
+	@FXML
+	private JFXButton logout;
 	@FXML
 	 private void timeView(ActionEvent event) throws Exception {
 
@@ -43,6 +44,12 @@ MenuMain a = new MenuMain();
 
 		a.viewCusBookM();
 		
+	}
+	
+	@FXML
+	 private void logout(ActionEvent event) throws Exception {
+
+		a.showMainview();
 	}
 	
 	

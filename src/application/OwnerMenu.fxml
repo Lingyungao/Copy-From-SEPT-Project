@@ -34,7 +34,8 @@
             <Font size="17.0" />
          </font>
       </Text>
-      <Text layoutX="414.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner ID and Name" />
-      <Label fx:id="UID" layoutX="414.0" layoutY="59.0" text="Label" />
+      <Text layoutX="414.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner ID and Name" />
+      <Label fx:id="UID" layoutX="414.0" layoutY="82.0" text="Label" />
+      <JFXButton fx:id="logout" buttonType="RAISED" layoutX="450.0" layoutY="30.0" onAction="#logout" ripplerFill="WHITE" text="Log out" textFill="WHITE" />
    </children>
 </Pane>

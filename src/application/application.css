@@ -45,3 +45,6 @@
 	-fx-font-size:20px;
 	-fx-padding:5;		
 }
+#logout{
+		-fx-background-color: red;
+}

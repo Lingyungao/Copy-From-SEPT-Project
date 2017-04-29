@@ -34,6 +34,15 @@ public class OwnerMenuController{
 
     @FXML
     private JFXButton addEmployee;
+    
+	@FXML
+	private JFXButton logout;
+    
+	@FXML
+	 private void logout(ActionEvent event) throws Exception {
+
+		a.showMainview();
+	}
 
     @FXML
     void addEmployee(ActionEvent event) throws IOException {
