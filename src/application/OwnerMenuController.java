@@ -42,6 +42,11 @@ public class OwnerMenuController{
 	 private void logout(ActionEvent event) throws Exception {
 
 		a.showMainview();
+		MenuMain.userId = 0;
+		MenuMain.premission = 0;
+		MenuMain.userName ="";
+		
+		
 	}
 
     @FXML

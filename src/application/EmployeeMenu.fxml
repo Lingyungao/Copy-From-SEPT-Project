@@ -38,12 +38,12 @@
                      <children>
                         <Label text="First Name:" />
                         <Label text="Last Name:" GridPane.rowIndex="1" />
-                        <Label fx:id="firstName" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="firstName" GridPane.columnIndex="1" />
                         <Label text="Phone Number:" GridPane.rowIndex="2" />
-                        <Label fx:id="lastName" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="empPhone" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="empPhone" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label text="Employee ID:" GridPane.rowIndex="3" />
-                        <Label fx:id="empID" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="empID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <Label layoutX="8.0" layoutY="21.0" text="Employee Details:">

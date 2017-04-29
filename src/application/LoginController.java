@@ -35,18 +35,26 @@ public class LoginController {
 	    	
 	    		String user = username.getText();
 	    		String pass = password.getText();
-				if(LoginSystem2.login(user, pass) == 2){
+	    		try{
+	    			int temp = 0;
+	    			temp = LoginSystem2.login(user, pass);
+				if(temp == 2){
 					System.out.println("2");
                     a.showCusM();
 				}
-				if(LoginSystem2.login(user, pass) == 3){
+				else if(temp == 3){
 					System.out.println("3");
 				    a.showOwnerM();
 				}
-				if(LoginSystem2.login(user, pass) == 1){
+				else if(temp == 1){
 					System.out.println("1");
 //					a.showFail();
 				}
+	    		}
+	    		catch(NullPointerException NE)
+	    		{
+	    			System.out.println("The account is not exist or you do not register an account");
+	    		}
 
 	    }
 

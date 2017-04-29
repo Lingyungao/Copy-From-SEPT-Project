@@ -67,7 +67,7 @@ public class CustomerDetailController {
 	
 	@FXML
 	 private void editCustomerDetail() throws Exception {
-		a.showCusEditM();
+		a.showCusEditM(editCustomerDetail);
 	}
 	
 	 @FXML

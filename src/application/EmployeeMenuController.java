@@ -93,8 +93,16 @@ public class EmployeeMenuController {
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException, NumberFormatException, SQLException {
+    	try{
     	Selection = 1;
-    	a.showTimetable(empID.getText());
+    	a.showTimetable(empID.getText(),editTimetable);
+
+    	}
+    	catch(NumberFormatException NFE)
+    	{
+    		System.out.println("please select one of the employee");
+    		a.showWarming(editTimetable);
+    	}
     }
     
     
@@ -115,6 +123,7 @@ public class EmployeeMenuController {
 
     @FXML
     void Back(ActionEvent event) throws IOException {
+    	EmployeeMenuController.Selection = 0;
     	a.showOwnerM();
     }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="153.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WarmingController">
+   <children>
+      <Label layoutX="122.0" layoutY="28.0" text="Please select one of the person" />
+      <JFXButton fx:id="Close" layoutX="185.0" layoutY="77.0" onAction="#CloseW" text="Ok" />
+   </children>
+</AnchorPane>

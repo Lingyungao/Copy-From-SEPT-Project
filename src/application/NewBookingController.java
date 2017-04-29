@@ -1,7 +1,9 @@
 package application;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
@@ -10,6 +12,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 public class NewBookingController {
 	private String regNumOnly = "^[0-9]+$";
 	private static Connection LoginConn = null;
@@ -32,17 +35,34 @@ public class NewBookingController {
     
     public static String tempService;
     @FXML
-    void goTimetable(ActionEvent event) throws Exception{
+    void goTimetable(ActionEvent event) throws NumberFormatException, IOException, SQLException{
     	userIdCheck = userId.getText();
     	tempService = service.getText();
     	Boolean passCheck = false;
-    	int userIdCheck2 = Integer.parseInt(userIdCheck);
+    	int userIdCheck2 = 0;
+    	int userCount = 0;
+    	
+    	
+    	try{
+    	userIdCheck2 = Integer.parseInt(userIdCheck);
+    	}
+    	catch(NumberFormatException NFE)
+    	{
+    		errorMsg.setText("Please enter the number on Customer ID.");
+    	}
+    	try{
 		LoginConn = connection.connectDB();
 		st = LoginConn.createStatement();
 		
 		rs = st.executeQuery("SELECT COUNT(USER_ID) FROM USERS");
+		
+		userCount = rs.getInt("COUNT(USER_ID)");
+    	}
+    	catch(SQLException SE)
+    	{
+    		errorMsg.setText("Invaild input for Customer ID");
+    	}
 
-		int userCount = rs.getInt("COUNT(USER_ID)");
     	
     	if(userIdCheck.matches(regNumOnly) == false){
     		errorMsg.setText("Customer ID only allowed to input numbers.");
@@ -56,7 +76,14 @@ public class NewBookingController {
     	}
     	else{
     		tempService = service.getText();
-    		a.showTimetable(EmployeeMenuController.tempEmpId);
+    		try{
+    		a.showTimetable(EmployeeMenuController.tempEmpId,goTimetable);
+    		}
+    		
+        	catch(NumberFormatException NFE){
+        		System.out.println("please select one of the employee");
+        		a.showWarming(goTimetable);
+        	}
     	}	
     }
 }

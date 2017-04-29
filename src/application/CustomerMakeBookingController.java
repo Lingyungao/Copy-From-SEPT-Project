@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 
 
 public class CustomerMakeBookingController {
-	private String regNumOnly = "^[0-9]+$";
+	private String regNumOnly = "^[0-9]+";
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
 	private static Statement st = null;
@@ -57,7 +57,13 @@ public class CustomerMakeBookingController {
     		 errorMsg.setText("Please enter the service.");
     	}else{
     		tempService = service.getText();
-    		a.cusShowTimetable(CustomerBookingMenuController.tempEmpId);
+    		try{
+    		a.showTimetable(CustomerBookingMenuController.tempEmpId,goTimetable);
+    		}
+        	catch(NumberFormatException NFE){
+        		System.out.println("please select one of the employee");
+        		a.showWarming(goTimetable);
     	}	
     }
+}
 }

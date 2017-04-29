@@ -2,6 +2,7 @@ package application;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class LoginSystem2 {
@@ -15,7 +16,7 @@ public class LoginSystem2 {
 	private static Statement st = null;
 	
 	
-	public static int login(String inputLogUser, String inputLogPass) throws Exception {
+	public static int login(String inputLogUser, String inputLogPass) throws SQLException {
 
 
 			// Start functions
@@ -41,15 +42,18 @@ public class LoginSystem2 {
 
 			if (user.equals(inputLogUser) && pass.equals(inputLogPass)) {
 				// compare with database. have to same both.
+				
 				if (permission == 1) {
 					System.out.println("Login Succesful");
 					MenuMain.userId = userId;
 					MenuMain.premission = permission;
+					MenuMain.userName = user;
 					return 2;
 				} else if (permission == 2) {
 					System.out.println("Login Succesful");
 					MenuMain.userId = userId;
 					MenuMain.premission = permission;
+					MenuMain.userName = user;
 					return 3;
 				} else {	
 					System.out.println("Invalid Input!");

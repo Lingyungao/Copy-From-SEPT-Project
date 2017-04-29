@@ -1051,9 +1051,7 @@ public class TimetableController {
     @FXML
     void save(ActionEvent event) throws SQLException, IOException {
     	MenuMain a = new MenuMain();
-    	a.showCon();
-	    Stage stage = (Stage) save.getScene().getWindow();
-	    stage.close();
+    	a.showCon(save);
 //		
 //		Connection LoginConn = null;
 //		Statement st = null;
