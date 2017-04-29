@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="318.0" prefWidth="448.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
+   <children>
+      <Pane layoutX="19.0" layoutY="17.0" prefHeight="284.0" prefWidth="410.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <JFXTextField fx:id="username" alignment="CENTER" layoutX="85.0" layoutY="55.0" prefHeight="29.0" prefWidth="240.0" promptText="Username" />
+            <JFXPasswordField fx:id="password" alignment="CENTER" layoutX="85.0" layoutY="103.0" prefHeight="29.0" prefWidth="240.0" promptText="Password" />
+            <JFXButton fx:id="login" buttonType="RAISED" layoutX="85.0" layoutY="166.0" onAction="#login" prefHeight="29.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="register" buttonType="RAISED" layoutX="224.0" layoutY="166.0" onAction="#register" prefHeight="29.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" stylesheets="@application.css" text="Sign up" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></JFXButton>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>

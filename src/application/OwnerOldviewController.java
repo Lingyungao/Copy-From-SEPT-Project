@@ -1,4 +1,6 @@
-package test;
+
+
+package application;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,30 +10,36 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import test.User;
+import application.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 
-public class SampleController2 implements Initializable {
+public class OwnerOldviewController{
+	MenuMain a = new MenuMain();
 
     @FXML
     private TableView cuView;
     @FXML
     private TableColumn cuname;
     @FXML
-    private TableColumn cuid;
-    @FXML
     private TableColumn cudata;
+    @FXML
+    private JFXButton Back;
+    @FXML
+    private GridPane DetailGrid;
     @FXML
     private Label deNa1;
     @FXML
@@ -51,31 +59,42 @@ public class SampleController2 implements Initializable {
     @FXML
     private Label deBID1;
     @FXML
-    private Button btSwitch;
+    private Button SWITCH_CUSTOMERVIEWALL;
     @FXML
-    private Button viewSwitch;
+    private Button ADDEMPLOYEESwitch;
+    @FXML
+    private Button EMPEDITSwitch;
+    @FXML
+    private Button EMPTIMETABLESwitch;
+    @FXML
+    private Button SWITCH_CUSTOMEROLDVIEW;
+    @FXML
+    private Label warning;
+    
     private static Connection LoginConn = null;
     private static Statement st = null;
     private static ResultSet rs = null;
-
+    ObservableList<User> list = FXCollections.observableArrayList();
     public void showList() throws SQLException {
         int i = 0;
 
-        ObservableList<User> list = FXCollections.observableArrayList();
         LoginConn = connection.connectDB(); // connect to the SQL
         st = LoginConn.createStatement(); // create statement of it
+        
         rs = st.executeQuery(
-				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid");
+		"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 0");
 
         while (rs.next()) {
             User user = new User();// 构建值对象
-            user.setUsername(rs.getString("FIRST_NAME"));
+            String userFirstName = rs.getString("FIRST_NAME");
+            String userSecondName = rs.getString("LAST_NAME");
+ 
+            user.setUsername(userFirstName+" "+userSecondName);
             user.setUserSecName(rs.getString("LAST_NAME"));
             user.setID(rs.getInt("USER_ID"));
             int dayID = rs.getInt("DAY");
-            int monthID = rs.getInt("Month");
-            int yearID = rs.getInt("Year");
-            user.setData(dayID + "/" + monthID + "/" + yearID);
+            
+            user.setData(user.defWeekdaysName(dayID));
             user.setBookID(rs.getInt("BOOK_ID"));
             user.setEmpName(rs.getString("EMP_FIRST"));
             user.setEmpID(rs.getInt("EMP_ID"));
@@ -83,11 +102,15 @@ public class SampleController2 implements Initializable {
 
             i++;
             cuname.setCellValueFactory(new PropertyValueFactory("username"));// 映射
-            cuid.setCellValueFactory(new PropertyValueFactory("ID"));
+            //cuid.setCellValueFactory(new PropertyValueFactory("ID"));
             cudata.setCellValueFactory(new PropertyValueFactory("data"));
-            list.add(user); // list添加值对象
+            list.add(user);// list添加值对象
         }
+        System.out.println(list.size());
+        if(list.size()!=0){
 		showEmpDetails(list.get(0));
+        }else		
+        showEmpDetails(null);
 
         cuView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
@@ -115,39 +138,18 @@ public class SampleController2 implements Initializable {
 
         } else {
             // Person is null, remove all the text.
-            deNa1.setText("");
-            deNa2.setText("");
-            deID1.setText("");
-            deID2.setText("");
-            deDa1.setText("");
-            deBID1.setText("");
-            deTi1.setText("");
-            deTi2.setText("");
-
+        	DetailGrid.setVisible(false);
+            warning.setVisible(true);
         }
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        btSwitch.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Test.switchScene(Test.SCENE_DEMO);
-            }
-        });
-        viewSwitch.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Test.switchScene(Test. SCENE_SAMPLE);
-            }
-        });
-        try {
-            showList();
-
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    @FXML
+    void Back(ActionEvent event) throws IOException {
+    	a.showOwnerM();
     }
+    public void initialize() throws SQLException {
+    	showList();
+    	list.add(null);
+    }
+    
 }

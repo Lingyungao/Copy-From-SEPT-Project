@@ -1,5 +1,6 @@
-package test;
-public class User {
+package application;
+
+public class CustomerViewBooking {
     private String username;
     private String lastname;
     private int ID;
