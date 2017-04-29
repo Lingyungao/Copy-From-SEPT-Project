@@ -1,6 +1,17 @@
 package application;
 
 import java.io.IOException;
+
+import javafx.application.Application;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Label;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,21 +19,11 @@ import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
 
-import javafx.application.Application;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
-
 public class MenuMain extends Application {
     private static Stage primaryStage;
     private static Pane mainLayout;
-	static int[][] timetable = new int[31][15];
+    
+    static int[][] timetable = new int[31][15];
 	String[][] btnIdSet = {
             {"#btn00","#btn01","#btn02","#btn03","#btn04","#btn05","#btn06","#btn07","#btn08","#btn09","#btn010"},
             {"#btn10","#btn11","#btn12","#btn13","#btn14","#btn15","#btn16","#btn17","#btn18","#btn19","#btn110"},
@@ -32,9 +33,6 @@ public class MenuMain extends Application {
             {"#btn50","#btn51","#btn52","#btn53","#btn54","#btn55","#btn56","#btn57","#btn58","#btn59","#btn510"},
             {"#btn60","#btn61","#btn62","#btn63","#btn64","#btn65","#btn66","#btn67","#btn68","#btn69","#btn610"}
            };
-	static int userId;
-	static int premission;
-    
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -92,8 +90,6 @@ public class MenuMain extends Application {
 		loader.setLocation(MenuMain.class.getResource("/application/OwnerMenu.fxml"));
 		Pane Ownermenu = loader.load();
 		Scene scene = new Scene(Ownermenu);
-		Label temp = (Label) scene.lookup("#UID");
-		temp.setText(String.valueOf(userId));
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Owner Menu");
 	}
@@ -107,42 +103,81 @@ public class MenuMain extends Application {
 		primaryStage.setTitle("Customer Menu");
 	}
 	
-	public void showAddEmp() throws IOException{
+	public void showCusDetailM() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/addEmployee.fxml"));
-		Pane addEmployee = loader.load();
-		Scene scene = new Scene(addEmployee);
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Add Employee");
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailMenu.fxml"));
+		Pane showCusDetailPane= loader.load();
+		Stage showCusDetailStage = new Stage();
+		showCusDetailStage.setTitle("Edit Detail");
+		showCusDetailStage.initModality(Modality.WINDOW_MODAL);
+		showCusDetailStage.initOwner(primaryStage);
+		Scene scene = new Scene(showCusDetailPane);
+		showCusDetailStage.setScene(scene);
+		showCusDetailStage.show();
+
+
 	}
 	
-	public void showEmpMenu() throws IOException{
+	public void showCusEditM() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/EmployeeMenu.fxml"));
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailEdit.fxml"));
+		Pane editCusDetailPane= loader.load();
+		Stage editCusDetailStage = new Stage();
+		editCusDetailStage.setTitle("Register");
+		editCusDetailStage.initModality(Modality.WINDOW_MODAL);
+		editCusDetailStage.initOwner(primaryStage);
+		Scene scene = new Scene(editCusDetailPane);
+		editCusDetailStage.setScene(scene);
+		editCusDetailStage.show();
+		
+	}
+	
+	public void showCusBookM() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerBookingMenu.fxml"));
 		Pane EmpMenu = loader.load();
 		Scene scene = new Scene(EmpMenu);
 		primaryStage.setScene(scene);
-		EmployeeMenuController controller = loader.getController();
-		GetEmployer getEmployer = new GetEmployer();
+		CustomerBookingMenuController controller = loader.getController();
+		CustomerBookGetEmployer getEmployer = new CustomerBookGetEmployer();
         controller.setGetEmployer(getEmployer);
-		primaryStage.setTitle("Employee Menu");
+		primaryStage.setTitle("Customer Booking Menu");
+		
 	}
 	
-	public void showAddEmpConfirm() throws IOException{
+	public void viewCusBookM() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/AddEmployeeConfirm.fxml"));
-		Pane AddEmpConfirm = loader.load();
-		Scene scene = new Scene(AddEmpConfirm);
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerViewBookingMenu.fxml"));
+		Pane CusViewBookMenu = loader.load();
+		Scene scene = new Scene(CusViewBookMenu);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Confirm");
+		CustomerViewBookingMenuController controller = loader.getController();
+		CustomerCheckGetBooking CusGetBooking = new CustomerCheckGetBooking();
+        controller.setGetCusBooking(CusGetBooking);
+		primaryStage.setTitle("Customer Booking Menu");
+		
 	}
 	
+	public void CusMakeBookM() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerMakeBooking.fxml"));
+		Pane CusMakeBookPane= loader.load();
+		Stage CusMakeBookStage = new Stage();
+		CusMakeBookStage.setTitle("Customer Make Booking");
+		CusMakeBookStage.initModality(Modality.WINDOW_MODAL);
+		CusMakeBookStage.initOwner(primaryStage);
+		Scene scene = new Scene(CusMakeBookPane);
+		CusMakeBookStage.setScene(scene);
+		CusMakeBookStage.show();
+	}
 	
-	public void showTimetable(String empid) throws IOException, NumberFormatException, SQLException{
-		setTimetable(Integer.valueOf(empid));
+	public void cusShowTimetable(String empid) throws IOException, NumberFormatException, SQLException{
+		System.out.println("1bcd");
+		System.out.println("EMPID is:" + empid);
+		cusSetTimetable(Integer.valueOf(empid));
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerBookTimetable.fxml"));
 		
 		Pane Timetable = loader.load();
 		Stage TimetableEdit = new Stage();
@@ -151,11 +186,9 @@ public class MenuMain extends Application {
 		TimetableEdit.initOwner(primaryStage);
 		
 		Scene scene = new Scene(Timetable);
-		Label temp = (Label) scene.lookup("#IdLabel");
-		temp.setText(empid);
-		
-
-		
+//		Label temp = (Label) scene.lookup("#IdLabel");
+//		temp.setText(empid);
+//		
 //		Label temp1 = (Label) scene.lookup("#dayB");
 //		temp1.setText(String.valueOf(timetable[0][0]));
 //		
@@ -206,7 +239,7 @@ public class MenuMain extends Application {
 //		scene.getStylesheets().add("/application/Timetable.css");
 	}
 	
-	public void setTimetable(int empId) throws SQLException {
+public void cusSetTimetable(int empId) throws SQLException {
 		
 		ResultSet rs = null;
 		Connection LoginConn = null;
@@ -221,8 +254,13 @@ public class MenuMain extends Application {
 		while (rs.next()) {
 
 			int x = 0;
+			//timetable[i][x] = rs.getInt("Day");
 			timetable[i][x] = rs.getInt("WEEKDAYS");
 			x = x + 1;
+//			timetable[i][x] = rs.getInt("Month");
+//			x++;
+//			timetable[i][x] = rs.getInt("Year");
+//			x++;
 			timetable[i][x] = rs.getInt("T0800");
 			x++;
 			timetable[i][x] = rs.getInt("T0900");
@@ -248,11 +286,9 @@ public class MenuMain extends Application {
 		}
 	}
 	
-	
-	
-	public void showNewBooking() throws IOException{
+	public void cusShowNewBooking() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/NewBooking.fxml"));
+		loader.setLocation(MenuMain.class.getResource("/application/CustomerMakeBooking.fxml"));
 		
 		Pane newBooking = loader.load();
 		Stage newBookingEdit = new Stage();
@@ -265,7 +301,6 @@ public class MenuMain extends Application {
 		newBookingEdit.setScene(scene);
 		newBookingEdit.show();
 	}
-	
 	
 	
 	
