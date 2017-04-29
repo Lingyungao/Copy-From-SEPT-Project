@@ -1129,7 +1129,7 @@ public class TimetableController {
 						//rs2.setInt(5, MenuMain.timetable[i][1]);
 						//rs2.setInt(6, MenuMain.timetable[i][2]);
 						rs2.setInt(5, 7+j);
-						rs2.setInt(6, MenuMain.timetable[i][2] + 1);
+						rs2.setInt(6, 8+j);
 						rs4.setInt(1, bookCount);
 						rs4.setString(2, NewBookingController.tempService);
 						rs2.addBatch();
