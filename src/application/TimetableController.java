@@ -1054,15 +1054,15 @@ public class TimetableController {
 		LoginConn = connection.connectDB();                              // connect to the SQL
 		st = LoginConn.createStatement();  
 		
-		for(int i =0;i<7;i++){
-			for(int j =3;j<14;j++)
-			{
-				if(MenuMain.timetable[i][j]==3)      //to make new booking
-				{
-					MenuMain.timetable[i][j]=2;
-				}
-			}
-		}
+//		for(int i =0;i<7;i++){
+//			for(int j =3;j<14;j++)
+//			{
+//				if(MenuMain.timetable[i][j]==3) //to make new booking
+//				{
+//					MenuMain.timetable[i][j]=2;
+//				}
+//			}
+//		}
 		
 		
 		
@@ -1077,14 +1077,6 @@ public class TimetableController {
 
 		
 		for (int i = 0; i < 7; i++) {
-//			for(int j = 3; j < 14; j++)
-//				{
-//				if(MenuMain.timetable[i][j]==3) //to make new booking
-//				{
-//					MenuMain.timetable[i][j]=2;
-//				}
-//				rs.setInt(j-2, MenuMain.timetable[i][j]);
-//				}
 			
 			rs.setInt(1, MenuMain.timetable[i][1]);
 			rs.setInt(2, MenuMain.timetable[i][2]);
@@ -1098,6 +1090,14 @@ public class TimetableController {
 			rs.setInt(10, MenuMain.timetable[i][10]);
 			rs.setInt(11, MenuMain.timetable[i][11]);
 			
+			for(int j = 1; j < 12; j++)
+			{
+			if(MenuMain.timetable[i][j]==3) //to make new booking
+			{
+				rs.setInt(j, MenuMain.timetable[i][j] - 1);
+			}
+			}
+		
 		    rs.setInt(12, MenuMain.timetable[i][0]);
 			rs.setString(13, EmployeeMenuController.tempEmpId);
 //			    rs.setInt(16, MenuMain.timetable[i][16]);
@@ -1117,9 +1117,9 @@ public class TimetableController {
     		 
     		 for (int i = 0; i < 7; i++) {
     			 System.out.println("");
-    			 for(int j=3; j < 15;j++){
+    			 for(int j=1; j < 12;j++){
     				 System.out.print(MenuMain.timetable[i][j] + " ");
-    				 if(MenuMain.timetable[i][j] == 2){
+    				 if(MenuMain.timetable[i][j] == 3){
     					 System.out.println("find");
     		    		 bookCount = bookCount + 1;
     					rs2.setInt(1, bookCount );
@@ -1128,8 +1128,8 @@ public class TimetableController {
 						rs2.setInt(4, MenuMain.timetable[i][0]);
 						//rs2.setInt(5, MenuMain.timetable[i][1]);
 						//rs2.setInt(6, MenuMain.timetable[i][2]);
-						rs2.setInt(5, MenuMain.timetable[i][j]);
-						rs2.setInt(6, MenuMain.timetable[i][2] + 1);
+						rs2.setInt(5, 7+j);
+						rs2.setInt(6, 8+j);
 						rs4.setInt(1, bookCount);
 						rs4.setString(2, NewBookingController.tempService);
 						rs2.addBatch();
