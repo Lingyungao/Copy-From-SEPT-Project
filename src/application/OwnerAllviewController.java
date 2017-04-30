@@ -73,6 +73,7 @@ public class OwnerAllviewController {
 	private static Connection LoginConn = null;
 	private static Statement st = null;
 	private static ResultSet rs = null;
+	private static ResultSet finder = null;
 
 	public void showList() throws SQLException {
 		int i = 0;
@@ -81,7 +82,8 @@ public class OwnerAllviewController {
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
 		rs = st.executeQuery(
-				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid");
+				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 1");
+				//"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid");
 		while (rs.next()) {
 			User user = new User();// create object
 			String userFirstName = rs.getString("FIRST_NAME");
@@ -104,15 +106,16 @@ public class OwnerAllviewController {
 			list.add(user); 
 		}
 		showEmpDetails(list.get(0));
-
+        //get user attention
 		cuView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
 			@Override
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 				showEmpDetails((User) newValue);
 			}
 		});
-        //set list to table
-
+		
+        
+		//set list to table
 		cuView.setItems(list); 
 	}
 	//show detail information when check person
@@ -145,5 +148,6 @@ public class OwnerAllviewController {
 	public void initialize() throws SQLException {
 		showList();
 	}
+
 
 }
