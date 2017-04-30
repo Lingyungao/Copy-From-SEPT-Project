@@ -28,6 +28,7 @@ public class TimetableController {
 	// int[][] timetable = new int[31][15];
 	int[][] daystable = new int[100][13];
 
+	//store the all of the button id 
 	String[][] btnIdSet = {
 			{ "btn00", "btn01", "btn02", "btn03", "btn04", "btn05", "btn06", "btn07", "btn08", "btn09", "btn010" },
 			{ "btn10", "btn11", "btn12", "btn13", "btn14", "btn15", "btn16", "btn17", "btn18", "btn19", "btn110" },
@@ -36,122 +37,6 @@ public class TimetableController {
 			{ "btn40", "btn41", "btn42", "btn43", "btn44", "btn45", "btn46", "btn47", "btn48", "btn49", "btn410" },
 			{ "btn50", "btn51", "btn52", "btn53", "btn54", "btn55", "btn56", "btn57", "btn58", "btn59", "btn510" },
 			{ "btn60", "btn61", "btn62", "btn63", "btn64", "btn65", "btn66", "btn67", "btn68", "btn69", "btn610" } };
-	String weekdaysName;
-	int dateCount;
-	String first;
-	String last;
-
-	// public JFXButton setColor(JFXButton jfxbutton){
-	//
-	// for(int i = 0; i <= 6;i++)
-	// {
-	// for(int j = 0; j <= 10; j++)
-	// {
-	// if(jfxbutton.getId().equals(btnIdSet[i][j]))
-	// {
-	// if(timetable[i][j+1]==0)
-	// {
-	// jfxbutton.setText("Unavalible");
-	// jfxbutton.setStyle("-fx-background-color:red");
-	//// System.out.println(timetable[i][j+1] + " " + i + " " + j);
-	//
-	// }
-	// else if(timetable[i][j+1]==1)
-	// {
-	// timetable[i][j+1] = 1;
-	// jfxbutton.setText("Avalible");
-	// jfxbutton.setStyle("-fx-background-color:lightgreen");
-	//// System.out.println(timetable[i][j+1] + " " + i + " " + j);
-	// }
-	// }
-	// }
-	// }
-	// return jfxbutton;
-	// }
-	//
-
-	public void weekdaysDef(int weekdays) { // Change 1~7 to Mon~Sun
-
-		switch (weekdays) {
-		case 1: {
-			weekdaysName = "Mon";
-			break;
-		}
-		case 2: {
-			weekdaysName = "Tue";
-			break;
-		}
-		case 3: {
-			weekdaysName = "Wed";
-			break;
-		}
-		case 4: {
-			weekdaysName = "Thu";
-			break;
-		}
-		case 5: {
-			weekdaysName = "Fri";
-			break;
-		}
-		case 6: {
-			weekdaysName = "Sat";
-			break;
-		}
-		case 7: {
-			weekdaysName = "Sun";
-			break;
-		}
-
-		}
-
-	}
-
-	// public void setArray(int empId) throws SQLException { //Load the
-	// information from the database and store in the matrix
-	// int i = 0;
-	// LoginConn = connection.connectDB(); // connect to the SQL
-	// st = LoginConn.createStatement(); // create statement of it
-	//
-	// rs = st.executeQuery("SELECT * FROM TIMETABLE WHERE EMP_UID = " + empId);
-	//
-	// while (rs.next()) {
-	//
-	// int x = 0;
-	// timetable[i][x] = rs.getInt("Day");
-	// x = x + 1;
-	// timetable[i][x] = rs.getInt("Month");
-	// x++;
-	// timetable[i][x] = rs.getInt("Year");
-	// x++;
-	// timetable[i][x] = rs.getInt("T0800");
-	// x++;
-	// timetable[i][x] = rs.getInt("T0900");
-	// x++;
-	// timetable[i][x] = rs.getInt("T1000");
-	// x++;
-	// timetable[i][x] = rs.getInt("T1100");
-	// x++;
-	// timetable[i][x] = rs.getInt("T1200");
-	// x++;
-	// timetable[i][x] = rs.getInt("T1300");
-	// x++;
-	// timetable[i][x] = rs.getInt("T1400");
-	// x++;
-	// timetable[i][x] = rs.getInt("T1500");
-	// x++;
-	// timetable[i][x] = rs.getInt("T1600");
-	// x++;
-	// timetable[i][x] = rs.getInt("T1700");
-	// x++;
-	// timetable[i][x] = rs.getInt("T1800");
-	// i = i+1;
-	// dateCount = i;
-	// }
-	// rs2 = st.executeQuery("SELECT * FROM EMPLOYEE WHERE EMP_UID = " + empId);
-	// first = rs2.getString("EMP_FIRST");
-	// last = rs2.getString("EMP_LAST");
-	// }
-
 	@FXML
 	private JFXButton btn21;
 
@@ -387,19 +272,22 @@ public class TimetableController {
 	private JFXButton save;
 
 	@FXML
+	//make the every button do their right thing
+	//If is add time just Av/Un,nothing for Booked
+	//If is making booking just Av/NB,nothing for Un & Booked
 	private void edit(ActionEvent event) throws IOException {
 		JFXButton x = (JFXButton) event.getSource();
-		if (EmployeeMenuController.Selection == 1) {
-			for (int i = 0; i <= 6; i++) {
+		if (EmployeeMenuController.Selection == 1) {     //to decide what they want to do Add time or make booking
+			for (int i = 0; i <= 6; i++) {               //1 is add time timetable
 				for (int j = 0; j <= 10; j++) {
-					if (x.getId().equals(btnIdSet[i][j])) {
-						if (MenuMain.timetable[i][j + 1] == 1) {
-							MenuMain.timetable[i][j + 1] = 0;
+					if (x.getId().equals(btnIdSet[i][j])) { //search the buttom by their id to find the target button
+						if (MenuMain.timetable[i][j + 1] == 1) { //1 mean Av,and its array in MenuMain which store current Emp timetable
+							MenuMain.timetable[i][j + 1] = 0;    //0 mean Un
 							x.setText("Unavalible");
 							x.setStyle("-fx-background-color:red");
-							System.out.println(MenuMain.timetable[i][j + 1] + " " + i + " " + j);
+							System.out.println(MenuMain.timetable[i][j + 1] + " " + i + " " + j); //Console test make sure no thing wrong 
 
-						} else if (MenuMain.timetable[i][j + 1] == 0) {
+						} else if (MenuMain.timetable[i][j + 1] == 0) { //the array also store the weekdays so need to plus 1 to match
 							MenuMain.timetable[i][j + 1] = 1;
 							x.setText("Avalible");
 							x.setStyle("-fx-background-color:lightgreen");
@@ -408,7 +296,7 @@ public class TimetableController {
 					}
 				}
 			}
-		} else if (EmployeeMenuController.Selection == 0) {
+		} else if (EmployeeMenuController.Selection == 0) { //0 is make time timetable
 			for (int i = 0; i <= 6; i++) {
 				for (int j = 0; j <= 10; j++) {
 					if (x.getId().equals(btnIdSet[i][j])) {
@@ -431,6 +319,7 @@ public class TimetableController {
 
 	}
 
+	// go to Save confirmation
 	@FXML
 	void save(ActionEvent event) throws SQLException, IOException {
 		MenuMain a = new MenuMain();

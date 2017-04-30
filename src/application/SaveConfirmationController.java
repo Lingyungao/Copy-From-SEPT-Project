@@ -22,7 +22,7 @@ public class SaveConfirmationController {
 	private JFXButton Save;
 
 	@FXML
-
+    //Click "yes" to save
 	void save(ActionEvent event) throws SQLException {
 		String temp1 = "";
 		String temp2 = "";
@@ -116,7 +116,7 @@ public class SaveConfirmationController {
 		Stage stage = (Stage) Save.getScene().getWindow();
 		stage.close();
 	}
-
+    // click no to exit without save
 	@FXML
 	void NoSave(ActionEvent event) {
 		Stage stage = (Stage) NoSave.getScene().getWindow();
