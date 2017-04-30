@@ -75,8 +75,9 @@ public class OwnerOldviewController {
 	private static ResultSet rs = null;
 	ObservableList<User> list = FXCollections.observableArrayList();
 
+	
+	// Initialze the table, and show the summary detail on the table
 	public void showList() throws SQLException {
-		int i = 0;
 
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
@@ -85,7 +86,7 @@ public class OwnerOldviewController {
 				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 0");
 
 		while (rs.next()) {
-			User user = new User();// 构建值对象
+			User user = new User();// create object
 			String userFirstName = rs.getString("FIRST_NAME");
 			String userSecondName = rs.getString("LAST_NAME");
 
@@ -100,11 +101,11 @@ public class OwnerOldviewController {
 			user.setEmpID(rs.getInt("EMP_ID"));
 			user.setStrTime(rs.getInt("START_TIME"));
 
-			i++;
-			cuname.setCellValueFactory(new PropertyValueFactory("username"));// 映射
-			// cuid.setCellValueFactory(new PropertyValueFactory("ID"));
+			// put value on map
+			cuname.setCellValueFactory(new PropertyValueFactory("username"));
 			cudata.setCellValueFactory(new PropertyValueFactory("data"));
-			list.add(user);// list添加值对象
+			// save to list
+			list.add(user);
 		}
 		System.out.println(list.size());
 		if (list.size() != 0) {
@@ -118,10 +119,11 @@ public class OwnerOldviewController {
 				showEmpDetails((User) newValue);
 			}
 		});
-
-		cuView.setItems(list); // tableview添加list
+        //set list to table
+		cuView.setItems(list); // 
 	}
 
+	//show detail information when check person
 	private void showEmpDetails(User Emp) {
 
 		if (Emp != null) {
@@ -141,12 +143,12 @@ public class OwnerOldviewController {
 			warning.setVisible(true);
 		}
 	}
-
+    //back to owner menu
 	@FXML
 	void Back(ActionEvent event) throws IOException {
 		a.showOwnerM();
 	}
-
+    //start
 	public void initialize() throws SQLException {
 		showList();
 		list.add(null);

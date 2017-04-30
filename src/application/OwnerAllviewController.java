@@ -88,8 +88,6 @@ public class OwnerAllviewController {
 			String userSecondName = rs.getString("LAST_NAME");
 			user.setID(rs.getInt("USER_ID"));
 			int dayID = rs.getInt("DAY");
-			// int monthID = rs.getInt("Month");
-			// int yearID = rs.getInt("Year");
 			user.setUsername(userFirstName + " " + userSecondName);
 			user.setData(user.defWeekdaysName(dayID));
 			user.setBookID(rs.getInt("BOOK_ID"));
@@ -97,13 +95,13 @@ public class OwnerAllviewController {
 			user.setEmpID(rs.getInt("EMP_ID"));
 			user.setStrTime(rs.getInt("START_TIME"));
 
-			// System.out.println(user.getWeekDaysName());
-			// System.out.println(user.getData());
 
-			i++;
-			cuname.setCellValueFactory(new PropertyValueFactory("username"));// ”≥…‰
+
+			// put object on map
+			cuname.setCellValueFactory(new PropertyValueFactory("username"));
 			cudata.setCellValueFactory(new PropertyValueFactory("data"));
-			list.add(user); // add user to list
+			// add user to list
+			list.add(user); 
 		}
 		showEmpDetails(list.get(0));
 
@@ -113,10 +111,11 @@ public class OwnerAllviewController {
 				showEmpDetails((User) newValue);
 			}
 		});
+        //set list to table
 
-		cuView.setItems(list); // tableviewÃÌº”list
+		cuView.setItems(list); 
 	}
-
+	//show detail information when check person
 	private void showEmpDetails(User Emp) {
 
 		if (Emp != null) {
@@ -137,12 +136,12 @@ public class OwnerAllviewController {
 
 		}
 	}
-
+    //back to owner menu
 	@FXML
 	void Back(ActionEvent event) throws IOException {
 		a.showOwnerM();
 	}
-
+    //start
 	public void initialize() throws SQLException {
 		showList();
 	}
