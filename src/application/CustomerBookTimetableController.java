@@ -19,6 +19,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+/**
+ * This class is working on the customer show book timetable.
+ *
+ * @author Harold Zang
+ */
 public class CustomerBookTimetableController {
 	
 	private Connection LoginConn = null;
@@ -28,6 +33,7 @@ public class CustomerBookTimetableController {
 //	int[][] timetable = new int[31][15];
 	int[][] daystable = new int[100][13];
 	
+	// Timetable's array
 	String[][] btnIdSet = {
 			            {"btn00","btn01","btn02","btn03","btn04","btn05","btn06","btn07","btn08","btn09","btn010"},
 			            {"btn10","btn11","btn12","btn13","btn14","btn15","btn16","btn17","btn18","btn19","btn110"},
@@ -73,7 +79,11 @@ public class CustomerBookTimetableController {
 //	}
 //    	
 		
-	
+	/**
+	 * This class is working on Weekdays define.
+	 * Change the day from 1~7 to Mon~Sun
+	 * @author weekday
+	 */
 		public void weekdaysDef(int weekdays) {  //Change 1~7 to Mon~Sun
 
 		switch (weekdays) {
@@ -390,12 +400,15 @@ public class CustomerBookTimetableController {
     @FXML
     private JFXButton btn08;
 
-
+    
+    // The function that when user click make booking, show timetable
+    // The information come from the array
     @FXML
     private void edit(ActionEvent event)  throws IOException{
     	JFXButton x =(JFXButton) event.getSource();
 //    	if(MenuMain. premission == 2){
     	if(CustomerBookingMenuController.Selection==1){
+    	// use for loop to get whole array
     	for(int i = 0; i <= 6;i++)
     	{
     		for(int j = 0; j <= 10; j++)
@@ -404,7 +417,9 @@ public class CustomerBookTimetableController {
     			{
     		    	if(MenuMain.timetable[i][j+1]==1)
     		    	{
+    		    		// value is 0, means unavailable.
     		    		MenuMain.timetable[i][j+1] = 0;
+    		    		// set it to red color.
     		    		x.setText("Unavalible");
     		    		x.setStyle("-fx-background-color:red");
     		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
@@ -412,8 +427,10 @@ public class CustomerBookTimetableController {
     		    	}
     		    	else if(MenuMain.timetable[i][j+1]==0)
     		    	{
+    		    		// if value is 1, means available.
     		    		MenuMain.timetable[i][j+1] = 1;
     		    	    x.setText("Avalible");
+    		    	    // set color is green
     		    		x.setStyle("-fx-background-color:lightgreen");
     		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
     		    	}
@@ -438,8 +455,10 @@ public class CustomerBookTimetableController {
         			{
         		    	if(MenuMain.timetable[i][j+1]==1)
         		    	{
+        		    		// if value is 3, means new booking
         		    		MenuMain.timetable[i][j+1] = 3;
         		    		x.setText("new booking");
+        		    		// set color is yellow
         		    		x.setStyle("-fx-background-color:yellow");
         		    		System.out.println(MenuMain.timetable[i][j+1] + " " + i + " " + j);
         		    		
@@ -466,6 +485,10 @@ public class CustomerBookTimetableController {
     
 
 
+    /**
+     * Update the timetable
+     * after user booking, and click the save button, it will update the database.
+     */
     @FXML
     void save(ActionEvent event) throws SQLException {
 		
@@ -484,8 +507,6 @@ public class CustomerBookTimetableController {
 				}
 			}
 		}
-		
-		
 		
 		
 		PreparedStatement rs = LoginConn.prepareStatement(

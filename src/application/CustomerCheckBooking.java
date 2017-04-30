@@ -10,6 +10,11 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * This class is working on the customer check booking.
+ *
+ * @author Harold Zang
+ */
 public class CustomerCheckBooking {
 
 	private IntegerProperty bookId;
@@ -19,10 +24,24 @@ public class CustomerCheckBooking {
 	private StringProperty startTime;
 	private StringProperty endTime;
 	
+	/**
+	 * Define a booking structure.
+	 *
+	 */
 	public CustomerCheckBooking(){
 		this(0,0,null,null,null,null);
 	}
 	
+	/**
+	 * The booking detail structure which include all information which related book.
+	 *
+	 * @param bookid
+	 * @param employee id
+	 * @param employee name
+	 * @param book date
+	 * @param start time
+	 * @param end time
+	 */
 	public CustomerCheckBooking(int bookId,int empId,String empName, String bookDate, String startTime, String endTime){
 		this.bookId = new SimpleIntegerProperty(bookId);
 		this.empId = new SimpleIntegerProperty(empId);
@@ -31,6 +50,7 @@ public class CustomerCheckBooking {
 		this.startTime = new SimpleStringProperty(startTime);
 		this.endTime = new SimpleStringProperty(endTime);
 	}
+	
 	
 	public int getBookId() {
         return bookId.get();
