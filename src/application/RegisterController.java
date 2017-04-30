@@ -25,7 +25,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 
-
+/**
+ * This class is working for register new customer.
+ *
+ * @author Harold Zang
+ */
 public class RegisterController {
 	
 	private static Connection LoginConn = null;
@@ -65,7 +69,10 @@ public class RegisterController {
     private Text cusInfoText;
     
     
-    
+    /**
+     * initialize the JavaFX table
+     * make sure the table is empty
+     */
     @FXML
 	 private void initialize(){
     	 GetUserID();
@@ -79,6 +86,9 @@ public class RegisterController {
 		 regConfField.setText("");
 	    }
 	
+    /**
+     * Get the max user's id for register new user
+     */
 	@FXML
 	public static void GetUserID() {
 		try {
@@ -94,9 +104,16 @@ public class RegisterController {
 		}
 	}
 	
+	/**
+     * Register user function.
+     * insert username, password to user table.
+     * insert firstname, lastname, and other information to detail table.
+     */
 	@FXML
     private void regUser() throws Exception {
 		// Connection LoginConn = null;
+		// Check user's input is valid or not by using CusHandleException class
+		// If not, throw exception
 		try{
 			if(regFirstNameField.getText() == "" || regLastNameField.getText() == "" || regPhoneField.getText() == "" || regAddressField.getText() == "" || regEmailField.getText() == ""){
 				cusInfoText.setText("Please Input All information, before you submit!");
@@ -139,6 +156,7 @@ public class RegisterController {
 			rs.setString(2, regPassField.getText());
 			rs.setInt(3, userCount2);
 			// excuteQuery for query. excuteUpdate for editing the database
+			// Insert user name and password to the user table
 			rs.executeUpdate();
 			
 			PreparedStatement rs2 = LoginConn.prepareStatement(
@@ -149,6 +167,7 @@ public class RegisterController {
 					rs2.setString(4, regEmailField.getText());
 					rs2.setString(5, regPhoneField.getText());
 					rs2.setString(6, regAddressField.getText());
+					// Insert firstname, lastname, and other inofrmation to detail table.
 					rs2.executeUpdate();
 			
 			cusInfoText.setText("Register succeed!");
