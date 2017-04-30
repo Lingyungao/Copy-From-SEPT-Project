@@ -8,6 +8,11 @@ import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * This class is working on list the employee detail when the customer make a booking.
+ *
+ * @author Harold Zang
+ */
 public class CustomerBookGetEmployer {
 	
 	private static Connection LoginConn = null;
@@ -18,28 +23,24 @@ public class CustomerBookGetEmployer {
 	
 	
 	public CustomerBookGetEmployer() {
-		System.out.println("REPORT 001");
+		
 		try {
-		LoginConn = connection.connectDB(); // connect to the SQL
-
-		System.out.println("REPORT 002");
-
+			// Connect to the Database
+			LoginConn = connection.connectDB(); 
 			st = LoginConn.createStatement();
-		 // create statement of it
-			System.out.println("REPORT 001");
-
-		rs = st.executeQuery("SELECT * FROM EMPLOYEE");
-		System.out.println("REPORT 003");
-
-		while(rs.next()){
-			String first = rs.getString("EMP_FIRST");
-			String last = rs.getString("EMP_LAST");
-			String phone = rs.getString("EMP_PHONE");
-			int empId = rs.getInt("EMP_UID");
-			System.out.println("REPORT 004");
-
-			employerData.add(new CustomerBookEmployer(first,last,phone,empId));
-			System.out.println("finished MainApp");
+			// Create statement of it
+			rs = st.executeQuery("SELECT * FROM EMPLOYEE");
+			
+			// While loop for get all employees
+			while(rs.next()){
+				String first = rs.getString("EMP_FIRST");
+				String last = rs.getString("EMP_LAST");
+				String phone = rs.getString("EMP_PHONE");
+				int empId = rs.getInt("EMP_UID");
+				System.out.println("REPORT 004");
+				// Add employer to the list
+				employerData.add(new CustomerBookEmployer(first,last,phone,empId));
+				System.out.println("finished MainApp");
 		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
