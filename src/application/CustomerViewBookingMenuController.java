@@ -13,6 +13,11 @@ import javafx.scene.control.TableView;
 import application.CustomerBookGetEmployer;
 import application.CustomerBookEmployer;
 
+/**
+ * This class is working for customer view booking menu.
+ *
+ * @author Harold Zang
+ */
 public class CustomerViewBookingMenuController {
 	static int Selection;
     private CustomerCheckGetBooking CusGetCusBooking;
@@ -40,6 +45,7 @@ public class CustomerViewBookingMenuController {
     private Label endTime;
     @FXML
     private JFXButton Back;
+    // Initialze the table, and show the summary detail on the table
     @FXML
     private void initialize(){
     	bookIdCol.setCellValueFactory(cellData -> cellData.getValue().bookIdProperty().asObject());

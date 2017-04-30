@@ -8,6 +8,11 @@ import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * This class is working on the customer get booking.
+ *
+ * @author Harold Zang
+ */
 public class CustomerCheckGetBooking {
 	
 	private static Connection LoginConn = null;
@@ -18,19 +23,16 @@ public class CustomerCheckGetBooking {
 	
 	
 	public CustomerCheckGetBooking() {
-		System.out.println("REPORT 001");
+		
 		try {
-		LoginConn = connection.connectDB(); // connect to the SQL
+		// connect to database
+		LoginConn = connection.connectDB();
+		st = LoginConn.createStatement();
 
-		System.out.println("REPORT 002");
-
-			st = LoginConn.createStatement();
-		 // create statement of it
-			System.out.println("REPORT 001");
-
+		// create statement of it
 		rs = st.executeQuery("select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid WHERE booking.user_id = " + LoginSystem2.returnId);
-		System.out.println("REPORT 003");
-
+		
+		// Using while loop to get all booking details
 		while(rs.next()){
 			int bookId = rs.getInt("BOOK_ID");
 			int empId = rs.getInt("EMP_ID");
@@ -41,8 +43,8 @@ public class CustomerCheckGetBooking {
 			tempET = Integer.parseInt(endTime);
 			tempET = tempET + 1;
 			endTime = Integer.toString(tempET);
-			System.out.println("REPORT 004");
-
+			
+			// add these details to the view booking detail window
 			CusBookingData.add(new CustomerCheckBooking(bookId,empId,empName,bookDate,startTime,endTime));
 			System.out.println("finished MainApp");
 		}

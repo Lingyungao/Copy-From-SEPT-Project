@@ -13,7 +13,11 @@ import javafx.scene.control.TableView;
 import application.CustomerBookGetEmployer;
 import application.CustomerBookEmployer;
 
-
+/**
+ * This class is working on the customer view booking menu.
+ *
+ * @author Harold Zang
+ */
 public class CustomerBookingMenuController {
 	static int Selection;
     private CustomerBookGetEmployer getEmployer;
@@ -70,12 +74,22 @@ public class CustomerBookingMenuController {
     }
     
     
-    
+    /**
+     * Function for setup employee's detail
+     * 
+     * @param get employer
+     */
     public void setGetEmployer(CustomerBookGetEmployer getEmployer){
     	this.getEmployer = getEmployer;
         employeeTable.setItems(getEmployer.getEmployerData());
 
     }
+    
+    /**
+     * Function for show employee's detail
+     * 
+     * @param employer
+     */
     private void showEmpDetails(CustomerBookEmployer Emp) {
     	
         if (Emp != null) {
@@ -102,7 +116,7 @@ public class CustomerBookingMenuController {
 //    	a.showCusBookM();
 //    }
     
-    
+    // When user click make new booking button, go to make new book menu
     @FXML
     void MakeBooking(ActionEvent event) throws IOException, NumberFormatException, SQLException{
     	Selection = 0;
@@ -111,6 +125,7 @@ public class CustomerBookingMenuController {
     	//a.cusShowTimetable(CustomerBookingMenuController.tempEmpId);
     }
 	public static String tempEmpId;
+	// When user click back button, go to pervious menu
     @FXML
     void Back(ActionEvent event) throws IOException {
     	a.showCusM();
