@@ -25,7 +25,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 
-
+/**
+ * This class is working for edit customer detail.
+ *
+ * @author Harold Zang
+ */
 public class CustomerDetailEditController {
 	
 	private static Connection LoginConn = null;
@@ -61,7 +65,10 @@ public class CustomerDetailEditController {
     
     
     
-    
+    /**
+     * Initialize the tables, and make sure it shows customer regional information
+     * 
+     */
     @FXML
 	 private void initialize(){
 		 DisplayDetails();
@@ -74,14 +81,20 @@ public class CustomerDetailEditController {
 		 cusPassConfField.setText("");
 	    }
 	
+    /**
+     * Display current detail on the detail window.
+     * 
+    */
 	@FXML
 	public static void DisplayDetails() {
 		try {
 			// Start functions
-
 			// Connection LoginConn = null;
-			LoginConn = connection.connectDB(); // connect to the SQL
-			st = LoginConn.createStatement(); // create statement of it
+			// Connect to the database
+			LoginConn = connection.connectDB(); 
+			// create statement of it
+			st = LoginConn.createStatement(); 
+			// Run SQL
 			rs = st.executeQuery("SELECT * FROM DETAILS where USER_ID = " + LoginSystem2.returnId);
 
 			firstName = rs.getString("FIRST_NAME");
@@ -95,10 +108,14 @@ public class CustomerDetailEditController {
 
 		}
 	}
-	
+	/**
+     * Update the changes, and check the user's input is valid or not
+     * If user's input is not valid, throw the exception
+     */
 	@FXML
     private void saveChange() throws Exception {
 		// Connection LoginConn = null;
+		// Check the validation by using CusHandleException class
 		try{
 			if(firstNameField.getText() == "" || lastNameField.getText() == "" || cusPhoneField.getText() == "" || cusAddressField.getText() == "" || cusEmailField.getText() == ""){
 				cusInfoText.setText("Please Input All information, before you submit!");
@@ -137,6 +154,7 @@ public class CustomerDetailEditController {
 			AddressChange(cusAddressField.getText());
 			EmailChange(cusEmailField.getText());
 			PasswordChange(cusPassEditField.getText());
+			// If everything is changed show success message.
 			cusInfoText.setText("Change succeed!");
 
 		}
@@ -145,6 +163,10 @@ public class CustomerDetailEditController {
 		}
 	}
 	
+	/**
+     * user click back, cancle change.
+     * 
+     */
 	@FXML
     private void cancleChange() {
 		// get a handle to the stage
@@ -153,6 +175,10 @@ public class CustomerDetailEditController {
 	    stage.close();
 	}
 	
+	/**
+     * The function for change the first name
+     * @param First name
+     */
 	public static void FirstNameChange(String firstName) throws Exception {
 		//Check the First name is valid or not
 		
@@ -173,6 +199,10 @@ public class CustomerDetailEditController {
 
 	}
 	
+	/**
+     * The function for change the last name
+     * @param last name
+     */
 	public static void LastNameChange(String lastName) throws Exception {
 
 		if (lastName.equals("")) {
@@ -191,6 +221,10 @@ public class CustomerDetailEditController {
 
 	}
 	
+	/**
+     * The function for change the phone number
+     * @param phone number
+     */
 	public static void PhoneNumberChange(int phonenumber) throws Exception {
 
 		if (phonenumber == 0) {
@@ -209,6 +243,10 @@ public class CustomerDetailEditController {
 
 	}
 	
+	/**
+     * The function for change the address
+     * @param address
+     */
 	public static void AddressChange(String address) throws Exception {
 		
 		if (address.equals("")) {
@@ -227,6 +265,10 @@ public class CustomerDetailEditController {
 
 	}
 	
+	/**
+     * The function for change the email
+     * @param email
+     */
 	public static void EmailChange(String email) throws Exception {
 
 		if (address.equals("")) {
@@ -245,6 +287,10 @@ public class CustomerDetailEditController {
 
 	}
 	
+	/**
+     * The function for change the password
+     * @param password
+     */
 	public static void PasswordChange(String password) throws Exception {
 		
 		//if the user do not input anything, show an error message

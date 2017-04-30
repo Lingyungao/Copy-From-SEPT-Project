@@ -21,6 +21,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+/**
+ * This class is working for get customer detail.
+ *
+ * @author Harold Zang
+ */
 public class CustomerDetailController {
 	MenuMain a = new MenuMain();
 	
@@ -64,12 +69,14 @@ public class CustomerDetailController {
 	private Label cusEmailLable;
 	
 	
-	
+	// Edit customer detail function, show Edit customer detail menu.
 	@FXML
 	 private void editCustomerDetail() throws Exception {
 		a.showCusEditM(editCustomerDetail);
 	}
 	
+	// Initialize the tables, and make sure when customer click the edit button
+	// it will show the regional information.
 	 @FXML
 	 private void initialize(){
 		 DisplayDetails();
@@ -80,14 +87,20 @@ public class CustomerDetailController {
 		 cusEmailLable.setText(email);
 	    }
 	
+	/**
+	 * Display current detail on the detail window.
+	 * 
+	 */
 	@FXML
 	public static void DisplayDetails() {
 		try {
 			// Start functions
-
 			// Connection LoginConn = null;
-			LoginConn = connection.connectDB(); // connect to the SQL
-			st = LoginConn.createStatement(); // create statement of it
+			// Connect to the database
+			LoginConn = connection.connectDB(); 
+			// create statement of it
+			st = LoginConn.createStatement(); 
+			// Run SQL
 			rs = st.executeQuery("SELECT * FROM DETAILS where USER_ID = " + LoginSystem2.returnId);
 
 			firstName = rs.getString("FIRST_NAME");
@@ -96,12 +109,14 @@ public class CustomerDetailController {
 			phoneNo = rs.getString("PHONE_NO");
 			address = rs.getString("ADDRESS");
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 
 		}
 	}
-	
+	/**
+     * Show customer's detail. 
+     * If customer is not exist, does not show anything.
+     */
 	@FXML
 	private void showCustomerDetails() {
 		if (LoginSystem2.returnId > 0){
@@ -119,6 +134,9 @@ public class CustomerDetailController {
 		}
 	}
 	
+	/**
+     * When user click edit button, go to edit detail window.
+     */
 	@FXML
     private void editCustomerBack() {
 		// get a handle to the stage
@@ -127,6 +145,9 @@ public class CustomerDetailController {
 	    stage.close();
 	}
 	
+	/**
+     * When user click back button, go to previous window.
+     */
     @FXML
     void Back(ActionEvent event) throws IOException {
     	a.showCusM();
