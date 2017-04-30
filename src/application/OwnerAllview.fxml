@@ -88,6 +88,8 @@
                         <Font name="Arial" size="22.0" />
                      </font>
                   </Label>
+                  <JFXButton fx:id="inActive" layoutX="176.0" layoutY="32.0" onAction="#inActive" text="In-active" />
+                  <Label fx:id="inActiveMsg" layoutX="47.0" layoutY="8.0" textFill="RED" />
 
 					</children>
 				</AnchorPane>
