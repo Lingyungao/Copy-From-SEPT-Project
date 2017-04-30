@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="566.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerDetailController">
+   <children>
+      <SplitPane layoutX="244.0" layoutY="86.0" prefHeight="400.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane prefHeight="398.0" prefWidth="363.0">
+               <children>
+                  <GridPane layoutX="23.0" layoutY="74.0" prefHeight="182.0" prefWidth="531.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="80.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="98.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="410.0" minWidth="10.0" prefWidth="201.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="First Name:" />
+                        <Label text="Last Name:" GridPane.rowIndex="1" />
+                        <Label fx:id="firstNameLable" text="Label" GridPane.columnIndex="1" />
+                        <Label text="Phone Number:" GridPane.rowIndex="2" />
+                        <Label fx:id="lastNameLable" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="cusPhoneLable" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Customer Address:" GridPane.rowIndex="3" />
+                        <Label fx:id="cusAddressLable" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label prefHeight="17.0" prefWidth="120.0" text="Customer Email:" GridPane.rowIndex="4" />
+                        <Label fx:id="cusEmailLable" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Psssword:" GridPane.rowIndex="5" />
+                        <Label text="**********" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+                  <Label layoutX="8.0" layoutY="21.0" text="Customer Details:" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="21.0">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font>
+                  </Label>
+          
+                  <JFXButton fx:id="editCustomerDetail" buttonType="RAISED" layoutX="60.0" layoutY="296.0" onAction="#editCustomerDetail" ripplerFill="WHITE" text="EDIT" textFill="WHITE" />
+                  <JFXButton fx:id="backButton" buttonType="RAISED" layoutX="472.0" layoutY="27.0" mnemonicParsing="false" onAction="#editCustomerBack" ripplerFill="WHITE" text="Back" textFill="WHITE" />
+                  
+               </children>
+               
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerMenuController">
    <children>
-      <JFXButton fx:id="TimeView" layoutX="244.0" layoutY="90.0" text="Timetable Viewing" />
-      <JFXButton fx:id="EditDetail" layoutX="246.0" layoutY="153.0" text="Personal Details" />
+       <JFXButton fx:id="TimeView" buttonType="RAISED" layoutX="196.0" layoutY="291.0" onAction="#timeView" prefHeight="88.0" prefWidth="230.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Timetable Viewing And Booking" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+             <JFXButton fx:id="BookingView" buttonType="RAISED" layoutX="129.0" layoutY="194.0" onAction="#BookingView" prefHeight="88.0" prefWidth="164.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Check Booking" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+             <JFXButton fx:id="EditDetail" buttonType="RAISED" layoutX="334.0" layoutY="194.0" onAction="#editDetail" prefHeight="88.0" prefWidth="180.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Personal Details" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="logout" buttonType="RAISED" layoutX="450.0" layoutY="30.0" onAction="#logout" ripplerFill="WHITE" text="Log out" textFill="WHITE" />
+      <Text layoutX="172.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Customer Booking System" wrappingWidth="277.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Label fx:id="NameL" layoutX="409.0" layoutY="103.0" text="Label" />
+      <Label fx:id="UID" layoutX="409.0" layoutY="133.0" text="Label" />
    </children>
 </Pane>
