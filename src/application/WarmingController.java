@@ -8,15 +8,14 @@ import javafx.stage.Stage;
 
 public class WarmingController {
 
-    @FXML
-    private JFXButton Close;
+	@FXML
+	private JFXButton Close;
 
-    @FXML
-    void CloseW(ActionEvent event) {
-	    Stage stage = (Stage) Close.getScene().getWindow();
-	    stage.close();
+	@FXML
+	void CloseW(ActionEvent event) {
+		Stage stage = (Stage) Close.getScene().getWindow();
+		stage.close();
 
-    }
+	}
 
 }
-

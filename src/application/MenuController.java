@@ -15,22 +15,22 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class MenuController {
-	
+
 	MenuMain a = new MenuMain();
-	
+
 	@FXML
-    private JFXButton Login;
-	
+	private JFXButton Login;
+
 	@FXML
-    private JFXButton Register;
-	
+	private JFXButton Register;
+
 	@FXML
-    private void goLogin(ActionEvent event) throws IOException {
+	private void goLogin(ActionEvent event) throws IOException {
 		a.showLogin();
-		}
-	
+	}
+
 	@FXML
-	private void goRegister(ActionEvent event) throws IOException{
+	private void goRegister(ActionEvent event) throws IOException {
 		a.showRegister();
 	}
 }

@@ -7,64 +7,61 @@ import java.sql.Statement;
 
 public class LoginSystem2 {
 	private static String pass = null;
-	private static String user = null;	
+	private static String user = null;
 	private static int userId;
 	private static int permission;
 	public static int returnId;
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
 	private static Statement st = null;
-	
-	
+
 	public static int login(String inputLogUser, String inputLogPass) throws SQLException {
 
+		// Start functions
 
-			// Start functions
+		// Connection LoginConn = null;
 
-			// Connection LoginConn = null;
+		LoginConn = connection.connectDB(); // connect to the SQL
 
-			LoginConn = connection.connectDB(); // connect to the SQL
+		st = LoginConn.createStatement(); // create statement of it
 
-			st = LoginConn.createStatement(); // create statement of it
+		rs = st.executeQuery("SELECT * FROM USERS where USERNAME = \'" + inputLogUser + "\'");
+		// Query function 1(unsafe. easy to inject)
+		while (rs.next()) {
+			pass = rs.getString("PASSWORD");
+			user = rs.getString("USERNAME");
+			userId = rs.getInt("USER_ID");
+			permission = rs.getInt("PERMISSION");
 
-			rs = st.executeQuery("SELECT * FROM USERS where USERNAME = \'" + inputLogUser + "\'");
-			// Query function 1(unsafe. easy to inject)
-			while (rs.next()) {
-				pass = rs.getString("PASSWORD");
-				user = rs.getString("USERNAME");
-				userId = rs.getInt("USER_ID");
-				permission = rs.getInt("PERMISSION");
+		}
+		returnId = userId;
 
-			}
-			returnId = userId;
+		// get username and password
 
-			// get username and password
+		if (user.equals(inputLogUser) && pass.equals(inputLogPass)) {
+			// compare with database. have to same both.
 
-			if (user.equals(inputLogUser) && pass.equals(inputLogPass)) {
-				// compare with database. have to same both.
-				
-				if (permission == 1) {
-					System.out.println("Login Succesful");
-					MenuMain.userId = userId;
-					MenuMain.premission = permission;
-					MenuMain.userName = user;
-					return 2;
-				} else if (permission == 2) {
-					System.out.println("Login Succesful");
-					MenuMain.userId = userId;
-					MenuMain.premission = permission;
-					MenuMain.userName = user;
-					return 3;
-				} else {	
-					System.out.println("Invalid Input!");
-					return 1;
-				}
-
-			}else{
-				System.out.println("The account is not exist or you do not register an account");
+			if (permission == 1) {
+				System.out.println("Login Succesful");
+				MenuMain.userId = userId;
+				MenuMain.premission = permission;
+				MenuMain.userName = user;
+				return 2;
+			} else if (permission == 2) {
+				System.out.println("Login Succesful");
+				MenuMain.userId = userId;
+				MenuMain.premission = permission;
+				MenuMain.userName = user;
+				return 3;
+			} else {
+				System.out.println("Invalid Input!");
 				return 1;
 			}
 
-		
+		} else {
+			System.out.println("The account is not exist or you do not register an account");
+			return 1;
+		}
+
 	}
 }

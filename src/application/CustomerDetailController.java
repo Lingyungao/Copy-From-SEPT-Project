@@ -27,7 +27,7 @@ import javafx.scene.control.TableView;
  */
 public class CustomerDetailController {
 	MenuMain a = new MenuMain();
-	
+
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
 	private static Statement st = null;
@@ -42,50 +42,49 @@ public class CustomerDetailController {
 	private static String username;
 	private static int userIpt;
 	private static boolean whileCheck;
-    
-    @FXML
-    private JFXButton Back;
-    
+
+	@FXML
+	private JFXButton Back;
+
 	@FXML
 	private JFXButton editCustomerDetail;
-	
+
 	@FXML
 	private JFXButton backButton;
-	
+
 	@FXML
 	private Label firstNameLable;
-	
+
 	@FXML
 	private Label lastNameLable;
-	
+
 	@FXML
 	private Label cusPhoneLable;
-	
+
 	@FXML
 	private Label cusAddressLable;
-	
+
 	@FXML
 	private Label cusEmailLable;
-	
-	
+
 	// Edit customer detail function, show Edit customer detail menu.
 	@FXML
-	 private void editCustomerDetail() throws Exception {
+	private void editCustomerDetail() throws Exception {
 		a.showCusEditM(editCustomerDetail);
 	}
-	
+
 	// Initialize the tables, and make sure when customer click the edit button
 	// it will show the regional information.
-	 @FXML
-	 private void initialize(){
-		 DisplayDetails();
-		 firstNameLable.setText(firstName);
-		 lastNameLable.setText(lastName);
-		 cusPhoneLable.setText(phoneNo);
-		 cusAddressLable.setText(address);
-		 cusEmailLable.setText(email);
-	    }
-	
+	@FXML
+	private void initialize() {
+		DisplayDetails();
+		firstNameLable.setText(firstName);
+		lastNameLable.setText(lastName);
+		cusPhoneLable.setText(phoneNo);
+		cusAddressLable.setText(address);
+		cusEmailLable.setText(email);
+	}
+
 	/**
 	 * Display current detail on the detail window.
 	 * 
@@ -96,9 +95,9 @@ public class CustomerDetailController {
 			// Start functions
 			// Connection LoginConn = null;
 			// Connect to the database
-			LoginConn = connection.connectDB(); 
+			LoginConn = connection.connectDB();
 			// create statement of it
-			st = LoginConn.createStatement(); 
+			st = LoginConn.createStatement();
 			// Run SQL
 			rs = st.executeQuery("SELECT * FROM DETAILS where USER_ID = " + LoginSystem2.returnId);
 
@@ -112,19 +111,19 @@ public class CustomerDetailController {
 
 		}
 	}
+
 	/**
-     * Show customer's detail. 
-     * If customer is not exist, does not show anything.
-     */
+	 * Show customer's detail. If customer is not exist, does not show anything.
+	 */
 	@FXML
 	private void showCustomerDetails() {
-		if (LoginSystem2.returnId > 0){
+		if (LoginSystem2.returnId > 0) {
 			firstNameLable.setText(firstName);
 			lastNameLable.setText(lastName);
 			cusPhoneLable.setText(phoneNo);
 			cusAddressLable.setText(address);
 			cusEmailLable.setText(email);
-		}else{
+		} else {
 			firstNameLable.setText("");
 			lastNameLable.setText("");
 			cusPhoneLable.setText("");
@@ -132,25 +131,24 @@ public class CustomerDetailController {
 			cusEmailLable.setText("");
 		}
 	}
-	
-	/**
-     * When user click edit button, go to edit detail window.
-     */
-	@FXML
-    private void editCustomerBack() {
-		// get a handle to the stage
-	    Stage stage = (Stage) backButton.getScene().getWindow();
-	    // do what you have to do
-	    stage.close();
-	}
-	
-	/**
-     * When user click back button, go to previous window.
-     */
-    @FXML
-    void Back(ActionEvent event) throws IOException {
-    	a.showCusM();
-    }
 
+	/**
+	 * When user click edit button, go to edit detail window.
+	 */
+	@FXML
+	private void editCustomerBack() {
+		// get a handle to the stage
+		Stage stage = (Stage) backButton.getScene().getWindow();
+		// do what you have to do
+		stage.close();
+	}
+
+	/**
+	 * When user click back button, go to previous window.
+	 */
+	@FXML
+	void Back(ActionEvent event) throws IOException {
+		a.showCusM();
+	}
 
 }

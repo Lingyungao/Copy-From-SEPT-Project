@@ -10,12 +10,13 @@ import javafx.fxml.FXML;
 public class AddEmployeeConfirmController {
 	MenuMain a = new MenuMain();
 
-    @FXML
-    private JFXButton ok;
+	@FXML
+	private JFXButton ok;
 
-    @FXML
-    void confirmOK(ActionEvent event) throws IOException {
-    	a.showOwnerM();
-    }
+	@FXML
+	void confirmOK(ActionEvent event) throws IOException {
+		a.showOwnerM();
+		// BACK TO OWNER MENU
+	}
 
 }

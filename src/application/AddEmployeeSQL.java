@@ -11,9 +11,7 @@ public class AddEmployeeSQL {
 	private static Statement st = null;
 	private static int empCount;
 
-	
-	
-	public static void insertEmployee(String empFirst, String empLast, String empPhone) throws Exception{
+	public static void insertEmployee(String empFirst, String empLast, String empPhone) throws Exception {
 		LoginConn = connection.connectDB(); // connect to the SQL
 
 		st = LoginConn.createStatement(); // create statement of it
@@ -23,8 +21,8 @@ public class AddEmployeeSQL {
 		empCount = rs.getInt("COUNT(EMP_UID)");
 
 		empCount += 1;
-		
-		//insert the employee to the database
+
+		// insert the employee to the database
 		PreparedStatement rs = LoginConn
 				.prepareStatement("INSERT INTO EMPLOYEE(EMP_FIRST,EMP_LAST,EMP_PHONE,EMP_UID) VALUES(?,?,?,?)");
 		rs.setString(1, empFirst);
@@ -35,15 +33,13 @@ public class AddEmployeeSQL {
 		System.out.println("REPORT AE002");
 		insertDefaultTimetable(empCount);
 		System.out.println("REPORT AE003");
-		
-		
+
 	}
-	
-	public static void insertDefaultTimetable(int empId) throws Exception{
+
+	public static void insertDefaultTimetable(int empId) throws Exception {
 		LoginConn = connection.connectDB();
 		st = LoginConn.createStatement();
-		
-		
+
 		PreparedStatement rs = LoginConn.prepareStatement(
 				"INSERT INTO TIMETABLE (EMP_UID,WEEKDAYS,T0800,T0900,T1000,T1100,T1200,T1300,T1400,T1500,T1600,T1700,T1800) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
@@ -63,11 +59,10 @@ public class AddEmployeeSQL {
 			rs.setInt(12, 0);
 			rs.setInt(13, 0);
 
-
 			rs.addBatch();
 		}
 		rs.executeBatch();
-		
+
 		System.out.println("Save completed.");
 	}
 }
