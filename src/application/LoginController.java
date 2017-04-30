@@ -51,7 +51,7 @@ public class LoginController {
 				// a.showFail();
 			}
 		} catch (NullPointerException NE) {
-			errorMsg.setText("The account is not exist or you do not register an account");
+			errorMsg.setText("wrong username or password");
 			System.out.println("The account is not exist or you do not register an account");
 		}
 
