@@ -4,6 +4,7 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -122,7 +123,7 @@ public class OwnerOldviewController {
         //set list to table
 		cuView.setItems(list); // 
 	}
-
+	private int bookId;
 	//show detail information when check person
 	private void showEmpDetails(User Emp) {
 
@@ -132,6 +133,7 @@ public class OwnerOldviewController {
 			deNa2.setText(Emp.getEmpName());
 			deID1.setText(Integer.toString(Emp.getID()));
 			deDa1.setText(Emp.getData());
+			bookId =Emp.getBookID();
 			deBID1.setText(Integer.toString(Emp.getBookID()));
 			deID2.setText(Integer.toString(Emp.getEmpID()));
 			deTi1.setText(Integer.toString(Emp.getStrTime()) + " o'clock");
@@ -153,5 +155,20 @@ public class OwnerOldviewController {
 		showList();
 		list.add(null);
 	}
+    @FXML
+    private Label inActiveMsg;
+    @FXML
+    void inActive(ActionEvent event) throws SQLException {
+    	 Connection LoginConn = null;
+    	 Statement st = null;
+    	 
+ 		LoginConn = connection.connectDB(); // connect to the SQL
+ 		st = LoginConn.createStatement();
+
+ 		PreparedStatement rs = LoginConn.prepareStatement("UPDATE BOOKING SET ACTIVE=1 WHERE BOOK_ID =?");
+ 		rs.setInt(1, bookId);
+ 		rs.executeUpdate();
+ 		inActiveMsg.setText("In-active done.");
+    }
 
 }
