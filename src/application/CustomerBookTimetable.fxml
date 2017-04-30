@@ -13,7 +13,7 @@
 
 <Pane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerBookTimetableController">
    <children>
-      <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="50.0" layoutY="80.0" prefHeight="600.0" prefWidth="924.0">
+      <GridPane alignment="CENTER" layoutX="50.0" layoutY="80.0" prefHeight="600.0" prefWidth="924.0">
          <children>
             <JFXButton fx:id="btn02" buttonType="RAISED" onAction="#edit" prefHeight="68.0" prefWidth="70.0" style="-fx-padding: 1; -fx-font-size: 12; -fx-pref-height: 200; -fx-pref-width: 200;" text="BUTTON" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <JFXButton fx:id="btn03" buttonType="RAISED" onAction="#edit" prefHeight="68.0" prefWidth="70.0" style="-fx-padding: 1; -fx-font-size: 12; -fx-pref-height: 200; -fx-pref-width: 200;" text="BUTTON" GridPane.columnIndex="4" GridPane.rowIndex="1" />

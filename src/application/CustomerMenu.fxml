@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
@@ -24,5 +25,12 @@
          </font>
       </JFXButton>
       <JFXButton fx:id="logout" buttonType="RAISED" layoutX="450.0" layoutY="30.0" onAction="#logout" ripplerFill="WHITE" text="Log out" textFill="WHITE" />
+      <Text layoutX="172.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Customer Booking System" wrappingWidth="277.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Label fx:id="NameL" layoutX="409.0" layoutY="103.0" text="Label" />
+      <Label fx:id="UID" layoutX="409.0" layoutY="133.0" text="Label" />
    </children>
 </Pane>

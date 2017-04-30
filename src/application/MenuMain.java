@@ -502,6 +502,8 @@ public void cusSetTimetable(int empId) throws SQLException {
 		Pane Confirmation= loader.load();
 	    Stage stage = (Stage) temp.getScene().getWindow();
 		Scene scene = new Scene(Confirmation);
+        scene.getStylesheets().add("/application/application.css");
+
 		stage.setScene(scene);
 	}
 	
@@ -516,6 +518,8 @@ public void cusSetTimetable(int empId) throws SQLException {
 	    Stage stage = (Stage) SourceB.getScene().getWindow();
 		WarmingStage.initOwner(stage);
 		Scene scene = new Scene(Warming);
+        scene.getStylesheets().add("/application/application.css");
+
 		WarmingStage.setScene(scene);
 		WarmingStage.show();
 	}
