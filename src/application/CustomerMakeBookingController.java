@@ -14,7 +14,6 @@ import javafx.scene.control.Label;
 /**
  * This class is working on customer make a booking.
  *
- * @author Harold Zang
  */
 public class CustomerMakeBookingController {
 	// Regular for check user's input

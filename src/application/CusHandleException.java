@@ -4,7 +4,6 @@ package application;
 /**
  * This class is working on the customer input validation.
  *
- * @author Harold Zang
  */
 public class CusHandleException {
 	// The regular for match user's input

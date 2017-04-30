@@ -12,6 +12,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+/**
+ * This class is working on the customer main menu.
+ *
+ */
 public class CustomerMenuController {
 	
 MenuMain a = new MenuMain();
@@ -26,19 +30,26 @@ MenuMain a = new MenuMain();
 	private JFXButton BookingView;
 	@FXML
 	private JFXButton logout;
+	/**
+     * when user click, go to the view timetable menu.
+     */
 	@FXML
 	 private void timeView(ActionEvent event) throws Exception {
 
 		a.showCusBookM();
 	}
-	
+	/**
+     * when user click, go to the edit detail menu.
+     */
 	@FXML
 	 private void editDetail(ActionEvent event) throws Exception {
 
 		a.showCusDetailM();
 		
 	}
-	
+	/**
+     * when user click, go to the booking view menu.
+     */
 	@FXML
 	 private void BookingView(ActionEvent event) throws Exception {
 
@@ -46,6 +57,9 @@ MenuMain a = new MenuMain();
 		
 	}
 	
+	/**
+     * when user click, logout
+     */
 	@FXML
 	 private void logout(ActionEvent event) throws Exception {
 

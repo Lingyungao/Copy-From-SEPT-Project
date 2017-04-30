@@ -24,7 +24,6 @@ import javafx.scene.control.TableView;
 /**
  * This class is working for get customer detail.
  *
- * @author Harold Zang
  */
 public class CustomerDetailController {
 	MenuMain a = new MenuMain();

@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 /**
  * This class is working on the customer get booking.
  *
- * @author Harold Zang
  */
 public class CustomerCheckGetBooking {
 	

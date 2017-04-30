@@ -28,7 +28,6 @@ import javafx.scene.text.Text;
 /**
  * This class is working for edit customer detail.
  *
- * @author Harold Zang
  */
 public class CustomerDetailEditController {
 	

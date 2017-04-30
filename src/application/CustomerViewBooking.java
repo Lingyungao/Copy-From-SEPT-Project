@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * This class is working on the customer view booking.
+ * For get all details (username, employee name etc.)
+ *
+ */
 public class CustomerViewBooking {
     private String username;
     private String lastname;
@@ -9,8 +14,6 @@ public class CustomerViewBooking {
     private String empname;
     private int EmpID;
     private int StrTime;
-
-
 
     public String getUsername() {
         return username;

@@ -16,7 +16,6 @@ import application.CustomerBookEmployer;
 /**
  * This class is working for customer view booking menu.
  *
- * @author Harold Zang
  */
 public class CustomerViewBookingMenuController {
 	static int Selection;
@@ -45,6 +44,7 @@ public class CustomerViewBookingMenuController {
     private Label endTime;
     @FXML
     private JFXButton Back;
+    
     // Initialze the table, and show the summary detail on the table
     @FXML
     private void initialize(){
@@ -63,6 +63,7 @@ public class CustomerViewBookingMenuController {
     	cusViewBookTable.setItems(CusGetBooking.getCusBookingData());
 
     }
+
     
 private void showCusBookDetails(CustomerCheckBooking CusBook) {
     	

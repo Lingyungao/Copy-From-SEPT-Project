@@ -9,7 +9,6 @@ import java.sql.Statement;
 /**
  * This class is working for register new customer.
  *
- * @author Harold Zang
  */
 public class RegisterSystem {
 	

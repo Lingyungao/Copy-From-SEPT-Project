@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 /**
  * This class is working on list the employee detail when the customer make a booking.
  *
- * @author Harold Zang
  */
 public class CustomerBookGetEmployer {
 	

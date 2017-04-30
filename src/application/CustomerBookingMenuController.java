@@ -16,7 +16,6 @@ import application.CustomerBookEmployer;
 /**
  * This class is working on the customer view booking menu.
  *
- * @author Harold Zang
  */
 public class CustomerBookingMenuController {
 	static int Selection;

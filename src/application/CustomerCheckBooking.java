@@ -13,7 +13,6 @@ import javafx.beans.property.StringProperty;
 /**
  * This class is working on the customer check booking.
  *
- * @author Harold Zang
  */
 public class CustomerCheckBooking {
 

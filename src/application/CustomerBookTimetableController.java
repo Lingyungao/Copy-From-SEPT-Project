@@ -22,7 +22,6 @@ import javafx.stage.Window;
 /**
  * This class is working on the customer show book timetable.
  *
- * @author Harold Zang
  */
 public class CustomerBookTimetableController {
 	
