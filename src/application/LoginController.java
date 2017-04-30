@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -29,6 +30,10 @@ public class LoginController {
 	    @FXML
 	    private JFXButton register;
 
+	    @FXML
+	    private Label errorMsg;
+
+	    
 	    @FXML
 	    private void login(ActionEvent event) throws Exception {
 
@@ -53,6 +58,7 @@ public class LoginController {
 	    		}
 	    		catch(NullPointerException NE)
 	    		{
+	    			errorMsg.setText("The account is not exist or you do not register an account");
 	    			System.out.println("The account is not exist or you do not register an account");
 	    		}
 
