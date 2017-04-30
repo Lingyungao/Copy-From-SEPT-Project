@@ -45,6 +45,7 @@ public class OwnerMenuController{
 		MenuMain.userId = 0;
 		MenuMain.premission = 0;
 		MenuMain.userName ="";
+    	SaveConfirmationController.SSelection = 0;
 		
 		
 	}

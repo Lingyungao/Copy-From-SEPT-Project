@@ -95,6 +95,7 @@ public class EmployeeMenuController {
     void editTimetable(ActionEvent event) throws IOException, NumberFormatException, SQLException {
     	try{
     	Selection = 1;
+    	SaveConfirmationController.SSelection = 1;
     	a.showTimetable(empID.getText(),editTimetable);
 
     	}

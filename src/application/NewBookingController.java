@@ -78,6 +78,7 @@ public class NewBookingController {
     		tempService = service.getText();
     		try{
     		a.showTimetable(EmployeeMenuController.tempEmpId,goTimetable);
+    		SaveConfirmationController.SSelection = 1;
     		}
     		
         	catch(NumberFormatException NFE){

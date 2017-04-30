@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 
 public class SaveConfirmationController {
+	    static int SSelection = 0;
+	
 	    @FXML
 	    private JFXButton NoSave;
 
@@ -22,22 +24,27 @@ public class SaveConfirmationController {
 	    @FXML
 	    
 	    void save(ActionEvent event) throws SQLException {
+	    	String temp1 ="";
+	    	String temp2 ="";
+	    	
+	    	if(SSelection == 1)
+	    	{
+	    		temp1 = EmployeeMenuController.tempEmpId;
+	    		temp2 = NewBookingController.userIdCheck;
+	    	}
+	    	else
+	    	{
+	    		temp1 =CustomerBookingMenuController.tempEmpId;
+	    		temp2 =CustomerMakeBookingController.userIdCheck;
+	    	}
+	    	
+	    	
 			
 			Connection LoginConn = null;
 			Statement st = null;
 			
 			LoginConn = connection.connectDB();                              // connect to the SQL
 			st = LoginConn.createStatement();  
-			
-//			for(int i =0;i<7;i++){
-//				for(int j =3;j<14;j++)
-//				{
-//					if(MenuMain.timetable[i][j]==3) //to make new booking
-//					{
-//						MenuMain.timetable[i][j]=2;
-//					}
-//				}
-//			}
 			
 			
 			
@@ -74,15 +81,15 @@ public class SaveConfirmationController {
 				}
 			
 			    rs.setInt(12, MenuMain.timetable[i][0]);
-				rs.setString(13, EmployeeMenuController.tempEmpId);
+				rs.setString(13, temp1);
 //				    rs.setInt(16, MenuMain.timetable[i][16]);
 					rs.addBatch();
 				}
 			rs.executeBatch();
-			System.out.println("save done.");
+//			System.out.println("save done.");
 			
 	    	 if(EmployeeMenuController.Selection==0){
-	    		 System.out.println("booking save function on");
+//	    		 System.out.println("booking save function on");
 	    		 ResultSet rs3 = st.executeQuery("SELECT COUNT(BOOK_ID) FROM BOOKING");
 	    		 int bookCount = rs3.getInt("COUNT(BOOK_ID)");
 	    		 
@@ -91,15 +98,15 @@ public class SaveConfirmationController {
 
 	    		 
 	    		 for (int i = 0; i < 7; i++) {
-	    			 System.out.println("");
+//	    			 System.out.println("");
 	    			 for(int j=1; j < 12;j++){
 	    				 System.out.print(MenuMain.timetable[i][j] + " ");
 	    				 if(MenuMain.timetable[i][j] == 3){
-	    					 System.out.println("find");
+//	    					 System.out.println("find");
 	    		    		 bookCount = bookCount + 1;
 	    					rs2.setInt(1, bookCount );
-							rs2.setString(2, NewBookingController.userIdCheck);
-							rs2.setString(3, EmployeeMenuController.tempEmpId);
+							rs2.setString(2, temp2);
+							rs2.setString(3, temp1);
 							rs2.setInt(4, MenuMain.timetable[i][0]);
 							//rs2.setInt(5, MenuMain.timetable[i][1]);
 							//rs2.setInt(6, MenuMain.timetable[i][2]);
@@ -109,14 +116,14 @@ public class SaveConfirmationController {
 							rs4.setString(2, NewBookingController.tempService);
 							rs2.addBatch();
 							rs4.addBatch();
-							System.out.println("added to batch");
+//							System.out.println("added to batch");
 
 	    				 }
 	    			 }
 	    		 }
 	    		rs2.executeBatch();
 	    		rs4.executeBatch();
-				System.out.println("new booking saved");
+//				System.out.println("new booking saved");
 	    	 }
 	 	    Stage stage = (Stage) Save.getScene().getWindow();
 	 	    stage.close();
