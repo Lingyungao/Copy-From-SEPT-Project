@@ -70,7 +70,7 @@ public class NewBookingController {
 		} else {
 			tempService = service.getText();
 			try {
-				a.showTimetable(EmployeeMenuController.tempEmpId, goTimetable);
+				a.showTimetable(EmployeeMenuController.tempEmpId, userIdCheck,goTimetable,tempService,"MB");
 				SaveConfirmationController.SSelection = 1;
 			}
 			// error msg if didnt click employee

@@ -254,22 +254,34 @@ public class MenuMain extends Application {
 		primaryStage.setTitle("Confirm");
 	}
 
-	public void showTimetable(String empid, JFXButton NWB) throws IOException, NumberFormatException, SQLException {
+	public void showTimetable(String empid,String CusId,JFXButton NWB,String Service,String mode) throws IOException, NumberFormatException, SQLException {
 		setTimetable(Integer.valueOf(empid));
-		Stage stage = (Stage) NWB.getScene().getWindow();
-
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
-
 		Pane Timetable = loader.load();
 		Stage TimetableEdit = new Stage();
 		TimetableEdit.setTitle("Timetable");
 		TimetableEdit.initModality(Modality.WINDOW_MODAL);
-
-		TimetableEdit.initOwner(stage);
+		TimetableEdit.initOwner(primaryStage);
 		Scene scene = new Scene(Timetable);
 		Label temp = (Label) scene.lookup("#IdLabel");
 		temp.setText(empid);
+		
+		if(mode.equals("MB"))
+		{
+			temp = (Label) scene.lookup("#SeviceLabel");
+			temp.setText(Service);
+			temp = (Label) scene.lookup("#ModeLabel");
+			temp.setText("Making booking");
+			Stage stage = (Stage) NWB.getScene().getWindow();
+			stage.close();
+		}
+		
+		else
+		{   
+			temp = (Label) scene.lookup("#MtodeLabel");
+			temp.setText("Adding time");
+		}
 
 		// Label temp1 = (Label) scene.lookup("#dayB");
 		// temp1.setText(String.valueOf(timetable[0][0]));
@@ -502,9 +514,24 @@ public class MenuMain extends Application {
 		WarmingStage.initOwner(stage);
 		Scene scene = new Scene(Warming);
 		scene.getStylesheets().add("/application/application.css");
-
 		WarmingStage.setScene(scene);
 		WarmingStage.show();
+	}
+	
+	public void showBooked(int Cusid,int i,int j,JFXButton SourceB) throws IOException
+	{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/Booked.fxml"));
+		AnchorPane booked = loader.load();
+		Stage Bookedstage = new Stage();
+		Bookedstage.setTitle("Booked");
+		Bookedstage.initModality(Modality.WINDOW_MODAL);
+		Stage stage = (Stage) SourceB.getScene().getWindow();
+		Bookedstage.initOwner(stage);
+		Scene scene = new Scene(booked);
+		scene.getStylesheets().add("/application/application.css");
+		Bookedstage.setScene(scene);
+		Bookedstage.show();
 	}
 
 	public static void main(String[] args) {

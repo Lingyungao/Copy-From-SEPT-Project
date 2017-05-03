@@ -275,6 +275,7 @@ public class TimetableController {
 	//make the every button do their right thing
 	//If is add time just Av/Un,nothing for Booked
 	//If is making booking just Av/NB,nothing for Un & Booked
+	
 	private void edit(ActionEvent event) throws IOException {
 		JFXButton x = (JFXButton) event.getSource();
 		if (EmployeeMenuController.Selection == 1) {     //to decide what they want to do Add time or make booking
@@ -311,7 +312,11 @@ public class TimetableController {
 							x.setText("Avaliable");
 							x.setStyle("-fx-background-color:lightgreen");
 							System.out.println(MenuMain.timetable[i][j + 1] + " " + i + " " + j);
-						}
+						}else if(MenuMain.timetable[i][j]==2){
+							//MenuMain a = new MenuMain();
+							//a.showBooked(CusID);
+							
+						} 
 					}
 				}
 			}

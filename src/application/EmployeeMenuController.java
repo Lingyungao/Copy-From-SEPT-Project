@@ -92,7 +92,7 @@ public class EmployeeMenuController {
 		try {
 			Selection = 1;
 			SaveConfirmationController.SSelection = 1;
-			a.showTimetable(empID.getText(), editTimetable);
+			a.showTimetable(empID.getText(), null, editTimetable,null,"AT");
 
 		} catch (NumberFormatException NFE) {
 			System.out.println("please select one of the employee");
