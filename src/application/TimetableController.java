@@ -16,15 +16,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class TimetableController {
-
-	private Connection LoginConn = null;
-
-	private Statement st = null;
-
+	
 	// int[][] timetable = new int[31][15];
 	int[][] daystable = new int[100][13];
 
@@ -37,6 +36,19 @@ public class TimetableController {
 			{ "btn40", "btn41", "btn42", "btn43", "btn44", "btn45", "btn46", "btn47", "btn48", "btn49", "btn410" },
 			{ "btn50", "btn51", "btn52", "btn53", "btn54", "btn55", "btn56", "btn57", "btn58", "btn59", "btn510" },
 			{ "btn60", "btn61", "btn62", "btn63", "btn64", "btn65", "btn66", "btn67", "btn68", "btn69", "btn610" } };
+	
+	@FXML
+	private Label IdLabel;
+	
+	@FXML
+	private Label SeviceLabel;
+	
+	@FXML
+	private Label ModeLabel;
+	
+	@FXML
+	private Label CusIdLabel;
+	
 	@FXML
 	private JFXButton btn21;
 
@@ -271,6 +283,56 @@ public class TimetableController {
 	@FXML
 	private JFXButton save;
 
+	public void showBooked(int Cusid,int i,int j) throws IOException, SQLException
+	{
+		Connection LoginConn = connection.connectDB();
+		// create statement of it
+		Statement st = LoginConn.createStatement();
+		// Run SQL
+		ResultSet rs = st.executeQuery("SELECT * FROM DETAILS where USER_ID = " + Cusid);
+
+		String firstName = rs.getString("FIRST_NAME");
+		String  lastName = rs.getString("LAST_NAME");
+		String  email = rs.getString("EMAIL");
+		String phoneNo = rs.getString("PHONE_NO");
+		String  address = rs.getString("ADDRESS");
+		
+		
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/Booked.fxml"));
+		AnchorPane booked = loader.load();
+		Stage Bookedstage = new Stage();
+		Bookedstage.setTitle("Booked");
+		Bookedstage.initModality(Modality.WINDOW_MODAL);
+		Stage stage = (Stage) save.getScene().getWindow();
+		Bookedstage.initOwner(stage);
+		Scene scene = new Scene(booked);
+		
+		Label temp = (Label) scene.lookup("#firstNameLabel");
+		temp.setText(firstName);
+		
+		temp =(Label) scene.lookup("#lastNameLabel");
+		temp.setText(lastName);
+		
+		temp =(Label) scene.lookup("#cusPhoneLabel");
+		temp.setText(phoneNo);
+		
+		temp =(Label) scene.lookup("#cusAddressLabel");
+		temp.setText(address);
+		
+		temp =(Label) scene.lookup("#cusEmailLabel");
+		temp.setText(email);
+		
+		
+		
+		Bookedstage.setScene(scene);
+		Bookedstage.show();
+	}
+	
+	
+	
+	
+	
 	@FXML
 	//make the every button do their right thing
 	//If is add time just Av/Un,nothing for Booked
@@ -278,7 +340,7 @@ public class TimetableController {
 	
 	private void edit(ActionEvent event) throws IOException {
 		JFXButton x = (JFXButton) event.getSource();
-		if (EmployeeMenuController.Selection == 1) {     //to decide what they want to do Add time or make booking
+		if (ModeLabel.getText().equals("Adding time")) {     //to decide what they want to do Add time or make booking
 			for (int i = 0; i <= 6; i++) {               //1 is add time timetable
 				for (int j = 0; j <= 10; j++) {
 					if (x.getId().equals(btnIdSet[i][j])) { //search the buttom by their id to find the target button
@@ -297,7 +359,7 @@ public class TimetableController {
 					}
 				}
 			}
-		} else if (EmployeeMenuController.Selection == 0) { //0 is make time timetable
+		} else if (ModeLabel.getText().equals("Making booking")) { //0 is make time timetable
 			for (int i = 0; i <= 6; i++) {
 				for (int j = 0; j <= 10; j++) {
 					if (x.getId().equals(btnIdSet[i][j])) {
@@ -313,8 +375,7 @@ public class TimetableController {
 							x.setStyle("-fx-background-color:lightgreen");
 							System.out.println(MenuMain.timetable[i][j + 1] + " " + i + " " + j);
 						}else if(MenuMain.timetable[i][j]==2){
-							//MenuMain a = new MenuMain();
-							//a.showBooked(CusID);
+							//showBooked(CusIdLabel.getText(),i,j);
 							
 						} 
 					}

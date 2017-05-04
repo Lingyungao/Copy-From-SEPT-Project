@@ -271,98 +271,24 @@ public class MenuMain extends Application {
 		{
 			temp = (Label) scene.lookup("#SeviceLabel");
 			temp.setText(Service);
+			temp.setVisible(true);
+			
 			temp = (Label) scene.lookup("#ModeLabel");
 			temp.setText("Making booking");
+			
+			temp = (Label) scene.lookup("#CusIdLabel");
+			temp.setText(CusId);
+			
 			Stage stage = (Stage) NWB.getScene().getWindow();
 			stage.close();
 		}
 		
 		else
 		{   
-			temp = (Label) scene.lookup("#MtodeLabel");
+			temp = (Label) scene.lookup("#ModeLabel");
 			temp.setText("Adding time");
 		}
-
-		// Label temp1 = (Label) scene.lookup("#dayB");
-		// temp1.setText(String.valueOf(timetable[0][0]));
-		//
-		// Label temp2 = (Label) scene.lookup("#monthB");
-		// temp2.setText(String.valueOf(timetable[0][1]));
-		//
-		// Label temp3 = (Label) scene.lookup("#yearB");
-		// temp3.setText(String.valueOf(timetable[0][2]));
-		//
-		// Label temp4 = (Label) scene.lookup("#dayE");
-		// temp4.setText(String.valueOf(timetable[6][0]));
-		//
-		// Label temp5 = (Label) scene.lookup("#monthE");
-		// temp5.setText(String.valueOf(timetable[6][1]));
-		//
-		// Label temp6 = (Label) scene.lookup("#yearE");
-		// temp6.setText(String.valueOf(timetable[6][2]));
-
-		for (int i = 0; i <= 6; i++) {
-			for (int j = 0; j <= 10; j++) {
-				if (timetable[i][j + 1] == 1) {
-					JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
-					Btemp.setText("Avalible");
-					Btemp.setStyle("-fx-background-color:lightgreen");
-				} else if (timetable[i][j + 1] == 0) {
-					JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
-					Btemp.setText("Unavalible");
-					Btemp.setStyle("-fx-background-color:red");
-				} else if (timetable[i][j + 1] == 2) {
-					JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
-					Btemp.setText("Booked");
-					Btemp.setStyle("-fx-background-color:yellow");
-				}
-			}
-		}
-
-		TimetableEdit.setScene(scene);
-		TimetableEdit.show();
-
-		// scene.getStylesheets().add("/application/Timetable.css");
-	}
-
-	public void cusShowTimetable(String empid) throws IOException, NumberFormatException, SQLException {
-		System.out.println("1bcd");
-		System.out.println("EMPID is:" + empid);
-		cusSetTimetable(Integer.valueOf(empid));
-
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
-
-		Pane Timetable = loader.load();
-		Stage TimetableEdit = new Stage();
-		TimetableEdit.setTitle("Timetable");
-		TimetableEdit.initModality(Modality.WINDOW_MODAL);
-		TimetableEdit.initOwner(primaryStage);
-
-		Scene scene = new Scene(Timetable);
-		Label temp = (Label) scene.lookup("#IdLabel");
-		temp.setText(empid);
-		// Label temp = (Label) scene.lookup("#IdLabel");
-		// temp.setText(empid);
-		//
-		// Label temp1 = (Label) scene.lookup("#dayB");
-		// temp1.setText(String.valueOf(timetable[0][0]));
-		//
-		// Label temp2 = (Label) scene.lookup("#monthB");
-		// temp2.setText(String.valueOf(timetable[0][1]));
-		//
-		// Label temp3 = (Label) scene.lookup("#yearB");
-		// temp3.setText(String.valueOf(timetable[0][2]));
-		//
-		// Label temp4 = (Label) scene.lookup("#dayE");
-		// temp4.setText(String.valueOf(timetable[6][0]));
-		//
-		// Label temp5 = (Label) scene.lookup("#monthE");
-		// temp5.setText(String.valueOf(timetable[6][1]));
-		//
-		// Label temp6 = (Label) scene.lookup("#yearE");
-		// temp6.setText(String.valueOf(timetable[6][2]));
-
+		
 		for (int i = 0; i <= 6; i++) {
 			for (int j = 0; j <= 10; j++) {
 				if (timetable[i][j + 1] == 1) {
@@ -404,53 +330,6 @@ public class MenuMain extends Application {
 			int x = 0;
 			timetable[i][x] = rs.getInt("WEEKDAYS");
 			x = x + 1;
-			timetable[i][x] = rs.getInt("T0800");
-			x++;
-			timetable[i][x] = rs.getInt("T0900");
-			x++;
-			timetable[i][x] = rs.getInt("T1000");
-			x++;
-			timetable[i][x] = rs.getInt("T1100");
-			x++;
-			timetable[i][x] = rs.getInt("T1200");
-			x++;
-			timetable[i][x] = rs.getInt("T1300");
-			x++;
-			timetable[i][x] = rs.getInt("T1400");
-			x++;
-			timetable[i][x] = rs.getInt("T1500");
-			x++;
-			timetable[i][x] = rs.getInt("T1600");
-			x++;
-			timetable[i][x] = rs.getInt("T1700");
-			x++;
-			timetable[i][x] = rs.getInt("T1800");
-			i = i + 1;
-		}
-	}
-
-	public void cusSetTimetable(int empId) throws SQLException {
-
-		ResultSet rs = null;
-		Connection LoginConn = null;
-		Statement st = null;
-
-		int i = 0;
-		LoginConn = connection.connectDB(); // connect to the SQL
-		st = LoginConn.createStatement(); // create statement of it
-
-		rs = st.executeQuery("SELECT * FROM TIMETABLE WHERE EMP_UID = " + empId);
-
-		while (rs.next()) {
-
-			int x = 0;
-			// timetable[i][x] = rs.getInt("Day");
-			timetable[i][x] = rs.getInt("WEEKDAYS");
-			x = x + 1;
-			// timetable[i][x] = rs.getInt("Month");
-			// x++;
-			// timetable[i][x] = rs.getInt("Year");
-			// x++;
 			timetable[i][x] = rs.getInt("T0800");
 			x++;
 			timetable[i][x] = rs.getInt("T0900");
@@ -518,21 +397,7 @@ public class MenuMain extends Application {
 		WarmingStage.show();
 	}
 	
-	public void showBooked(int Cusid,int i,int j,JFXButton SourceB) throws IOException
-	{
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/Booked.fxml"));
-		AnchorPane booked = loader.load();
-		Stage Bookedstage = new Stage();
-		Bookedstage.setTitle("Booked");
-		Bookedstage.initModality(Modality.WINDOW_MODAL);
-		Stage stage = (Stage) SourceB.getScene().getWindow();
-		Bookedstage.initOwner(stage);
-		Scene scene = new Scene(booked);
-		scene.getStylesheets().add("/application/application.css");
-		Bookedstage.setScene(scene);
-		Bookedstage.show();
-	}
+
 
 	public static void main(String[] args) {
 		launch(args);
