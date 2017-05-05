@@ -282,20 +282,78 @@ public class TimetableController {
 
 	@FXML
 	private JFXButton save;
+	
+	public String weekdaysDef(int weekdays) {  //Change 1~7 to Monday~Sunday
 
-	public void showBooked(int Cusid,int i,int j) throws IOException, SQLException
+		switch (weekdays) {
+		case 1: {
+			return "Monday";
+		}
+		case 2: {
+			return "Tuesday";
+		}
+		case 3: {
+			return "Wedesday";
+		}
+		case 4: {
+			return "Thurday";
+		}
+		case 5: {
+			return "Friday";
+		}
+		case 6: {
+			return "Saturday";
+		}
+		case 7: {
+			return "Sunday";
+		}
+
+		}
+		return null;
+
+	}
+	
+    //i is day j is exctally the time
+	public void showBooked(int i,int j) throws Exception
 	{
+		String day = weekdaysDef(i);
+		String StartTime = j + "o'clock";
+		String EndTime = j+1 +"o'clock";
+		
 		Connection LoginConn = connection.connectDB();
 		// create statement of it
 		Statement st = LoginConn.createStatement();
 		// Run SQL
-		ResultSet rs = st.executeQuery("SELECT * FROM DETAILS where USER_ID = " + Cusid);
+		ResultSet rs = st.executeQuery("select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid "
+				+ "WHERE booking.active = 1" +" AND booking.day = " + i + " AND booking.start_time = " + j);
+		
+		int TarCusId = rs.getInt("USER_ID");
+		
+		if (MenuMain.premission==1&&TarCusId != Integer.parseInt(CusIdLabel.getText()))
+		{
+			throw new Exception("you don't have permission");
+		}
+		
+		int TarBookId = rs.getInt("BOOK_ID");
+//		int TarEmpId = rs.getInt("EMP_ID");
+		
+
+		
+//		rs = st.executeQuery("SELECT * FROM EMPLOYEE where EMP_UID = " + TarEmpId);
+		String EfirstName = rs.getString("EMP_FIRST");
+		String ElastName = rs.getString("EMP_LAST");
+		
+//		rs = st.executeQuery("SELECT * FROM DETAILS where USER_ID = " + TarCusId);
 
 		String firstName = rs.getString("FIRST_NAME");
-		String  lastName = rs.getString("LAST_NAME");
-		String  email = rs.getString("EMAIL");
+		String lastName = rs.getString("LAST_NAME");
+		String email = rs.getString("EMAIL");
 		String phoneNo = rs.getString("PHONE_NO");
-		String  address = rs.getString("ADDRESS");
+		String address = rs.getString("ADDRESS");
+		
+		Statement st1 = LoginConn.createStatement();
+		ResultSet rs1 = st1.executeQuery("SELECT * FROM SERVICE where BOOK_ID = " + TarBookId);
+		String Service = rs1.getString("BOOK_SER");
 		
 		
 		FXMLLoader loader = new FXMLLoader();
@@ -323,6 +381,24 @@ public class TimetableController {
 		temp =(Label) scene.lookup("#cusEmailLabel");
 		temp.setText(email);
 		
+		temp =(Label) scene.lookup("#EfirstNameLabel");
+		temp.setText(EfirstName);
+		
+		temp =(Label) scene.lookup("#ElastNameLabel");
+		temp.setText(ElastName);
+		
+		temp =(Label) scene.lookup("#ServiceLabel");
+		temp.setText(Service);
+		
+		temp =(Label) scene.lookup("#day");
+		temp.setText(day);
+		
+		temp =(Label) scene.lookup("#StartTime");
+		temp.setText(StartTime);
+		
+		temp =(Label) scene.lookup("#EndTime");
+		temp.setText(EndTime);
+		
 		
 		
 		Bookedstage.setScene(scene);
@@ -338,8 +414,9 @@ public class TimetableController {
 	//If is add time just Av/Un,nothing for Booked
 	//If is making booking just Av/NB,nothing for Un & Booked
 	
-	private void edit(ActionEvent event) throws IOException {
+	private void edit(ActionEvent event) throws IOException, SQLException {
 		JFXButton x = (JFXButton) event.getSource();
+		
 		if (ModeLabel.getText().equals("Adding time")) {     //to decide what they want to do Add time or make booking
 			for (int i = 0; i <= 6; i++) {               //1 is add time timetable
 				for (int j = 0; j <= 10; j++) {
@@ -355,7 +432,19 @@ public class TimetableController {
 							x.setText("Avalible");
 							x.setStyle("-fx-background-color:lightgreen");
 							System.out.println(MenuMain.timetable[i][j + 1] + " " + i + " " + j);
-						}
+						}else if(MenuMain.timetable[i][j + 1]==2){
+							try{
+							showBooked(i+1,j+8);
+							}
+							catch(SQLException SE)
+						{
+							System.out.println("SQL Wrong");
+							}
+						catch (Exception e)
+							{
+							System.out.println("to show no permission");
+							}
+						} 
 					}
 				}
 			}
@@ -374,9 +463,31 @@ public class TimetableController {
 							x.setText("Avaliable");
 							x.setStyle("-fx-background-color:lightgreen");
 							System.out.println(MenuMain.timetable[i][j + 1] + " " + i + " " + j);
-						}else if(MenuMain.timetable[i][j]==2){
-							//showBooked(CusIdLabel.getText(),i,j);
-							
+						}else if(MenuMain.timetable[i][j + 1]==2){
+							try{
+							showBooked(i+1,j+8);
+							}
+							catch(SQLException SE)
+							{
+								System.out.println("SQL Wrong");
+							}
+							catch (Exception e)
+							{
+								FXMLLoader loader = new FXMLLoader();
+								loader.setLocation(MenuMain.class.getResource("/application/Warming.fxml"));
+								AnchorPane Warming = loader.load();
+								Stage WarmingStage = new Stage();
+								WarmingStage.setTitle("Warming!!");
+								WarmingStage.initModality(Modality.WINDOW_MODAL);
+								Stage stage = (Stage) save.getScene().getWindow();
+								WarmingStage.initOwner(stage);
+								Scene scene = new Scene(Warming);
+								Label temp = (Label) scene.lookup("#Message");
+								temp.setText("This booking is not belong to you");
+								scene.getStylesheets().add("/application/application.css");
+								WarmingStage.setScene(scene);
+								WarmingStage.show();
+							}
 						} 
 					}
 				}
