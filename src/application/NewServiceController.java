@@ -41,19 +41,14 @@ public class NewServiceController {
 		tempService = service.getText();
 		//get user input
 		rs = st.executeQuery(
-				"select * from SERVICE_DETAILS");
-		int datacount = 0;
+				"select * from COUNT(SERVICE_DETAILS)");
+		int datacount = rs.getInt("COUNT(SERVICE_DETAILS)");
 		//DATACOUNT is use to get new ID
-		while (rs.next()) {datacount++;}
 		
-		String sql = "INSERT INTO SERVICE_DETAILS(SER_NAME,SER_ID) VALUES("+(datacount+1)+","+tempService+")";
-		String sqltest = "INSERT INTO SERVICE_DETAILS(SER_NAME,SER_ID) VALUES(6,temp)";
-
-		System.out.println(sql);
-		System.out.println(sqltest);
-
-		PreparedStatement psmt = LoginConn.prepareStatement(sql);
-		psmt.execute();
-		System.out.println("REPORT AS001");
+		PreparedStatement psmt = LoginConn.prepareStatement("INSERT INTO SERVICE_DETAILS(SER_NAME,SER_ID) VALUES(?,?)");
+		psmt.setInt(1,datacount+1);
+		psmt.setString(2, "");
+		psmt.executeUpdate();
+		System.out.println("REPORT NS001");
 }
 }
