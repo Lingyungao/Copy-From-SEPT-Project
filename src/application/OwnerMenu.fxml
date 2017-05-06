@@ -37,5 +37,10 @@
       <Label fx:id="UID" layoutX="399.0" layoutY="123.0" text="Label" />
       <JFXButton fx:id="logout" buttonType="RAISED" layoutX="450.0" layoutY="30.0" onAction="#logout" ripplerFill="WHITE" text="Log out" textFill="WHITE" />
       <Label fx:id="NameL" layoutX="399.0" layoutY="93.0" text="Label" />
+      <JFXButton fx:id="viewService" buttonType="RAISED" layoutX="112.0" layoutY="118.0" onAction="#viewService" prefHeight="44.0" prefWidth="164.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="View Service" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </Pane>

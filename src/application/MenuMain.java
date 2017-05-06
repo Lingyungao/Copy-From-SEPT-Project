@@ -41,7 +41,19 @@ public class MenuMain extends Application {
 	static int userId = 0;
 	static int premission = 0;
 	static String userName = "";
-
+	
+	
+	
+	public void showViewService() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/application/OwnerServiceView.fxml"));
+		mainLayout = loader.load();
+		Scene scene = new Scene(mainLayout);
+		scene.getStylesheets().add("/application/application.css");
+		System.out.println(scene.getStylesheets());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
 	public void showCusEditM(JFXButton temp) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailEdit.fxml"));

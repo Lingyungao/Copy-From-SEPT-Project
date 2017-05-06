@@ -26,37 +26,23 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 
-public class OwnerAllviewController {
+public class OwnerServiceViewController {
 	MenuMain a = new MenuMain();
 
 	@FXML
-	private TableView<User> cuView;
+	private TableView<service> cuView;
 	@FXML
-	private TableColumn<User, String> cuname;
+	private TableColumn<service, String> cuname;
 	@FXML
-	private TableColumn<User, String> cudata;
+	private TableColumn<service, String> cudata;
 	@FXML
 	private JFXButton Back;
 	@FXML
 	private GridPane DetailGrid;
 	@FXML
-	private Label deNa1;
+	private Label seID;
 	@FXML
-	private Label deNa2;
-	@FXML
-	private Label deID1;
-	@FXML
-	private Label deID2;
-	@FXML
-	private Label deDa1;
-	@FXML
-	private Label deTi1;
-	@FXML
-	private Label deTi2;
-	@FXML
-	private Label dePh1;
-	@FXML
-	private Label deBID1;
+	private Label seNa;
 	@FXML
 	private Button SWITCH_CUSTOMERVIEWALL;
 	@FXML
@@ -70,50 +56,41 @@ public class OwnerAllviewController {
 	@FXML
 	private Label warning;
 
-	private String weekdaysName;
 	private static Connection LoginConn = null;
 	private static Statement st = null;
 	private static ResultSet rs = null;
-	private static ResultSet finder = null;
 
 	public void showList() throws SQLException {
-		int i = 0;
 
-		ObservableList<User> list = FXCollections.observableArrayList();
+		ObservableList<service> list = FXCollections.observableArrayList();
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
 		rs = st.executeQuery(
-				//"select * from ((booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid)INNER JOIN SERVICE ON booking.BOOK_ID =  WHERE booking.active = 1");
-
-				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 1");
+				"select * from SERVICE_DETAILS");
 				//"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid");
 		while (rs.next()) {
-			User user = new User();// create object
-			String userFirstName = rs.getString("FIRST_NAME");
-			String userSecondName = rs.getString("LAST_NAME");
-			user.setID(rs.getInt("USER_ID"));
-			int dayID = rs.getInt("DAY");
-			user.setUsername(userFirstName + " " + userSecondName);
-			user.setData(user.defWeekdaysName(dayID));
-			user.setBookID(rs.getInt("BOOK_ID"));
-			user.setEmpName(rs.getString("EMP_FIRST"));
-			user.setEmpID(rs.getInt("EMP_ID"));
-			user.setStrTime(rs.getInt("START_TIME"));
+			service service = new service();// create object
+			String ServiceName = rs.getString("SER_NAME");
+			int ServiceID = rs.getInt("SER_ID");
+			service.setServiceName(ServiceName);
+			service.setServiceID(ServiceID);
+
+
 
 
 
 			// put object on map
-			cuname.setCellValueFactory(new PropertyValueFactory("username"));
-			cudata.setCellValueFactory(new PropertyValueFactory("data"));
+			cuname.setCellValueFactory(new PropertyValueFactory("ServiceName"));
+			cudata.setCellValueFactory(new PropertyValueFactory("ServiceID"));
 			// add user to list
-			list.add(user); 
+			list.add(service); 
 		}
-		showEmpDetails(list.get(0));
+		showServiceDetails(list.get(0));
         //get user attention
 		cuView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
 			@Override
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-				showEmpDetails((User) newValue);
+				showServiceDetails((service) newValue);
 			}
 		});
 		
@@ -123,19 +100,13 @@ public class OwnerAllviewController {
 	}
 	//show detail information when check person
 	private int bookId;
-	private void showEmpDetails(User Emp) {
+	private void showServiceDetails(service ser) {
 
-		if (Emp != null) {
+		if (ser != null) {
 			// Fill the labels with info from the person object.
-			deNa1.setText(Emp.getUsername());
-			deNa2.setText(Emp.getEmpName());
-			deID1.setText(Integer.toString(Emp.getID()));
-			deDa1.setText(Emp.getData());
-			deBID1.setText(Integer.toString(Emp.getBookID()));
-			bookId =Emp.getBookID();
-			deID2.setText(Integer.toString(Emp.getEmpID()));
-			deTi1.setText(Integer.toString(Emp.getStrTime()) + " o'clock");
-			deTi2.setText(Integer.toString(Emp.getStrTime() + 1) + " o'clock");
+			seNa.setText(ser.getServiceName());
+			seID.setText(Integer.toString(ser.getServiceID()));
+
 
 		} else {
 			// Person is null, remove all the text.
