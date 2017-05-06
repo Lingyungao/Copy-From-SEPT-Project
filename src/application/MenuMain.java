@@ -381,6 +381,19 @@ public class MenuMain extends Application {
 		newBookingEdit.setScene(scene);
 		newBookingEdit.show();
 	}
+	public void showNewService() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/NewService.fxml"));
+		Pane newService = loader.load();
+		Stage newServiceEdit = new Stage();
+		newServiceEdit.setTitle("Add New Service");
+		newServiceEdit.initModality(Modality.WINDOW_MODAL);
+		newServiceEdit.initOwner(primaryStage);
+		Scene scene = new Scene(newService);
+		newServiceEdit.setScene(scene);
+		newServiceEdit.show();
+	}
+
 
 	public void showCon(JFXButton temp) throws IOException {
 		FXMLLoader loader = new FXMLLoader();

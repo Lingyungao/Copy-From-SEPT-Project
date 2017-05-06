@@ -61,6 +61,7 @@ public class OwnerServiceViewController {
 	private static ResultSet rs = null;
 
 	public void showList() throws SQLException {
+		int datacount = 0;
 
 		ObservableList<service> list = FXCollections.observableArrayList();
 		LoginConn = connection.connectDB(); // connect to the SQL
@@ -72,10 +73,10 @@ public class OwnerServiceViewController {
 			service service = new service();// create object
 			String ServiceName = rs.getString("SER_NAME");
 			int ServiceID = rs.getInt("SER_ID");
+			serviceId = ServiceID;
 			service.setServiceName(ServiceName);
 			service.setServiceID(ServiceID);
-
-
+			datacount++;
 
 
 
@@ -93,13 +94,14 @@ public class OwnerServiceViewController {
 				showServiceDetails((service) newValue);
 			}
 		});
+		System.out.println("data count:"+datacount);
 		
         
 		//set list to table
 		cuView.setItems(list); 
 	}
 	//show detail information when check person
-	private int bookId;
+	private int serviceId;
 	private void showServiceDetails(service ser) {
 
 		if (ser != null) {
@@ -129,17 +131,16 @@ public class OwnerServiceViewController {
     private Label inActiveMsg;
     
     @FXML
-    void inActive(ActionEvent event) throws SQLException {
+    void AddService(ActionEvent event) throws SQLException, IOException {
     	 Connection LoginConn = null;
     	 Statement st = null;
-    	 
- 		LoginConn = connection.connectDB(); // connect to the SQL
- 		st = LoginConn.createStatement();
+ 		a.showNewService();
+ 
+    }
+    @FXML
+    void DeleteService(ActionEvent event) throws SQLException, IOException {
 
- 		PreparedStatement rs = LoginConn.prepareStatement("UPDATE BOOKING SET ACTIVE=0 WHERE BOOK_ID =?");
- 		rs.setInt(1, bookId);
- 		rs.executeUpdate();
- 		inActiveMsg.setText("In-active done.");
+        
     }
     
     

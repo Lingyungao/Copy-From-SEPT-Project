@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="245.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewServiceController">
+   <children>
+      <Label layoutX="66.0" layoutY="58.0" text="Please input new Service name" />
+      <JFXButton fx:id="AddService" layoutX="208.0" layoutY="123.0" onAction="#AddService" style="-fx-background-color: #2196F3;" text="Add Service" textFill="WHITE" />
+      <Label fx:id="errorMsg" layoutX="36.0" layoutY="159.0" prefWidth="239.0" textFill="RED" wrapText="true" />
+      <JFXTextField fx:id="service" layoutX="36.0" layoutY="123.0" promptText="Service" />
+   </children>
+</AnchorPane>
