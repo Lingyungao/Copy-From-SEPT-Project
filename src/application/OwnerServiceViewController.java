@@ -96,7 +96,7 @@ public class OwnerServiceViewController {
 				
 			}
 		});
-		System.out.println("data count:"+datacount);
+		System.out.println("init work");
 		
         
 		//set list to table
