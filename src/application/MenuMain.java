@@ -54,6 +54,21 @@ public class MenuMain extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+	
+	public void showDeleteService(int serviceId) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/DeleteService.fxml"));
+		Pane newBooking = loader.load();
+		Stage newBookingEdit = new Stage();
+		newBookingEdit.setTitle("User select");
+		newBookingEdit.initModality(Modality.WINDOW_MODAL);
+		newBookingEdit.initOwner(primaryStage);
+
+		Scene scene = new Scene(newBooking);
+
+		newBookingEdit.setScene(scene);
+		newBookingEdit.show();
+	}
 	public void showCusEditM(JFXButton temp) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailEdit.fxml"));

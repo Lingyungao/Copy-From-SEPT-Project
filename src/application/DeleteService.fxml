@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="245.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DeleteServiceController">
+   <children>
+      <Label layoutX="66.0" layoutY="58.0" text="Please input new Service name" />
+      <JFXButton fx:id="DeleteServiceNo" layoutX="208.0" layoutY="123.0" onAction="#DeleteServiceNo" style="-fx-background-color: #2196F3;" text="No" textFill="WHITE" />
+      <Label fx:id="errorMsg" layoutX="36.0" layoutY="159.0" prefWidth="239.0" textFill="RED" wrapText="true" />
+      <JFXButton fx:id="DeleteServiceYes" layoutX="36.0" layoutY="123.0" onAction="#DeleteServiceYes" style="-fx-background-color: #2196F3;" text="Yes" textFill="WHITE" />
+   </children>
+</AnchorPane>

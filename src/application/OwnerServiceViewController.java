@@ -60,6 +60,8 @@ public class OwnerServiceViewController {
 	private static Statement st = null;
 	private static ResultSet rs = null;
 
+	public static int selectedBookIdbookID;
+
 	public void showList() throws SQLException {
 		int datacount = 0;
 
@@ -73,7 +75,6 @@ public class OwnerServiceViewController {
 			service service = new service();// create object
 			String ServiceName = rs.getString("SER_NAME");
 			int ServiceID = rs.getInt("SER_ID");
-			serviceId = ServiceID;
 			service.setServiceName(ServiceName);
 			service.setServiceID(ServiceID);
 			datacount++;
@@ -92,6 +93,7 @@ public class OwnerServiceViewController {
 			@Override
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 				showServiceDetails((service) newValue);
+				
 			}
 		});
 		System.out.println("data count:"+datacount);
@@ -101,15 +103,14 @@ public class OwnerServiceViewController {
 		cuView.setItems(list); 
 	}
 	//show detail information when check person
-	private int serviceId;
 	private void showServiceDetails(service ser) {
 
 		if (ser != null) {
 			// Fill the labels with info from the person object.
 			seNa.setText(ser.getServiceName());
 			seID.setText(Integer.toString(ser.getServiceID()));
-
-
+			selectedBookIdbookID = ser.getServiceID();
+			System.out.println("selectedBookIdbookID"+selectedBookIdbookID );
 		} else {
 			// Person is null, remove all the text.
 			DetailGrid.setVisible(false);
@@ -132,15 +133,13 @@ public class OwnerServiceViewController {
     
     @FXML
     void AddService(ActionEvent event) throws SQLException, IOException {
-    	 Connection LoginConn = null;
-    	 Statement st = null;
+
  		a.showNewService();
  
     }
     @FXML
     void DeleteService(ActionEvent event) throws SQLException, IOException {
-
-        
+		a.showDeleteService(selectedBookIdbookID);        
     }
     
     

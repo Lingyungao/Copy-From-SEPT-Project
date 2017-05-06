@@ -16,7 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class NewServiceController {
+public class DeleteServiceController {
 	private String regNumOnly = "^[0-9]+$";
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
@@ -24,6 +24,7 @@ public class NewServiceController {
 	public static String userIdCheck;
 	MenuMain a = new MenuMain();
 	private static int datacount=0;
+	int id = OwnerServiceViewController.selectedBookIdbookID;
 
 
 	@FXML
@@ -38,21 +39,19 @@ public class NewServiceController {
 	public static String tempService;
 
 	@FXML
-	void AddService(ActionEvent event) throws NumberFormatException, IOException, SQLException {
+	void DeleteServiceYes(ActionEvent event) throws NumberFormatException, IOException, SQLException {
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
-		tempService = service.getText();
-
-		//get user input
 		rs = st.executeQuery(
 				"select * from (SERVICE_DETAILS)");
-		//DATACOUNT is use to get new ID
 
-		System.out.println("number"+datacount);
-		PreparedStatement psmt = LoginConn.prepareStatement("INSERT INTO SERVICE_DETAILS(SER_ID,SER_NAME) VALUES(?,?)");
-		psmt.setString(2, tempService);
+		System.out.println("selectedBookIdbookID FROM DEL"+id);
+		PreparedStatement psmt = LoginConn.prepareStatement("DELETE FROM SERVICE_DETAILS WHERE SER_ID = "+id);
 		psmt.executeUpdate();
 		System.out.println("REPORT NS001");
  		a.showViewService();
 }
+	@FXML
+	void DeleteServiceNo(ActionEvent event) throws NumberFormatException, IOException, SQLException {
+		 }
 }

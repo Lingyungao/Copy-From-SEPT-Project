@@ -76,6 +76,8 @@ public class OwnerAllviewController {
 	private static ResultSet rs = null;
 	private static ResultSet finder = null;
 
+	public static int bookingID;
+
 	public void showList() throws SQLException {
 		int i = 0;
 
