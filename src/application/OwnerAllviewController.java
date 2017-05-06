@@ -84,7 +84,9 @@ public class OwnerAllviewController {
 		st = LoginConn.createStatement(); // create statement of it
 		rs = st.executeQuery(
 				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 1");
-				//"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid");
+		// "select * from (booking INNER JOIN Details On booking.user_id =
+		// details.user_id) INNER JOIN Employee ON booking.Emp_id =
+		// Employee.Emp_uid");
 		while (rs.next()) {
 			User user = new User();// create object
 			String userFirstName = rs.getString("FIRST_NAME");
@@ -98,29 +100,28 @@ public class OwnerAllviewController {
 			user.setEmpID(rs.getInt("EMP_ID"));
 			user.setStrTime(rs.getInt("START_TIME"));
 
-
-
 			// put object on map
 			cuname.setCellValueFactory(new PropertyValueFactory("username"));
 			cudata.setCellValueFactory(new PropertyValueFactory("data"));
 			// add user to list
-			list.add(user); 
+			list.add(user);
 		}
 		showEmpDetails(list.get(0));
-        //get user attention
+		// get user attention
 		cuView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
 			@Override
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 				showEmpDetails((User) newValue);
 			}
 		});
-		
-        
-		//set list to table
-		cuView.setItems(list); 
+
+		// set list to table
+		cuView.setItems(list);
 	}
-	//show detail information when check person
+
+	// show detail information when check person
 	private int bookId;
+
 	private void showEmpDetails(User Emp) {
 
 		if (Emp != null) {
@@ -130,7 +131,7 @@ public class OwnerAllviewController {
 			deID1.setText(Integer.toString(Emp.getID()));
 			deDa1.setText(Emp.getData());
 			deBID1.setText(Integer.toString(Emp.getBookID()));
-			bookId =Emp.getBookID();
+			bookId = Emp.getBookID();
 			deID2.setText(Integer.toString(Emp.getEmpID()));
 			deTi1.setText(Integer.toString(Emp.getStrTime()) + " o'clock");
 			deTi2.setText(Integer.toString(Emp.getStrTime() + 1) + " o'clock");
@@ -142,33 +143,50 @@ public class OwnerAllviewController {
 
 		}
 	}
-    //back to owner menu
+
+	// back to owner menu
 	@FXML
 	void Back(ActionEvent event) throws IOException {
 		a.showOwnerM();
 	}
-    //start
+
+	// start
 	public void initialize() throws SQLException {
 		showList();
 	}
 
-    @FXML
-    private Label inActiveMsg;
-    
-    @FXML
-    void inActive(ActionEvent event) throws SQLException {
-    	 Connection LoginConn = null;
-    	 Statement st = null;
-    	 
- 		LoginConn = connection.connectDB(); // connect to the SQL
- 		st = LoginConn.createStatement();
+	@FXML
+	private Label inActiveMsg;
 
- 		PreparedStatement rs = LoginConn.prepareStatement("UPDATE BOOKING SET ACTIVE=0 WHERE BOOK_ID =?");
- 		rs.setInt(1, bookId);
- 		rs.executeUpdate();
- 		inActiveMsg.setText("In-active done.");
-    }
-    
-    
+	@FXML
+	void inActive(ActionEvent event) throws SQLException {
+		Connection LoginConn = null;
+		Statement st = null;
+
+		LoginConn = connection.connectDB(); // connect to the SQL
+		st = LoginConn.createStatement();
+
+		ResultSet rs2 = st.executeQuery("SELECT * FROM BOOKING WHERE BOOK_ID = " + bookId);
+		int empId = rs2.getInt("EMP_ID");
+		int day = rs2.getInt("DAY");
+		String startTime = rs2.getString("START_TIME");
+		String startTimeS;
+		if (Integer.valueOf(startTime) < 10) {
+			startTime = "0" + startTime;
+		}
+
+		PreparedStatement rs = LoginConn.prepareStatement("UPDATE BOOKING SET ACTIVE=0 WHERE BOOK_ID =?");
+		rs.setInt(1, bookId);
+		rs.executeUpdate();
+
+		PreparedStatement rs3 = LoginConn
+				.prepareStatement("UPDATE TIMETABLE SET T" + startTime + "00 = 0 WHERE EMP_UID =? AND WEEKDAYS =?");
+		// rs3.setString(1, startTime);
+		rs3.setInt(1, empId);
+		rs3.setInt(2, day);
+		rs3.executeUpdate();
+
+		inActiveMsg.setText("In-active done.");
+	}
 
 }
