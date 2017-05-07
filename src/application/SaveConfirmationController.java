@@ -101,7 +101,7 @@ public class SaveConfirmationController {
 						rs2.setInt(5, 7 + j);
 						rs2.setInt(6, 8 + j);
 						rs4.setInt(1, bookCount);
-						rs4.setString(2, NewBookingController.tempService);
+						rs4.setString(2, NewBookingController.sss);
 						rs2.addBatch();
 						rs4.addBatch();
 						// System.out.println("added to batch");

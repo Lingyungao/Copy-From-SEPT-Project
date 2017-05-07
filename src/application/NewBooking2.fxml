@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="245.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewBookingController2">
    <children>
       <Label layoutX="52.0" layoutY="14.0" text="Please input Customer's ID and Service" />
-      <JFXButton fx:id="goTimetable" layoutX="208.0" layoutY="123.0"  style="-fx-background-color: #2196F3;" text="Pick Time" textFill="WHITE" />
+      <JFXButton fx:id="goTimetable" layoutX="208.0" layoutY="123.0" onAction="#goTimetable" style="-fx-background-color: #2196F3;" text="Pick Time" textFill="WHITE" />
       <Label fx:id="errorMsg" layoutX="36.0" layoutY="159.0" prefWidth="239.0" textFill="RED" wrapText="true" />
       <JFXComboBox fx:id="ServiceList" layoutX="36.0" layoutY="123.0" prefHeight="25.0" prefWidth="147.0" />
    </children>

@@ -57,7 +57,8 @@ public class NewBookingController2 {
 	private static ResultSet rs = null;
 
 	public static int selectedBookIdbookID;
-
+	public static String sss = "";
+	
 	public void showList() throws SQLException {
 		ObservableList<service> list = FXCollections.observableArrayList();
 		LoginConn = connection.connectDB(); // connect to the SQL
@@ -70,19 +71,19 @@ public class NewBookingController2 {
 			String ServiceName = rs.getString("SER_NAME");
 			int ServiceID = rs.getInt("SER_ID");
 			service.setServiceName(ServiceName);
-			service.setServiceID(ServiceID);
+		//	service.setServiceID(ServiceID);
 			list.add(service); 
 		    ServiceList.getItems().addAll(ServiceName);		
 		}
-		ServiceList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
+//		ServiceList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
 
-			@Override
-			public void changed(ObservableValue arg0, Object oldValue, Object newValue) {
-				// TODO Auto-generated method stub
-				showServiceDetails((service) newValue);			
-			}
+//			@Override
+//			public void changed(ObservableValue arg0, Object oldValue, Object newValue) {
+//				// TODO Auto-generated method stub
+//				showServiceDetails((service) newValue);			
+//			}
 			
-		});
+//		});
 
 }	
 
@@ -92,16 +93,27 @@ public class NewBookingController2 {
 	
 	//show detail information when check person
 	private void showServiceDetails(service ser) {
-
+		
+		
+		
 		System.out.println(ser.getServiceName());
 
 	}
     //back to owner menu
 	@FXML
 	void Back(ActionEvent event) throws IOException {
-		a.showOwnerM();
+		//a.showOwnerM();
+
+		
 	}
 	
+    @FXML
+    void goTimetable(ActionEvent event) {
+		sss = ServiceList.getSelectionModel().getSelectedItem().toString();
+
+    	System.out.println("sss is "+ sss );
+	//	warning.setText(sss);
+    }
     //start
 	public void initialize() throws SQLException {
 		showList();

@@ -7,12 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-
+import javafx.scene.control.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
+import javafx.scene.layout.GridPane;
 
 public class NewBookingController {
 	private String regNumOnly = "^[0-9]+$";
@@ -31,15 +35,39 @@ public class NewBookingController {
 	@FXML
 	private Label errorMsg;
 
-	@FXML
-	private JFXTextField service;
-
 	public static String tempService;
+
+	@FXML
+	private JFXComboBox<String> ServiceList;
+
+	public static int selectedBookIdbookID;
+	public static String sss = "";
+
+	public void showList() throws SQLException {
+		ObservableList<service> list = FXCollections.observableArrayList();
+		LoginConn = connection.connectDB(); // connect to the SQL
+		st = LoginConn.createStatement(); // create statement of it
+		rs = st.executeQuery("select * from SERVICE_DETAILS");
+		System.out.println("init work");
+		while (rs.next()) {
+			service service = new service();// create object
+			String ServiceName = rs.getString("SER_NAME");
+			// int ServiceID = rs.getInt("SER_ID");
+			service.setServiceName(ServiceName);
+			// service.setServiceID(ServiceID);
+			list.add(service);
+			ServiceList.getItems().addAll(ServiceName);
+		}
+	}
+
+	public void initialize() throws SQLException {
+		showList();
+	}
 
 	@FXML
 	void goTimetable(ActionEvent event) throws NumberFormatException, IOException, SQLException {
 		userIdCheck = userId.getText();
-		tempService = service.getText();
+		// tempService = service.getText();
 		Boolean passCheck = false;
 		int userIdCheck2 = 0;
 		int userCount = 0;
@@ -64,13 +92,11 @@ public class NewBookingController {
 			errorMsg.setText("Customer ID only allowed to input numbers.");
 		} else if (userIdCheck2 > userCount) {
 			errorMsg.setText("Customer ID not exist.");
-		} else if (tempService == "") {
-			errorMsg.setText("Please enter the service.");
 
 		} else {
-			tempService = service.getText();
 			try {
-				a.showTimetable(EmployeeMenuController.tempEmpId, userIdCheck,goTimetable,tempService,"MB");
+				sss = ServiceList.getSelectionModel().getSelectedItem().toString();
+				a.showTimetable(EmployeeMenuController.tempEmpId, userIdCheck, goTimetable, sss, "MB");
 				SaveConfirmationController.SSelection = 1;
 			}
 			// error msg if didnt click employee

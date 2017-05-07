@@ -384,7 +384,7 @@ public class MenuMain extends Application {
 
 	public void showNewBooking() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/NewBooking2.fxml"));
+		loader.setLocation(MenuMain.class.getResource("/application/NewBooking.fxml"));
 		Pane newBooking = loader.load();
 		Stage newBookingEdit = new Stage();
 		newBookingEdit.setTitle("User select");
