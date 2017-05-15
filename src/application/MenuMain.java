@@ -239,6 +239,10 @@ public class MenuMain extends Application {
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerMenu.fxml"));
 		Pane Customermenu = loader.load();
 		Scene scene = new Scene(Customermenu);
+		Label temp = (Label) scene.lookup("#UID");
+		temp.setText(String.valueOf(userId));
+		temp = (Label) scene.lookup("#NameL");
+		temp.setText(userName);
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add("/application/application.css");
 
