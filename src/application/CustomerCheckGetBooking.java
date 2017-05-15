@@ -43,6 +43,21 @@ public class CustomerCheckGetBooking {
 				tempET = Integer.parseInt(endTime);
 				tempET = tempET + 1;
 				endTime = Integer.toString(tempET);
+				if (bookDate.equals("1")){
+					bookDate = "Mon";
+				}else if(bookDate.equals("2")){
+					bookDate = "Tue";
+				}else if(bookDate.equals("3")){
+					bookDate = "Wed";
+				}else if(bookDate.equals("4")){
+					bookDate = "Thu";
+				}else if(bookDate.equals("5")){
+					bookDate = "Fri";
+				}else if(bookDate.equals("6")){
+					bookDate = "Sat";
+				}else{
+					bookDate = "Sun";
+				}
 
 				// add these details to the view booking detail window
 				CusBookingData.add(new CustomerCheckBooking(bookId, empId, empName, bookDate, startTime, endTime));
@@ -58,4 +73,6 @@ public class CustomerCheckGetBooking {
 	public ObservableList<CustomerCheckBooking> getCusBookingData() {
 		return CusBookingData;
 	}
+	
+	
 }

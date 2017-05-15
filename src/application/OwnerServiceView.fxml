@@ -44,9 +44,9 @@
 								<Label fx:id="seNa" text="Serivce Name Detail" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 								<Label text="Service ID" />
 								<Label fx:id="seID" text="Serivce ID Detail" GridPane.columnIndex="1" />
-                        <JFXButton fx:id="AddService" buttonType="RAISED" onAction="#AddService" text="Add new Service" textFill="WHITE" GridPane.rowIndex="10" />
+                        <JFXButton fx:id="AddService" buttonType="RAISED" onAction="#AddService" text="Add new Service" textFill="WHITE" GridPane.rowIndex="8" />
                         <Label fx:id="inActiveMsg" prefHeight="17.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                        <JFXButton fx:id="DeleteService" buttonType="RAISED" onAction="#DeleteService" text="Delete this service" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <JFXButton fx:id="DeleteService" buttonType="RAISED" onAction="#DeleteService" text="Delete this service" textFill="WHITE" GridPane.rowIndex="10" />
 							</children>
 							<columnConstraints>
 								<ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="30.0" />

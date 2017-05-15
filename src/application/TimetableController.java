@@ -365,6 +365,7 @@ public class TimetableController {
 		Stage stage = (Stage) save.getScene().getWindow();
 		Bookedstage.initOwner(stage);
 		Scene scene = new Scene(booked);
+		scene.getStylesheets().add("/application/application.css");
 		
 		Label temp = (Label) scene.lookup("#firstNameLabel");
 		temp.setText(firstName);
