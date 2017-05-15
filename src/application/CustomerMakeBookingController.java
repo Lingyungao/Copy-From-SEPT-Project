@@ -2,11 +2,15 @@ package application;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -38,6 +42,30 @@ public class CustomerMakeBookingController {
 
 	@FXML
 	public static String tempService;
+	
+	@FXML
+	private JFXComboBox<String> ServiceList;
+	
+	public void showList() throws SQLException {
+		ObservableList<service> list = FXCollections.observableArrayList();
+		LoginConn = connection.connectDB(); // connect to the SQL
+		st = LoginConn.createStatement(); // create statement of it
+		rs = st.executeQuery("select * from SERVICE_DETAILS");
+		System.out.println("init work");
+		while (rs.next()) {
+			service service = new service();// create object
+			String ServiceName = rs.getString("SER_NAME");
+			// int ServiceID = rs.getInt("SER_ID");
+			service.setServiceName(ServiceName);
+			// service.setServiceID(ServiceID);
+			list.add(service);
+			ServiceList.getItems().addAll(ServiceName);
+		}
+	}
+	
+	public void initialize() throws SQLException {
+		showList();
+	}
 
 	/**
 	 * Show the current employee's timetable

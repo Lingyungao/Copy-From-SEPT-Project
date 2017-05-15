@@ -6,6 +6,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<AnchorPane prefHeight="245.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerMakeBookingController">
+   <children>
+      <JFXTextField fx:id="userId" layoutX="36.0" layoutY="123.0" promptText="User ID" />
+      <Label layoutX="52.0" layoutY="14.0" text="Please input Customer's ID and Service" />
+      <JFXButton fx:id="goTimetable" layoutX="208.0" layoutY="123.0" onAction="#goTimetable" style="-fx-background-color: #2196F3;" text="Pick Time" textFill="WHITE" />
+      <Label fx:id="errorMsg" layoutX="36.0" layoutY="159.0" prefWidth="239.0" textFill="RED" wrapText="true" />
+      <JFXComboBox fx:id="ServiceList" layoutX="36.0" layoutY="82.0" prefHeight="25.0" prefWidth="147.0" promptText="Service" />
+   </children>
+</AnchorPane>
+
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
 <AnchorPane prefHeight="220.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerMakeBookingController">
    <children>
       <Label layoutX="36.0" layoutY="24.0" text="Please input Service who wish to book" />
@@ -14,3 +32,5 @@
       <JFXTextField fx:id="service" layoutX="39.0" layoutY="85.0" promptText="Service" />
    </children>
 </AnchorPane>
+
+ -->
