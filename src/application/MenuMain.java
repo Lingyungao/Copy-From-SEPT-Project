@@ -73,16 +73,20 @@ public class MenuMain extends Application {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailEdit.fxml"));
 		Pane editCusDetailPane = loader.load();
-		Stage editCusDetailStage = new Stage();
-		editCusDetailStage.setTitle("Register");
-		editCusDetailStage.initModality(Modality.WINDOW_MODAL);
-		Stage stage = (Stage) temp.getScene().getWindow();
-		editCusDetailStage.initOwner(stage);
 		Scene scene = new Scene(editCusDetailPane);
+		primaryStage.setScene(scene);
 		scene.getStylesheets().add("/application/application.css");
-
-		editCusDetailStage.setScene(scene);
-		editCusDetailStage.show();
+		primaryStage.setTitle("Edit Customer Detail");
+//		Stage editCusDetailStage = new Stage();
+//		editCusDetailStage.setTitle("Register");
+//		editCusDetailStage.initModality(Modality.WINDOW_MODAL);
+//		Stage stage = (Stage) temp.getScene().getWindow();
+//		editCusDetailStage.initOwner(stage);
+//		Scene scene = new Scene(editCusDetailPane);
+//		scene.getStylesheets().add("/application/application.css");
+//
+//		editCusDetailStage.setScene(scene);
+//		editCusDetailStage.show();
 
 	}
 
@@ -120,15 +124,21 @@ public class MenuMain extends Application {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailMenu.fxml"));
 		Pane showCusDetailPane = loader.load();
-		Stage showCusDetailStage = new Stage();
-		showCusDetailStage.setTitle("Edit Detail");
-		showCusDetailStage.initModality(Modality.WINDOW_MODAL);
-		showCusDetailStage.initOwner(primaryStage);
 		Scene scene = new Scene(showCusDetailPane);
+		primaryStage.setScene(scene);
 		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("Edit Customer Detail");
+//		Pane showCusDetailPane = loader.load();
+//		Stage showCusDetailStage = new Stage();
+//		showCusDetailStage.setTitle("Edit Detail");
+//		showCusDetailStage.initModality(Modality.WINDOW_MODAL);
+//		showCusDetailStage.initOwner(primaryStage);
+//		Scene scene = new Scene(showCusDetailPane);
+//		scene.getStylesheets().add("/application/application.css");
+//
+//		showCusDetailStage.setScene(scene);
+//		showCusDetailStage.show();
 
-		showCusDetailStage.setScene(scene);
-		showCusDetailStage.show();
 
 	}
 
@@ -256,7 +266,6 @@ public class MenuMain extends Application {
 		Scene scene = new Scene(addEmployee);
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add("/application/application.css");
-
 		primaryStage.setTitle("Add Employee");
 	}
 
