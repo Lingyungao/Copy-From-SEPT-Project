@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,6 +47,8 @@ public class CustomerMakeBookingController {
 	@FXML
 	private JFXComboBox<String> ServiceList;
 	
+	public static String sss = "";
+	
 	public void showList() throws SQLException {
 		ObservableList<service> list = FXCollections.observableArrayList();
 		LoginConn = connection.connectDB(); // connect to the SQL
@@ -70,38 +73,82 @@ public class CustomerMakeBookingController {
 	/**
 	 * Show the current employee's timetable
 	 */
+//	@FXML
+//	void goTimetable(ActionEvent event) throws Exception {
+//		// Get current customer's user ID
+//		userIdCheck = Integer.toString(LoginSystem2.returnId);
+//		// Get which service that the customer want to book
+//		tempService = service.getText();
+//		Boolean passCheck = false;
+//		int userIdCheck2 = Integer.parseInt(userIdCheck);
+//		// Connect to database
+//		LoginConn = connection.connectDB();
+//		st = LoginConn.createStatement();
+//		// Running SQL sentence.
+//		rs = st.executeQuery("SELECT COUNT(USER_ID) FROM USERS");
+//
+//		int userCount = rs.getInt("COUNT(USER_ID)");
+//
+//		// Check the user input is valid or not.
+//		// If not, show error message.
+//		if (userIdCheck.matches(regNumOnly) == false) {
+//			errorMsg.setText("Customer ID only allowed to input numbers.");
+//		} else if (userIdCheck2 > userCount) {
+//			errorMsg.setText("Customer ID not exsist.");
+//		} else if (tempService == "") {
+//			errorMsg.setText("Please enter the service.");
+//		} else {
+//			// Get the service's content
+//			tempService = service.getText();
+//			try {
+//				// try to show the timetable
+//				a.showTimetable(CustomerBookingMenuController.tempEmpId,userIdCheck,goTimetable,tempService,"MB");
+//				SaveConfirmationController.SSelection = 0;
+//			} catch (NumberFormatException NFE) {
+//				System.out.println("please select one of the employee");
+//				a.showWarming(goTimetable);
+//			}
+//		}
+//	}
+	
 	@FXML
-	void goTimetable(ActionEvent event) throws Exception {
+	void goTimetable(ActionEvent event) throws NumberFormatException, IOException, SQLException {
 		// Get current customer's user ID
 		userIdCheck = Integer.toString(LoginSystem2.returnId);
-		// Get which service that the customer want to book
-		tempService = service.getText();
+		System.out.println("abcdedf: " + userIdCheck);
 		Boolean passCheck = false;
-		int userIdCheck2 = Integer.parseInt(userIdCheck);
-		// Connect to database
-		LoginConn = connection.connectDB();
-		st = LoginConn.createStatement();
-		// Running SQL sentence.
-		rs = st.executeQuery("SELECT COUNT(USER_ID) FROM USERS");
+		int userIdCheck2 = 0;
+		int userCount = 0;
+		// user id check
+		try {
+			userIdCheck2 = Integer.parseInt(userIdCheck);
+		} catch (NumberFormatException NFE) {
+			errorMsg.setText("Please enter the number on Customer ID.");
+		}
+		try {
+			LoginConn = connection.connectDB();
+			st = LoginConn.createStatement();
 
-		int userCount = rs.getInt("COUNT(USER_ID)");
+			rs = st.executeQuery("SELECT COUNT(USER_ID) FROM USERS");
 
-		// Check the user input is valid or not.
-		// If not, show error message.
+			userCount = rs.getInt("COUNT(USER_ID)");
+		} catch (SQLException SE) {
+			errorMsg.setText("Invaild input for Customer ID");
+		}
+		// user id is exist check
 		if (userIdCheck.matches(regNumOnly) == false) {
 			errorMsg.setText("Customer ID only allowed to input numbers.");
 		} else if (userIdCheck2 > userCount) {
-			errorMsg.setText("Customer ID not exsist.");
-		} else if (tempService == "") {
-			errorMsg.setText("Please enter the service.");
+			errorMsg.setText("Customer ID not exist.");
+
 		} else {
-			// Get the service's content
-			tempService = service.getText();
 			try {
-				// try to show the timetable
-				a.showTimetable(CustomerBookingMenuController.tempEmpId,userIdCheck,goTimetable,tempService,"MB");
-				SaveConfirmationController.SSelection = 0;
-			} catch (NumberFormatException NFE) {
+				sss = ServiceList.getSelectionModel().getSelectedItem().toString();
+				a.showTimetable(CustomerBookingMenuController.tempEmpId, userIdCheck, goTimetable, sss, "MB");
+				SaveConfirmationController.SSelection = 1;
+			}
+			// error msg if didnt click employee
+			catch (NumberFormatException NFE) {
 				System.out.println("please select one of the employee");
 				a.showWarming(goTimetable);
 			}
