@@ -29,7 +29,7 @@ public class CustomerCheckGetBooking {
 
 			// create statement of it
 			rs = st.executeQuery(
-					"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid WHERE booking.user_id = "
+					"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid INNER JOIN SERVICE on Booking.BOOK_id = SERVICE.BOOK_ID WHERE booking.user_id = "
 							+ LoginSystem2.returnId);
 
 			// Using while loop to get all booking details
@@ -40,6 +40,7 @@ public class CustomerCheckGetBooking {
 				String bookDate = rs.getString("DAY");
 				String startTime = rs.getString("START_TIME");
 				String endTime = rs.getString("START_TIME");
+				String serviceName = rs.getString("BOOK_SER");
 				tempET = Integer.parseInt(endTime);
 				tempET = tempET + 1;
 				endTime = Integer.toString(tempET);
@@ -60,7 +61,7 @@ public class CustomerCheckGetBooking {
 				}
 
 				// add these details to the view booking detail window
-				CusBookingData.add(new CustomerCheckBooking(bookId, empId, empName, bookDate, startTime, endTime));
+				CusBookingData.add(new CustomerCheckBooking(bookId, empId, empName, bookDate, startTime, endTime, serviceName));
 				System.out.println("finished MainApp");
 			}
 		} catch (SQLException e) {

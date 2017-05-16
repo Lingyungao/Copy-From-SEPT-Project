@@ -36,6 +36,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label prefHeight="17.0" prefWidth="92.0" text="BookingID" />
@@ -50,6 +51,8 @@
                         <Label fx:id="startTime" text="Label5" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label text="EndTime" GridPane.rowIndex="5" />
                         <Label fx:id="endTime" text="Label6" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="Service" GridPane.rowIndex="6" />
+						<Label fx:id="serviceDetail" text="Service Name" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
                   <Label layoutX="8.0" layoutY="21.0" text="Booking Details:">
