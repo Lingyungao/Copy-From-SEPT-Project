@@ -58,6 +58,8 @@ public class OwnerAllviewController {
 	@FXML
 	private Label deBID1;
 	@FXML
+	private Label serviceDetail;
+	@FXML
 	private Button SWITCH_CUSTOMERVIEWALL;
 	@FXML
 	private Button ADDEMPLOYEESwitch;
@@ -87,8 +89,10 @@ public class OwnerAllviewController {
 		rs = st.executeQuery(
 				//"select * from ((booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid)INNER JOIN SERVICE ON booking.BOOK_ID =  WHERE booking.active = 1");
 
-				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 1");
+				//"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 1");
 				//"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid");
+				//New SQL for Get Service Details.
+				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid INNER JOIN SERVICE on Booking.BOOK_id = SERVICE.BOOK_ID WHERE booking.active = 1");
 		while (rs.next()) {
 			User user = new User();// create object
 			String userFirstName = rs.getString("FIRST_NAME");
@@ -101,7 +105,7 @@ public class OwnerAllviewController {
 			user.setEmpName(rs.getString("EMP_FIRST"));
 			user.setEmpID(rs.getInt("EMP_ID"));
 			user.setStrTime(rs.getInt("START_TIME"));
-
+			user.setUserService(rs.getString("BOOK_SER"));
 
 
 			// put object on map
@@ -138,6 +142,7 @@ public class OwnerAllviewController {
 			deID2.setText(Integer.toString(Emp.getEmpID()));
 			deTi1.setText(Integer.toString(Emp.getStrTime()) + " o'clock");
 			deTi2.setText(Integer.toString(Emp.getStrTime() + 1) + " o'clock");
+			serviceDetail.setText(Emp.getUserService());
 
 		} else {
 			// Person is null, remove all the text.
