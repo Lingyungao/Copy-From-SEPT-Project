@@ -54,7 +54,6 @@ public class CustomerMakeBookingController {
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
 		rs = st.executeQuery("select * from SERVICE_DETAILS");
-		System.out.println("init work");
 		while (rs.next()) {
 			service service = new service();// create object
 			String ServiceName = rs.getString("SER_NAME");
@@ -115,7 +114,6 @@ public class CustomerMakeBookingController {
 	void goTimetable(ActionEvent event) throws NumberFormatException, IOException, SQLException {
 		// Get current customer's user ID
 		userIdCheck = Integer.toString(LoginSystem2.returnId);
-		System.out.println("abcdedf: " + userIdCheck);
 		Boolean passCheck = false;
 		int userIdCheck2 = 0;
 		int userCount = 0;
@@ -146,6 +144,8 @@ public class CustomerMakeBookingController {
 				sss = ServiceList.getSelectionModel().getSelectedItem().toString();
 				a.showTimetable(CustomerBookingMenuController.tempEmpId, userIdCheck, goTimetable, sss, "MB");
 				SaveConfirmationController.SSelection = 2;
+				EmployeeMenuController.Selection = 2;
+				
 			}
 			// error msg if didnt click employee
 			catch (NumberFormatException NFE) {

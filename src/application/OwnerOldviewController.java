@@ -59,6 +59,8 @@ public class OwnerOldviewController {
 	@FXML
 	private Label deBID1;
 	@FXML
+	private Label serviceDetail;
+	@FXML
 	private Button SWITCH_CUSTOMERVIEWALL;
 	@FXML
 	private Button ADDEMPLOYEESwitch;
