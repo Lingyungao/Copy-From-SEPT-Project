@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import com.jfoenix.controls.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OwnerServiceViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OwnerServiceViewController">
 	<children>
 		<SplitPane dividerPositions="0.406" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<items>
@@ -44,9 +44,7 @@
 								<Label fx:id="seNa" text="Serivce Name Detail" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 								<Label text="Service ID" />
 								<Label fx:id="seID" text="Serivce ID Detail" GridPane.columnIndex="1" />
-                        <JFXButton fx:id="AddService" buttonType="RAISED" onAction="#AddService" text="Add new Service" textFill="WHITE" GridPane.rowIndex="8" />
                         <Label fx:id="inActiveMsg" prefHeight="17.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                        <JFXButton fx:id="DeleteService" buttonType="RAISED" onAction="#DeleteService" text="Delete this service" textFill="WHITE" GridPane.rowIndex="10" />
 							</children>
 							<columnConstraints>
 								<ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="30.0" />
@@ -67,6 +65,8 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" />
 							</rowConstraints>
 						</GridPane>
+                  <JFXButton fx:id="AddService" buttonType="RAISED" layoutX="20.0" layoutY="258.0" onAction="#AddService" stylesheets="@application.css" text="Add new Service" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="258.0" />
+                  <JFXButton fx:id="DeleteService" buttonType="RAISED" onAction="#DeleteService" text="Delete this service" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="320.0" />
 						<Label layoutX="18.0" layoutY="31.0" text="Booking Detail">
 							<font>
 								<Font name="Arial" size="22.0" />

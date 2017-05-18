@@ -54,5 +54,10 @@ public class NewServiceController {
 		psmt.executeUpdate();
 		System.out.println("REPORT NS001");
  		a.showViewService();
+		// get a handle to the stage
+		Stage stage = (Stage) AddService.getScene().getWindow();
+		// do what you have to do
+		stage.close();
+ 		
 }
 }
