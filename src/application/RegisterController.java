@@ -196,7 +196,7 @@ public class RegisterController {
 			if (checkExist == false){
 				cusInfoText.setText("Sorry, The User is exist, please try another username!");
 				throw new Exception("Sorry, The User is exist, please try another username!");
-			}
+			}else{
 			
 			PreparedStatement rs = LoginConn
 					.prepareStatement("INSERT INTO USERS(USERNAME,PASSWORD,USER_ID,PERMISSION) VALUES(?,?,?,1)");
@@ -233,7 +233,7 @@ public class RegisterController {
 			
 			cusInfoText.setText("Register succeed!");
 
-		} catch (Exception e) {
+		} }catch (Exception e) {
 
 		}
 	}
