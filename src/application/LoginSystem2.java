@@ -14,6 +14,7 @@ public class LoginSystem2 {
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
 	private static Statement st = null;
+	public static int businessID;
 	
 	public static int getBusId(String businessName) throws SQLException {
 		int BusId;
@@ -36,6 +37,7 @@ public class LoginSystem2 {
 	public static int login(String inputLogUser, String inputLogPass,String businessName) throws SQLException {
 
 		int BusId = getBusId(businessName);
+		businessID = BusId;
 		// Start functions
 
 		// Connection LoginConn = null;
