@@ -9,12 +9,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SuperUserMenuController">
    <children>
-       <JFXButton fx:id="BusinessView" buttonType="RAISED" layoutX="319.0" layoutY="194.0" onAction="#BusinessView" prefHeight="88.0" prefWidth="164.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Add business" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+       <JFXButton fx:id="BusinessView" buttonType="RAISED" layoutX="319.0" layoutY="194.0" onAction="#BusinessView" prefHeight="88.0" prefWidth="164.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="View Business" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
-             <JFXButton fx:id="BusinessAdd" buttonType="RAISED" layoutX="116.0" layoutY="194.0" onAction="#BusinessAdd" prefHeight="88.0" prefWidth="164.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="View Business" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+             <JFXButton fx:id="BusinessAdd" buttonType="RAISED" layoutX="116.0" layoutY="194.0" onAction="#BusinessAdd" prefHeight="88.0" prefWidth="164.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Add business" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
