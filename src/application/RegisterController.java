@@ -36,8 +36,10 @@ public class RegisterController {
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
 	private static ResultSet rs2 = null;
+	private static ResultSet rs3 = null;
 	private static Statement st = null;
 	private static Statement st2 = null;
+	private static Statement st3 = null;
 	private static String firstName;
 	private static String lastName;
 	private static String email;
@@ -46,6 +48,8 @@ public class RegisterController {
 	private int phoneNumber;
 	public static int userCount;
 	public static int userCount2;
+	public static int userCount3;
+	public static int busiID;
 
 	@FXML
 	private TextField regUsernameField;
@@ -178,15 +182,21 @@ public class RegisterController {
 			
 			//String Business = BusinessList.getSelectionModel().getSelectedItem().toString();
 			String Business = BusinessList.getSelectionModel().getSelectedItem();
+			boolean checkExist = false;
 			
 			if (Business == null){
 				cusInfoText.setText("Sorry, Please choose a business!");
 				throw new Exception("Sorry, Please choose a business!");
 			}
+			
 			int BusId = getBusId(Business);
 			System.out.println(Business);
 			System.out.println(BusId);
-			
+			checkExist = checkUserExist(regUsernameField.getText(), BusId);
+			if (checkExist == false){
+				cusInfoText.setText("Sorry, The User is exist, please try another username!");
+				throw new Exception("Sorry, The User is exist, please try another username!");
+			}
 			
 			PreparedStatement rs = LoginConn
 					.prepareStatement("INSERT INTO USERS(USERNAME,PASSWORD,USER_ID,PERMISSION) VALUES(?,?,?,1)");
@@ -209,13 +219,16 @@ public class RegisterController {
 			// Insert firstname, lastname, and other inofrmation to detail
 			// table.
 			rs2.executeUpdate();
+			System.out.println("AAAA");
 			
-			
-			PreparedStatement rs3 = LoginConn.prepareStatement(
+			PreparedStatement rs4 = LoginConn.prepareStatement(
 					"INSERT INTO USERS_BUS(USER_ID,BUS_ID) VALUES(?,?)");
-			rs3.setInt(1, userCount2);
-			rs3.setInt(2, BusId);
-			rs3.executeUpdate();
+			System.out.println("AAAA1");
+			System.out.println(userCount2);
+			System.out.println(BusId);
+			rs4.setInt(1, userCount2);
+			rs4.setInt(2, BusId);
+			rs4.executeUpdate();
 			
 			
 			cusInfoText.setText("Register succeed!");
@@ -232,6 +245,17 @@ public class RegisterController {
 		ResultSet rs = st.executeQuery("select * from BUSINESS where BUS_NAME = \"" + businessName + "\";");
 		BusId = rs.getInt("BUS_ID");
 		return BusId;
+	}
+	
+	public boolean checkUserExist(String userName, int busID) throws SQLException{
+		LoginConn = connection.connectDB(); // connect to the SQL
+		st3 = LoginConn.createStatement(); // create statement of it
+		rs3 = st.executeQuery("select count(USERNAME) from USERS CROSS JOIN USERS_BUS WHERE USERS.USER_ID = USERS_BUS.USER_ID AND USERNAME = \"" + userName + "\" AND BUS_ID = \"" + busID + "\";");
+		userCount3 = rs.getInt("count(USERNAME)");
+		if (userCount3 == 0){
+			return true;
+		}
+		return false;
 	}
 	
 	
