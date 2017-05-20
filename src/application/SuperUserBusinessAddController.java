@@ -100,19 +100,19 @@ public class SuperUserBusinessAddController {
 					|| regBusDescField.getText() == "") {
 				cusInfoText.setText("Please Input All information, before you submit!");
 			}
-			if (CusHandleException.UserNameInputCheck(regBusNameField.getText()) == false) {
-				cusInfoText.setText("Sorry! Username length cannot less than 3 or more than 17, and character only!");
-				throw new Exception("Sorry! Username length cannot less than 3 or more than 17, and character only!");
+			if (BusHandleException.BusNameInputCheck(regBusNameField.getText()) == false) {
+				cusInfoText.setText("Sorry! Username length cannot less than 3 or more than 30!");
+				throw new Exception("Sorry! Username length cannot less than 3 or more than 30!");
 			}
-			if (CusHandleException.UserNameInputCheck(regBusDescField.getText()) == false) {
-				cusInfoText.setText("Sorry! Username length cannot less than 3 or more than 17, and character only!");
-				throw new Exception("Sorry! Username length cannot less than 3 or more than 17, and character only!");
+			if (BusHandleException.BusDescInputCheck(regBusDescField.getText()) == false) {
+				cusInfoText.setText("Sorry! Username length cannot less than 3 or more than 150!");
+				throw new Exception("Sorry! Username length cannot less than 3 or more than 150!");
 			}
-			if (CusHandleException.UserFuncPhoneInputCheck(regBusPhoneField.getText()) == false) {
+			if (BusHandleException.BusFuncPhoneInputCheck(regBusPhoneField.getText()) == false) {
 				cusInfoText.setText("Sorry, Phone number length cannot less than 5 or more than 15, and number only!");
 				throw new Exception("Sorry, Phone number length cannot less than 5 or more than 15, and number only!");
 			}
-			if (CusHandleException.UserFuncAddressInputCheck(regBusAddressField.getText()) == false) {
+			if (BusHandleException.BusFuncAddressInputCheck(regBusAddressField.getText()) == false) {
 				cusInfoText.setText("Address length between 15 to 150, and cannot only input number or characters!");
 				throw new Exception("Address length between 15 to 150, and cannot only input number or characters!");
 			}
