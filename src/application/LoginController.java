@@ -78,7 +78,7 @@ public class LoginController {
 		
 		try {
 			int temp = 0;
-			temp = LoginSystem2.login(user, pass,Business);
+			temp = LoginSystem2.login(user,pass,Business);
 			if (temp == 2) {
 				System.out.println("2");
 				MenuMain.Business = Business;
@@ -89,11 +89,19 @@ public class LoginController {
 				a.showOwnerM();
 			} else if (temp == 1) {
 				System.out.println("1");
+				errorMsg.setText("wrong username or password");
 				// a.showFail();
 			}
-		} catch (NullPointerException NE) {
+			else if (temp == 4)
+			{
+				a.showSuperUserMenu();
+			}
+		}catch (NullPointerException NE) {
 			errorMsg.setText("wrong username or password");
-			System.out.println("The account is not exist or you do not register an account");
+			System.out.println("The account is not exist or you do not register an account in this business");
+		}catch (SQLException Se) {
+			errorMsg.setText("Please choose the Business");
+			System.out.println("test1");
 		}
 
 	}

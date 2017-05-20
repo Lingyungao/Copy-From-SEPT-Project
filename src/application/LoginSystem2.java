@@ -35,9 +35,6 @@ public class LoginSystem2 {
 	}
 
 	public static int login(String inputLogUser, String inputLogPass,String businessName) throws SQLException {
-
-		int BusId = getBusId(businessName);
-		businessID = BusId;
 		// Start functions
 
 		// Connection LoginConn = null;
@@ -55,6 +52,11 @@ public class LoginSystem2 {
 			permission = rs.getInt("PERMISSION");
 		}
 		returnId = userId;
+		
+		if(permission == 4)
+			return 4;
+		int BusId = getBusId(businessName);
+		businessID = BusId;
 
 		int tarBusId = search(userId);
 		// get username and password
