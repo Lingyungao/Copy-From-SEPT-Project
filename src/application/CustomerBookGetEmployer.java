@@ -29,7 +29,7 @@ public class CustomerBookGetEmployer {
 			st = LoginConn.createStatement();
 			// Create statement of it
 			//rs = st.executeQuery("SELECT * FROM EMPLOYEE");
-			rs = st.executeQuery("SELECT * FROM EMPLOYEE CROSS JOIN EMP_BUS WHERE EMPLOYEE.EMP_UID = EMP_BUS.EMP_UID AND EMP_BUS.EMP_UID = \"" + LoginSystem2.businessID + "\";");
+			rs = st.executeQuery("SELECT * FROM EMPLOYEE CROSS JOIN EMP_BUS WHERE EMPLOYEE.EMP_UID = EMP_BUS.EMP_UID AND EMP_BUS.BUS_ID = \"" + LoginSystem2.businessID + "\";");
 			
 
 			// While loop for get all employees

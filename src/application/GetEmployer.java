@@ -27,7 +27,7 @@ public class GetEmployer {
 			// create statement of it
 			System.out.println("REPORT 001");
 
-			rs = st.executeQuery("SELECT * FROM EMPLOYEE");
+			rs = st.executeQuery("SELECT * FROM EMPLOYEE CROSS JOIN EMP_BUS WHERE EMPLOYEE.EMP_UID = EMP_BUS.EMP_UID AND EMP_BUS.BUS_ID = \"" + LoginSystem2.businessID + "\";");
 			System.out.println("REPORT 003");
 			// to get employer
 			while (rs.next()) {
