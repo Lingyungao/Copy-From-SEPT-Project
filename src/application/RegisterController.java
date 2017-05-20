@@ -95,7 +95,7 @@ public class RegisterController {
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st2 = LoginConn.createStatement(); // create statement of it
 		rs2 = st.executeQuery("select * from BUSINESS");
-		System.out.println("init work");
+		
 		while (rs.next()) {
 			business business = new business();// create object
 			String BusinessName = rs.getString("BUS_NAME");
@@ -118,6 +118,7 @@ public class RegisterController {
 			rs = st.executeQuery("SELECT COUNT(USER_ID) FROM USERS");
 			userCount = rs.getInt("COUNT(USER_ID)");
 			userCount2 = userCount + 1;
+			
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -134,6 +135,7 @@ public class RegisterController {
 		// Connection LoginConn = null;
 		// Check user's input is valid or not by using CusHandleException class
 		// If not, throw exception
+		
 		try {
 			if (regFirstNameField.getText() == "" || regLastNameField.getText() == "" || regPhoneField.getText() == ""
 					|| regAddressField.getText() == "" || regEmailField.getText() == "") {
@@ -173,9 +175,17 @@ public class RegisterController {
 				throw new Exception(
 						"The password needs include number, symbol and character, the length between 5 to 17!");
 			}
-			String Business = BusinessList.getSelectionModel().getSelectedItem().toString();
-			int BusId = getBusId(Business);
 			
+			//String Business = BusinessList.getSelectionModel().getSelectedItem().toString();
+			String Business = BusinessList.getSelectionModel().getSelectedItem();
+			
+			if (Business == null){
+				cusInfoText.setText("Sorry, Please choose a business!");
+				throw new Exception("Sorry, Please choose a business!");
+			}
+			int BusId = getBusId(Business);
+			System.out.println(Business);
+			System.out.println(BusId);
 			
 			
 			PreparedStatement rs = LoginConn
@@ -183,6 +193,7 @@ public class RegisterController {
 			rs.setString(1, regUsernameField.getText());
 			rs.setString(2, regPassField.getText());
 			rs.setInt(3, userCount2);
+			
 			// excuteQuery for query. excuteUpdate for editing the database
 			// Insert user name and password to the user table
 			rs.executeUpdate();
@@ -198,6 +209,7 @@ public class RegisterController {
 			// Insert firstname, lastname, and other inofrmation to detail
 			// table.
 			rs2.executeUpdate();
+			
 			
 			PreparedStatement rs3 = LoginConn.prepareStatement(
 					"INSERT INTO USERS_BUS(USER_ID,BUS_ID) VALUES(?,?)");
@@ -217,7 +229,7 @@ public class RegisterController {
 		int BusId;
 		Connection LoginConn = connection.connectDB();
 		Statement st = LoginConn.createStatement();
-		ResultSet rs = st.executeQuery("select * from BUSINESS where BUS_NAME = " + businessName);
+		ResultSet rs = st.executeQuery("select * from BUSINESS where BUS_NAME = \"" + businessName + "\";");
 		BusId = rs.getInt("BUS_ID");
 		return BusId;
 	}

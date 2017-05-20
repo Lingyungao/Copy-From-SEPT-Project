@@ -31,6 +31,7 @@ public class RegisterSystem {
 		rs = st.executeQuery("SELECT COUNT(USER_ID) FROM USERS");
 
 		int userCount = rs.getInt("COUNT(USER_ID)");
+		System.out.println("finished0");
 
 		int userCount2 = userCount + 1;
 		// Use secure way to run insert sentence.
@@ -42,6 +43,7 @@ public class RegisterSystem {
 		// excuteQuery for query. excuteUpdate for editing the database
 		// Insert user name and password to the user table
 		rs.executeUpdate();
+		System.out.println("finished1");
 
 		PreparedStatement rs2 = LoginConn.prepareStatement(
 				"INSERT INTO DETAILS(USER_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE_NO,ADDRESS) VALUES(?,?,?,?,?,?)");
@@ -54,6 +56,6 @@ public class RegisterSystem {
 		// Insert firstname, lastname, and other inofrmation to detail table.
 		rs2.executeUpdate();
 
-		System.out.println("finished");
+		System.out.println("finished2");
 	}
 }
