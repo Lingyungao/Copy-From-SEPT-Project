@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +30,8 @@ import javafx.scene.text.Text;
  *
  */
 public class SuperUserBusinessAddController {
+	
+	MenuMain a = new MenuMain();
 
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
@@ -147,11 +150,8 @@ public class SuperUserBusinessAddController {
 	}
 
 	@FXML
-	private void login() {
-		// get a handle to the stage
-		Stage stage = (Stage) closeButton.getScene().getWindow();
-		// do what you have to do
-		stage.close();
+	private void login() throws IOException {
+		a.showSuperUserMenu();
 	}
 
 }
