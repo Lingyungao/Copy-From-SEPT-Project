@@ -44,6 +44,31 @@ public class MenuMain extends Application {
 	
 	
 	
+	
+	public void showSuperUserBusinessView() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/application/SuperUserBusinessView.fxml"));
+		mainLayout = loader.load();
+		Scene scene = new Scene(mainLayout);
+		scene.getStylesheets().add("/application/application.css");
+		System.out.println(scene.getStylesheets());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	
+	
+	public void showSuperUserBusinessAdd() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/application/SuperUserBusinessAdd.fxml"));
+		mainLayout = loader.load();
+		Scene scene = new Scene(mainLayout);
+		scene.getStylesheets().add("/application/application.css");
+		System.out.println(scene.getStylesheets());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	
+	
 	public void showViewService() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/application/OwnerServiceView.fxml"));
