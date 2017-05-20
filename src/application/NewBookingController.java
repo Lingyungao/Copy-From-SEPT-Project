@@ -41,7 +41,7 @@ public class NewBookingController {
 	private JFXComboBox<String> ServiceList;
 
 	public static int selectedBookIdbookID;
-	public static String sss = "";
+	public static String Service = "";
 
 	public void showList() throws SQLException {
 		ObservableList<service> list = FXCollections.observableArrayList();
@@ -95,8 +95,8 @@ public class NewBookingController {
 
 		} else {
 			try {
-				sss = ServiceList.getSelectionModel().getSelectedItem().toString();
-				a.showTimetable(EmployeeMenuController.tempEmpId, userIdCheck, goTimetable, sss, "MB");
+				Service = ServiceList.getSelectionModel().getSelectedItem().toString();
+				a.showTimetable(EmployeeMenuController.tempEmpId, userIdCheck, goTimetable, Service, "MB");
 				SaveConfirmationController.SSelection = 1;
 			}
 			// error msg if didnt click employee

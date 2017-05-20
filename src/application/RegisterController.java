@@ -173,6 +173,11 @@ public class RegisterController {
 				throw new Exception(
 						"The password needs include number, symbol and character, the length between 5 to 17!");
 			}
+			String Business = BusinessList.getSelectionModel().getSelectedItem().toString();
+			int BusId = getBusId(Business);
+			
+			
+			
 			PreparedStatement rs = LoginConn
 					.prepareStatement("INSERT INTO USERS(USERNAME,PASSWORD,USER_ID,PERMISSION) VALUES(?,?,?,1)");
 			rs.setString(1, regUsernameField.getText());
@@ -193,13 +198,31 @@ public class RegisterController {
 			// Insert firstname, lastname, and other inofrmation to detail
 			// table.
 			rs2.executeUpdate();
-
+			
+			PreparedStatement rs3 = LoginConn.prepareStatement(
+					"INSERT INTO USERS_BUS(USER_ID,BUS_ID) VALUES(?,?)");
+			rs3.setInt(1, userCount2);
+			rs3.setInt(2, BusId);
+			rs3.executeUpdate();
+			
+			
 			cusInfoText.setText("Register succeed!");
 
 		} catch (Exception e) {
 
 		}
 	}
+	
+	public int getBusId(String businessName) throws SQLException {
+		int BusId;
+		Connection LoginConn = connection.connectDB();
+		Statement st = LoginConn.createStatement();
+		ResultSet rs = st.executeQuery("select * from BUSINESS where BUS_NAME = " + businessName);
+		BusId = rs.getInt("BUS_ID");
+		return BusId;
+	}
+	
+	
 
 	@FXML
 	private void login() {
