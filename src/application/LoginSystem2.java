@@ -14,9 +14,28 @@ public class LoginSystem2 {
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
 	private static Statement st = null;
+	
+	public static int getBusId(String businessName) throws SQLException {
+		int BusId;
+		Connection LoginConn = connection.connectDB();
+		Statement st = LoginConn.createStatement();
+		ResultSet rs = st.executeQuery("select * from BUSINESS where BUS_NAME = \"" + businessName + "\";");
+		BusId = rs.getInt("BUS_ID");
+		return BusId;
+	}
+	
+	public static int search(int UserId) throws SQLException
+	{
+		Connection LoginConn = connection.connectDB();
+		Statement st = LoginConn.createStatement();
+		ResultSet rs = st.executeQuery("select * from USERS_BUS where USER_ID = \"" + UserId + "\";");
+		int tarBusId = rs.getInt("BUS_ID");
+		return tarBusId;
+	}
 
-	public static int login(String inputLogUser, String inputLogPass) throws SQLException {
+	public static int login(String inputLogUser, String inputLogPass,String businessName) throws SQLException {
 
+		int BusId = getBusId(businessName);
 		// Start functions
 
 		// Connection LoginConn = null;
@@ -32,13 +51,13 @@ public class LoginSystem2 {
 			user = rs.getString("USERNAME");
 			userId = rs.getInt("USER_ID");
 			permission = rs.getInt("PERMISSION");
-
 		}
 		returnId = userId;
 
+		int tarBusId = search(userId);
 		// get username and password
 
-		if (user.equals(inputLogUser) && pass.equals(inputLogPass)) {
+		if (user.equals(inputLogUser) && pass.equals(inputLogPass) && BusId == tarBusId) {
 			// compare with database. have to same both.
 
 			if (permission == 1) {

@@ -74,14 +74,18 @@ public class LoginController {
 
 		String user = username.getText();
 		String pass = password.getText();
+		String Business = BusinessList.getSelectionModel().getSelectedItem();
+		
 		try {
 			int temp = 0;
-			temp = LoginSystem2.login(user, pass);
+			temp = LoginSystem2.login(user, pass,Business);
 			if (temp == 2) {
 				System.out.println("2");
+				MenuMain.Business = Business;
 				a.showCusM();
 			} else if (temp == 3) {
 				System.out.println("3");
+				MenuMain.Business = Business;
 				a.showOwnerM();
 			} else if (temp == 1) {
 				System.out.println("1");

@@ -41,6 +41,7 @@ public class MenuMain extends Application {
 	static int userId = 0;
 	static int premission = 0;
 	static String userName = "";
+	static String Business = "";
 	
 	public void showSuperUserMenu() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
