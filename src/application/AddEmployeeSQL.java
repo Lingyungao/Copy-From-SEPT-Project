@@ -33,7 +33,13 @@ public class AddEmployeeSQL {
 		System.out.println("REPORT AE002");
 		insertDefaultTimetable(empCount);
 		System.out.println("REPORT AE003");
-
+		
+		PreparedStatement rs1 = LoginConn.prepareStatement(
+				"INSERT INTO EMP_BUS(EMP_UID,BUS_ID) VALUES(?,?)");
+		rs1.setInt(1, empCount);
+		rs1.setInt(2, LoginSystem2.businessID);
+		rs1.executeUpdate();
+		
 	}
 
 	public static void insertDefaultTimetable(int empId) throws Exception {
