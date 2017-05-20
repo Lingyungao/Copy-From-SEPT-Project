@@ -7,9 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,15 +65,18 @@ public class RegisterController {
 	private TextField regConfField;
 	@FXML
 	private com.jfoenix.controls.JFXButton closeButton;
+	@FXML
+	private JFXComboBox<String> BusinessList;
 
 	@FXML
 	private Text cusInfoText;
 
 	/**
 	 * initialize the JavaFX table make sure the table is empty
+	 * @throws SQLException 
 	 */
 	@FXML
-	private void initialize() {
+	private void initialize() throws SQLException {
 		GetUserID();
 		regUsernameField.setText("");
 		regFirstNameField.setText("");
@@ -80,6 +86,25 @@ public class RegisterController {
 		regEmailField.setText("");
 		regPassField.setText("");
 		regConfField.setText("");
+		showList();
+	}
+	
+	
+	public void showList() throws SQLException {
+		ObservableList<business> list = FXCollections.observableArrayList();
+		LoginConn = connection.connectDB(); // connect to the SQL
+		st2 = LoginConn.createStatement(); // create statement of it
+		rs2 = st.executeQuery("select * from BUSINESS");
+		System.out.println("init work");
+		while (rs.next()) {
+			business business = new business();// create object
+			String BusinessName = rs.getString("BUS_NAME");
+			// int BusinessID = rs.getInt("SER_ID");
+			business.setBusinessName(BusinessName);
+			// business.setBusinessID(BusinessID);
+			list.add(business);
+			BusinessList.getItems().addAll(BusinessName);
+		}
 	}
 
 	/**
