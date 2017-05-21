@@ -11,7 +11,7 @@ public class AddEmployeeSQL {
 	private static Statement st = null;
 	private static int empCount;
 
-	public static void insertEmployee(String empFirst, String empLast, String empPhone) throws Exception {
+	public static void insertEmployee(String empFirst, String empLast, String empPhone ,int businessId) throws Exception {
 		LoginConn = connection.connectDB(); // connect to the SQL
 
 		st = LoginConn.createStatement(); // create statement of it
@@ -40,6 +40,10 @@ public class AddEmployeeSQL {
 		rs1.setInt(2, LoginSystem2.businessID);
 		rs1.executeUpdate();
 		
+		PreparedStatement rs2 = LoginConn
+				.prepareStatement("INSERT INTO EMP_BUS(EMP_UID,BUS_ID) VALUES(?,?)");
+		rs2.setInt(empCount,businessId);
+		rs2.executeUpdate();
 	}
 
 	public static void insertDefaultTimetable(int empId) throws Exception {
