@@ -85,7 +85,8 @@ public class OwnerOldviewController {
 		st = LoginConn.createStatement(); // create statement of it
 
 		rs = st.executeQuery(
-				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 0");
+				//"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 0");
+				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid INNER JOIN SERVICE on Booking.BOOK_id = SERVICE.BOOK_ID WHERE booking.active = 0");
 
 		while (rs.next()) {
 			User user = new User();// create object
@@ -102,6 +103,8 @@ public class OwnerOldviewController {
 			user.setEmpName(rs.getString("EMP_FIRST"));
 			user.setEmpID(rs.getInt("EMP_ID"));
 			user.setStrTime(rs.getInt("START_TIME"));
+			user.setUserService(rs.getString("BOOK_SER"));
+
 
 			// put value on map
 			cuname.setCellValueFactory(new PropertyValueFactory("username"));
@@ -141,6 +144,8 @@ public class OwnerOldviewController {
 			deID2.setText(Integer.toString(Emp.getEmpID()));
 			deTi1.setText(Integer.toString(Emp.getStrTime()) + " o'clock");
 			deTi2.setText(Integer.toString(Emp.getStrTime() + 1) + " o'clock");
+			serviceDetail.setText(Emp.getUserService());
+
 
 		} else {
 			// Person is null, remove all the text.
