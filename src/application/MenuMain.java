@@ -41,59 +41,7 @@ public class MenuMain extends Application {
 	static int userId = 0;
 	static int premission = 0;
 	static String userName = "";
-	
-	
-	
-	
-	public void showSuperUserBusinessView() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/application/SuperUserBusinessView.fxml"));
-		mainLayout = loader.load();
-		Scene scene = new Scene(mainLayout);
-		scene.getStylesheets().add("/application/application.css");
-		System.out.println(scene.getStylesheets());
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
-	
-	
-	public void showSuperUserBusinessAdd() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/application/SuperUserBusinessAdd.fxml"));
-		mainLayout = loader.load();
-		Scene scene = new Scene(mainLayout);
-		scene.getStylesheets().add("/application/application.css");
-		System.out.println(scene.getStylesheets());
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
-	
-	
-	public void showViewService() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/application/OwnerServiceView.fxml"));
-		mainLayout = loader.load();
-		Scene scene = new Scene(mainLayout);
-		scene.getStylesheets().add("/application/application.css");
-		System.out.println(scene.getStylesheets());
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
-	
-	public void showDeleteService(int serviceId) throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/DeleteService.fxml"));
-		Pane newBooking = loader.load();
-		Stage newBookingEdit = new Stage();
-		newBookingEdit.setTitle("User select");
-		newBookingEdit.initModality(Modality.WINDOW_MODAL);
-		newBookingEdit.initOwner(primaryStage);
 
-		Scene scene = new Scene(newBooking);
-
-		newBookingEdit.setScene(scene);
-		newBookingEdit.show();
-	}
 	public void showCusEditM(JFXButton temp) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailEdit.fxml"));
@@ -306,41 +254,103 @@ public class MenuMain extends Application {
 		primaryStage.setTitle("Confirm");
 	}
 
-	public void showTimetable(String empid,String CusId,JFXButton NWB,String Service,String mode) throws IOException, NumberFormatException, SQLException {
+	public void showTimetable(String empid, JFXButton NWB) throws IOException, NumberFormatException, SQLException {
 		setTimetable(Integer.valueOf(empid));
+		Stage stage = (Stage) NWB.getScene().getWindow();
+
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
+
+		Pane Timetable = loader.load();
+		Stage TimetableEdit = new Stage();
+		TimetableEdit.setTitle("Timetable");
+		TimetableEdit.initModality(Modality.WINDOW_MODAL);
+
+		TimetableEdit.initOwner(stage);
+		Scene scene = new Scene(Timetable);
+		Label temp = (Label) scene.lookup("#IdLabel");
+		temp.setText(empid);
+
+		// Label temp1 = (Label) scene.lookup("#dayB");
+		// temp1.setText(String.valueOf(timetable[0][0]));
+		//
+		// Label temp2 = (Label) scene.lookup("#monthB");
+		// temp2.setText(String.valueOf(timetable[0][1]));
+		//
+		// Label temp3 = (Label) scene.lookup("#yearB");
+		// temp3.setText(String.valueOf(timetable[0][2]));
+		//
+		// Label temp4 = (Label) scene.lookup("#dayE");
+		// temp4.setText(String.valueOf(timetable[6][0]));
+		//
+		// Label temp5 = (Label) scene.lookup("#monthE");
+		// temp5.setText(String.valueOf(timetable[6][1]));
+		//
+		// Label temp6 = (Label) scene.lookup("#yearE");
+		// temp6.setText(String.valueOf(timetable[6][2]));
+
+		for (int i = 0; i <= 6; i++) {
+			for (int j = 0; j <= 10; j++) {
+				if (timetable[i][j + 1] == 1) {
+					JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
+					Btemp.setText("Avalible");
+					Btemp.setStyle("-fx-background-color:lightgreen");
+				} else if (timetable[i][j + 1] == 0) {
+					JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
+					Btemp.setText("Unavalible");
+					Btemp.setStyle("-fx-background-color:red");
+				} else if (timetable[i][j + 1] == 2) {
+					JFXButton Btemp = (JFXButton) scene.lookup(btnIdSet[i][j]);
+					Btemp.setText("Booked");
+					Btemp.setStyle("-fx-background-color:yellow");
+				}
+			}
+		}
+
+		TimetableEdit.setScene(scene);
+		TimetableEdit.show();
+
+		// scene.getStylesheets().add("/application/Timetable.css");
+	}
+
+	public void cusShowTimetable(String empid) throws IOException, NumberFormatException, SQLException {
+		System.out.println("1bcd");
+		System.out.println("EMPID is:" + empid);
+		cusSetTimetable(Integer.valueOf(empid));
+
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/Timetable.fxml"));
+
 		Pane Timetable = loader.load();
 		Stage TimetableEdit = new Stage();
 		TimetableEdit.setTitle("Timetable");
 		TimetableEdit.initModality(Modality.WINDOW_MODAL);
 		TimetableEdit.initOwner(primaryStage);
+
 		Scene scene = new Scene(Timetable);
 		Label temp = (Label) scene.lookup("#IdLabel");
 		temp.setText(empid);
-		
-		if(mode.equals("MB"))
-		{
-			temp = (Label) scene.lookup("#SeviceLabel");
-			temp.setText(Service);
-			temp.setVisible(true);
-			
-			temp = (Label) scene.lookup("#ModeLabel");
-			temp.setText("Making booking");
-			
-			temp = (Label) scene.lookup("#CusIdLabel");
-			temp.setText(CusId);
-			
-			Stage stage = (Stage) NWB.getScene().getWindow();
-			stage.close();
-		}
-		
-		else
-		{   
-			temp = (Label) scene.lookup("#ModeLabel");
-			temp.setText("Adding time");
-		}
-		
+		// Label temp = (Label) scene.lookup("#IdLabel");
+		// temp.setText(empid);
+		//
+		// Label temp1 = (Label) scene.lookup("#dayB");
+		// temp1.setText(String.valueOf(timetable[0][0]));
+		//
+		// Label temp2 = (Label) scene.lookup("#monthB");
+		// temp2.setText(String.valueOf(timetable[0][1]));
+		//
+		// Label temp3 = (Label) scene.lookup("#yearB");
+		// temp3.setText(String.valueOf(timetable[0][2]));
+		//
+		// Label temp4 = (Label) scene.lookup("#dayE");
+		// temp4.setText(String.valueOf(timetable[6][0]));
+		//
+		// Label temp5 = (Label) scene.lookup("#monthE");
+		// temp5.setText(String.valueOf(timetable[6][1]));
+		//
+		// Label temp6 = (Label) scene.lookup("#yearE");
+		// temp6.setText(String.valueOf(timetable[6][2]));
+
 		for (int i = 0; i <= 6; i++) {
 			for (int j = 0; j <= 10; j++) {
 				if (timetable[i][j + 1] == 1) {
@@ -407,6 +417,53 @@ public class MenuMain extends Application {
 		}
 	}
 
+	public void cusSetTimetable(int empId) throws SQLException {
+
+		ResultSet rs = null;
+		Connection LoginConn = null;
+		Statement st = null;
+
+		int i = 0;
+		LoginConn = connection.connectDB(); // connect to the SQL
+		st = LoginConn.createStatement(); // create statement of it
+
+		rs = st.executeQuery("SELECT * FROM TIMETABLE WHERE EMP_UID = " + empId);
+
+		while (rs.next()) {
+
+			int x = 0;
+			// timetable[i][x] = rs.getInt("Day");
+			timetable[i][x] = rs.getInt("WEEKDAYS");
+			x = x + 1;
+			// timetable[i][x] = rs.getInt("Month");
+			// x++;
+			// timetable[i][x] = rs.getInt("Year");
+			// x++;
+			timetable[i][x] = rs.getInt("T0800");
+			x++;
+			timetable[i][x] = rs.getInt("T0900");
+			x++;
+			timetable[i][x] = rs.getInt("T1000");
+			x++;
+			timetable[i][x] = rs.getInt("T1100");
+			x++;
+			timetable[i][x] = rs.getInt("T1200");
+			x++;
+			timetable[i][x] = rs.getInt("T1300");
+			x++;
+			timetable[i][x] = rs.getInt("T1400");
+			x++;
+			timetable[i][x] = rs.getInt("T1500");
+			x++;
+			timetable[i][x] = rs.getInt("T1600");
+			x++;
+			timetable[i][x] = rs.getInt("T1700");
+			x++;
+			timetable[i][x] = rs.getInt("T1800");
+			i = i + 1;
+		}
+	}
+
 	public void showNewBooking() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/NewBooking.fxml"));
@@ -421,19 +478,6 @@ public class MenuMain extends Application {
 		newBookingEdit.setScene(scene);
 		newBookingEdit.show();
 	}
-	public void showNewService() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MenuMain.class.getResource("/application/NewService.fxml"));
-		Pane newService = loader.load();
-		Stage newServiceEdit = new Stage();
-		newServiceEdit.setTitle("Add New Service");
-		newServiceEdit.initModality(Modality.WINDOW_MODAL);
-		newServiceEdit.initOwner(primaryStage);
-		Scene scene = new Scene(newService);
-		newServiceEdit.setScene(scene);
-		newServiceEdit.show();
-	}
-
 
 	public void showCon(JFXButton temp) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
@@ -458,11 +502,10 @@ public class MenuMain extends Application {
 		WarmingStage.initOwner(stage);
 		Scene scene = new Scene(Warming);
 		scene.getStylesheets().add("/application/application.css");
+
 		WarmingStage.setScene(scene);
 		WarmingStage.show();
 	}
-	
-
 
 	public static void main(String[] args) {
 		launch(args);
