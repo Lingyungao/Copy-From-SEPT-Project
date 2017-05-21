@@ -39,6 +39,7 @@ public class CustomerBookGetEmployer {
 				String phone = rs.getString("EMP_PHONE");
 				int empId = rs.getInt("EMP_UID");
 				
+				
 				// Add employer to the list
 				employerData.add(new CustomerBookEmployer(first, last, phone, empId));
 				

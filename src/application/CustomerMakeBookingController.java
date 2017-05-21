@@ -137,9 +137,10 @@ public class CustomerMakeBookingController {
 		{
 			try {
 				Service = ServiceList.getSelectionModel().getSelectedItem().toString();
-				a.showTimetable(EmployeeMenuController.tempEmpId, userIdCheck, goTimetable, Service, "MB");
+				a.showTimetable(CustomerBookingMenuController.tempEmpId, userIdCheck, goTimetable, Service, "MB");
 				SaveConfirmationController.SSelection = 2;
 				EmployeeMenuController.Selection = 2;
+				
 			}
 			// error msg if didnt click employee
 			catch (NumberFormatException NFE) {
