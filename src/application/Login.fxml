@@ -15,7 +15,7 @@
          <children>
             <JFXTextField fx:id="username" alignment="CENTER" layoutX="85.0" layoutY="91.0" prefHeight="29.0" prefWidth="240.0" promptText="Username" />
             <JFXPasswordField fx:id="password" alignment="CENTER" layoutX="85.0" layoutY="139.0" prefHeight="29.0" prefWidth="240.0" promptText="Password" />
-            <JFXButton fx:id="login" buttonType="RAISED" layoutX="85.0" layoutY="202.0" onAction="#login" prefHeight="29.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Login" textFill="WHITE">
+            <JFXButton fx:id="login" buttonType="RAISED" layoutX="85.0" layoutY="222.0" onAction="#login" prefHeight="29.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196F3;" text="Login" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -33,8 +33,8 @@
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding></JFXButton>
-            <Label fx:id="errorMsg" layoutX="85.0" layoutY="180.0" prefHeight="17.0" prefWidth="389.0" textAlignment="CENTER" textFill="RED" />
-            <JFXComboBox fx:id="BusinessList" layoutX="192.0" layoutY="213.0" prefHeight="25.0" prefWidth="147.0" promptText="Business" />
+            <Label fx:id="errorMsg" layoutX="85.0" layoutY="180.0"  prefWidth="250.0" textAlignment="CENTER" textFill="RED" wrapText="true"/>
+            <JFXComboBox fx:id="BusinessList" layoutX="192.0" layoutY="233.0" prefHeight="25.0" prefWidth="147.0" promptText="Business" />
          </children>
          <effect>
             <DropShadow />

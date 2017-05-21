@@ -49,6 +49,7 @@ public class MenuMain extends Application {
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("Super User Menu");
 		System.out.println(scene.getStylesheets());
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -60,6 +61,7 @@ public class MenuMain extends Application {
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("Business view");
 		System.out.println(scene.getStylesheets());
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -72,6 +74,7 @@ public class MenuMain extends Application {
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("Add business");
 		System.out.println(scene.getStylesheets());
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -83,6 +86,7 @@ public class MenuMain extends Application {
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("View service");
 		System.out.println(scene.getStylesheets());
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -93,7 +97,7 @@ public class MenuMain extends Application {
 		loader.setLocation(MenuMain.class.getResource("/application/DeleteService.fxml"));
 		Pane newBooking = loader.load();
 		Stage newBookingEdit = new Stage();
-		newBookingEdit.setTitle("User select");
+		newBookingEdit.setTitle("Delect service");
 		newBookingEdit.initModality(Modality.WINDOW_MODAL);
 		newBookingEdit.initOwner(primaryStage);
 
@@ -222,6 +226,7 @@ public class MenuMain extends Application {
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("In-active booking view");
 		System.out.println(scene.getStylesheets());
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -233,6 +238,7 @@ public class MenuMain extends Application {
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("SEPT-BOOKING sytem");
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
