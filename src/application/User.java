@@ -11,6 +11,7 @@ public class User {
 	private String empname;
 	private int EmpID;
 	private int StrTime;
+	private String serviceName;
 
 	public String defWeekdaysName(int data) { // Change 1~7 to Mon~Sun
 
@@ -118,5 +119,13 @@ public class User {
 
 	public void setStrTime(int StrTime) {
 		this.StrTime = StrTime;
+	}
+	
+	public String getUserService() {
+		return serviceName;
+	}
+
+	public void setUserService(String serviceName) {
+		this.serviceName = serviceName;
 	}
 }

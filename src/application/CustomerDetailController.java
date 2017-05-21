@@ -134,13 +134,15 @@ public class CustomerDetailController {
 
 	/**
 	 * When user click edit button, go to edit detail window.
+	 * @throws IOException 
 	 */
 	@FXML
-	private void editCustomerBack() {
+	private void editCustomerBack() throws IOException {
 		// get a handle to the stage
-		Stage stage = (Stage) backButton.getScene().getWindow();
-		// do what you have to do
-		stage.close();
+//		Stage stage = (Stage) backButton.getScene().getWindow();
+//		// do what you have to do
+//		stage.close();
+		a.showCusM();
 	}
 
 	/**

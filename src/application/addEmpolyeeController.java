@@ -120,7 +120,7 @@ public class addEmpolyeeController {
 
 		if (empFirstPass == true && empLastPass == true && empPhonePass == true) {
 			System.out.println("PASSED");
-			AddEmployeeSQL.insertEmployee(empFirst.getText(), empLast.getText(), empPhone.getText());
+			AddEmployeeSQL.insertEmployee(empFirst.getText(), empLast.getText(), empPhone.getText(), LoginSystem2.businessID);
 			a.showAddEmpConfirm();
 		} else {
 			System.out.println("error AE001");

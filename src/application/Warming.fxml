@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="153.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WarmingController">
    <children>
-      <Label layoutX="122.0" layoutY="28.0" text="Please select one of the person" />
+      <Label fx:id="Message" layoutX="122.0" layoutY="28.0" text="Please select one of the person" />
       <JFXButton fx:id="Close" buttonType="RAISED" layoutX="185.0" layoutY="77.0" onAction="#CloseW" text="Ok" textFill="WHITE">
          <font>
             <Font size="20.0" />

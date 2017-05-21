@@ -57,7 +57,7 @@
 								<Label text="End time" GridPane.rowIndex="7" />
 								<Label fx:id="deTi2" text="End Time Detail" GridPane.columnIndex="1" GridPane.rowIndex="7" />
 								<Label text="Service" GridPane.rowIndex="8" />
-								<Label text="Service Detail" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+								<Label fx:id="serviceDetail" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <JFXButton fx:id="inActive" buttonType="RAISED" onAction="#inActive" text="In-active" textFill="WHITE" GridPane.rowIndex="10" />
                         <Label fx:id="inActiveMsg" prefHeight="17.0"  textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="10" />
 							</children>
@@ -86,7 +86,7 @@
 							</font>
 						</Label>
 						<JFXButton fx:id="Back" buttonType="RAISED" layoutX="241.0" layoutY="16.0" onAction="#Back" prefHeight="25.0" prefWidth="77.0" ripplerFill="WHITE" text="Back" textFill="WHITE" />
-                  <Label fx:id="warning" layoutX="18.0" layoutY="74.0" text="No booking is found" textFill="RED" visible="false" prefWidth="77.0">
+                  <Label fx:id="warning" layoutX="18.0" layoutY="73.0" text="No booking is found" textFill="RED" visible="false">
                      <font>
                         <Font name="Arial" size="22.0" />
                      </font>

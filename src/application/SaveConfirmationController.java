@@ -83,8 +83,11 @@ public class SaveConfirmationController {
 
 			PreparedStatement rs2 = LoginConn.prepareStatement(
 					"INSERT INTO BOOKING(BOOK_ID,USER_ID,EMP_ID,DAY,START_TIME,END_TIME,ACTIVE) VALUES(?,?,?,?,?,?,1) ");
+			
 			PreparedStatement rs4 = LoginConn.prepareStatement("INSERT INTO SERVICE(BOOK_ID,BOOK_SER) VALUES(?,?) ");
 
+			PreparedStatement rs5 = LoginConn.prepareStatement("INSERT INTO BOOK_BUS(BOOK_ID,BUS_ID) VALUES(?,?) ");
+			
 			for (int i = 0; i < 7; i++) {
 				// System.out.println("");
 				for (int j = 1; j < 12; j++) {
@@ -100,10 +103,13 @@ public class SaveConfirmationController {
 						// rs2.setInt(6, MenuMain.timetable[i][2]);
 						rs2.setInt(5, 7 + j);
 						rs2.setInt(6, 8 + j);
-						rs4.setInt(1, bookCount);
-						rs4.setString(2, NewBookingController.tempService);
+//						rs4.setInt(1, bookCount);
+						rs4.setString(2, NewBookingController.Service);
+						rs5.setInt(1, bookCount);
+						rs5.setInt(2, LoginSystem2.businessID);
 						rs2.addBatch();
 						rs4.addBatch();
+						rs5.addBatch();
 						// System.out.println("added to batch");
 
 					}
@@ -111,7 +117,51 @@ public class SaveConfirmationController {
 			}
 			rs2.executeBatch();
 			rs4.executeBatch();
+			rs5.executeBatch();
 			// System.out.println("new booking saved");
+		}else{
+			// System.out.println("booking save function on");
+						ResultSet rs3 = st.executeQuery("SELECT COUNT(BOOK_ID) FROM BOOKING");
+						int bookCount = rs3.getInt("COUNT(BOOK_ID)");
+
+						PreparedStatement rs2 = LoginConn.prepareStatement(
+								"INSERT INTO BOOKING(BOOK_ID,USER_ID,EMP_ID,DAY,START_TIME,END_TIME,ACTIVE) VALUES(?,?,?,?,?,?,1) ");
+						
+						PreparedStatement rs4 = LoginConn.prepareStatement("INSERT INTO SERVICE(BOOK_ID,BOOK_SER) VALUES(?,?) ");
+
+						PreparedStatement rs5 = LoginConn.prepareStatement("INSERT INTO BOOK_BUS(BOOK_ID,BUS_ID) VALUES(?,?) ");
+						
+						for (int i = 0; i < 7; i++) {
+							// System.out.println("");
+							for (int j = 1; j < 12; j++) {
+								System.out.print(MenuMain.timetable[i][j] + " ");
+								if (MenuMain.timetable[i][j] == 3) {
+									// System.out.println("find");
+									bookCount = bookCount + 1;
+									rs2.setInt(1, bookCount);
+									rs2.setString(2, temp2);
+									rs2.setString(3, temp1);
+									rs2.setInt(4, MenuMain.timetable[i][0]);
+									// rs2.setInt(5, MenuMain.timetable[i][1]);
+									// rs2.setInt(6, MenuMain.timetable[i][2]);
+									rs2.setInt(5, 7 + j);
+									rs2.setInt(6, 8 + j);
+//									rs4.setInt(1, bookCount);
+									rs4.setString(2, CustomerMakeBookingController.Service);
+									rs5.setInt(1, bookCount);
+									rs5.setInt(2, LoginSystem2.businessID);
+									rs2.addBatch();
+									rs4.addBatch();
+									rs5.addBatch();
+									// System.out.println("added to batch");
+
+								}
+							}
+						}
+						rs2.executeBatch();
+						rs4.executeBatch();
+						rs5.executeBatch();
+						// System.out.println("new booking saved");
 		}
 		Stage stage = (Stage) Save.getScene().getWindow();
 		stage.close();

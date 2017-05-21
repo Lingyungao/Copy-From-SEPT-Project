@@ -7,12 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-
+import javafx.scene.control.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
+import javafx.scene.layout.GridPane;
 
 public class NewBookingController {
 	private String regNumOnly = "^[0-9]+$";
@@ -31,46 +35,64 @@ public class NewBookingController {
 	@FXML
 	private Label errorMsg;
 
-	@FXML
-	private JFXTextField service;
-
 	public static String tempService;
+
+	@FXML
+	private JFXComboBox<String> ServiceList;
+
+	public static int selectedBookIdbookID;
+	public static String Service = "";
+
+	public void showList() throws SQLException {
+		ObservableList<service> list = FXCollections.observableArrayList();
+		LoginConn = connection.connectDB(); // connect to the SQL
+		st = LoginConn.createStatement(); // create statement of it
+		rs = st.executeQuery("select * from SERVICE_DETAILS cross join SER_D_BUS CROSS JOIN business where SERVICE_DETAILS.SER_ID = SER_D_BUS.SER_ID and business.BUS_ID = SER_D_BUS.BUS_ID and BUSINESS.BUS_ID =" + LoginSystem2.businessID);
+		System.out.println("init work");
+		while (rs.next()) {
+			service service = new service();// create object
+			String ServiceName = rs.getString("SER_NAME");
+			// int ServiceID = rs.getInt("SER_ID");
+			service.setServiceName(ServiceName);
+			// service.setServiceID(ServiceID);
+			list.add(service);
+			ServiceList.getItems().addAll(ServiceName);
+		}
+	}
+
+	public void initialize() throws SQLException {
+		showList();
+	}
 
 	@FXML
 	void goTimetable(ActionEvent event) throws NumberFormatException, IOException, SQLException {
 		userIdCheck = userId.getText();
-		tempService = service.getText();
-		Boolean passCheck = false;
-		int userIdCheck2 = 0;
-		int userCount = 0;
-		// user id check
-		try {
-			userIdCheck2 = Integer.parseInt(userIdCheck);
-		} catch (NumberFormatException NFE) {
-			errorMsg.setText("Please enter the number on Customer ID.");
+		Service = ServiceList.getSelectionModel().getSelectedItem();
+		int TarPer = 0;
+		int TarBusId = 0;
+		
+		// tempService = service.getText();
+		try{
+		Connection LoginConn = connection.connectDB();
+		Statement st = LoginConn.createStatement();
+		ResultSet rs = st.executeQuery("select * from USERS where USER_ID  = \"" + userIdCheck + "\";");
+		TarPer =rs.getInt("PERMISSION");
+		
+		Connection LoginConn1 = connection.connectDB();
+		Statement st1 = LoginConn1.createStatement();
+		ResultSet rs1 = st1.executeQuery("select * from USERS_BUS where USER_ID  = \"" + userIdCheck + "\";");
+		TarBusId = rs1.getInt("BUS_ID");
 		}
-		try {
-			LoginConn = connection.connectDB();
-			st = LoginConn.createStatement();
-
-			rs = st.executeQuery("SELECT COUNT(USER_ID) FROM USERS");
-
-			userCount = rs.getInt("COUNT(USER_ID)");
-		} catch (SQLException SE) {
-			errorMsg.setText("Invaild input for Customer ID");
+		catch(SQLException Se)
+		{
+			errorMsg.setText("User is not exist");
 		}
-		// user id is exist check
-		if (userIdCheck.matches(regNumOnly) == false) {
-			errorMsg.setText("Customer ID only allowed to input numbers.");
-		} else if (userIdCheck2 > userCount) {
-			errorMsg.setText("Customer ID not exist.");
-		} else if (tempService == "") {
-			errorMsg.setText("Please enter the service.");
-
-		} else {
-			tempService = service.getText();
+		
+		if(TarPer==1 && TarBusId==LoginSystem2.businessID)
+		{
 			try {
-				a.showTimetable(EmployeeMenuController.tempEmpId, goTimetable);
+				Service = ServiceList.getSelectionModel().getSelectedItem().toString();
+				a.showTimetable(EmployeeMenuController.tempEmpId, userIdCheck, goTimetable, Service, "MB");
 				SaveConfirmationController.SSelection = 1;
 			}
 			// error msg if didnt click employee
@@ -78,6 +100,9 @@ public class NewBookingController {
 				System.out.println("please select one of the employee");
 				a.showWarming(goTimetable);
 			}
+		}
+		else{
+			errorMsg.setText("User is not exist");
 		}
 	}
 }

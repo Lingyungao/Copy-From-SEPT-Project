@@ -28,7 +28,9 @@ public class CustomerBookGetEmployer {
 			LoginConn = connection.connectDB();
 			st = LoginConn.createStatement();
 			// Create statement of it
-			rs = st.executeQuery("SELECT * FROM EMPLOYEE");
+			//rs = st.executeQuery("SELECT * FROM EMPLOYEE");
+			rs = st.executeQuery("SELECT EMPLOYEE.EMP_FIRST, EMPLOYEE.EMP_LAST, EMPLOYEE.EMP_PHONE, EMPLOYEE.EMP_UID \"EMP_UID\", EMP_BUS.EMP_UID \"EMPBUS_UID\", EMP_BUS.BUS_ID FROM EMPLOYEE CROSS JOIN EMP_BUS WHERE EMPLOYEE.EMP_UID = EMP_BUS.EMP_UID AND EMP_BUS.BUS_ID = \"" + LoginSystem2.businessID + "\";");
+			
 
 			// While loop for get all employees
 			while (rs.next()) {
@@ -36,10 +38,11 @@ public class CustomerBookGetEmployer {
 				String last = rs.getString("EMP_LAST");
 				String phone = rs.getString("EMP_PHONE");
 				int empId = rs.getInt("EMP_UID");
-				System.out.println("REPORT 004");
+				
+				
 				// Add employer to the list
 				employerData.add(new CustomerBookEmployer(first, last, phone, empId));
-				System.out.println("finished MainApp");
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

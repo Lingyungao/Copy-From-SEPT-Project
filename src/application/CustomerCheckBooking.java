@@ -21,13 +21,14 @@ public class CustomerCheckBooking {
 	private StringProperty bookDate;
 	private StringProperty startTime;
 	private StringProperty endTime;
+	private StringProperty serviceName;
 
 	/**
 	 * Define a booking structure.
 	 *
 	 */
 	public CustomerCheckBooking() {
-		this(0, 0, null, null, null, null);
+		this(0, 0, null, null, null, null, null);
 	}
 
 	/**
@@ -47,13 +48,14 @@ public class CustomerCheckBooking {
 	 *            time
 	 */
 	public CustomerCheckBooking(int bookId, int empId, String empName, String bookDate, String startTime,
-			String endTime) {
+			String endTime, String serviceName) {
 		this.bookId = new SimpleIntegerProperty(bookId);
 		this.empId = new SimpleIntegerProperty(empId);
 		this.empName = new SimpleStringProperty(empName);
 		this.bookDate = new SimpleStringProperty(bookDate);
 		this.startTime = new SimpleStringProperty(startTime);
 		this.endTime = new SimpleStringProperty(endTime);
+		this.serviceName = new SimpleStringProperty(serviceName);
 	}
 
 	public int getBookId() {
@@ -132,6 +134,15 @@ public class CustomerCheckBooking {
 
 	public StringProperty endTimeProperty() {
 		return endTime;
+	}
+	
+	public String getServiceName() {
+		return serviceName.get();
+	}
+
+	public void setServiceName(String serviceName) {
+		this.serviceName.set(serviceName);
+
 	}
 
 }

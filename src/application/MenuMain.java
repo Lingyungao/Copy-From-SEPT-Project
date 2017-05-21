@@ -41,21 +41,91 @@ public class MenuMain extends Application {
 	static int userId = 0;
 	static int premission = 0;
 	static String userName = "";
+<<<<<<< HEAD
 
+=======
+	static String Business = "";
+	
+	public void showSuperUserMenu() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/application/SuperUserMenu.fxml"));
+		mainLayout = loader.load();
+		Scene scene = new Scene(mainLayout);
+		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("Super User Menu");
+		System.out.println(scene.getStylesheets());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+
+	public void showSuperUserBusinessView() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/application/SuperUserBusinessView.fxml"));
+		mainLayout = loader.load();
+		Scene scene = new Scene(mainLayout);
+		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("Business view");
+		System.out.println(scene.getStylesheets());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	
+	public void showSuperUserBusinessAdd() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/application/SuperUserBusinessAdd.fxml"));
+		mainLayout = loader.load();
+		Scene scene = new Scene(mainLayout);
+		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("Add business");
+		System.out.println(scene.getStylesheets());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	
+	public void showViewService() throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/application/OwnerServiceView.fxml"));
+		mainLayout = loader.load();
+		Scene scene = new Scene(mainLayout);
+		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("View service");
+		System.out.println(scene.getStylesheets());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	
+
+	public void showDeleteService(int serviceId, int selectedBusinessID) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(MenuMain.class.getResource("/application/DeleteService.fxml"));
+		Pane newBooking = loader.load();
+		Stage newBookingEdit = new Stage();
+		newBookingEdit.setTitle("Delect service");
+		newBookingEdit.initModality(Modality.WINDOW_MODAL);
+		newBookingEdit.initOwner(primaryStage);
+		Scene scene = new Scene(newBooking);
+		newBookingEdit.setScene(scene);
+		newBookingEdit.show();
+	}
+>>>>>>> refs/remotes/origin/LingFXMLFixPartC
 	public void showCusEditM(JFXButton temp) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailEdit.fxml"));
 		Pane editCusDetailPane = loader.load();
-		Stage editCusDetailStage = new Stage();
-		editCusDetailStage.setTitle("Register");
-		editCusDetailStage.initModality(Modality.WINDOW_MODAL);
-		Stage stage = (Stage) temp.getScene().getWindow();
-		editCusDetailStage.initOwner(stage);
 		Scene scene = new Scene(editCusDetailPane);
+		primaryStage.setScene(scene);
 		scene.getStylesheets().add("/application/application.css");
-
-		editCusDetailStage.setScene(scene);
-		editCusDetailStage.show();
+		primaryStage.setTitle("Edit Customer Detail");
+//		Stage editCusDetailStage = new Stage();
+//		editCusDetailStage.setTitle("Register");
+//		editCusDetailStage.initModality(Modality.WINDOW_MODAL);
+//		Stage stage = (Stage) temp.getScene().getWindow();
+//		editCusDetailStage.initOwner(stage);
+//		Scene scene = new Scene(editCusDetailPane);
+//		scene.getStylesheets().add("/application/application.css");
+//
+//		editCusDetailStage.setScene(scene);
+//		editCusDetailStage.show();
 
 	}
 
@@ -69,7 +139,6 @@ public class MenuMain extends Application {
 		newBookingEdit.initOwner(primaryStage);
 		Scene scene = new Scene(newBooking);
 		scene.getStylesheets().add("/application/application.css");
-
 		newBookingEdit.setScene(scene);
 		newBookingEdit.show();
 	}
@@ -80,28 +149,32 @@ public class MenuMain extends Application {
 		Pane CusViewBookMenu = loader.load();
 		Scene scene = new Scene(CusViewBookMenu);
 		scene.getStylesheets().add("/application/application.css");
-
 		primaryStage.setScene(scene);
 		CustomerViewBookingMenuController controller = loader.getController();
 		CustomerCheckGetBooking CusGetBooking = new CustomerCheckGetBooking();
 		controller.setGetCusBooking(CusGetBooking);
 		primaryStage.setTitle("Customer Booking Menu");
-
 	}
-
+	
 	public void showCusDetailM() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerDetailMenu.fxml"));
 		Pane showCusDetailPane = loader.load();
-		Stage showCusDetailStage = new Stage();
-		showCusDetailStage.setTitle("Edit Detail");
-		showCusDetailStage.initModality(Modality.WINDOW_MODAL);
-		showCusDetailStage.initOwner(primaryStage);
 		Scene scene = new Scene(showCusDetailPane);
+		primaryStage.setScene(scene);
 		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("Edit Customer Detail");
+//		Pane showCusDetailPane = loader.load();
+//		Stage showCusDetailStage = new Stage();
+//		showCusDetailStage.setTitle("Edit Detail");
+//		showCusDetailStage.initModality(Modality.WINDOW_MODAL);
+//		showCusDetailStage.initOwner(primaryStage);
+//		Scene scene = new Scene(showCusDetailPane);
+//		scene.getStylesheets().add("/application/application.css");
+//
+//		showCusDetailStage.setScene(scene);
+//		showCusDetailStage.show();
 
-		showCusDetailStage.setScene(scene);
-		showCusDetailStage.show();
 
 	}
 
@@ -111,13 +184,11 @@ public class MenuMain extends Application {
 		Pane EmpMenu = loader.load();
 		Scene scene = new Scene(EmpMenu);
 		scene.getStylesheets().add("/application/application.css");
-
 		primaryStage.setScene(scene);
 		CustomerBookingMenuController controller = loader.getController();
 		CustomerBookGetEmployer getEmployer = new CustomerBookGetEmployer();
 		controller.setGetEmployer(getEmployer);
 		primaryStage.setTitle("Customer Booking Menu");
-
 	}
 
 	@Override
@@ -152,6 +223,7 @@ public class MenuMain extends Application {
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
+		primaryStage.setTitle("In-active booking view");
 		System.out.println(scene.getStylesheets());
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -163,7 +235,7 @@ public class MenuMain extends Application {
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
-
+		primaryStage.setTitle("SEPT-BOOKING sytem");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -174,7 +246,6 @@ public class MenuMain extends Application {
 		AnchorPane loginmenu = loader.load();
 		Scene scene = new Scene(loginmenu);
 		scene.getStylesheets().add("/application/application.css");
-
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Login");
 	}
@@ -212,6 +283,10 @@ public class MenuMain extends Application {
 		loader.setLocation(MenuMain.class.getResource("/application/CustomerMenu.fxml"));
 		Pane Customermenu = loader.load();
 		Scene scene = new Scene(Customermenu);
+		Label temp = (Label) scene.lookup("#UID");
+		temp.setText(String.valueOf(userId));
+		temp = (Label) scene.lookup("#NameL");
+		temp.setText(userName);
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add("/application/application.css");
 
@@ -225,7 +300,6 @@ public class MenuMain extends Application {
 		Scene scene = new Scene(addEmployee);
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add("/application/application.css");
-
 		primaryStage.setTitle("Add Employee");
 	}
 
@@ -472,9 +546,7 @@ public class MenuMain extends Application {
 		newBookingEdit.setTitle("User select");
 		newBookingEdit.initModality(Modality.WINDOW_MODAL);
 		newBookingEdit.initOwner(primaryStage);
-
 		Scene scene = new Scene(newBooking);
-
 		newBookingEdit.setScene(scene);
 		newBookingEdit.show();
 	}
@@ -486,7 +558,6 @@ public class MenuMain extends Application {
 		Stage stage = (Stage) temp.getScene().getWindow();
 		Scene scene = new Scene(Confirmation);
 		scene.getStylesheets().add("/application/application.css");
-
 		stage.setScene(scene);
 	}
 

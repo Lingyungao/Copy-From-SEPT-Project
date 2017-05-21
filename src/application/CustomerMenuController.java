@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -28,8 +29,16 @@ public class CustomerMenuController {
 
 	@FXML
 	private JFXButton BookingView;
+	
 	@FXML
 	private JFXButton logout;
+	
+	@FXML
+	private Label NameL;
+	
+	@FXML
+	private Label UID;
+	
 
 	/**
 	 * when user click, go to the view timetable menu.

@@ -44,6 +44,8 @@ public class CustomerViewBookingMenuController {
 	@FXML
 	private Label endTime;
 	@FXML
+	private Label serviceDetail;
+	@FXML
 	private JFXButton Back;
 
 	// Initialze the table, and show the summary detail on the table
@@ -75,6 +77,7 @@ public class CustomerViewBookingMenuController {
 			bookDate.setText(CusBook.getBookDate());
 			startTime.setText(CusBook.getStartTime());
 			endTime.setText(CusBook.getEndTime());
+			serviceDetail.setText(CusBook.getServiceName());
 
 		} else {
 			// Person is null, remove all the text.

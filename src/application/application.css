@@ -51,6 +51,18 @@
 		
 }
 #logout{
-		-fx-background-color: red;
-		
+		-fx-background-color: red;		
 }
+
+
+#register{
+	-fx-background-color: #4CAF50;		
+}
+#closeButton{
+	-fx-background-color: #4CAF50;		
+}
+#Register{
+	-fx-background-color: #4CAF50;		
+}
+
+

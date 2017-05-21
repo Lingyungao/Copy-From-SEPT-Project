@@ -33,4 +33,8 @@ public class MenuController {
 	private void goRegister(ActionEvent event) throws IOException {
 		a.showRegister();
 	}
+	@FXML
+	private void goSUPERUSER(ActionEvent event) throws IOException {
+		a.showSuperUserMenu();
+	}
 }

@@ -107,4 +107,14 @@ public class OwnerMenuController {
 			e.printStackTrace();
 		}
 	}
+	// jump to viewService menu
+	@FXML
+	void viewService(ActionEvent event) {
+		try {
+			a.showViewService();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,6 +31,8 @@ import javafx.scene.text.Text;
  */
 public class CustomerDetailEditController {
 
+	MenuMain a = new MenuMain();
+	
 	private static Connection LoginConn = null;
 	private static ResultSet rs = null;
 	private static ResultSet rs2 = null;
@@ -165,21 +168,22 @@ public class CustomerDetailEditController {
 
 	/**
 	 * user click back, cancle change.
+	 * @throws IOException 
 	 * 
 	 */
 	@FXML
-	private void cancleChange() {
+	private void cancleChange() throws IOException {
 		// get a handle to the stage
-		Stage stage = (Stage) cusBackButton.getScene().getWindow();
-		// do what you have to do
-		stage.close();
+//		Stage stage = (Stage) cusBackButton.getScene().getWindow();
+//		// do what you have to do
+//		stage.close();
+		a.showCusDetailM();
 	}
 
 	/**
 	 * The function for change the first name
 	 * 
-	 * @param First
-	 *            name
+	 * @param First name
 	 */
 	public static void FirstNameChange(String firstName) throws Exception {
 		// Check the First name is valid or not
