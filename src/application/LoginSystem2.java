@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class LoginSystem2 {
 	private static String pass = null;
@@ -35,6 +37,7 @@ public class LoginSystem2 {
 	}
 
 	public static int login(String inputLogUser, String inputLogPass,String businessName) throws Exception {
+		Queue<Integer> check = new LinkedList<Integer>();
 		// Start functions
 
 		// Connection LoginConn = null;
@@ -45,16 +48,19 @@ public class LoginSystem2 {
 
 		rs = st.executeQuery("SELECT * FROM USERS where USERNAME = \'" + inputLogUser + "\'");
 		// Query function 1(unsafe. easy to inject)
+		
 		while (rs.next()) {
 			pass = rs.getString("PASSWORD");
 			user = rs.getString("USERNAME");
 			userId = rs.getInt("USER_ID");
+			check.offer(userId);
 			permission = rs.getInt("PERMISSION");
 		}
-		returnId = userId;
+
 		
 		if(permission == 4)
 			return 4;
+		
 		if(businessName == null)
 		{
 			throw new Exception("Sorry, Please choose a business!");
@@ -64,6 +70,9 @@ public class LoginSystem2 {
 		
 		businessID = BusId;
 
+		
+		while(check.peek() != null){
+		userId = check.poll();
 		int tarBusId = search(userId);
 		// get username and password
 
@@ -75,6 +84,7 @@ public class LoginSystem2 {
 				MenuMain.userId = userId;
 				MenuMain.premission = permission;
 				MenuMain.userName = user;
+				returnId = userId;
 				return 2;
 			} else if (permission == 2) {
 				System.out.println("Login Succesful");
@@ -87,10 +97,9 @@ public class LoginSystem2 {
 				return 1;
 			}
 
-		} else {
-			System.out.println("The account is not exist or you do not register an account");
-			return 1;
 		}
-
+		}
+		System.out.println("The account is not exist or you do not register an account");
+		return 1;
 	}
 }

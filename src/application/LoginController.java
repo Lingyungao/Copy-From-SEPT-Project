@@ -89,7 +89,7 @@ public class LoginController {
 				a.showOwnerM();
 			} else if (temp == 1) {
 				System.out.println("1");
-				errorMsg.setText("wrong username or password");
+				errorMsg.setText("The account is not exist or you do not register an account in this business");
 				// a.showFail();
 			}
 			else if (temp == 4)
