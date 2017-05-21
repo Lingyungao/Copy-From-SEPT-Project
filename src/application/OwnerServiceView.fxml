@@ -67,7 +67,7 @@
 						</GridPane>
                   <JFXButton fx:id="AddService" buttonType="RAISED" layoutX="20.0" layoutY="258.0" onAction="#AddService" stylesheets="@application.css" text="Add new Service" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="258.0" />
                   <JFXButton fx:id="DeleteService" buttonType="RAISED" onAction="#DeleteService" text="Delete this service" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="320.0" />
-						<Label layoutX="18.0" layoutY="31.0" text="Booking Detail">
+						<Label layoutX="18.0" layoutY="31.0" text="Service Detail">
 							<font>
 								<Font name="Arial" size="22.0" />
 							</font>
