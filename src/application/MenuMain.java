@@ -43,16 +43,7 @@ public class MenuMain extends Application {
 	static String userName = "";
 	
 	
-	public void showSuperUserMenu() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("/application/SuperUserMenu.fxml"));
-		mainLayout = loader.load();
-		Scene scene = new Scene(mainLayout);
-		scene.getStylesheets().add("/application/application.css");
-		System.out.println(scene.getStylesheets());
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
+	
 	
 	public void showSuperUserBusinessView() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
