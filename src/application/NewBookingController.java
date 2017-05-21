@@ -67,8 +67,10 @@ public class NewBookingController {
 	@FXML
 	void goTimetable(ActionEvent event) throws NumberFormatException, IOException, SQLException {
 		userIdCheck = userId.getText();
+		Service = ServiceList.getSelectionModel().getSelectedItem();
 		int TarPer = 0;
 		int TarBusId = 0;
+		
 		// tempService = service.getText();
 		try{
 		Connection LoginConn = connection.connectDB();
@@ -78,13 +80,14 @@ public class NewBookingController {
 		
 		Connection LoginConn1 = connection.connectDB();
 		Statement st1 = LoginConn1.createStatement();
-		ResultSet rs1 = st1.executeQuery("select * from USER_BUS where USER_ID  = \"" + userIdCheck + "\";");
+		ResultSet rs1 = st1.executeQuery("select * from USERS_BUS where USER_ID  = \"" + userIdCheck + "\";");
 		TarBusId = rs1.getInt("BUS_ID");
 		}
 		catch(SQLException Se)
 		{
 			errorMsg.setText("User is not exist");
 		}
+		
 		if(TarPer==1 && TarBusId==LoginSystem2.businessID)
 		{
 			try {
