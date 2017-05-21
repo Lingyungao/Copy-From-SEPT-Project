@@ -24,8 +24,8 @@ public class DeleteServiceController {
 	public static String userIdCheck;
 	MenuMain a = new MenuMain();
 	private static int datacount=0;
-	int id = OwnerServiceViewController.selectedBookIdbookID;
-
+	int id = OwnerServiceViewController.selectedServiceID;
+    int busID = OwnerServiceViewController.selectedBusinessID;
 
 	@FXML
 	private JFXButton AddService;
@@ -48,6 +48,17 @@ public class DeleteServiceController {
 		System.out.println("selectedBookIdbookID FROM DEL"+id);
 		PreparedStatement psmt = LoginConn.prepareStatement("DELETE FROM SERVICE_DETAILS WHERE SER_ID = "+id);
 		psmt.executeUpdate();
+		
+		LoginConn = connection.connectDB(); // connect to the SQL
+		Statement st1 = LoginConn.createStatement(); // create statement of it
+		ResultSet rs1 = st1.executeQuery(
+				"select * from (SER_D_BUS)");
+		System.out.println("selectedBookIdbookID FROM DEL"+id);
+		PreparedStatement psmt1 = LoginConn.prepareStatement("DELETE FROM SER_D_BUS WHERE SER_ID = "+id + " AND BUS_ID = "+ busID);
+		psmt1.executeUpdate();
+		
+
+		
 		System.out.println("REPORT NS001");
  		a.showViewService();
 }

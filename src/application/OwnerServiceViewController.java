@@ -60,12 +60,15 @@ public class OwnerServiceViewController {
 	private static Statement st = null;
 	private static ResultSet rs = null;
 
-	public static int selectedBookIdbookID;
+	public static int selectedServiceID;
+	public static int selectedBusinessID;
+
 	ObservableList<service> list = FXCollections.observableArrayList();
 
 	public void showList() throws SQLException {
 		int datacount = 0;
 
+		System.out.println(list.size());
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
 		rs = st.executeQuery(
@@ -110,8 +113,9 @@ public class OwnerServiceViewController {
 			// Fill the labels with info from the person object.
 			seNa.setText(ser.getServiceName());
 			seID.setText(Integer.toString(ser.getServiceID()));
-			selectedBookIdbookID = ser.getServiceID();
-			System.out.println("selectedBookIdbookID"+selectedBookIdbookID );
+			selectedServiceID = ser.getServiceID();
+			selectedBusinessID = LoginSystem2.businessID;
+			System.out.println("selectedServiceID"+selectedServiceID);
 		} else {
 			// Person is null, remove all the text.
 			DetailGrid.setVisible(false);
@@ -126,6 +130,7 @@ public class OwnerServiceViewController {
 	}
     //start
 	public void initialize() throws SQLException{
+		list.removeAll(list);
 		showList();
 	}
 
@@ -140,7 +145,7 @@ public class OwnerServiceViewController {
     }
     @FXML
     void DeleteService(ActionEvent event) throws SQLException, IOException {
-		a.showDeleteService(selectedBookIdbookID);        
+		a.showDeleteService(selectedServiceID,selectedBusinessID);        
     }
     
     

@@ -92,7 +92,7 @@ public class MenuMain extends Application {
 		primaryStage.show();
 	}
 	
-	public void showDeleteService(int serviceId) throws IOException {
+	public void showDeleteService(int serviceId, int selectedBusinessID) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/DeleteService.fxml"));
 		Pane newBooking = loader.load();
