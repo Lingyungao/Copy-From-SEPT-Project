@@ -72,7 +72,8 @@ public class NewServiceController {
 		rs1.setInt(1,temp);
 		rs1.setInt(2, LoginSystem2.businessID);
 		rs1.executeUpdate();
-		
+		psmt.close();
+		rs1.close();
 		System.out.println("REPORT NS001");
  		a.showViewService();
 		// get a handle to the stage
