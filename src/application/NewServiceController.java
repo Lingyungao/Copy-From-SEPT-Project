@@ -24,6 +24,15 @@ public class NewServiceController {
 	public static String userIdCheck;
 	MenuMain a = new MenuMain();
 	private static int datacount=0;
+	
+	public int CountSerID() throws SQLException {
+		
+			Connection LoginConn = connection.connectDB();
+			Statement st = LoginConn.createStatement(); // create statement of it
+			ResultSet rs = st.executeQuery("SELECT COUNT(SER_ID) FROM SERVICE_DETAILS");
+			int SerId = rs.getInt("COUNT(SER_ID)");
+			return SerId+1;
+	}
 
 
 	@FXML
@@ -39,6 +48,11 @@ public class NewServiceController {
 
 	@FXML
 	void AddService(ActionEvent event) throws NumberFormatException, IOException, SQLException {
+		
+		try{
+			
+		int temp = CountSerID();
+		
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
 		tempService = service.getText();
@@ -52,12 +66,24 @@ public class NewServiceController {
 		PreparedStatement psmt = LoginConn.prepareStatement("INSERT INTO SERVICE_DETAILS(SER_ID,SER_NAME) VALUES(?,?)");
 		psmt.setString(2, tempService);
 		psmt.executeUpdate();
+		
+		PreparedStatement rs1 = LoginConn.prepareStatement(
+				"INSERT INTO SER_D_BUS(SER_ID,BUS_ID) VALUES(?,?)");
+		rs1.setInt(1,temp);
+		rs1.setInt(2, LoginSystem2.businessID);
+		rs1.executeUpdate();
+		
 		System.out.println("REPORT NS001");
  		a.showViewService();
 		// get a handle to the stage
 		Stage stage = (Stage) AddService.getScene().getWindow();
 		// do what you have to do
 		stage.close();
+		}
+		catch(SQLException Se)
+		{
+			System.out.println("Not any service");
+		}
  		
 }
 }
