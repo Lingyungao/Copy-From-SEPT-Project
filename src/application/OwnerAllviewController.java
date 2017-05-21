@@ -167,19 +167,36 @@ public class OwnerAllviewController {
     @FXML
     private Label inActiveMsg;
     
-    @FXML
-    void inActive(ActionEvent event) throws SQLException {
-    	 Connection LoginConn = null;
-    	 Statement st = null;
-    	 
- 		LoginConn = connection.connectDB(); // connect to the SQL
- 		st = LoginConn.createStatement();
+	@FXML
+	void inActive(ActionEvent event) throws SQLException {
+		Connection LoginConn = null;
+		Statement st = null;
 
- 		PreparedStatement rs = LoginConn.prepareStatement("UPDATE BOOKING SET ACTIVE=0 WHERE BOOK_ID =?");
- 		rs.setInt(1, bookId);
- 		rs.executeUpdate();
- 		inActiveMsg.setText("In-active done.");
-    }
+		LoginConn = connection.connectDB(); // connect to the SQL
+		st = LoginConn.createStatement();
+
+		ResultSet rs2 = st.executeQuery("SELECT * FROM BOOKING WHERE BOOK_ID = " + bookId);
+		int empId = rs2.getInt("EMP_ID");
+		int day = rs2.getInt("DAY");
+		String startTime = rs2.getString("START_TIME");
+		String startTimeS;
+		if (Integer.valueOf(startTime) < 10) {
+			startTime = "0" + startTime;
+		}
+
+		PreparedStatement rs = LoginConn.prepareStatement("UPDATE BOOKING SET ACTIVE=0 WHERE BOOK_ID =?");
+		rs.setInt(1, bookId);
+		rs.executeUpdate();
+
+		PreparedStatement rs3 = LoginConn
+				.prepareStatement("UPDATE TIMETABLE SET T" + startTime + "00 = 0 WHERE EMP_UID =? AND WEEKDAYS =?");
+		// rs3.setString(1, startTime);
+		rs3.setInt(1, empId);
+		rs3.setInt(2, day);
+		rs3.executeUpdate();
+
+		inActiveMsg.setText("In-active done.");
+	}
     
     
 
