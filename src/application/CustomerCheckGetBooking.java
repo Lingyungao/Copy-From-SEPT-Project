@@ -29,12 +29,12 @@ public class CustomerCheckGetBooking {
 
 			// create statement of it
 			rs = st.executeQuery(
-					"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid INNER JOIN SERVICE on Booking.BOOK_id = SERVICE.BOOK_ID CROSS JOIN BOOK_BUS WHERE BOOKING.BOOK_ID = BOOK_BUS.BOOK_ID and booking.user_id = "
+					"select BOOKING.BOOK_ID \"BOOKING_BID\", BOOKING.USER_ID \"USER_UID\", EMP_ID, DAY, START_TIME, END_TIME, ACTIVE, Details.user_id, first_name, last_name, email, phone_no, address, emp_first, emp_last, emp_phone, emp_uid, Book_bus.book_id \"BOOKBUS_BID\", BOOK_SER, BUS_ID from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid INNER JOIN SERVICE on Booking.BOOK_id = SERVICE.BOOK_ID CROSS JOIN BOOK_BUS WHERE BOOKING.BOOK_ID = BOOK_BUS.BOOK_ID and booking.user_id = "
 							+ LoginSystem2.returnId + " and book_bus.bus_id = \"" + LoginSystem2.businessID + "\";");
 
 			// Using while loop to get all booking details
 			while (rs.next()) {
-				int bookId = rs.getInt("BOOK_ID");
+				int bookId = rs.getInt("BOOKING_BID");
 				int empId = rs.getInt("EMP_ID");
 				String empName = rs.getString("EMP_LAST");
 				String bookDate = rs.getString("DAY");

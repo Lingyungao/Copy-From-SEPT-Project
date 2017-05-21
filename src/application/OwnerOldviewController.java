@@ -87,7 +87,7 @@ public class OwnerOldviewController {
 		rs = st.executeQuery(
 				//"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 0");
 				//"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid INNER JOIN SERVICE on Booking.BOOK_id = SERVICE.BOOK_ID WHERE booking.active = 0");
-				"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid INNER JOIN SERVICE on Booking.BOOK_id = SERVICE.BOOK_ID CROSS JOIN BOOK_BUS WHERE booking.book_id = BOOK_BUS.BOOK_ID AND booking.active = 0 and book_bus.bus_id = \"" + LoginSystem2.businessID + "\";");
+				"select booking.BOOK_ID, booking.USER_ID \"USER_UID\", EMP_ID, DAY, START_TIME, END_TIME, ACTIVE, DETAILS.USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NO, ADDRESS, EMP_FIRST, EMP_LAST, EMP_PHONE, EMP_UID, BOOK_BUS.BOOK_ID \"BOOKBUS_BID\", BOOK_SER, BOOKING.BOOK_ID, BUS_ID from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid INNER JOIN SERVICE on Booking.BOOK_id = SERVICE.BOOK_ID CROSS JOIN BOOK_BUS WHERE booking.book_id = BOOK_BUS.BOOK_ID AND booking.active = 0 and book_bus.bus_id = \"" + LoginSystem2.businessID + "\";");
 		while (rs.next()) {
 			User user = new User();// create object
 			String userFirstName = rs.getString("FIRST_NAME");
@@ -99,7 +99,7 @@ public class OwnerOldviewController {
 			int dayID = rs.getInt("DAY");
 
 			user.setData(user.defWeekdaysName(dayID));
-			user.setBookID(rs.getInt("BOOK_ID"));
+			user.setBookID(rs.getInt("BOOKBUS_BID"));
 			user.setEmpName(rs.getString("EMP_FIRST"));
 			user.setEmpID(rs.getInt("EMP_ID"));
 			user.setStrTime(rs.getInt("START_TIME"));

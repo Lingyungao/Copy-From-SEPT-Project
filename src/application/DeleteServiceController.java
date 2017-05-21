@@ -58,8 +58,7 @@ public class DeleteServiceController {
 		psmt1.executeUpdate();
 		
 
-		rs1.close();
-		psmt1.close();
+		
 		System.out.println("REPORT NS001");
  		a.showViewService();
 }

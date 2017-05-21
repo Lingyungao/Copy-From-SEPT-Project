@@ -324,8 +324,7 @@ public class TimetableController {
 		// create statement of it
 		Statement st = LoginConn.createStatement();
 		// Run SQL
-		ResultSet rs = st.executeQuery("select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid "
-				+ "WHERE booking.active = 1" +" AND booking.day = " + i + " AND booking.start_time = " + j);
+		ResultSet rs = st.executeQuery("select book_id, booking.user_id \"USER_UID\", emp_id, day, start_time, end_time, active, details.user_id \"USER_ID\", first_name, last_name, email, phone_no, address, emp_first, emp_last, emp_phone, emp_uid from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid WHERE booking.active = 1 AND booking.day = " + i + " AND booking.start_time = " + j);
 		
 		int TarCusId = rs.getInt("USER_ID");
 		
