@@ -67,6 +67,11 @@ public class NewServiceController {
 		psmt.setString(2, tempService);
 		psmt.executeUpdate();
 		
+		while (rs.next()){
+			temp = rs.getInt("SER_ID");
+		}
+		System.out.println("temp"+temp);
+		
 		PreparedStatement rs1 = LoginConn.prepareStatement(
 				"INSERT INTO SER_D_BUS(SER_ID,BUS_ID) VALUES(?,?)");
 		rs1.setInt(1,temp);
