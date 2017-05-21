@@ -75,6 +75,7 @@ public class SuperUserBusinessViewController {
 			String BusinessAddress = rs.getString("BUS_ADDRESS");
 			int BusinessPhone = rs.getInt("BUS_PHONE");
 			
+			//Set-up Business information
 			business.setBusinessName(BusinessName);
 			business.setBusinessID(BusinessID);
 			business.setBusinessAddress(BusinessAddress);
