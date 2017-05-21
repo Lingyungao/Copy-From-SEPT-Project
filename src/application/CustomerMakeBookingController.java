@@ -51,7 +51,7 @@ public class CustomerMakeBookingController {
 		ObservableList<service> list = FXCollections.observableArrayList();
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
-		rs = st.executeQuery("select * from SERVICE_DETAILS");
+		rs = st.executeQuery("select * from SERVICE_DETAILS cross join SER_D_BUS CROSS JOIN business where SERVICE_DETAILS.SER_ID = SER_D_BUS.SER_ID and business.BUS_ID = SER_D_BUS.BUS_ID and BUSINESS.BUS_ID =" + LoginSystem2.businessID);
 		while (rs.next()) {
 			service service = new service();// create object
 			String ServiceName = rs.getString("SER_NAME");
