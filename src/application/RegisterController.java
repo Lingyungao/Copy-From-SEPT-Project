@@ -115,6 +115,7 @@ public class RegisterController {
 	 * Get the max user's id for register new user
 	 */
 	@FXML
+	
 	public static void GetUserID() {
 		try {
 			LoginConn = connection.connectDB();
@@ -193,6 +194,7 @@ public class RegisterController {
 			System.out.println(Business);
 			System.out.println(BusId);
 			checkExist = checkUserExist(regUsernameField.getText(), BusId);
+			
 			if (checkExist == false){
 				cusInfoText.setText("Sorry, The User is exist, please try another username!");
 				throw new Exception("Sorry, The User is exist, please try another username!");

@@ -42,7 +42,7 @@ public class SuperUserBusinessAddController {
 	private static String businessAddress;
 	private int businessPhoneNumber;
 	private static String businessDesc;
-	public static int userCount;
+	public static int BusCount;
 
 	@FXML
 	private TextField regBusNameField;
@@ -60,12 +60,21 @@ public class SuperUserBusinessAddController {
 	@FXML
 	private Text cusInfoText;
 
+    @FXML
+    private TextField regID;
+	
+    @FXML
+    private JFXPasswordField regPW;
+
+    @FXML
+    private JFXPasswordField regPWC;
+
 	/**
 	 * initialize the JavaFX table make sure the table is empty
 	 */
 	@FXML
 	private void initialize() {
-		GetUserID();
+		GetBusID();
 		regBusNameField.setText("");
 		regBusAddressField.setText("");
 		regBusPhoneField.setText("");
@@ -76,18 +85,28 @@ public class SuperUserBusinessAddController {
 	 * Get the max user's id for register new user
 	 */
 	@FXML
-	public static void GetUserID() {
+	public static void GetBusID() {
 		try {
 			LoginConn = connection.connectDB();
 			st = LoginConn.createStatement(); // create statement of it
 			rs = st.executeQuery("SELECT * FROM BUSINESS order by BUS_ID desc limit 0,1;");
-			userCount = rs.getInt("BUS_ID");
+			BusCount = rs.getInt("BUS_ID");
 		} catch (Exception e) {
 
 			e.printStackTrace();
 
 		}
 	}
+	
+	public int GetUserID() throws SQLException {
+		Connection LoginConn = connection.connectDB();
+		Statement  st = LoginConn.createStatement(); // create statement of it
+		ResultSet  rs = st.executeQuery("SELECT COUNT(USER_ID) FROM USERS");
+		int	userCount = rs.getInt("COUNT(USER_ID)");
+		return userCount+1;
+	}
+	
+	
 
 	/**
 	 * Register user function. insert username, password to user table. insert
@@ -120,6 +139,13 @@ public class SuperUserBusinessAddController {
 				throw new Exception("Address length between 15 to 150, and cannot only input number or characters!");
 			}
 			
+			if (regPW.getText().equals(regPWC.getText())== false) {
+				cusInfoText.setText("password and comfirmation is not same!");
+				throw new Exception("password and comfirmation is not same!");
+			}
+			
+			int i = GetUserID();
+			
 			PreparedStatement rs = LoginConn
 					.prepareStatement("INSERT INTO BUSINESS(BUS_ID, BUS_NAME, BUS_PHONE, BUS_ADDRESS, BUS_DESC) VALUES(?,?,?,?,?)");
 			rs.setString(2, regBusNameField.getText());
@@ -141,6 +167,19 @@ public class SuperUserBusinessAddController {
 //			// Insert firstname, lastname, and other inofrmation to detail
 //			// table.
 //			rs2.executeUpdate();
+			
+			PreparedStatement rs1 = LoginConn
+					.prepareStatement("INSERT INTO USERS(USERNAME,PASSWORD,USER_ID,PERMISSION) VALUES(?,?,?,2)");
+			rs1.setString(1, regID.getText());
+			rs1.setString(2, regPW.getText());
+			rs1.setInt(3, i);
+			rs1.executeUpdate();
+			
+			PreparedStatement rs4 = LoginConn.prepareStatement(
+					"INSERT INTO USERS_BUS(USER_ID,BUS_ID) VALUES(?,?)");
+			rs4.setInt(1, i);
+			rs4.setInt(2, BusCount+1);
+			rs4.executeUpdate();
 
 			cusInfoText.setText("Add Business succeed!");
 
