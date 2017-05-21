@@ -93,8 +93,8 @@ public class SuperUserBusinessAddController {
 			BusCount = rs.getInt("BUS_ID");
 		} catch (Exception e) {
 
-			e.printStackTrace();
-
+			BusCount=0;
+			
 		}
 	}
 	
@@ -144,7 +144,16 @@ public class SuperUserBusinessAddController {
 				throw new Exception("password and comfirmation is not same!");
 			}
 			
-			int i = GetUserID();
+			int i = 0;
+			
+			try{
+			i = GetUserID();
+			}
+			catch(SQLException SE)
+			{
+				i = 1;
+				System.out.println("Not user in table now");
+			}
 			
 			PreparedStatement rs = LoginConn
 					.prepareStatement("INSERT INTO BUSINESS(BUS_ID, BUS_NAME, BUS_PHONE, BUS_ADDRESS, BUS_DESC) VALUES(?,?,?,?,?)");

@@ -38,8 +38,6 @@ public class CustomerMakeBookingController {
 	@FXML
 	private Label errorMsg;
 
-	@FXML
-	private JFXTextField service;
 
 	@FXML
 	public static String tempService;
@@ -47,7 +45,7 @@ public class CustomerMakeBookingController {
 	@FXML
 	private JFXComboBox<String> ServiceList;
 	
-	public static String sss = "";
+	public static String service = "";
 	
 	public void showList() throws SQLException {
 		ObservableList<service> list = FXCollections.observableArrayList();
@@ -141,8 +139,8 @@ public class CustomerMakeBookingController {
 
 		} else {
 			try {
-				sss = ServiceList.getSelectionModel().getSelectedItem().toString();
-				a.showTimetable(CustomerBookingMenuController.tempEmpId, userIdCheck, goTimetable, sss, "MB");
+				service = ServiceList.getSelectionModel().getSelectedItem().toString();
+				a.showTimetable(CustomerBookingMenuController.tempEmpId, userIdCheck, goTimetable, service, "MB");
 				SaveConfirmationController.SSelection = 2;
 				EmployeeMenuController.Selection = 2;
 				

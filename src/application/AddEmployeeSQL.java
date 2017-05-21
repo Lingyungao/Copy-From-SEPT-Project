@@ -39,11 +39,6 @@ public class AddEmployeeSQL {
 		rs1.setInt(1, empCount);
 		rs1.setInt(2, LoginSystem2.businessID);
 		rs1.executeUpdate();
-		
-		PreparedStatement rs2 = LoginConn
-				.prepareStatement("INSERT INTO EMP_BUS(EMP_UID,BUS_ID) VALUES(?,?)");
-		rs2.setInt(empCount,businessId);
-		rs2.executeUpdate();
 	}
 
 	public static void insertDefaultTimetable(int empId) throws Exception {

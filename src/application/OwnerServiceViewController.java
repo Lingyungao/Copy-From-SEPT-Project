@@ -125,7 +125,7 @@ public class OwnerServiceViewController {
 		a.showOwnerM();
 	}
     //start
-	public void initialize() throws SQLException {
+	public void initialize() throws SQLException{
 		showList();
 	}
 
