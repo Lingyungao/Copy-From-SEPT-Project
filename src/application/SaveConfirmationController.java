@@ -126,6 +126,7 @@ public class SaveConfirmationController {
 
 						PreparedStatement rs2 = LoginConn.prepareStatement(
 								"INSERT INTO BOOKING(BOOK_ID,USER_ID,EMP_ID,DAY,START_TIME,END_TIME,ACTIVE) VALUES(?,?,?,?,?,?,1) ");
+						
 						PreparedStatement rs4 = LoginConn.prepareStatement("INSERT INTO SERVICE(BOOK_ID,BOOK_SER) VALUES(?,?) ");
 
 						PreparedStatement rs5 = LoginConn.prepareStatement("INSERT INTO BOOK_BUS(BOOK_ID,BUS_ID) VALUES(?,?) ");
@@ -146,7 +147,7 @@ public class SaveConfirmationController {
 									rs2.setInt(5, 7 + j);
 									rs2.setInt(6, 8 + j);
 //									rs4.setInt(1, bookCount);
-									rs4.setString(2, CustomerMakeBookingController.service);
+									rs4.setString(2, CustomerMakeBookingController.Service);
 									rs5.setInt(1, bookCount);
 									rs5.setInt(2, LoginSystem2.businessID);
 									rs2.addBatch();

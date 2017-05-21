@@ -45,7 +45,7 @@ public class CustomerMakeBookingController {
 	@FXML
 	private JFXComboBox<String> ServiceList;
 	
-	public static String service = "";
+	public static String Service = "";
 	
 	public void showList() throws SQLException {
 		ObservableList<service> list = FXCollections.observableArrayList();
@@ -112,44 +112,43 @@ public class CustomerMakeBookingController {
 	void goTimetable(ActionEvent event) throws NumberFormatException, IOException, SQLException {
 		// Get current customer's user ID
 		userIdCheck = Integer.toString(LoginSystem2.returnId);
-		Boolean passCheck = false;
-		int userIdCheck2 = 0;
-		int userCount = 0;
-		// user id check
-		try {
-			userIdCheck2 = Integer.parseInt(userIdCheck);
-		} catch (NumberFormatException NFE) {
-			errorMsg.setText("Please enter the number on Customer ID.");
+		Service = ServiceList.getSelectionModel().getSelectedItem();
+		int TarPer = 0;
+		int TarBusId = 0;
+		
+		// tempService = service.getText();
+		try{
+		Connection LoginConn = connection.connectDB();
+		Statement st = LoginConn.createStatement();
+		ResultSet rs = st.executeQuery("select * from USERS where USER_ID  = \"" + userIdCheck + "\";");
+		TarPer =rs.getInt("PERMISSION");
+		
+		Connection LoginConn1 = connection.connectDB();
+		Statement st1 = LoginConn1.createStatement();
+		ResultSet rs1 = st1.executeQuery("select * from USERS_BUS where USER_ID  = \"" + userIdCheck + "\";");
+		TarBusId = rs1.getInt("BUS_ID");
 		}
-		try {
-			LoginConn = connection.connectDB();
-			st = LoginConn.createStatement();
-
-			rs = st.executeQuery("SELECT COUNT(USER_ID) FROM USERS");
-
-			userCount = rs.getInt("COUNT(USER_ID)");
-		} catch (SQLException SE) {
-			errorMsg.setText("Invaild input for Customer ID");
+		catch(SQLException Se)
+		{
+			errorMsg.setText("User is not exist");
 		}
-		// user id is exist check
-		if (userIdCheck.matches(regNumOnly) == false) {
-			errorMsg.setText("Customer ID only allowed to input numbers.");
-		} else if (userIdCheck2 > userCount) {
-			errorMsg.setText("Customer ID not exist.");
-
-		} else {
+		
+		if(TarPer==1 && TarBusId==LoginSystem2.businessID)
+		{
 			try {
-				service = ServiceList.getSelectionModel().getSelectedItem().toString();
-				a.showTimetable(CustomerBookingMenuController.tempEmpId, userIdCheck, goTimetable, service, "MB");
+				Service = ServiceList.getSelectionModel().getSelectedItem().toString();
+				a.showTimetable(EmployeeMenuController.tempEmpId, userIdCheck, goTimetable, Service, "MB");
 				SaveConfirmationController.SSelection = 2;
 				EmployeeMenuController.Selection = 2;
-				
 			}
 			// error msg if didnt click employee
 			catch (NumberFormatException NFE) {
 				System.out.println("please select one of the employee");
 				a.showWarming(goTimetable);
 			}
+		}
+		else{
+			errorMsg.setText("User is not exist");
 		}
 	}
 }
