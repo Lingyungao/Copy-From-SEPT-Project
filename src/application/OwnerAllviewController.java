@@ -77,13 +77,13 @@ public class OwnerAllviewController {
 	private static Statement st = null;
 	private static ResultSet rs = null;
 	private static ResultSet finder = null;
+	ObservableList<User> list = FXCollections.observableArrayList();
 
 	public static int bookingID;
 
 	public void showList() throws SQLException {
 		int i = 0;
 
-		ObservableList<User> list = FXCollections.observableArrayList();
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
 		rs = st.executeQuery(
@@ -115,18 +115,20 @@ public class OwnerAllviewController {
 			// add user to list
 			list.add(user); 
 		}
-		showEmpDetails(list.get(0));
-        //get user attention
+		System.out.println(list.size());
+		if (list.size() != 0) {
+			showEmpDetails(list.get(0));
+		} else
+			showEmpDetails(null);
+
 		cuView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
 			@Override
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 				showEmpDetails((User) newValue);
 			}
 		});
-		
-        
-		//set list to table
-		cuView.setItems(list); 
+		// set list to table
+		cuView.setItems(list); //
 	}
 	//show detail information when check person
 	private int bookId;
@@ -160,6 +162,7 @@ public class OwnerAllviewController {
     //start
 	public void initialize() throws SQLException {
 		showList();
+		list.add(null);
 	}
 
     @FXML
