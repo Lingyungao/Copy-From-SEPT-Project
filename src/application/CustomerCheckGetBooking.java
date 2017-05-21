@@ -29,8 +29,8 @@ public class CustomerCheckGetBooking {
 
 			// create statement of it
 			rs = st.executeQuery(
-					"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid INNER JOIN SERVICE on Booking.BOOK_id = SERVICE.BOOK_ID WHERE booking.user_id = "
-							+ LoginSystem2.returnId);
+					"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN employee ON booking.emp_id = employee.emp_uid INNER JOIN SERVICE on Booking.BOOK_id = SERVICE.BOOK_ID CROSS JOIN BOOK_BUS WHERE BOOKING.BOOK_ID = BOOK_BUS.BOOK_ID and booking.user_id = "
+							+ LoginSystem2.returnId + " and book_bus.bus_id = \"" + LoginSystem2.businessID + "\";");
 
 			// Using while loop to get all booking details
 			while (rs.next()) {
