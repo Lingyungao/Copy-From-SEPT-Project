@@ -74,7 +74,7 @@
 							</font>
 						</Label>
 						<JFXButton fx:id="Back" buttonType="RAISED" layoutX="241.0" layoutY="16.0" onAction="#Back" prefHeight="25.0" prefWidth="77.0" ripplerFill="WHITE" text="Back" textFill="WHITE" />
-                  <Label fx:id="warning" layoutX="18.0" layoutY="74.0" prefWidth="77.0" text="No Service is found" textFill="RED" visible="false">
+                  <Label fx:id="warning" layoutX="18.0" layoutY="74.0"  text="No Service is found" textFill="RED" visible="false">
                      <font>
                         <Font name="Arial" size="22.0" />
                      </font>

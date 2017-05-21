@@ -57,11 +57,11 @@ public class SuperUserBusinessViewController {
 	private static ResultSet rs = null;
 
 	public static int selectedBookIdbookID;
+	ObservableList<business> list = FXCollections.observableArrayList();
 
 	public void showList() throws SQLException {
 		int datacount = 0;
 
-		ObservableList<business> list = FXCollections.observableArrayList();
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
 		rs = st.executeQuery(
@@ -91,20 +91,20 @@ public class SuperUserBusinessViewController {
 			// add user to list
 			list.add(business); 
 		}
-		showBusinessDetails(list.get(0));
-        //get user attention
+		System.out.println(list.size());
+		if (list.size() != 0) {
+			showBusinessDetails(list.get(0));
+		} else
+			showBusinessDetails(null);
+
 		cuView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
 			@Override
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 				showBusinessDetails((business) newValue);
-				
 			}
 		});
-		System.out.println("init work");
-		
-        
-		//set list to table
-		cuView.setItems(list); 
+		// set list to table
+		cuView.setItems(list); //
 	}
 	//show detail information when check person
 	private void showBusinessDetails(business bus) {
@@ -133,6 +133,7 @@ public class SuperUserBusinessViewController {
     //start
 	public void initialize() throws SQLException {
 		showList();
+		list.add(null);
 	}
 
     @FXML
