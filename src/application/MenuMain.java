@@ -41,6 +41,7 @@ public class MenuMain extends Application {
 	static int userId = 0;
 	static int premission = 0;
 	static String userName = "";
+
 	static String Business = "";
 	
 	public void showSuperUserMenu() throws IOException {
@@ -54,6 +55,7 @@ public class MenuMain extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+
 	
 	public void showSuperUserBusinessView() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
@@ -61,7 +63,9 @@ public class MenuMain extends Application {
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
+
 		primaryStage.setTitle("Business view");
+
 		System.out.println(scene.getStylesheets());
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -74,30 +78,40 @@ public class MenuMain extends Application {
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
+
 		primaryStage.setTitle("Add business");
+
 		System.out.println(scene.getStylesheets());
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 	
+
+
 	public void showViewService() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("/application/OwnerServiceView.fxml"));
 		mainLayout = loader.load();
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("/application/application.css");
+
 		primaryStage.setTitle("View service");
+
 		System.out.println(scene.getStylesheets());
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 	
+
 	public void showDeleteService(int serviceId, int selectedBusinessID) throws IOException {
+
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MenuMain.class.getResource("/application/DeleteService.fxml"));
 		Pane newBooking = loader.load();
 		Stage newBookingEdit = new Stage();
+
 		newBookingEdit.setTitle("Delect service");
+
 		newBookingEdit.initModality(Modality.WINDOW_MODAL);
 		newBookingEdit.initOwner(primaryStage);
 

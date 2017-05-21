@@ -57,9 +57,11 @@
 								<Label text="End time" GridPane.rowIndex="7" />
 								<Label fx:id="deTi2" text="End Time Detail" GridPane.columnIndex="1" GridPane.rowIndex="7" />
 								<Label text="Service" GridPane.rowIndex="8" />
+
 								<Label fx:id="serviceDetail" GridPane.columnIndex="1" GridPane.rowIndex="8" />
 							    <JFXButton fx:id="inActive" buttonType="RAISED" onAction="#inActive" text="active" textFill="WHITE" GridPane.rowIndex="10" />
                         <Label fx:id="inActiveMsg" prefHeight="17.0" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+
 							
 							</children>
 							<columnConstraints>
