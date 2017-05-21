@@ -72,13 +72,13 @@ public class OwnerServiceViewController {
 		LoginConn = connection.connectDB(); // connect to the SQL
 		st = LoginConn.createStatement(); // create statement of it
 		rs = st.executeQuery(
-				"select * from SERVICE_DETAILS cross join SER_D_BUS CROSS JOIN business where SERVICE_DETAILS.SER_ID = SER_D_BUS.SER_ID and business.BUS_ID = SER_D_BUS.BUS_ID and BUSINESS.BUS_ID = \"" + LoginSystem2.businessID + "\";");
+				"SELECT SERVICE_DETAILS.SER_ID \"SERDETAIL_ID\",SER_NAME from SERVICE_DETAILS cross join SER_D_BUS CROSS JOIN business where SERVICE_DETAILS.SER_ID = SER_D_BUS.SER_ID and business.BUS_ID = SER_D_BUS.BUS_ID and BUSINESS.BUS_ID = \"" + LoginSystem2.businessID + "\";");
 				//"select * from SERVICE_DETAILS");
 				//"select * from (booking INNER JOIN Details On booking.user_id = details.user_id) INNER JOIN Employee ON booking.Emp_id = Employee.Emp_uid");
 		while (rs.next()) {
 			service service = new service();// create object
 			String ServiceName = rs.getString("SER_NAME");
-			int ServiceID = rs.getInt("SER_ID");
+			int ServiceID = rs.getInt("SERDETAIL_ID");
 			service.setServiceName(ServiceName);
 			service.setServiceID(ServiceID);
 			datacount++;
