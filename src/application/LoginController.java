@@ -100,8 +100,9 @@ public class LoginController {
 			errorMsg.setText("wrong username or password");
 			System.out.println("The account is not exist or you do not register an account in this business");
 		}catch (SQLException Se) {
+			errorMsg.setText("The account is not exist or you do not register an account in this business");
+		}catch (Exception e){
 			errorMsg.setText("Please choose the Business");
-			System.out.println("test1");
 		}
 
 	}

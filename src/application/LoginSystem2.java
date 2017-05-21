@@ -34,7 +34,7 @@ public class LoginSystem2 {
 		return tarBusId;
 	}
 
-	public static int login(String inputLogUser, String inputLogPass,String businessName) throws SQLException {
+	public static int login(String inputLogUser, String inputLogPass,String businessName) throws Exception {
 		// Start functions
 
 		// Connection LoginConn = null;
@@ -55,7 +55,13 @@ public class LoginSystem2 {
 		
 		if(permission == 4)
 			return 4;
+		if(businessName == null)
+		{
+			throw new Exception("Sorry, Please choose a business!");
+		}
+		
 		int BusId = getBusId(businessName);
+		
 		businessID = BusId;
 
 		int tarBusId = search(userId);
