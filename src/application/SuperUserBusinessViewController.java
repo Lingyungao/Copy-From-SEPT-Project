@@ -133,7 +133,6 @@ public class SuperUserBusinessViewController {
     //start
 	public void initialize() throws SQLException {
 		showList();
-		list.add(null);
 	}
 
     @FXML
